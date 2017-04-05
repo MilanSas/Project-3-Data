@@ -1,5 +1,6 @@
 import psycopg2 as p
 import matplotlib.pyplot as plt
+
 con = p.connect("dbname='StekOverflow' user='postgres' host='localhost' password='pgadmin2017'")
 
 def plotgeweld():
@@ -16,14 +17,16 @@ def plotgeweld():
     data2009 = alle[5]
     data2011 = alle[6]
 
+    x = [2006, 2007, 2008, 2009, 2011]
+    y = [data2006, data2007, data2008, data2009, data2011]
 
-    w = [data2006, data2007, data2008, data2009, data2011]
-    z = [2006,2007,2008,2009,2011]
-    plt.plot(z, w, color='lightblue', linewidth=2)
-
+    plt.plot(x, y, color='lightblue', linewidth=2)
+    for a, b in zip(x, y):
+        plt.text(a, b, str(b))
 
     plt.ylabel(databaseNaam)
     plt.xlabel('Tijd')
+
     plt.show()
 
 plotgeweld()
