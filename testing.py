@@ -1,13 +1,15 @@
-#Import Tkinter
 from tkinter import *
-from tkinter import messagebox
+from tkinter import ttk
+
+
 
 #Background gets loaded
 root = Tk()
+root.title("Rotterdam Living")
 
-#Resizes the image
-root.resizable(width=True, height=True)
-root.geometry('{}x{}'.format(root.winfo_screenwidth(), root.winfo_screenheight()))
+
+
+
 
 #gets current screen size
 screenx=root.winfo_screenwidth()
@@ -17,7 +19,10 @@ screeny= root.winfo_screenheight()
 image = PhotoImage(file="Rotterdamse_kaart.png")
 larger_image = image.zoom(1)
 label = Label(image=larger_image,background="red")
+
 label.grid()
+
+
 
 #Text
 overschie = "Overschie" #the name of the area's that will get loaded when a user clicks a button
