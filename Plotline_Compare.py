@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 con = p.connect("dbname='StekOverflow' user='postgres' host='localhost' password='pgadmin2017'")
 
-def plotgeweld():
+def plotLine_compare():
     databaseNaam = input("Welke database wil je raadplegen? ")
     wijkNaam_1 = input("Welke wijk wil je zien? ")
 
@@ -46,4 +46,4 @@ def plotgeweld():
     plt.legend()
     plt.show()
 
-plotgeweld()
+plotLine_compare()

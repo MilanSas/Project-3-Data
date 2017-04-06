@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 con = p.connect("dbname='StekOverflow' user='postgres' host='localhost' password='pgadmin2017'")
 
-def plotgeweld():
+def pieChart():
     databaseNaam = input("Welke database wil je raadplegen? ")
     wijkNaam = input("Welke wijk wil je zien? ")
     cur = con.cursor()
@@ -31,4 +31,4 @@ def plotgeweld():
     plt.title(wijknaam, bbox={'facecolor': '0.8', 'pad': 5})
     plt.show()
 
-plotgeweld()
+pieChart()
