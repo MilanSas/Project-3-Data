@@ -8,14 +8,14 @@ def plotgeweld():
     wijkNaam = input("Welke wijk wil je zien? ")
     cur = con.cursor()
     cur.execute("select * from {} where wijknaam = '{}'".format(databaseNaam,wijkNaam))
-    alle = cur.fetchone()
+    wijkData_1 = cur.fetchone()
 
-    wijknaam = alle[1]
-    data2006 = alle[2]
-    data2007 = alle[3]
-    data2008 = alle[4]
-    data2009 = alle[5]
-    data2011 = alle[6]
+    wijknaam = wijkData_1[1]
+    data2006 = wijkData_1[2]
+    data2007 = wijkData_1[3]
+    data2008 = wijkData_1[4]
+    data2009 = wijkData_1[5]
+    data2011 = wijkData_1[6]
 
     x = [2006, 2007, 2008, 2009, 2011]
     y = [data2006, data2007, data2008, data2009, data2011]
