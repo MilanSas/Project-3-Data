@@ -1,5 +1,5 @@
 # Project-3-Data
 
-�Rotterdamliving = The main application
+Rotterdamliving = The main application
 
-�polygonclasses = the polygons (map of Rotterdam) 
+polygonclasses = the polygons (map of Rotterdam) 
