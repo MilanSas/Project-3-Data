@@ -1,3 +1,4 @@
 # Project-3-Data
 
-Open Data Application
+Rotterdamliving = The main application
+polygonclasses = the polygons (map of Rotterdam) 
