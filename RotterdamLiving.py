@@ -174,10 +174,18 @@ def HexToRGB(rgb):
     result = ('#' + str(hex(rgb[0]).split('x')[-1]) + str(hex(rgb[1]).split('x')[-1]) + str(hex(rgb[2]).split('x')[-1]))
     return result
 
+
+
 class polygon:
     def __init__(self,color,list):
         self.color = color
         self.shape = canvas.create_polygon(list, fill=HexToRGB(self.color), outline='black', width = 2)
+    def changeColour(self): #method for when the user clicks an place, the place's colour changes
+        pass
+    def resetColur(self): #Method for when the user clicks another place, the previous selected place gets reseted
+        pass
+
+
 
 overschie_polgon = polygon((20,50,120),(rs(904),rs(194),rs(947),rs(183),rs(955),rs(205),rs(1106),rs(109),rs(1176),rs(199),rs(1222),rs(163),rs(1242),rs(185),rs(1237),rs(355),rs(1109),rs(432),rs(1138),rs(471),rs(1057),rs(479),rs(1017),rs(403),rs(1059),rs(350),rs(1050),rs(345),rs(1003),rs(366),rs(964),rs(322),rs(949),rs(342)))
 hillegersberg_polygon = polygon((20,50,120),(rs(1242),rs(185),rs(1237),rs(355),rs(1520),rs(282),rs(1499),rs(189),rs(1475),rs(213),rs(1432),rs(195),rs(1428),rs(172),rs(1387),rs(141),rs(1382),rs(154),rs(1280),rs(90)))
@@ -192,18 +200,14 @@ charlois_polygon = polygon((20,50,120),(rs(1262),rs(614),rs(1288),rs(642),rs(137
 waalhaven_polygon = polygon((20,50,120),(rs(1161),rs(839),rs(1201),rs(824),rs(1218),rs(800),rs(1201),rs(792),rs(1199),rs(763),rs(1246),rs(656),rs(1225),rs(646),rs(1227),rs(620),rs(1113),rs(596),rs(1038),rs(610),rs(954),rs(639),rs(862),rs(618),rs(885),rs(658),rs(917),rs(663),rs(921),rs(647),rs(972),rs(670),rs(962),rs(722),rs(937),rs(743),rs(934),rs(764),rs(923),rs(765),rs(927),rs(797),rs(1048),rs(795)))
 
 
-print(waalhaven_polygon)
-#mouse method
-def motion(event):
-    if event.x < 500 and event.y < 279: #the mouse positions
-        text.config(text=overschie) #changes the text that appears on the top
-    else:
-        text.config(text=rotterdam)
+
+
 
 
 #The text that will appear on top
 text = Label(root,width=0, height=1,text=rotterdam,font=("Helvetica",35,"bold")) #puts image on screen
 text.grid(row=0,column=0,sticky=N)
+
 
 
 #The main loop
@@ -232,9 +236,9 @@ Button5 = Button(root, text ="Tevredenheid", command = tevredenheidMethod,font=(
 Button5.columnconfigure(0,weight=3)
 Button5.grid(row=5, column=0,sticky=W,ipadx=screenx/140, ipady=screeny/150)
 
-Button6 = Button(root, text ="Huurpprijs", command = huurprijsMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
+Button6 = Button(root, text ="Huurprijs", command = huurprijsMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
 Button6.columnconfigure(0,weight=3)
-Button6.grid(row=6, column=0,sticky=W,ipadx=screenx/41, ipady=screeny/150)
+Button6.grid(row=6, column=0,sticky=W,ipadx=screenx/32, ipady=screeny/150)
 
 Button7 = Button(root, text ="Koopprijs", command = koopprijsMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
 Button7.columnconfigure(0,weight=5)
@@ -245,24 +249,57 @@ Button8.columnconfigure(0,weight=3)
 Button8.grid(row=8, column=0, sticky=W,ipadx=screenx/17.5, ipady=screeny/150)
 
 
+#mouse method, gets current mouse possitions
+def motion(event):
+    if event.x > 500 and event.y < 279: #the mouse positions
+        text.config(text="")
+    else:
+        text.config(text="Rotterdam")
+    print(str(event.x) + " " + str(event.y))
+
+
+
+
 #With this the area's/polygons can be selected
 def click(event):
-    if str(canvas.find_withtag(CURRENT)) == "(6,)":
+    if str(canvas.find_withtag(CURRENT)) == "(1,)":
+        text.config(text=overschie)
+        overschie_polgon.changeColour()
+        canvas.grid()
+    elif str(canvas.find_withtag(CURRENT)) == "(2,)":
+        text.config(text=hillegersberg_schiebroek)
+    elif str(canvas.find_withtag(CURRENT)) == "(3,)":
+        text.config(text=prins_alexander)
+    elif str(canvas.find_withtag(CURRENT)) == "(4,)":
+        text.config(text=kralingen_crooswijk)
+    elif str(canvas.find_withtag(CURRENT)) == "(5,)":
+        text.config(text=noord)
+    elif str(canvas.find_withtag(CURRENT)) == "(6,)":
+        text.config(text=delftshaven)
+    elif str(canvas.find_withtag(CURRENT)) == "(7,)":
+        text.config(text=centrum)
+    elif str(canvas.find_withtag(CURRENT)) == "(8,)":
+        text.config(text=feijenood)
+    elif str(canvas.find_withtag(CURRENT)) == "(9,)":
+        text.config(text=ijsselmonde)
+    elif str(canvas.find_withtag(CURRENT)) == "(10,)":
         text.config(text=charlois)
+    elif str(canvas.find_withtag(CURRENT)) == "(11,)":
+        text.config(text=waalhaven)
     else:
-        print(canvas.find_withtag(CURRENT))
+        text.config(text="Rotterdam")
+
+
 
 
 #the canvas where the polygons are drawed
 canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #draws the canvas
 
+
 #when a polygon is clicked, the click method will be activated
-canvas.bind('<Button-1>', click) #mouse method applied to the label(picture) object. Only when on the picture, the method will be activated
+canvas.bind('<Button-1>', click, add="+") #mouse method applied to the label(picture) object. Only when on the picture, the method will be activated
+# canvas.bind('<Motion>', motion, add="+") #Add makes it possible to adds multiple binds(events to a widget)
 
-
-# prints the list of x and y coordinations of the polygon
-print(canvas.itemcget(feijenoord_polygon.shape, 'fill'))
-print(canvas.find_withtag(CURRENT))
 
 
 root.mainloop()
