@@ -384,6 +384,15 @@ welcome_text = "Select the home button to see the available options"
 description_text = Label(root,text=welcome_text,font=("Helvetica",15,"bold")) #puts image on screen
 description_text.grid(row=1,column=0,sticky=W)
 
+#Part of the category: "Percentages en cijfers"
+def percentagesEnCijfers():
+    button9 = NewButton("Diefstallen", 1, 0, screenx / 19.5, screeny / 150)
+    button10 = NewButton("Geweld", 2, 0, screenx / 19.5, screeny / 150)
+    button11 = NewButton("Inbraak", 3, 0, screenx / 19.5, screeny / 150)
+    button12 = NewButton("Verkeer", 4, 0, screenx / 19.5, screeny / 150)
+    button13 = NewButton("Overig", 5, 0, screenx / 19.5, screeny / 150)
+    button14 = NewButton("Milieu", 6, 0, screenx / 19.5, screeny / 150)
+
 
 
 root.mainloop()
