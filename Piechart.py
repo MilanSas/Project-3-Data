@@ -11,14 +11,14 @@ def pieChart():
     wijkData_1 = cur.fetchone()
 
     wijknaam = wijkData_1[1]
-    data_Ned = wijkData_1[2]
-    data_Mar = wijkData_1[3]
-    data_Tur = wijkData_1[4]
-    data_Kaa = wijkData_1[5]
-    data_Ant = wijkData_1[6]
-    data_Sur = wijkData_1[7]
-    data_Zui = wijkData_1[8]
-    data_Ove = wijkData_1[9]
+    data_Ned = wijkData_1[4]
+    data_Mar = wijkData_1[5]
+    data_Tur = wijkData_1[6]
+    data_Kaa = wijkData_1[7]
+    data_Ant = wijkData_1[8]
+    data_Sur = wijkData_1[9]
+    data_Zui = wijkData_1[10]
+    data_Ove = wijkData_1[11]
 
     labels = 'Nederlanders', 'Marokkanen', 'Turken', 'Kaapverdianen', 'Antilianen', 'Surinamers', 'Zuid-Europeanen', 'Overig'
     sizes = [data_Ned, data_Mar, data_Tur, data_Kaa, data_Ant, data_Sur, data_Zui, data_Ove]
