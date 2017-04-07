@@ -167,7 +167,22 @@ def rs(size):
     ratio = (screeny + screeny/2) / size
     return (screeny / ratio)
 
-def changecolor(object,color):
+def changecolor(object,percent):
+    red = 0
+    green = 0
+    if percent < 7:
+        red = 255
+        green = 16
+    elif percent > 93:
+        green = 255
+        red = 16
+    elif percent > 50:
+        green = 255
+        red = int((100 - percent) * 5.1)
+    elif percent <= 50:
+        red = 255
+        green = int(percent * 5.1)
+    color = (red, green, 16)
     canvas.itemconfig(object.shape, fill=HexToRGB(color))
 
 def HexToRGB(rgb):
