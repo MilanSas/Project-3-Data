@@ -67,6 +67,9 @@ class Trigger:
 
 #===================================================================================================================
 #The polygon below
+
+
+
 canvas = Canvas(root, width=screenx,height=screeny)
 
 def rs(size):
@@ -126,16 +129,25 @@ waalhaven_polygon = polygon((20,50,120),(rs(1161),rs(839),rs(1201),rs(824),rs(12
 text = Label(root,width=0, height=1,text=rotterdam,font=("Helvetica",35,"bold")) #puts image on screen
 text.grid(row=0,column=0,sticky=N)
 
-#Text description
-percentage = 3 #number stat placeholder 50 is just for an example (placeholder)
-bestYear = 2011
-percentageDifference = ("{}%").format(percentage)
-yearDifference = 2010
+#the text that appears on the bottom that displays the numbers in text, it tells a story
+def percentage():
+    # Text description
+    percentage = 3  # number stat placeholder 50 is just for an example (placeholder)
+    bestYear = 2011
+    percentageDifference = ("{}%").format(percentage)
+    yearDifference = 2010
 
-rotterdam_description = ("Rotterdam had in {} de laagste criminaliteit ooit, en ruim {} minder dan in {}. ".format(str(bestYear),str(percentageDifference), str(yearDifference)))
+    rotterdam_description = (
+    "Rotterdam had in {} de laagste criminaliteit ooit, en ruim {} minder dan in {}. ".format(str(bestYear),
+                                                                                              str(percentageDifference),
+                                                                                              str(yearDifference)))
 
-text1 = Label(root,width=0, height=1,text=rotterdam_description,font=("Helvetica",19,"bold")) #puts image on screen
-text1.grid(row=9,column=0,sticky=S)
+    text1 = Label(root, width=0, height=1, text=rotterdam_description,
+                  font=("Helvetica", 19, "bold"))  # puts image on screen
+    text1.grid(row=9, column=0, sticky=S)
+
+
+
 
 #Text city statistics
 overschie_statistic = None
@@ -188,15 +200,18 @@ text_feijenoord = Label(root,width=0, height=1,text=feijenoord_statistic,font=("
 text_feijenoord.grid(row=8,column=0,sticky=N)
 
 
-#The side buttons
-button1 = NewButton("Millieu", 1, 0, screenx/19.5, screeny/150)
-button2 = NewButton("Luchtkwailiteit", 2, 0, screenx/213.5, screeny/150)
-button3 = NewButton("Veiligheid", 3, 0, screenx/35.5, screeny/150)
-button4 = NewButton("Voorzieningen", 4, 0, screenx/500, screeny/150)
-button5 = NewButton("Tevredenheid", 5, 0, screenx/140, screeny/150)
-button6 = NewButton("Huurprijs", 6, 0, screenx/32, screeny/150)
-button7 = NewButton("Koopprijs", 7, 0, screenx/34.5, screeny/150)
-button8 = NewButton("Koopprijs", 8, 0, screenx/17.5, screeny/150)
+#The side buttons, put in a function so that they can called when needed
+def sideButtons():
+    button1 = NewButton("Millieu", 1, 0, screenx / 19.5, screeny / 150)
+    button2 = NewButton("Luchtkwailiteit", 2, 0, screenx / 213.5, screeny / 150)
+    button3 = NewButton("Veiligheid", 3, 0, screenx / 35.5, screeny / 150)
+    button4 = NewButton("Voorzieningen", 4, 0, screenx / 500, screeny / 150)
+    button5 = NewButton("Tevredenheid", 5, 0, screenx / 140, screeny / 150)
+    button6 = NewButton("Huurprijs", 6, 0, screenx / 32, screeny / 150)
+    button7 = NewButton("Koopprijs", 7, 0, screenx / 34.5, screeny / 150)
+    button8 = NewButton("Koopprijs", 8, 0, screenx / 17.5, screeny / 150)
+
+
 
 
 #mouse method, gets current mouse possitions
@@ -343,23 +358,32 @@ def click(event):
                 print(i.trigger)
 
 
-#the canvas where the polygons are drawed
-canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #draws the canvas
+
 
 
 #when a polygon is clicked, the click method will be activated
 canvas.bind('<Button-1>', click, add="+") #mouse method applied to the label(picture) object. Only when on the picture, the method will be activated
 # canvas.bind('<Motion>', motion, add="+") #Add makes it possible to adds multiple binds(events to a widget)
 
+
+#draws on top of the screen, this makes everything dissapear. The lower the code, the later it will get drawn
+#the canvas where the polygons are drawed
+canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #draws the canvas
+
 #Drop down menu
 variable = StringVar(root)
 variable.set("Home") # default value
-w = OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "Exit")
+w = OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "About", "Exit")
 w.config(font=("Helvetica",50,"bold"),bg="DeepSkyBlue2", fg="white")
-w.grid(row=0,column=0,rowspan=999,sticky=N+W)
+w.grid(row=0,column=0,sticky=N+W)
+
+#the texts displayed on the screen
+welcome_text = "Select the home button to see the available options"
 
 #The menu description
-description_text = Label(root,width=0, height=1,text=rotterdam,font=("Helvetica",35,"bold")) #puts image on screen
+description_text = Label(root,text=welcome_text,font=("Helvetica",15,"bold")) #puts image on screen
 description_text.grid(row=1,column=0,sticky=W)
+
+
 
 root.mainloop()
