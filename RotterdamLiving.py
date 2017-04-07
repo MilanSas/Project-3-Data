@@ -57,7 +57,7 @@ class Trigger:
         self.trigger = triggerValue
         self.name = name
     def __str__(self):
-        return(str(self))
+        return self.name
 
 #triggers for the buttons
 Button1_Bool = Trigger(False,None)
@@ -130,7 +130,7 @@ def huurprijsMethod():
 
 
 def koopprijsMethod():
-    global Button7_bool
+
     if Button7_Bool.trigger == False:
         Button7.config(bg="green")
         setattr(Button7_Bool, 'trigger', True)
@@ -143,7 +143,7 @@ def koopprijsMethod():
 
 #closes window
 def backMethod():
-    global Button8_bool
+
     if Button8_Bool.trigger == False:
          setattr(Button8_Bool, 'trigger', True)
          root.destroy() #this closes the window
@@ -199,8 +199,6 @@ feijenoord_polygon = polygon((20,50,120),(rs(1397),rs(500),rs(1375),rs(506),rs(1
 ijsselmonde_polygon = polygon((20,50,120),(rs(1572),rs(594),rs(1489),rs(616),rs(1469),rs(593),rs(1450),rs(605),rs(1496),rs(698),rs(1487),rs(735),rs(1454),rs(735),rs(1417),rs(772),rs(1457),rs(824),rs(1524),rs(831),rs(1574),rs(813),rs(1657),rs(766),rs(1666),rs(779),rs(1682),rs(769),rs(1712),rs(606),rs(1625),rs(584)))
 charlois_polygon = polygon((20,50,120),(rs(1262),rs(614),rs(1288),rs(642),rs(1378),rs(617),rs(1372),rs(694),rs(1361),rs(698),rs(1361),rs(720),rs(1417),rs(772),rs(1457),rs(824),rs(1388),rs(820),rs(1315),rs(848),rs(1315),rs(869),rs(1242),rs(871),rs(1161),rs(839),rs(1201),rs(824),rs(1218),rs(800),rs(1201),rs(792),rs(1199),rs(763),rs(1246),rs(656),rs(1225),rs(646),rs(1227),rs(620)))
 waalhaven_polygon = polygon((20,50,120),(rs(1161),rs(839),rs(1201),rs(824),rs(1218),rs(800),rs(1201),rs(792),rs(1199),rs(763),rs(1246),rs(656),rs(1225),rs(646),rs(1227),rs(620),rs(1113),rs(596),rs(1038),rs(610),rs(954),rs(639),rs(862),rs(618),rs(885),rs(658),rs(917),rs(663),rs(921),rs(647),rs(972),rs(670),rs(962),rs(722),rs(937),rs(743),rs(934),rs(764),rs(923),rs(765),rs(927),rs(797),rs(1048),rs(795)))
-
-
 
 
 setattr(overschie_polgon,'color',(170,50,120))
@@ -322,28 +320,21 @@ def motion(event):
     print(str(event.x) + " " + str(event.y))
 
 #triggers for when an area gets selected
-overschie_trigger = Trigger(False)
-hillegersberg_trigger = Trigger(False)
-prins_alexander_trigger = Trigger(False)
-noord_trigger = Trigger(False)
-kralingen_crooswijk_trigger = Trigger(False)
-centrum_trigger = Trigger(False)
-delftshaven_trigger = Trigger(False)
-waalhaven_trigger = Trigger(False)
-charlois_trigger = Trigger(False)
-feijenood_trigger = Trigger(False)
-ijsselmonde_trigger = Trigger(False)
+overschie_trigger = Trigger(False, "overschie")
+hillegersberg_trigger = Trigger(False,"hillegersberg")
+prins_alexander_trigger = Trigger(False, "prinsAlexander")
+noord_trigger = Trigger(False,"noordTrigger")
+kralingen_crooswijk_trigger = Trigger(False, "kralingenCrooswijk")
+centrum_trigger = Trigger(False, "centrum")
+delftshaven_trigger = Trigger(False, "delftshaven")
+waalhaven_trigger = Trigger(False, "waalhaven")
+charlois_trigger = Trigger(False, "charlois")
+feijenood_trigger = Trigger(False, "feijenoord")
+ijsselmonde_trigger = Trigger(False, "ijsselmonde")
 
 
 #Triggers for when an area is selected
-List1 = [overschie_trigger, hillegersberg_trigger,prins_alexander_trigger,noord_trigger]
-for i in List1:
-    if str(i) == "overschie_trigger":
-        setattr(overschie_statistic, 'trigger', False)
-    else:
-        setattr(i, 'trigger', True)
-    print(i.trigger)
-    print(i)
+List1 = [overschie_trigger, hillegersberg_trigger,prins_alexander_trigger,noord_trigger, kralingen_crooswijk_trigger, centrum_trigger, delftshaven_trigger, waalhaven_trigger, charlois_trigger, feijenood_trigger, ijsselmonde_trigger]
 
 
 
@@ -351,12 +342,35 @@ for i in List1:
 def click(event):
     if str(canvas.find_withtag(CURRENT)) == "(1,)":
         text.config(text=overschie)
-        overschie_polgon.changeColour()
-        canvas.grid()
+        for i in List1:
+            if i.name == "overschie":
+                setattr(i, 'trigger', True)
+                print(overschie_trigger.trigger)
+            else:
+                setattr(i, 'trigger', False)
+                print(i.trigger)
+
     elif str(canvas.find_withtag(CURRENT)) == "(2,)":
         text.config(text=hillegersberg_schiebroek)
+        for i in List1:
+            if i.name == "hillegersberg":
+                setattr(i, 'trigger', True)
+                print(hillegersberg_trigger.trigger)
+            else:
+                setattr(i, 'trigger', False)
+                print(i.trigger)
+
+
     elif str(canvas.find_withtag(CURRENT)) == "(3,)":
         text.config(text=prins_alexander)
+        for i in List1:
+            if i.name == "prinsAlexander":
+                setattr(i, 'trigger', True)
+                print(overschie_trigger.trigger)
+            else:
+                setattr(i, 'trigger', False)
+                print(i.trigger)
+
     elif str(canvas.find_withtag(CURRENT)) == "(4,)":
         text.config(text=kralingen_crooswijk)
     elif str(canvas.find_withtag(CURRENT)) == "(5,)":
@@ -386,7 +400,6 @@ canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #draws the canvas
 #when a polygon is clicked, the click method will be activated
 canvas.bind('<Button-1>', click, add="+") #mouse method applied to the label(picture) object. Only when on the picture, the method will be activated
 # canvas.bind('<Motion>', motion, add="+") #Add makes it possible to adds multiple binds(events to a widget)
-
 
 
 root.mainloop()
