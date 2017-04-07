@@ -7,9 +7,8 @@ import math
 root = Tk() #Needed to run
 
 #TODO methods needs to be filled in
-#TODO transparant buttons for the locations
 #TODO find better way to resize the picture
-#TODO Instead of coordinations, make tkinter detect the colour and then change the area based on it
+#TODO when user hoovers of an area, make it if it's possible the area change colour + change location text
 
 
 
@@ -202,15 +201,82 @@ waalhaven_polygon = polygon((20,50,120),(rs(1161),rs(839),rs(1201),rs(824),rs(12
 
 
 
-
+setattr(overschie_polgon,'color',(170,50,120))
+print(overschie_polgon.color)
 
 #The text that will appear on top
 text = Label(root,width=0, height=1,text=rotterdam,font=("Helvetica",35,"bold")) #puts image on screen
 text.grid(row=0,column=0,sticky=N)
 
+#Text description
+percentage = 3 #number stat placeholder 50 is just for an example (placeholder)
+bestYear = 2011
+percentageDifference = ("{}%").format(percentage)
+yearDifference = 2010
 
 
-#The main loop
+rotterdam_description = ("Rotterdam had in {} de laagste criminaliteit ooit, en ruim {} minder dan in {}. ".format(str(bestYear),str(percentageDifference), str(yearDifference)))
+
+text1 = Label(root,width=0, height=1,text=rotterdam_description,font=("Helvetica",19,"bold")) #puts image on screen
+text1.grid(row=9,column=0,sticky=S)
+
+
+
+#Text city statistics
+overschie_statistic = None
+hillegersberg_statistic = None
+prins_alexander_statistic = None
+kralingen_statistic = None
+noord_statistic = None
+delftshaven_statistic = None
+kralingen_crooswijk_statistic = None
+waalhaven_statistic = None
+charlois_statistic = None
+Ijsselmonde_statistic = None
+centrum_statistic = None
+feijenoord_statistic = None
+
+
+text_overschie = Label(root,width=0, height=1,text=overschie_statistic,font=("Helvetica",35,"bold")) #puts image on screen
+text_overschie.grid(row=8,column=0,sticky=N)
+
+text_hillgersberg = Label(root,width=0, height=1,text=hillegersberg_statistic,font=("Helvetica",35,"bold")) #puts image on screen
+text_hillgersberg.grid(row=8,column=0,sticky=N)
+
+text_prins_alexander = Label(root,width=0, height=1,text=prins_alexander_statistic,font=("Helvetica",35,"bold")) #puts image on screen
+text_prins_alexander.grid(row=8,column=0,sticky=N)
+
+text_kralingen = Label(root,width=0, height=1,text=kralingen_statistic,font=("Helvetica",35,"bold")) #puts image on screen
+text_kralingen.grid(row=8,column=0,sticky=N)
+
+text_noord = Label(root,width=0, height=1,text=noord_statistic,font=("Helvetica",35,"bold")) #puts image on screen
+text_noord.grid(row=8,column=0,sticky=N)
+
+text_delfshaven = Label(root,width=0, height=1,text=delftshaven_statistic,font=("Helvetica",35,"bold")) #puts image on screen
+text_delfshaven.grid(row=8,column=0,sticky=N)
+
+text_kralingen_crooswijk = Label(root,width=0, height=1,text=kralingen_crooswijk_statistic,font=("Helvetica",35,"bold")) #puts image on screen
+text_kralingen_crooswijk.grid(row=8,column=0,sticky=N)
+
+text_waalhaven = Label(root,width=0, height=1,text=waalhaven_statistic,font=("Helvetica",35,"bold")) #puts image on screen
+text_waalhaven.grid(row=8,column=0,sticky=N)
+
+text_charlois = Label(root,width=0, height=1,text=charlois_statistic,font=("Helvetica",35,"bold")) #puts image on screen
+text_charlois.grid(row=8,column=0,sticky=N)
+
+text_ijsselmonde = Label(root,width=0, height=1,text=Ijsselmonde_statistic,font=("Helvetica",35,"bold")) #puts image on screen
+text_ijsselmonde.grid(row=8,column=0,sticky=N)
+
+text_centrum = Label(root,width=0, height=1,text=centrum_statistic,font=("Helvetica",35,"bold")) #puts image on screen
+text_centrum.grid(row=8,column=0,sticky=N)
+
+text_feijenoord = Label(root,width=0, height=1,text=feijenoord_statistic,font=("Helvetica",35,"bold")) #puts image on screen
+text_feijenoord.grid(row=8,column=0,sticky=N)
+
+
+
+
+
 
 
 
