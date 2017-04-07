@@ -52,6 +52,29 @@ ijsselmonde = "Ijsselmonde"
 rotterdam = "Rotterdam"
 
 #Trigger for the buttons, when a button is pressed the state changes (true, false)
+
+class NewButton:
+    def __init__(self,text, row, column, ipadx, ipady):
+        self.clicked = False
+        self.button = Button(root, text =text, command = self.click,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
+        self.button.columnconfigure(0,weight=300000)
+        self.button.grid(row=row, column=column, sticky=W, ipadx=ipadx, ipady=ipady)
+        # command = method
+        # weight = if it will get moved when another button takes wide rows
+        # information you can set about a button
+        # ipadx = the size in width, ipady = the size it takes in height
+
+    def click(self):
+            if self.clicked == False: #When a button is pressed or depressed, the state of the booleans change
+                self.button.config(bg="green") #Button's colour changes
+                setattr(self, 'clicked', True) #State of the button is set to true.
+
+            elif self.clicked == True:
+                 self.button.config(bg="DeepSkyBlue2")
+                 setattr(self, 'clicked', False)
+
+
+
 class Trigger:
     def __init__(self, triggerValue,name):
         self.trigger = triggerValue
@@ -60,17 +83,9 @@ class Trigger:
         return self.name
 
 #triggers for the buttons
-Button1_Bool = Trigger(False,None)
-Button2_Bool = Trigger(False,None)
-Button3_Bool = Trigger(False,None)
-Button4_Bool = Trigger(False,None)
-Button5_Bool = Trigger(False,None)
-Button6_Bool = Trigger(False,None)
-Button7_Bool = Trigger(False,None)
-Button8_Bool = Trigger(False,None)
-
 
 #methods that are going to run when the an user clicks a certain button
+<<<<<<< HEAD
 def milieuMethod():
     if Button1_Bool.trigger == False: #When a button is pressed or depressed, the state of the booleans change
         Button1.config(bg="green") #Button's colour changes
@@ -152,8 +167,12 @@ def backMethod():
          setattr(Button8_Bool, 'trigger', False)
 
 
+=======
+>>>>>>> origin/master
 
 
+def click(adsf):
+    pass
 #catches current position of the mouse and changes name based on mouse position
 #This method will also seve as to detect were the user clicks on the map
 
@@ -166,7 +185,22 @@ def rs(size):
     ratio = (screeny + screeny/2) / size
     return (screeny / ratio)
 
-def changecolor(object,color):
+def changecolor(object,percent):
+    red = 0
+    green = 0
+    if percent < 7:
+        red = 255
+        green = 16
+    elif percent > 93:
+        green = 255
+        red = 16
+    elif percent > 50:
+        green = 255
+        red = int((100 - percent) * 5.1)
+    elif percent <= 50:
+        red = 255
+        green = int(percent * 5.1)
+    color = (red, green, 16)
     canvas.itemconfig(object.shape, fill=HexToRGB(color))
 
 def HexToRGB(rgb):
@@ -273,9 +307,10 @@ text_feijenoord = Label(root,width=0, height=1,text=feijenoord_statistic,font=("
 text_feijenoord.grid(row=8,column=0,sticky=N)
 
 
-
+Button1_Bool = "d"
 
 #The side buttons
+<<<<<<< HEAD
 Button1 = Button(root, text ="Woningsadvies", command = milieuMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white") #command = method
 Button1.columnconfigure(0,weight=3) #weight = if it will get moved when another button takes wide rows
 Button1.grid(row=1, column=0, sticky=W,ipadx=screenx/19.5,ipady=screeny/150) #information you can set about a button
@@ -310,6 +345,16 @@ Button7.grid(row=7, column=0, sticky=W,ipadx=screenx/34.5, ipady=screeny/150)
 Button8 = Button(root, text ="Back", command = backMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
 Button8.columnconfigure(0,weight=3)
 Button8.grid(row=8, column=0, sticky=W,ipadx=screenx/17.5, ipady=screeny/150)
+=======
+button1 = NewButton("Millieu", 1, 0, screenx/19.5, screeny/150)
+button2 = NewButton("Luchtkwailiteit", 2, 0, screenx/213.5, screeny/150)
+button3 = NewButton("Veiligheid", 3, 0, screenx/35.5, screeny/150)
+button4 = NewButton("Voorzieningen", 4, 0, screenx/500, screeny/150)
+button5 = NewButton("Tevredenheid", 5, 0, screenx/140, screeny/150)
+button6 = NewButton("Huurprijs", 6, 0, screenx/32, screeny/150)
+button7 = NewButton("Koopprijs", 7, 0, screenx/34.5, screeny/150)
+button8 = NewButton("Koopprijs", 8, 0, screenx/17.5, screeny/150)
+>>>>>>> origin/master
 
 
 #mouse method, gets current mouse possitions
@@ -466,9 +511,13 @@ canvas.bind('<Button-1>', click, add="+") #mouse method applied to the label(pic
 # canvas.bind('<Motion>', motion, add="+") #Add makes it possible to adds multiple binds(events to a widget)
 
 
+<<<<<<< HEAD
 #MenuButtonTesting
 
 
 
 
 root.mainloop()
+=======
+root.mainloop()
+>>>>>>> origin/master
