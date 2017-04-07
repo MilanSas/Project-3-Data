@@ -85,94 +85,7 @@ class Trigger:
 #triggers for the buttons
 
 #methods that are going to run when the an user clicks a certain button
-<<<<<<< HEAD
-def milieuMethod():
-    if Button1_Bool.trigger == False: #When a button is pressed or depressed, the state of the booleans change
-        Button1.config(bg="green") #Button's colour changes
-        setattr(Button1_Bool, 'trigger', True) #State of the button is set to true.
 
-    elif Button1_Bool.trigger == True:
-         Button1.config(bg="DeepSkyBlue2")
-         setattr(Button1_Bool, 'trigger', False)
-
-
-def luchtkwaliteitMethod():
-    if Button2_Bool.trigger == False:
-        Button2.config(bg="green")
-        setattr(Button2_Bool, 'trigger', True)
-
-    elif Button2_Bool.trigger == True:
-         Button2.config(bg="DeepSkyBlue2")
-         setattr(Button2_Bool, 'trigger', False)
-
-
-def veiligheidMethod():
-    if Button3_Bool.trigger == False:
-        Button3.config(bg="green")
-        setattr(Button3_Bool, 'trigger', True)
-
-    elif Button3_Bool.trigger == True:
-         Button3.config(bg="DeepSkyBlue2")
-         setattr(Button3_Bool, 'trigger', False)
-
-def voorzieningenMethod():
-    if Button4_Bool.trigger == False:
-        Button4.config(bg="green")
-        setattr(Button4_Bool, 'trigger', True)
-
-    elif Button4_Bool.trigger == True:
-         Button4.config(bg="DeepSkyBlue2")
-         setattr(Button4_Bool, 'trigger', False)
-
-def tevredenheidMethod():
-    if Button5_Bool.trigger == False:
-        Button5.config(bg="green")
-        setattr(Button5_Bool, 'trigger', True)
-
-    elif Button5_Bool.trigger == True:
-         Button5.config(bg="DeepSkyBlue2")
-         setattr(Button5_Bool, 'trigger', False)
-
-def huurprijsMethod():
-    if Button6_Bool.trigger == False:
-        Button6.config(bg="green")
-        setattr(Button6_Bool, 'trigger', True)
-
-    elif Button6_Bool.trigger == True:
-         Button6.config(bg="DeepSkyBlue2")
-         setattr(Button6_Bool, 'trigger', False)
-
-
-def koopprijsMethod():
-
-    if Button7_Bool.trigger == False:
-        Button7.config(bg="green")
-        setattr(Button7_Bool, 'trigger', True)
-
-    elif Button7_Bool.trigger == True:
-         Button7.config(bg="DeepSkyBlue2")
-         setattr(Button7_Bool, 'trigger', False)
-
-
-
-#closes window
-def backMethod():
-
-    if Button8_Bool.trigger == False:
-         setattr(Button8_Bool, 'trigger', True)
-         root.destroy() #this closes the window
-
-    elif Button8_Bool.trigger == True:
-         Button8.config(bg="DeepSkyBlue2")
-         setattr(Button8_Bool, 'trigger', False)
-
-
-=======
->>>>>>> origin/master
-
-
-def click(adsf):
-    pass
 #catches current position of the mouse and changes name based on mouse position
 #This method will also seve as to detect were the user clicks on the map
 
@@ -310,42 +223,7 @@ text_feijenoord.grid(row=8,column=0,sticky=N)
 Button1_Bool = "d"
 
 #The side buttons
-<<<<<<< HEAD
-Button1 = Button(root, text ="Woningsadvies", command = milieuMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white") #command = method
-Button1.columnconfigure(0,weight=3) #weight = if it will get moved when another button takes wide rows
-Button1.grid(row=1, column=0, sticky=W,ipadx=screenx/19.5,ipady=screeny/150) #information you can set about a button
-#ipadx = the size in width, ipady = the size it takes in height
 
-Button2 = Button(root, text ="Cijfers en percentages", command = luchtkwaliteitMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
-Button2.columnconfigure(0,weight=3)
-Button2.grid(row=2, column=0, sticky=W, ipadx=screenx/213.5,ipady=screeny/150)
-
-
-
-Button3 = Button(root, text ="Settings", command = veiligheidMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
-Button3.columnconfigure(0,weight=300000)
-Button3.grid(row=3, column=0, sticky=W, ipadx=screenx/35.5, ipady=screeny/150)
-
-Button4 = Button(root, text ="Exit", command = voorzieningenMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
-Button4.columnconfigure(0,weight=3)
-Button4.grid(row=4, column=0,sticky=W,ipadx=screenx/500, ipady=screeny/150)
-
-Button5 = Button(root, text ="Tevredenheid", command = tevredenheidMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
-Button5.columnconfigure(0,weight=3)
-Button5.grid(row=5, column=0,sticky=W,ipadx=screenx/140, ipady=screeny/150)
-
-Button6 = Button(root, text ="Huurprijs", command = huurprijsMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
-Button6.columnconfigure(0,weight=3)
-Button6.grid(row=6, column=0,sticky=W,ipadx=screenx/32, ipady=screeny/150)
-
-Button7 = Button(root, text ="Koopprijs", command = koopprijsMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
-Button7.columnconfigure(0,weight=5)
-Button7.grid(row=7, column=0, sticky=W,ipadx=screenx/34.5, ipady=screeny/150)
-
-Button8 = Button(root, text ="Back", command = backMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
-Button8.columnconfigure(0,weight=3)
-Button8.grid(row=8, column=0, sticky=W,ipadx=screenx/17.5, ipady=screeny/150)
-=======
 button1 = NewButton("Millieu", 1, 0, screenx/19.5, screeny/150)
 button2 = NewButton("Luchtkwailiteit", 2, 0, screenx/213.5, screeny/150)
 button3 = NewButton("Veiligheid", 3, 0, screenx/35.5, screeny/150)
@@ -354,7 +232,7 @@ button5 = NewButton("Tevredenheid", 5, 0, screenx/140, screeny/150)
 button6 = NewButton("Huurprijs", 6, 0, screenx/32, screeny/150)
 button7 = NewButton("Koopprijs", 7, 0, screenx/34.5, screeny/150)
 button8 = NewButton("Koopprijs", 8, 0, screenx/17.5, screeny/150)
->>>>>>> origin/master
+
 
 
 #mouse method, gets current mouse possitions
@@ -511,13 +389,10 @@ canvas.bind('<Button-1>', click, add="+") #mouse method applied to the label(pic
 # canvas.bind('<Motion>', motion, add="+") #Add makes it possible to adds multiple binds(events to a widget)
 
 
-<<<<<<< HEAD
 #MenuButtonTesting
 
 
 
 
 root.mainloop()
-=======
-root.mainloop()
->>>>>>> origin/master
+
