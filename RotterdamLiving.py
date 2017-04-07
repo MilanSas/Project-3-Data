@@ -1,10 +1,4 @@
 from tkinter import *
-import math
-
-
-
-#Background gets loaded
-root = Tk() #Needed to run
 
 #TODO methods (button functionality) needs to be filled in
 #TODO find better way to resize the picture
@@ -13,6 +7,8 @@ root = Tk() #Needed to run
 #TODO Add names for the objects
 
 
+#Background gets loaded
+root = Tk() #Needed to run
 
 root.title("Rotterdam Living") #Window title
 root.geometry('{}x{}'.format(root.winfo_screenwidth(), root.winfo_screenheight())) #allows option boxes(minimize. maximize etc)
@@ -21,22 +17,9 @@ root.geometry('{}x{}'.format(root.winfo_screenwidth(), root.winfo_screenheight()
 screenx=root.winfo_screenwidth()
 screeny= root.winfo_screenheight()
 
-# #image code below commented out because there is a new image
-# #The image
-# image = PhotoImage(file="Rotterdamse_kaart.png") #The file
-# larger_image = image.zoom(2) #resizes image but there must be a better way
-# label = Label(root, image=larger_image) #saves the image
-#
-# orginal_overschie_photo = PhotoImage(file="overschie_test.png") #area specific file for when the user clicks
-# large_overschie_photo = orginal_overschie_photo.zoom(4) #zooms the image to make it bigger.
-# label.grid(sticky=N,column=1, row=1,rowspan=999) #loads the image in row 1 of column 1. Sticky is the position
 
-#==================================
 
-#Actual comments
-#Sticky = position, column = in which column, row = in which row.
 #Grid is similar to Microsoft Excel, the samer type of layout
-
 #Text
 overschie = "Overschie" #the name of the area's that will get loaded when a user clicks the area
 hillegersberg_schiebroek = "Hillegersberg-schiebroek"
@@ -52,7 +35,7 @@ ijsselmonde = "Ijsselmonde"
 rotterdam = "Rotterdam"
 
 #Trigger for the buttons, when a button is pressed the state changes (true, false)
-
+#Sticky = position, column = in which column, row = in which row.
 class NewButton:
     def __init__(self,text, row, column, ipadx, ipady):
         self.clicked = False
@@ -68,13 +51,13 @@ class NewButton:
             if self.clicked == False: #When a button is pressed or depressed, the state of the booleans change
                 self.button.config(bg="green") #Button's colour changes
                 setattr(self, 'clicked', True) #State of the button is set to true.
-
             elif self.clicked == True:
                  self.button.config(bg="DeepSkyBlue2")
                  setattr(self, 'clicked', False)
 
 
-
+#triggers for the buttons
+#methods that are going to run when the an user clicks a certain button
 class Trigger:
     def __init__(self, triggerValue,name):
         self.trigger = triggerValue
@@ -82,14 +65,6 @@ class Trigger:
     def __str__(self):
         return self.name
 
-#triggers for the buttons
-
-#methods that are going to run when the an user clicks a certain button
-
-#catches current position of the mouse and changes name based on mouse position
-#This method will also seve as to detect were the user clicks on the map
-
-#
 #===================================================================================================================
 #The polygon below
 canvas = Canvas(root, width=screenx,height=screeny)
@@ -147,9 +122,6 @@ charlois_polygon = polygon((20,50,120),(rs(1262),rs(614),rs(1288),rs(642),rs(137
 waalhaven_polygon = polygon((20,50,120),(rs(1161),rs(839),rs(1201),rs(824),rs(1218),rs(800),rs(1201),rs(792),rs(1199),rs(763),rs(1246),rs(656),rs(1225),rs(646),rs(1227),rs(620),rs(1113),rs(596),rs(1038),rs(610),rs(954),rs(639),rs(862),rs(618),rs(885),rs(658),rs(917),rs(663),rs(921),rs(647),rs(972),rs(670),rs(962),rs(722),rs(937),rs(743),rs(934),rs(764),rs(923),rs(765),rs(927),rs(797),rs(1048),rs(795)))
 
 
-setattr(overschie_polgon,'color',(170,50,120))
-print(overschie_polgon.color)
-
 #The text that will appear on top
 text = Label(root,width=0, height=1,text=rotterdam,font=("Helvetica",35,"bold")) #puts image on screen
 text.grid(row=0,column=0,sticky=N)
@@ -160,13 +132,10 @@ bestYear = 2011
 percentageDifference = ("{}%").format(percentage)
 yearDifference = 2010
 
-
 rotterdam_description = ("Rotterdam had in {} de laagste criminaliteit ooit, en ruim {} minder dan in {}. ".format(str(bestYear),str(percentageDifference), str(yearDifference)))
 
 text1 = Label(root,width=0, height=1,text=rotterdam_description,font=("Helvetica",19,"bold")) #puts image on screen
 text1.grid(row=9,column=0,sticky=S)
-
-
 
 #Text city statistics
 overschie_statistic = None
@@ -181,7 +150,6 @@ charlois_statistic = None
 Ijsselmonde_statistic = None
 centrum_statistic = None
 feijenoord_statistic = None
-
 
 text_overschie = Label(root,width=0, height=1,text=overschie_statistic,font=("Helvetica",35,"bold")) #puts image on screen
 text_overschie.grid(row=8,column=0,sticky=N)
@@ -220,10 +188,7 @@ text_feijenoord = Label(root,width=0, height=1,text=feijenoord_statistic,font=("
 text_feijenoord.grid(row=8,column=0,sticky=N)
 
 
-Button1_Bool = "d"
-
 #The side buttons
-
 button1 = NewButton("Millieu", 1, 0, screenx/19.5, screeny/150)
 button2 = NewButton("Luchtkwailiteit", 2, 0, screenx/213.5, screeny/150)
 button3 = NewButton("Veiligheid", 3, 0, screenx/35.5, screeny/150)
@@ -232,7 +197,6 @@ button5 = NewButton("Tevredenheid", 5, 0, screenx/140, screeny/150)
 button6 = NewButton("Huurprijs", 6, 0, screenx/32, screeny/150)
 button7 = NewButton("Koopprijs", 7, 0, screenx/34.5, screeny/150)
 button8 = NewButton("Koopprijs", 8, 0, screenx/17.5, screeny/150)
-
 
 
 #mouse method, gets current mouse possitions
@@ -259,7 +223,6 @@ ijsselmonde_trigger = Trigger(False, "ijsselmonde")
 
 #Triggers for when an area is selected
 List1 = [overschie_trigger, hillegersberg_trigger,prins_alexander_trigger,noord_trigger, kralingen_crooswijk_trigger, centrum_trigger, delftshaven_trigger, waalhaven_trigger, charlois_trigger, feijenood_trigger, ijsselmonde_trigger]
-
 
 
 #With this the area's/polygons can be selected
@@ -308,7 +271,7 @@ def click(event):
     elif str(canvas.find_withtag(CURRENT)) == "(5,)":
         text.config(text=noord)
         for i in List1:
-            if i.name == "centrum":
+            if i.name == "noord":
                 setattr(i, 'trigger', True)
 
             else:
@@ -389,10 +352,4 @@ canvas.bind('<Button-1>', click, add="+") #mouse method applied to the label(pic
 # canvas.bind('<Motion>', motion, add="+") #Add makes it possible to adds multiple binds(events to a widget)
 
 
-#MenuButtonTesting
-
-
-
-
 root.mainloop()
-
