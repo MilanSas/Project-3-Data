@@ -91,7 +91,6 @@ def luchtkwaliteitMethod():
          setattr(Button2_Bool, 'trigger', False)
 
 
-
 def veiligheidMethod():
     if Button3_Bool.trigger == False:
         Button3.config(bg="green")
@@ -277,20 +276,22 @@ text_feijenoord.grid(row=8,column=0,sticky=N)
 
 
 #The side buttons
-Button1 = Button(root, text ="Milieu", command = milieuMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white") #command = method
+Button1 = Button(root, text ="Woningsadvies", command = milieuMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white") #command = method
 Button1.columnconfigure(0,weight=3) #weight = if it will get moved when another button takes wide rows
 Button1.grid(row=1, column=0, sticky=W,ipadx=screenx/19.5,ipady=screeny/150) #information you can set about a button
 #ipadx = the size in width, ipady = the size it takes in height
 
-Button2 = Button(root, text ="Luchtkwaliteit", command = luchtkwaliteitMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
+Button2 = Button(root, text ="Cijfers en percentages", command = luchtkwaliteitMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
 Button2.columnconfigure(0,weight=3)
 Button2.grid(row=2, column=0, sticky=W, ipadx=screenx/213.5,ipady=screeny/150)
 
-Button3 = Button(root, text ="Veiligheid", command = veiligheidMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
+
+
+Button3 = Button(root, text ="Settings", command = veiligheidMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
 Button3.columnconfigure(0,weight=300000)
 Button3.grid(row=3, column=0, sticky=W, ipadx=screenx/35.5, ipady=screeny/150)
 
-Button4 = Button(root, text ="Voorzieningen", command = voorzieningenMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
+Button4 = Button(root, text ="Exit", command = voorzieningenMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
 Button4.columnconfigure(0,weight=3)
 Button4.grid(row=4, column=0,sticky=W,ipadx=screenx/500, ipady=screeny/150)
 
@@ -323,7 +324,7 @@ def motion(event):
 overschie_trigger = Trigger(False, "overschie")
 hillegersberg_trigger = Trigger(False,"hillegersberg")
 prins_alexander_trigger = Trigger(False, "prinsAlexander")
-noord_trigger = Trigger(False,"noordTrigger")
+noord_trigger = Trigger(False,"noord")
 kralingen_crooswijk_trigger = Trigger(False, "kralingenCrooswijk")
 centrum_trigger = Trigger(False, "centrum")
 delftshaven_trigger = Trigger(False, "delftshaven")
@@ -345,7 +346,7 @@ def click(event):
         for i in List1:
             if i.name == "overschie":
                 setattr(i, 'trigger', True)
-                print(overschie_trigger.trigger)
+
             else:
                 setattr(i, 'trigger', False)
                 print(i.trigger)
@@ -355,7 +356,7 @@ def click(event):
         for i in List1:
             if i.name == "hillegersberg":
                 setattr(i, 'trigger', True)
-                print(hillegersberg_trigger.trigger)
+
             else:
                 setattr(i, 'trigger', False)
                 print(i.trigger)
@@ -366,31 +367,94 @@ def click(event):
         for i in List1:
             if i.name == "prinsAlexander":
                 setattr(i, 'trigger', True)
-                print(overschie_trigger.trigger)
+
             else:
                 setattr(i, 'trigger', False)
                 print(i.trigger)
 
     elif str(canvas.find_withtag(CURRENT)) == "(4,)":
         text.config(text=kralingen_crooswijk)
+        for i in List1:
+            if i.name == "kralingenCrooswijk":
+                setattr(i, 'trigger', True)
+
+            else:
+                setattr(i, 'trigger', False)
+                print(i.trigger)
+
     elif str(canvas.find_withtag(CURRENT)) == "(5,)":
         text.config(text=noord)
+        for i in List1:
+            if i.name == "centrum":
+                setattr(i, 'trigger', True)
+
+            else:
+                setattr(i, 'trigger', False)
+                print(i.trigger)
+
+
     elif str(canvas.find_withtag(CURRENT)) == "(6,)":
         text.config(text=delftshaven)
+        for i in List1:
+            if i.name == "delftshaven":
+                setattr(i, 'trigger', True)
+
+            else:
+                setattr(i, 'trigger', False)
+                print(i.trigger)
+
     elif str(canvas.find_withtag(CURRENT)) == "(7,)":
         text.config(text=centrum)
+        for i in List1:
+            if i.name == "centrum":
+                setattr(i, 'trigger', True)
+
+            else:
+                setattr(i, 'trigger', False)
+                print(i.trigger)
+
+
     elif str(canvas.find_withtag(CURRENT)) == "(8,)":
         text.config(text=feijenood)
+        for i in List1:
+            if i.name == "feijenoord":
+                setattr(i, 'trigger', True)
+
+            else:
+                setattr(i, 'trigger', False)
+                print(i.trigger)
+
+
+
     elif str(canvas.find_withtag(CURRENT)) == "(9,)":
         text.config(text=ijsselmonde)
+        for i in List1:
+            if i.name == "ijsselmonde":
+                setattr(i, 'trigger', True)
+
+            else:
+                setattr(i, 'trigger', False)
+                print(i.trigger)
+
     elif str(canvas.find_withtag(CURRENT)) == "(10,)":
         text.config(text=charlois)
+        for i in List1:
+            if i.name == "charlois":
+                setattr(i, 'trigger', True)
+
+            else:
+                setattr(i, 'trigger', False)
+                print(i.trigger)
+
     elif str(canvas.find_withtag(CURRENT)) == "(11,)":
         text.config(text=waalhaven)
-    else:
-        text.config(text="Rotterdam")
+        for i in List1:
+            if i.name == "waalhaven":
+                setattr(i, 'trigger', True)
 
-
+            else:
+                setattr(i, 'trigger', False)
+                print(i.trigger)
 
 
 #the canvas where the polygons are drawed
@@ -400,6 +464,11 @@ canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #draws the canvas
 #when a polygon is clicked, the click method will be activated
 canvas.bind('<Button-1>', click, add="+") #mouse method applied to the label(picture) object. Only when on the picture, the method will be activated
 # canvas.bind('<Motion>', motion, add="+") #Add makes it possible to adds multiple binds(events to a widget)
+
+
+#MenuButtonTesting
+
+
 
 
 root.mainloop()
