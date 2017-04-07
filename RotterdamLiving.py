@@ -351,5 +351,15 @@ canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #draws the canvas
 canvas.bind('<Button-1>', click, add="+") #mouse method applied to the label(picture) object. Only when on the picture, the method will be activated
 # canvas.bind('<Motion>', motion, add="+") #Add makes it possible to adds multiple binds(events to a widget)
 
+#Drop down menu
+variable = StringVar(root)
+variable.set("Home") # default value
+w = OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "Exit")
+w.config(font=("Helvetica",50,"bold"),bg="DeepSkyBlue2", fg="white")
+w.grid(row=0,column=0,rowspan=999,sticky=N+W)
+
+#The menu description
+description_text = Label(root,width=0, height=1,text=rotterdam,font=("Helvetica",35,"bold")) #puts image on screen
+description_text.grid(row=1,column=0,sticky=W)
 
 root.mainloop()
