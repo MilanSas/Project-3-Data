@@ -6,9 +6,11 @@ import math
 #Background gets loaded
 root = Tk() #Needed to run
 
-#TODO methods needs to be filled in
+#TODO methods (button functionality) needs to be filled in
 #TODO find better way to resize the picture
 #TODO when user hoovers of an area, make it if it's possible the area change colour + change location text
+#TODO when user clicks on an area, that area needs to be zoomed in
+#TODO Add names for the objects
 
 
 
@@ -49,106 +51,106 @@ feijenood = "Feijenoord"
 ijsselmonde = "Ijsselmonde"
 rotterdam = "Rotterdam"
 
-#Button triggers, when a button get pressed, theses booleans will be changed.
-Button1_bool = False
-Button2_bool = False
-Button3_bool = False
-Button4_bool = False
-Button5_bool = False
-Button6_bool = False
-Button7_bool = False
-Button8_bool = False
+#Trigger for the buttons, when a button is pressed the state changes (true, false)
+class Trigger:
+    def __init__(self, triggerValue,name):
+        self.trigger = triggerValue
+        self.name = name
+    def __str__(self):
+        return(str(self))
 
-
-
+#triggers for the buttons
+Button1_Bool = Trigger(False,None)
+Button2_Bool = Trigger(False,None)
+Button3_Bool = Trigger(False,None)
+Button4_Bool = Trigger(False,None)
+Button5_Bool = Trigger(False,None)
+Button6_Bool = Trigger(False,None)
+Button7_Bool = Trigger(False,None)
+Button8_Bool = Trigger(False,None)
 
 
 #methods that are going to run when the an user clicks a certain button
 def milieuMethod():
-    global Button1_bool #imports the global variable
-
-    if Button1_bool == False: #When a button is pressed or depressed, the state of the booleans change
+    if Button1_Bool.trigger == False: #When a button is pressed or depressed, the state of the booleans change
         Button1.config(bg="green") #Button's colour changes
-        Button1_bool = True
-    elif Button1_bool == True:
+        setattr(Button1_Bool, 'trigger', True) #State of the button is set to true.
+
+    elif Button1_Bool.trigger == True:
          Button1.config(bg="DeepSkyBlue2")
-         Button1_bool = False
+         setattr(Button1_Bool, 'trigger', False)
 
 
 def luchtkwaliteitMethod():
-    global Button2_bool
-
-    if Button2_bool == False:
+    if Button2_Bool.trigger == False:
         Button2.config(bg="green")
-        Button2_bool = True
-    elif Button2_bool == True:
+        setattr(Button2_Bool, 'trigger', True)
+
+    elif Button2_Bool.trigger == True:
          Button2.config(bg="DeepSkyBlue2")
-         Button2_bool = False
+         setattr(Button2_Bool, 'trigger', False)
+
 
 
 def veiligheidMethod():
-    global Button3_bool
-
-    if Button3_bool == False:
+    if Button3_Bool.trigger == False:
         Button3.config(bg="green")
-        Button3_bool = True
-    elif Button3_bool == True:
+        setattr(Button3_Bool, 'trigger', True)
+
+    elif Button3_Bool.trigger == True:
          Button3.config(bg="DeepSkyBlue2")
-         Button3_bool = False
+         setattr(Button3_Bool, 'trigger', False)
 
 def voorzieningenMethod():
-    global Button4_bool
-
-    if Button4_bool == False:
+    if Button4_Bool.trigger == False:
         Button4.config(bg="green")
-        Button4_bool = True
-    elif Button4_bool == True:
+        setattr(Button4_Bool, 'trigger', True)
+
+    elif Button4_Bool.trigger == True:
          Button4.config(bg="DeepSkyBlue2")
-         Button4_bool = False
+         setattr(Button4_Bool, 'trigger', False)
 
 def tevredenheidMethod():
-    global Button5_bool
-    if Button5_bool == False:
+    if Button5_Bool.trigger == False:
         Button5.config(bg="green")
-        Button5_bool = True
-    elif Button5_bool == True:
+        setattr(Button5_Bool, 'trigger', True)
+
+    elif Button5_Bool.trigger == True:
          Button5.config(bg="DeepSkyBlue2")
-         Button5_bool = False
+         setattr(Button5_Bool, 'trigger', False)
 
 def huurprijsMethod():
-    global Button6_bool
-
-    if Button6_bool == False:
+    if Button6_Bool.trigger == False:
         Button6.config(bg="green")
-        Button6_bool = True
-    elif Button6_bool == True:
+        setattr(Button6_Bool, 'trigger', True)
+
+    elif Button6_Bool.trigger == True:
          Button6.config(bg="DeepSkyBlue2")
-         Button6_bool = False
+         setattr(Button6_Bool, 'trigger', False)
 
 
 def koopprijsMethod():
     global Button7_bool
-    if Button7_bool == False:
+    if Button7_Bool.trigger == False:
         Button7.config(bg="green")
-        # label.config(image=large_overschie_photo)  # Photo zoom testing and testing
-        text.config(text=overschie)  # testing
-        Button7_bool = True
+        setattr(Button7_Bool, 'trigger', True)
 
-    elif Button7_bool == True:
+    elif Button7_Bool.trigger == True:
          Button7.config(bg="DeepSkyBlue2")
-         # label.config(image=larger_image)  # Photo zoom testing and testing
-         text.config(text=overschie)  # testing
-         Button7_bool = False
+         setattr(Button7_Bool, 'trigger', False)
+
 
 
 #closes window
 def backMethod():
     global Button8_bool
-    if Button8_bool == False:
+    if Button8_Bool.trigger == False:
+         setattr(Button8_Bool, 'trigger', True)
          root.destroy() #this closes the window
-    elif Button8_bool == True:
+
+    elif Button8_Bool.trigger == True:
          Button8.config(bg="DeepSkyBlue2")
-         Button8_bool = False
+         setattr(Button8_Bool, 'trigger', False)
 
 
 
@@ -276,10 +278,6 @@ text_feijenoord.grid(row=8,column=0,sticky=N)
 
 
 
-
-
-
-
 #The side buttons
 Button1 = Button(root, text ="Milieu", command = milieuMethod,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white") #command = method
 Button1.columnconfigure(0,weight=3) #weight = if it will get moved when another button takes wide rows
@@ -323,6 +321,29 @@ def motion(event):
         text.config(text="Rotterdam")
     print(str(event.x) + " " + str(event.y))
 
+#triggers for when an area gets selected
+overschie_trigger = Trigger(False)
+hillegersberg_trigger = Trigger(False)
+prins_alexander_trigger = Trigger(False)
+noord_trigger = Trigger(False)
+kralingen_crooswijk_trigger = Trigger(False)
+centrum_trigger = Trigger(False)
+delftshaven_trigger = Trigger(False)
+waalhaven_trigger = Trigger(False)
+charlois_trigger = Trigger(False)
+feijenood_trigger = Trigger(False)
+ijsselmonde_trigger = Trigger(False)
+
+
+#Triggers for when an area is selected
+List1 = [overschie_trigger, hillegersberg_trigger,prins_alexander_trigger,noord_trigger]
+for i in List1:
+    if str(i) == "overschie_trigger":
+        setattr(overschie_statistic, 'trigger', False)
+    else:
+        setattr(i, 'trigger', True)
+    print(i.trigger)
+    print(i)
 
 
 
