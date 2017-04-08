@@ -332,7 +332,6 @@ def click(event):
         for i in List1:
             if i.name == "ijsselmonde":
                 setattr(i, 'trigger', True)
-
             else:
                 setattr(i, 'trigger', False)
                 print(i.trigger)
@@ -348,6 +347,8 @@ def click(event):
                 print(i.trigger)
 
     elif str(canvas.find_withtag(CURRENT)) == "(11,)":
+
+
         text.config(text=waalhaven)
         for i in List1:
             if i.name == "waalhaven":
@@ -370,28 +371,86 @@ canvas.bind('<Button-1>', click, add="+") #mouse method applied to the label(pic
 #the canvas where the polygons are drawed
 canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #draws the canvas
 
+#With this function, you know which button the from the drop down menu the user has pressed
+def menuSelector(event):
+    if  str(variable.get()) == "Home":
+        print("I am home!")
+    elif  str(variable.get()) == "Woningadvies":
+        print("Is it free?")
+    elif str(variable.get()) == "Percentages en cijfers":
+        percentagesEnCijfers()
+    elif str(variable.get()) == "About":
+        about()
+    elif str(variable.get()) == "Exit":
+        root.destroy()
+
+
+
 #Drop down menu
 variable = StringVar(root)
 variable.set("Home") # default value
-w = OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "About", "Exit")
-w.config(font=("Helvetica",50,"bold"),bg="DeepSkyBlue2", fg="white")
-w.grid(row=0,column=0,sticky=N+W)
+menu_button= OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "About", "Exit", command=menuSelector)
+menu_button.config(font=("Helvetica",50,"bold"),bg="DeepSkyBlue2", fg="white")
+menu_button.grid(row=0,column=0,sticky=N+W)
 
-#the texts displayed on the screen
+#The text used in the menu pages
+
+#Menu Text
 welcome_text = "Select the home button to see the available options"
-
-#The menu description
 description_text = Label(root,text=welcome_text,font=("Helvetica",15,"bold")) #puts image on screen
 description_text.grid(row=1,column=0,sticky=W)
 
-#Part of the category: "Percentages en cijfers"
+#Settings Text
+resolution_text = "Select your screen resolution"
+resolution1_text = Label(root,text=resolution_text,font=("Helvetica",15,"bold")) #puts image on screen
+resolution1_text.grid(row=2,column=0,sticky=W)
+
+variable1 = StringVar(root)
+variable1.set(str(screenx) + " x " + str(screeny)) # default value
+menu_button1 = OptionMenu(root, variable1, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "About", "Exit", command=menuSelector)
+menu_button1.config(font=("Helvetica",20,"bold"),bg="DeepSkyBlue2", fg="white")
+menu_button1.grid(row=3,column=0,sticky=N+W)
+
+
+
+
+
+#The page that will appear when about is pressed
+def about():
+    about_text = "This application is made by students of the Hogeschool Rotterdam."
+    about1_text = "-Chris Santema"
+    about2_text = "-Sebastiaan Van Etten"
+    about3_text = "-Stefan Pesic"
+    about4_text = "-Milan Sas"
+
+    about_information = Label(root, width=0, text=about_text, font=("Helvetica", 20, "bold"))  # puts image on screen
+    about_information.grid(row=1, column=0, sticky=W)
+
+    about_information1 = Label(root, width=0, text=about1_text, font=("Helvetica", 20, "bold"))  # puts image on screen
+    about_information1.grid(row=2, column=0, sticky=W)
+
+    about_information2 = Label(root, width=0, text=about2_text, font=("Helvetica", 20, "bold"))  # puts image on screen
+    about_information2.grid(row=3, column=0, sticky=W)
+
+    about_information3 = Label(root, width=0, text=about3_text, font=("Helvetica", 20, "bold"))  # puts image on screen
+    about_information3.grid(row=4, column=0, sticky=W)
+
+    about_information4 = Label(root, width=0, text=about4_text, font=("Helvetica", 20, "bold"))  # puts image on screen
+    about_information4.grid(row=5, column=0, sticky=W)
+
+
+
+
+#Buttons for the page: "Percentages en cijfers"
 def percentagesEnCijfers():
-    button9 = NewButton("Diefstallen", 1, 0, screenx / 19.5, screeny / 150)
-    button10 = NewButton("Geweld", 2, 0, screenx / 19.5, screeny / 150)
-    button11 = NewButton("Inbraak", 3, 0, screenx / 19.5, screeny / 150)
+    button9 = NewButton("Bevolking", 1, 0, screenx / 19.5, screeny / 150)
+    button10 = NewButton("Milieu", 2, 0, screenx / 19.5, screeny / 150)
+    button11 = NewButton("Veiligheid", 3, 0, screenx / 19.5, screeny / 150)
     button12 = NewButton("Verkeer", 4, 0, screenx / 19.5, screeny / 150)
-    button13 = NewButton("Overig", 5, 0, screenx / 19.5, screeny / 150)
-    button14 = NewButton("Milieu", 6, 0, screenx / 19.5, screeny / 150)
+    button13 = NewButton("Voorzieningen", 5, 0, screenx / 19.5, screeny / 150)
+    button14 = NewButton("Overig", 6, 0, screenx / 19.5, screeny / 150)
+
+
 
 
 
