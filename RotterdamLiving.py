@@ -17,6 +17,9 @@ root.geometry('{}x{}'.format(root.winfo_screenwidth(), root.winfo_screenheight()
 screenx=root.winfo_screenwidth()
 screeny= root.winfo_screenheight()
 
+#Array that will save the last page the user has visited, this is used so elements can be cleared on the screen.
+lastPageArray = [] #The name of the elements: #home, woon, pec, about, settings.
+
 
 
 #Grid is similar to Microsoft Excel, the samer type of layout
@@ -400,27 +403,35 @@ canvas.bind('<Button-1>', click, add="+") #mouse method applied to the label(pic
 
 #draws on top of the screen, this makes everything dissapear. The lower the code, the later it will get drawn
 #the canvas where the polygons are drawed
-theCanvas = canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #draws the canvas
+canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #draws the canvas
 
 
 
 #With this function, you know which button the from the drop down menu the user has pressed
 def menuSelector(event):
-
-
-    global canvas
     if  str(variable.get()) == "Home":
-        print("Home")
+        lastPageArray.append("home")
+
     elif  str(variable.get()) == "Woningadvies":
          woningsadvies()
+         lastPageArray.append("woon")
+
     elif str(variable.get()) == "Percentages en cijfers":
         percentagesEnCijfers()
+        lastPageArray.append("pec")
+
     elif str(variable.get()) == "About":
         about()
+        lastPageArray.append("about")
+
     elif str(variable.get()) == "Settings":
         settings()
+        lastPageArray.append("settings")
+
     elif str(variable.get()) == "Exit":
         root.destroy()
+    for i in lastPageArray:
+        print(i)
 
 
 
@@ -459,6 +470,7 @@ def settings():
 
 #The page: About
 def about():
+
     if str(variable.get()) == "About":
         about_text = "This application is made by Informatica students of the Hogeschool Rotterdam."
         about1_text = "- Chris Santema"
@@ -584,5 +596,18 @@ def woningsadvies():
     Radiobutton(root, indicatoron=False, text="7 or higher", variable=voorzieningen_radioButtons, value=4).grid(
         column=0, row=27, sticky=W)
 
+
+#permantly destroy widgit
+for widget in root.winfo_children():
+    if str(widget) == ".!optionmenu":
+        print("not deleting this!")
+    else:
+        widget.destroy()
+        print("deleted")
+
+
+
+#To forget a single item but keeps it in the memory
+menu_button.forget()
 
 root.mainloop()
