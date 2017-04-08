@@ -381,6 +381,8 @@ def menuSelector(event):
         percentagesEnCijfers()
     elif str(variable.get()) == "About":
         about()
+    elif str(variable.get()) == "Settings":
+        settings()
     elif str(variable.get()) == "Exit":
         root.destroy()
 
@@ -400,22 +402,20 @@ welcome_text = "Select the home button to see the available options"
 description_text = Label(root,text=welcome_text,font=("Helvetica",15,"bold")) #puts image on screen
 description_text.grid(row=1,column=0,sticky=W)
 
-#Settings Text
-resolution_text = "Select your screen resolution"
-resolution1_text = Label(root,text=resolution_text,font=("Helvetica",15,"bold")) #puts image on screen
-resolution1_text.grid(row=2,column=0,sticky=W)
+#the page: Settings
+def settings():
+    resolution_text = "Select your screen resolution"
+    resolution1_text = Label(root, text=resolution_text, font=("Helvetica", 15, "bold"))  # puts image on screen
+    resolution1_text.grid(row=2, column=0, sticky=W)
 
-variable1 = StringVar(root)
-variable1.set(str(screenx) + " x " + str(screeny)) # default value
-menu_button1 = OptionMenu(root, variable1, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "About", "Exit", command=menuSelector)
-menu_button1.config(font=("Helvetica",20,"bold"),bg="DeepSkyBlue2", fg="white")
-menu_button1.grid(row=3,column=0,sticky=N+W)
-
-
-
+    variable1 = StringVar(root)
+    variable1.set(str(screenx) + " x " + str(screeny))  # default value
+    menu_button1 = OptionMenu(root, variable1, "1280x720", "1600x900", "1920x1080", "4k")
+    menu_button1.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white")
+    menu_button1.grid(row=3, column=0, sticky=N + W)
 
 
-#The page that will appear when about is pressed
+#The page: About
 def about():
     about_text = "This application is made by students of the Hogeschool Rotterdam."
     about1_text = "-Chris Santema"
@@ -439,9 +439,7 @@ def about():
     about_information4.grid(row=5, column=0, sticky=W)
 
 
-
-
-#Buttons for the page: "Percentages en cijfers"
+#The page: "Percentages en cijfers"
 def percentagesEnCijfers():
     button9 = NewButton("Bevolking", 1, 0, screenx / 19.5, screeny / 150)
     button10 = NewButton("Milieu", 2, 0, screenx / 19.5, screeny / 150)
@@ -450,7 +448,7 @@ def percentagesEnCijfers():
     button13 = NewButton("Voorzieningen", 5, 0, screenx / 19.5, screeny / 150)
     button14 = NewButton("Overig", 6, 0, screenx / 19.5, screeny / 150)
 
-
+#the woningadvies page
 
 
 
