@@ -373,10 +373,11 @@ canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #draws the canvas
 
 #With this function, you know which button the from the drop down menu the user has pressed
 def menuSelector(event):
+    global canvas
     if  str(variable.get()) == "Home":
-        print("I am home!")
+        print("Homepage")
     elif  str(variable.get()) == "Woningadvies":
-        print("Is it free?")
+         woningsadvies()
     elif str(variable.get()) == "Percentages en cijfers":
         percentagesEnCijfers()
     elif str(variable.get()) == "About":
@@ -448,55 +449,93 @@ def percentagesEnCijfers():
     button13 = NewButton("Services", 5, 0, screenx / 19.5, screeny / 150)
     button14 = NewButton("Overig", 6, 0, screenx / 19.5, screeny / 150)
 
-#the woningadvies page
-woningsadvies_text = "Select your importance on the categories below"
-woningsadvies_text1 = "Population"
-woningsadvies_text2 = "Environment"
-woningsadvies_text3 = "Safety"
-woningsadvies_text4 = "Traffic"
-woningsadvies_text5 = "Services"
+def woningsadvies():
+    # the woningadvies page
+    woningsadvies_text = "Select your importance on the categories below"
+    woningsadvies_text1 = "Population"
+    woningsadvies_text2 = "Environment"
+    woningsadvies_text3 = "Safety"
+    woningsadvies_text4 = "Traffic"
+    woningsadvies_text5 = "Services"
 
-#The selection buttons
-woningsadvies__headText = Label(root, width=0, text=woningsadvies_text, font=("Helvetica", 20, "bold"))
-woningsadvies__headText.grid(row=2, column=0, sticky=W)
+    # The selection buttons
+    woningsadvies__headText = Label(root, width=0, text=woningsadvies_text, font=("Helvetica", 20, "bold"))
+    woningsadvies__headText.grid(row=2, column=0, sticky=W)
 
-#the bevolking part (Woningsadvies page)
-bevolking_text = Label(root, width=0, text=woningsadvies_text1, font=("Helvetica", 20, "bold"))
-bevolking_text.grid(row=3, column=0, sticky=W)
-bevolking_radioButtons = IntVar()
-Radiobutton(root, indicatoron=False,text= "3 or lower", variable=bevolking_radioButtons, value=1).grid(column=0,row=4,sticky=W)
-Radiobutton(root, indicatoron=False,text= "Between 3 and 5.5", variable=bevolking_radioButtons, value=2).grid(column=0,row=5,sticky=W)
-Radiobutton(root, indicatoron=False,text= "Between 5.5 and 7", variable=bevolking_radioButtons, value=3).grid(column=0,row=6,sticky=W)
-Radiobutton(root, indicatoron=False,text= "7 or higher", variable=bevolking_radioButtons, value=4).grid(column=0,row=7,sticky=W)
+    # the bevolking part (Woningsadvies page)
+    bevolking_text = Label(root, width=0, text=woningsadvies_text1, font=("Helvetica", 20, "bold"))
+    bevolking_text.grid(row=3, column=0, sticky=W)
+    bevolking_radioButtons = IntVar()
+    Radiobutton(root, indicatoron=False, text="3 or lower", variable=bevolking_radioButtons, value=1).grid(column=0,
+                                                                                                           row=4,
+                                                                                                           sticky=W)
+    Radiobutton(root, indicatoron=False, text="Between 3 and 5.5", variable=bevolking_radioButtons, value=2).grid(
+        column=0, row=5, sticky=W)
+    Radiobutton(root, indicatoron=False, text="Between 5.5 and 7", variable=bevolking_radioButtons, value=3).grid(
+        column=0, row=6, sticky=W)
+    Radiobutton(root, indicatoron=False, text="7 or higher", variable=bevolking_radioButtons, value=4).grid(column=0,
+                                                                                                            row=7,
+                                                                                                            sticky=W)
 
-#The Milieu part
-milieu_text = Label(root, width=0, text=woningsadvies_text2, font=("Helvetica", 20, "bold"))
-milieu_text.grid(row=8, column=0, sticky=W)
-milieu_radioButtons = IntVar()
-Radiobutton(root, indicatoron=False,text= "3 or lower", variable=milieu_radioButtons, value=1).grid(column=0,row=9,sticky=W)
-Radiobutton(root, indicatoron=False,text= "Between 3 and 5.5", variable=milieu_radioButtons, value=2).grid(column=0,row=10,sticky=W)
-Radiobutton(root, indicatoron=False,text= "Between 5.5 and 7", variable=milieu_radioButtons, value=3).grid(column=0,row=11,sticky=W)
-Radiobutton(root, indicatoron=False,text= "7 or higher", variable=milieu_radioButtons, value=4).grid(column=0,row=12,sticky=W)
+    # The Milieu part
+    milieu_text = Label(root, width=0, text=woningsadvies_text2, font=("Helvetica", 20, "bold"))
+    milieu_text.grid(row=8, column=0, sticky=W)
+    milieu_radioButtons = IntVar()
+    Radiobutton(root, indicatoron=False, text="3 or lower", variable=milieu_radioButtons, value=1).grid(column=0, row=9,
+                                                                                                        sticky=W)
+    Radiobutton(root, indicatoron=False, text="Between 3 and 5.5", variable=milieu_radioButtons, value=2).grid(column=0,
+                                                                                                               row=10,
+                                                                                                               sticky=W)
+    Radiobutton(root, indicatoron=False, text="Between 5.5 and 7", variable=milieu_radioButtons, value=3).grid(column=0,
+                                                                                                               row=11,
+                                                                                                               sticky=W)
+    Radiobutton(root, indicatoron=False, text="7 or higher", variable=milieu_radioButtons, value=4).grid(column=0,
+                                                                                                         row=12,
+                                                                                                         sticky=W)
 
-#The Veiligheid part
-veiligheid_text = Label(root, width=0, text=woningsadvies_text3, font=("Helvetica", 20, "bold"))
-veiligheid_text.grid(row=13, column=0, sticky=W)
-veiligheid_radioButtons = IntVar()
-Radiobutton(root, indicatoron=False,text= "3 or lower", variable=veiligheid_radioButtons, value=1).grid(column=0,row=14,sticky=W)
-Radiobutton(root, indicatoron=False,text= "Between 3 and 5.5", variable=veiligheid_radioButtons, value=2).grid(column=0,row=15,sticky=W)
-Radiobutton(root, indicatoron=False,text= "Between 5.5 and 7", variable=veiligheid_radioButtons, value=3).grid(column=0,row=16,sticky=W)
-Radiobutton(root, indicatoron=False,text= "7 or higher", variable=veiligheid_radioButtons, value=4).grid(column=0,row=17,sticky=W)
+    # The Veiligheid part
+    veiligheid_text = Label(root, width=0, text=woningsadvies_text3, font=("Helvetica", 20, "bold"))
+    veiligheid_text.grid(row=13, column=0, sticky=W)
+    veiligheid_radioButtons = IntVar()
+    Radiobutton(root, indicatoron=False, text="3 or lower", variable=veiligheid_radioButtons, value=1).grid(column=0,
+                                                                                                            row=14,
+                                                                                                            sticky=W)
+    Radiobutton(root, indicatoron=False, text="Between 3 and 5.5", variable=veiligheid_radioButtons, value=2).grid(
+        column=0, row=15, sticky=W)
+    Radiobutton(root, indicatoron=False, text="Between 5.5 and 7", variable=veiligheid_radioButtons, value=3).grid(
+        column=0, row=16, sticky=W)
+    Radiobutton(root, indicatoron=False, text="7 or higher", variable=veiligheid_radioButtons, value=4).grid(column=0,
+                                                                                                             row=17,
+                                                                                                             sticky=W)
 
-#The Verkeer part
-verkeer_text = Label(root, width=0, text=woningsadvies_text4, font=("Helvetica", 20, "bold"))
-verkeer_text.grid(row=18, column=0, sticky=W)
-verkeer_radioButtons = IntVar()
-Radiobutton(root, indicatoron=False,text= "3 or lower", variable=verkeer_radioButtons, value=1).grid(column=0,row=19,sticky=W)
-Radiobutton(root, indicatoron=False,text= "Between 3 and 5.5", variable=verkeer_radioButtons, value=2).grid(column=0,row=20,sticky=W)
-Radiobutton(root, indicatoron=False,text= "Between 5.5 and 7", variable=verkeer_radioButtons, value=3).grid(column=0,row=21,sticky=W)
-Radiobutton(root, indicatoron=False,text= "7 or higher", variable=verkeer_radioButtons, value=4).grid(column=0,row=22,sticky=W)
+    # The Verkeer part
+    verkeer_text = Label(root, width=0, text=woningsadvies_text4, font=("Helvetica", 20, "bold"))
+    verkeer_text.grid(row=18, column=0, sticky=W)
+    verkeer_radioButtons = IntVar()
+    Radiobutton(root, indicatoron=False, text="3 or lower", variable=verkeer_radioButtons, value=1).grid(column=0,
+                                                                                                         row=19,
+                                                                                                         sticky=W)
+    Radiobutton(root, indicatoron=False, text="Between 3 and 5.5", variable=verkeer_radioButtons, value=2).grid(
+        column=0, row=20, sticky=W)
+    Radiobutton(root, indicatoron=False, text="Between 5.5 and 7", variable=verkeer_radioButtons, value=3).grid(
+        column=0, row=21, sticky=W)
+    Radiobutton(root, indicatoron=False, text="7 or higher", variable=verkeer_radioButtons, value=4).grid(column=0,
+                                                                                                          row=22,
+                                                                                                          sticky=W)
 
-
+    # The services part
+    voorzieningen_text = Label(root, width=0, text=woningsadvies_text5, font=("Helvetica", 20, "bold"))
+    voorzieningen_text.grid(row=23, column=0, sticky=W)
+    voorzieningen_radioButtons = IntVar()
+    Radiobutton(root, indicatoron=False, text="3 or lower", variable=voorzieningen_radioButtons, value=1).grid(column=0,
+                                                                                                               row=24,
+                                                                                                               sticky=W)
+    Radiobutton(root, indicatoron=False, text="Between 3 and 5.5", variable=voorzieningen_radioButtons, value=2).grid(
+        column=0, row=25, sticky=W)
+    Radiobutton(root, indicatoron=False, text="Between 5.5 and 7", variable=voorzieningen_radioButtons, value=3).grid(
+        column=0, row=26, sticky=W)
+    Radiobutton(root, indicatoron=False, text="7 or higher", variable=voorzieningen_radioButtons, value=4).grid(
+        column=0, row=27, sticky=W)
 
 
 
