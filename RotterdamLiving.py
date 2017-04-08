@@ -418,37 +418,85 @@ def settings():
 #The page: About
 def about():
     about_text = "This application is made by students of the Hogeschool Rotterdam."
-    about1_text = "-Chris Santema"
-    about2_text = "-Sebastiaan Van Etten"
-    about3_text = "-Stefan Pesic"
-    about4_text = "-Milan Sas"
+    about1_text = "- Chris Santema"
+    about2_text = "- Sebastiaan Van Etten"
+    about3_text = "- Stefan Pesic"
+    about4_text = "- Milan Sas"
 
-    about_information = Label(root, width=0, text=about_text, font=("Helvetica", 20, "bold"))  # puts image on screen
+    about_information = Label(root, width=0, text=about_text, font=("Helvetica", 20, "bold"))  # puts text on screen
     about_information.grid(row=1, column=0, sticky=W)
 
-    about_information1 = Label(root, width=0, text=about1_text, font=("Helvetica", 20, "bold"))  # puts image on screen
+    about_information1 = Label(root, width=0, text=about1_text, font=("Helvetica", 20, "bold"))
     about_information1.grid(row=2, column=0, sticky=W)
 
-    about_information2 = Label(root, width=0, text=about2_text, font=("Helvetica", 20, "bold"))  # puts image on screen
+    about_information2 = Label(root, width=0, text=about2_text, font=("Helvetica", 20, "bold"))
     about_information2.grid(row=3, column=0, sticky=W)
 
-    about_information3 = Label(root, width=0, text=about3_text, font=("Helvetica", 20, "bold"))  # puts image on screen
+    about_information3 = Label(root, width=0, text=about3_text, font=("Helvetica", 20, "bold"))
     about_information3.grid(row=4, column=0, sticky=W)
 
-    about_information4 = Label(root, width=0, text=about4_text, font=("Helvetica", 20, "bold"))  # puts image on screen
+    about_information4 = Label(root, width=0, text=about4_text, font=("Helvetica", 20, "bold"))
     about_information4.grid(row=5, column=0, sticky=W)
 
 
 #The page: "Percentages en cijfers"
 def percentagesEnCijfers():
-    button9 = NewButton("Bevolking", 1, 0, screenx / 19.5, screeny / 150)
-    button10 = NewButton("Milieu", 2, 0, screenx / 19.5, screeny / 150)
-    button11 = NewButton("Veiligheid", 3, 0, screenx / 19.5, screeny / 150)
-    button12 = NewButton("Verkeer", 4, 0, screenx / 19.5, screeny / 150)
-    button13 = NewButton("Voorzieningen", 5, 0, screenx / 19.5, screeny / 150)
+    button9 = NewButton("Population", 1, 0, screenx / 19.5, screeny / 150)
+    button10 = NewButton("Environment", 2, 0, screenx / 19.5, screeny / 150)
+    button11 = NewButton("Safety", 3, 0, screenx / 19.5, screeny / 150)
+    button12 = NewButton("Traffic", 4, 0, screenx / 19.5, screeny / 150)
+    button13 = NewButton("Services", 5, 0, screenx / 19.5, screeny / 150)
     button14 = NewButton("Overig", 6, 0, screenx / 19.5, screeny / 150)
 
 #the woningadvies page
+woningsadvies_text = "Select your importance on the categories below"
+woningsadvies_text1 = "Population"
+woningsadvies_text2 = "Environment"
+woningsadvies_text3 = "Safety"
+woningsadvies_text4 = "Traffic"
+woningsadvies_text5 = "Services"
+
+#The selection buttons
+woningsadvies__headText = Label(root, width=0, text=woningsadvies_text, font=("Helvetica", 20, "bold"))
+woningsadvies__headText.grid(row=2, column=0, sticky=W)
+
+#the bevolking part (Woningsadvies page)
+bevolking_text = Label(root, width=0, text=woningsadvies_text1, font=("Helvetica", 20, "bold"))
+bevolking_text.grid(row=3, column=0, sticky=W)
+bevolking_radioButtons = IntVar()
+Radiobutton(root, indicatoron=False,text= "3 or lower", variable=bevolking_radioButtons, value=1).grid(column=0,row=4,sticky=W)
+Radiobutton(root, indicatoron=False,text= "Between 3 and 5.5", variable=bevolking_radioButtons, value=2).grid(column=0,row=5,sticky=W)
+Radiobutton(root, indicatoron=False,text= "Between 5.5 and 7", variable=bevolking_radioButtons, value=3).grid(column=0,row=6,sticky=W)
+Radiobutton(root, indicatoron=False,text= "7 or higher", variable=bevolking_radioButtons, value=4).grid(column=0,row=7,sticky=W)
+
+#The Milieu part
+milieu_text = Label(root, width=0, text=woningsadvies_text2, font=("Helvetica", 20, "bold"))
+milieu_text.grid(row=8, column=0, sticky=W)
+milieu_radioButtons = IntVar()
+Radiobutton(root, indicatoron=False,text= "3 or lower", variable=milieu_radioButtons, value=1).grid(column=0,row=9,sticky=W)
+Radiobutton(root, indicatoron=False,text= "Between 3 and 5.5", variable=milieu_radioButtons, value=2).grid(column=0,row=10,sticky=W)
+Radiobutton(root, indicatoron=False,text= "Between 5.5 and 7", variable=milieu_radioButtons, value=3).grid(column=0,row=11,sticky=W)
+Radiobutton(root, indicatoron=False,text= "7 or higher", variable=milieu_radioButtons, value=4).grid(column=0,row=12,sticky=W)
+
+#The Veiligheid part
+veiligheid_text = Label(root, width=0, text=woningsadvies_text3, font=("Helvetica", 20, "bold"))
+veiligheid_text.grid(row=13, column=0, sticky=W)
+veiligheid_radioButtons = IntVar()
+Radiobutton(root, indicatoron=False,text= "3 or lower", variable=veiligheid_radioButtons, value=1).grid(column=0,row=14,sticky=W)
+Radiobutton(root, indicatoron=False,text= "Between 3 and 5.5", variable=veiligheid_radioButtons, value=2).grid(column=0,row=15,sticky=W)
+Radiobutton(root, indicatoron=False,text= "Between 5.5 and 7", variable=veiligheid_radioButtons, value=3).grid(column=0,row=16,sticky=W)
+Radiobutton(root, indicatoron=False,text= "7 or higher", variable=veiligheid_radioButtons, value=4).grid(column=0,row=17,sticky=W)
+
+#The Verkeer part
+verkeer_text = Label(root, width=0, text=woningsadvies_text4, font=("Helvetica", 20, "bold"))
+verkeer_text.grid(row=18, column=0, sticky=W)
+verkeer_radioButtons = IntVar()
+Radiobutton(root, indicatoron=False,text= "3 or lower", variable=verkeer_radioButtons, value=1).grid(column=0,row=19,sticky=W)
+Radiobutton(root, indicatoron=False,text= "Between 3 and 5.5", variable=verkeer_radioButtons, value=2).grid(column=0,row=20,sticky=W)
+Radiobutton(root, indicatoron=False,text= "Between 5.5 and 7", variable=verkeer_radioButtons, value=3).grid(column=0,row=21,sticky=W)
+Radiobutton(root, indicatoron=False,text= "7 or higher", variable=verkeer_radioButtons, value=4).grid(column=0,row=22,sticky=W)
+
+
 
 
 
