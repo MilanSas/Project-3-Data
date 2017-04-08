@@ -1,30 +1,26 @@
 from tkinter import *
 
-#TODO methods (button functionality) needs to be filled in
-#TODO find better way to resize the picture
 #TODO when user hoovers of an area, make it if it's possible the area change colour + change location text
 #TODO when user clicks on an area, that area needs to be zoomed in
-#TODO Add names for the objects
+
+#To read the comments, the symbol: #, is after lines. the symbol: '''''' , is to explain the overall code.
 
 
-#Background gets loaded
 root = Tk() #Needed to run
 
+''''Window'''
 root.title("Rotterdam Living") #Window title
-root.geometry('{}x{}'.format(root.winfo_screenwidth(), root.winfo_screenheight())) #allows option boxes(minimize. maximize etc)
+root.geometry('{}x{}'.format(root.winfo_screenwidth(), root.winfo_screenheight())) #Window doesn't resize
 
-#gets user's screen size (width and height)
-screenx=root.winfo_screenwidth()
-screeny= root.winfo_screenheight()
+''''gets user's screen size (width and height)'''''
+screenx = root.winfo_screenwidth()
+screeny = root.winfo_screenheight()
 
-#Array that will save the last page the user has visited, this is used so elements can be cleared on the screen.
-lastPageArray = [] #The name of the elements: #home, woon, pec, about, settings.
+''''Array that will save the last page the user has visited, this is used so elements can be cleared on the screen.'''''
+lastPageArray = [] #The name of the elements(pages): home, woon, pec, about, settings
 
-
-
-#Grid is similar to Microsoft Excel, the samer type of layout
-#Text
-overschie = "Overschie" #the name of the area's that will get loaded when a user clicks the area
+''''Area Text (names of the area that get loaded when user clicks the area'''''
+overschie = "Overschie"
 hillegersberg_schiebroek = "Hillegersberg-schiebroek"
 prins_alexander = "Prins Alexander"
 kralingen_crooswijk = "Kralingen Crooswijk"
@@ -37,48 +33,45 @@ feijenood = "Feijenoord"
 ijsselmonde = "Ijsselmonde"
 rotterdam = "Rotterdam"
 
-#Trigger for the buttons, when a button is pressed the state changes (true, false)
-#Sticky = position, column = in which column, row = in which row.
+''''The buttons. Every button has a trigger, when button is pressed the state is set to true and vice versa'''
 class NewButton:
     def __init__(self,text, row, column, ipadx, ipady):
-        self.clicked = False
+        self.clicked = False #state
         self.button = Button(root, text =text, command = self.click,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
         self.button.columnconfigure(0,weight=300000)
-        self.button.grid(row=row, column=column, sticky=W, ipadx=ipadx, ipady=ipady)
+        self.button.grid(row=row, column=column, sticky=W, ipadx=ipadx, ipady=ipady) #position of the button
         # command = method
         # weight = if it will get moved when another button takes wide rows
         # information you can set about a button
         # ipadx = the size in width, ipady = the size it takes in height
 
     def click(self):
-            if self.clicked == False: #When a button is pressed or depressed, the state of the booleans change
-                self.button.config(bg="green") #Button's colour changes
+            if self.clicked == False: #When a button is pressed or depressed, the state of the button change
+                self.button.config(bg="green") #Button's colour
                 setattr(self, 'clicked', True) #State of the button is set to true.
             elif self.clicked == True:
                  self.button.config(bg="DeepSkyBlue2")
                  setattr(self, 'clicked', False)
 
 
-#triggers for the buttons
-#methods that are going to run when the an user clicks a certain button
+'''Trigger for the polygons(area's)'''''
 class Trigger:
     def __init__(self, triggerValue,name):
         self.trigger = triggerValue
-        self.name = name
+        self.name = name #name to uniquely identify the object. For example in a for loop
     def __str__(self):
         return self.name
 
-#===================================================================================================================
-#The polygon below
+''''The canvas, important variable. Everything gets drawn on the canvas'''
+canvas = Canvas(root, width=screenx,height=screeny) #root is in which window it will get drawn on.
 
-
-
-canvas = Canvas(root, width=screenx,height=screeny)
-
+''''Function to set polygon's(area) size'''
 def rs(size):
     ratio = (screeny + screeny/2) / size
     return (screeny / ratio)
 
+#TODO use changeColor function for the database.
+''''Function to have the results from the database influence the colour of a polygon(area)'''
 def changecolor(object,percent):
     red = 0
     green = 0
@@ -97,23 +90,19 @@ def changecolor(object,percent):
     color = (red, green, 16)
     canvas.itemconfig(object.shape, fill=HexToRGB(color))
 
+'''Function that Converts hex to RGB'''
 def HexToRGB(rgb):
     #RGB WAARDES MOETEN TUSSEN 16 - 255
     result = ('#' + str(hex(rgb[0]).split('x')[-1]) + str(hex(rgb[1]).split('x')[-1]) + str(hex(rgb[2]).split('x')[-1]))
     return result
 
-
-
+''''Function to create the polygons(area's)'''
 class polygon:
     def __init__(self,color,list):
         self.color = color
         self.shape = canvas.create_polygon(list, fill=HexToRGB(self.color), outline='black', width = 2)
-    def changeColour(self): #method for when the user clicks an place, the place's colour changes
-        pass
-    def resetColur(self): #Method for when the user clicks another place, the previous selected place gets reseted
-        pass
 
-#the polygons that make the rotterdam map possible
+''''Function that draws the polygons(area's)'''''
 def polygons():
     overschie_polgon = polygon((20, 50, 120), (
     rs(904), rs(194), rs(947), rs(183), rs(955), rs(205), rs(1106), rs(109), rs(1176), rs(199), rs(1222), rs(163),
@@ -159,104 +148,19 @@ def polygons():
     rs(764), rs(923), rs(765), rs(927), rs(797), rs(1048), rs(795)))
 
 
-#The text that will appear on top
-text = Label(root,width=0, height=1,text="",font=("Helvetica",35,"bold")) #puts image on screen
-text.grid(row=0,column=0,sticky=N)
-
-#the text that appears on the bottom that displays the numbers in text, it tells a story
-def percentage():
-    # Text description
-    percentage = 3  # number stat placeholder 50 is just for an example (placeholder)
-    bestYear = 2011
-    percentageDifference = ("{}%").format(percentage)
-    yearDifference = 2010
-
-    rotterdam_description = (
-    "Rotterdam had in {} de laagste criminaliteit ooit, en ruim {} minder dan in {}. ".format(str(bestYear),
-                                                                                              str(percentageDifference),
-                                                                                              str(yearDifference)))
-
-    text1 = Label(root, width=0, height=1, text=rotterdam_description,
-                  font=("Helvetica", 19, "bold"))  # puts image on screen
-    text1.grid(row=9, column=0, sticky=S)
+''''The name of the area that is displayed in the top centre.'''
+text = Label(root,width=0, height=1,text="",font=("Helvetica",35,"bold")) #Creates text
+text.grid(row=0,column=0,sticky=N) #Draws the text
 
 
-
-
-#Text city statistics
-overschie_statistic = None
-hillegersberg_statistic = None
-prins_alexander_statistic = None
-kralingen_statistic = None
-noord_statistic = None
-delftshaven_statistic = None
-kralingen_crooswijk_statistic = None
-waalhaven_statistic = None
-charlois_statistic = None
-Ijsselmonde_statistic = None
-centrum_statistic = None
-feijenoord_statistic = None
-
-text_overschie = Label(root,width=0, height=1,text=overschie_statistic,font=("Helvetica",35,"bold")) #puts image on screen
-text_overschie.grid(row=8,column=0,sticky=N)
-
-text_hillgersberg = Label(root,width=0, height=1,text=hillegersberg_statistic,font=("Helvetica",35,"bold")) #puts image on screen
-text_hillgersberg.grid(row=8,column=0,sticky=N)
-
-text_prins_alexander = Label(root,width=0, height=1,text=prins_alexander_statistic,font=("Helvetica",35,"bold")) #puts image on screen
-text_prins_alexander.grid(row=8,column=0,sticky=N)
-
-text_kralingen = Label(root,width=0, height=1,text=kralingen_statistic,font=("Helvetica",35,"bold")) #puts image on screen
-text_kralingen.grid(row=8,column=0,sticky=N)
-
-text_noord = Label(root,width=0, height=1,text=noord_statistic,font=("Helvetica",35,"bold")) #puts image on screen
-text_noord.grid(row=8,column=0,sticky=N)
-
-text_delfshaven = Label(root,width=0, height=1,text=delftshaven_statistic,font=("Helvetica",35,"bold")) #puts image on screen
-text_delfshaven.grid(row=8,column=0,sticky=N)
-
-text_kralingen_crooswijk = Label(root,width=0, height=1,text=kralingen_crooswijk_statistic,font=("Helvetica",35,"bold")) #puts image on screen
-text_kralingen_crooswijk.grid(row=8,column=0,sticky=N)
-
-text_waalhaven = Label(root,width=0, height=1,text=waalhaven_statistic,font=("Helvetica",35,"bold")) #puts image on screen
-text_waalhaven.grid(row=8,column=0,sticky=N)
-
-text_charlois = Label(root,width=0, height=1,text=charlois_statistic,font=("Helvetica",35,"bold")) #puts image on screen
-text_charlois.grid(row=8,column=0,sticky=N)
-
-text_ijsselmonde = Label(root,width=0, height=1,text=Ijsselmonde_statistic,font=("Helvetica",35,"bold")) #puts image on screen
-text_ijsselmonde.grid(row=8,column=0,sticky=N)
-
-text_centrum = Label(root,width=0, height=1,text=centrum_statistic,font=("Helvetica",35,"bold")) #puts image on screen
-text_centrum.grid(row=8,column=0,sticky=N)
-
-text_feijenoord = Label(root,width=0, height=1,text=feijenoord_statistic,font=("Helvetica",35,"bold")) #puts image on screen
-text_feijenoord.grid(row=8,column=0,sticky=N)
-
-
-#The side buttons, put in a function so that they can called when needed
-def sideButtons():
-    button1 = NewButton("Millieu", 1, 0, screenx / 19.5, screeny / 150)
-    button2 = NewButton("Luchtkwailiteit", 2, 0, screenx / 213.5, screeny / 150)
-    button3 = NewButton("Veiligheid", 3, 0, screenx / 35.5, screeny / 150)
-    button4 = NewButton("Voorzieningen", 4, 0, screenx / 500, screeny / 150)
-    button5 = NewButton("Tevredenheid", 5, 0, screenx / 140, screeny / 150)
-    button6 = NewButton("Huurprijs", 6, 0, screenx / 32, screeny / 150)
-    button7 = NewButton("Koopprijs", 7, 0, screenx / 34.5, screeny / 150)
-    button8 = NewButton("Koopprijs", 8, 0, screenx / 17.5, screeny / 150)
-
-
-
-
-#mouse method, gets current mouse possitions
+''''Function that gives mouse positions'''
 def motion(event):
-    if event.x > 500 and event.y < 279: #the mouse positions
+    if event.x > 500 and event.y < 279:
         text.config(text="")
     else:
         text.config(text="Rotterdam")
-    print(str(event.x) + " " + str(event.y))
 
-#triggers for when an area gets selected
+'''triggers for when an area gets selected'''''
 overschie_trigger = Trigger(False, "overschie")
 hillegersberg_trigger = Trigger(False,"hillegersberg")
 prins_alexander_trigger = Trigger(False, "prinsAlexander")
@@ -270,20 +174,20 @@ feijenood_trigger = Trigger(False, "feijenoord")
 ijsselmonde_trigger = Trigger(False, "ijsselmonde")
 
 
-#Triggers for when an area is selected
+''''Array of the trigger objects'''
 List1 = [overschie_trigger, hillegersberg_trigger,prins_alexander_trigger,noord_trigger, kralingen_crooswijk_trigger, centrum_trigger, delftshaven_trigger, waalhaven_trigger, charlois_trigger, feijenood_trigger, ijsselmonde_trigger]
 
 
-#With this the area's/polygons can be selected
+''''With this the selected polygons(area's) are recognized'''''
 def click(event):
-    if str(canvas.find_withtag(CURRENT)) == "(1,)":
+    if str(canvas.find_withtag(CURRENT)) == "(1,)": #every polygon(area) has his own tag
         text.config(text=overschie)
         for i in List1:
             if i.name == "overschie":
-                setattr(i, 'trigger', True)
+                setattr(i, 'trigger', True) #sets the clicked area to true
 
             else:
-                setattr(i, 'trigger', False)
+                setattr(i, 'trigger', False) #set the other area's to false
                 print(i.trigger)
 
     elif str(canvas.find_withtag(CURRENT)) == "(2,)":
@@ -394,25 +298,20 @@ def click(event):
 
 
 
+''''when a polygon(area) is clicked, the click method will be activated'''''
+canvas.bind('<Button-1>', click, add="+") #binds the canvas to a method
 
 
-#when a polygon is clicked, the click method will be activated
-canvas.bind('<Button-1>', click, add="+") #mouse method applied to the label(picture) object. Only when on the picture, the method will be activated
-# canvas.bind('<Motion>', motion, add="+") #Add makes it possible to adds multiple binds(events to a widget)
-
-
-#draws on top of the screen, this makes everything dissapear. The lower the code, the later it will get drawn
-#the canvas where the polygons are drawed
-canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #draws the canvas
+''''Canvas that gets drawn'''
+canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #the lower the code(higher line) the later it will get drawn
 
 
 
-#With this function, you know which button the from the drop down menu the user has pressed
+''''Function that links the drop down menu sections to pages, it redirects to pages'''
 def menuSelector(event):
     if  str(variable.get()) == "Home":
         lastPageArray.append("home") #When user visits a page, the page name will be added to the array
-        home()
-
+        home() #goes to the home page
     elif  str(variable.get()) == "Woningadvies":
          woningsadvies()
     elif str(variable.get()) == "Percentages en cijfers":
@@ -423,62 +322,54 @@ def menuSelector(event):
         settings()
     elif str(variable.get()) == "Exit":
         root.destroy()
-    for i in lastPageArray:
-        print(i)
-    print(len(lastPageArray))
 
 
 
-
-
-#Drop down menu
+''''Drop down menu'''
 variable = StringVar(root)
 variable.set("Home") # default value
 menu_button= OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "About", "Exit", command=menuSelector)
 menu_button.config(font=("Helvetica",50,"bold"),bg="DeepSkyBlue2", fg="white")
 menu_button.grid(row=0,column=0,sticky=N+W)
 
-#The text used in the menu pages
 
-#Menu Text
+''''Menu Text'''
 welcome_text = "Select the home button to see the available options"
 description_text = Label(root,text=welcome_text,font=("Helvetica",15,"bold")) #puts image on screen
 description_text.grid(row=1,column=0,sticky=W)
 
+''''the home page'''
 def home():
-    for widget in root.winfo_children():
-        if str(widget) == ".!optionmenu":
+    for widget in root.winfo_children(): #checks which wigets(buttons, text etc) are open
+        if str(widget) == ".!optionmenu": #only the menu does not get deleted
             print("not deleting this!")
         else:
-            widget.destroy()
+            widget.destroy() #widget gets deleted, widget.forget() to only hide the widget
             print("deleted")
 
-#the page: Settings
+''''the settings page'''
 def settings():
-    # if len(lastPageArray) > 0:
-    #     if lastPageArray[-1] == "about":
     for widget in root.winfo_children():
         if str(widget) == ".!optionmenu":
             print("not deleting this!")
         else:
             widget.destroy()
             print("deleted")
-
-
 
     resolution_text = "Select your screen resolution"
     resolution1_text = Label(root, text=resolution_text, font=("Helvetica", 15, "bold"))  # puts image on screen
     resolution1_text.grid(row=2, column=0, sticky=W)
 
+    ''''The drop down resolution menu'''
     variable1 = StringVar(root)
     variable1.set(str(screenx) + " x " + str(screeny))  # default value
     menu_button1 = OptionMenu(root, variable1, "1280x720", "1600x900", "1920x1080", "4k")
     menu_button1.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white")
     menu_button1.grid(row=3, column=0, sticky=N + W)
-    lastPageArray.append("settings")
+    lastPageArray.append("settings") #adds last visited page to array
 
 
-#The page: About
+''''The about page'''
 def about():
     for widget in root.winfo_children():
         if str(widget) == ".!optionmenu":
@@ -486,9 +377,6 @@ def about():
         else:
             widget.destroy()
             print("deleted")
-
-
-
 
     about_text = "This application is made by Informatica students of the Hogeschool Rotterdam."
     about1_text = "- Chris Santema"
@@ -515,12 +403,10 @@ def about():
     about_information5 = Label(root, width=0, text=about5_text, font=("Helvetica", 20, "bold"))
     about_information5.grid(row=6, column=0, sticky=W)
 
-
     lastPageArray.append("about")
 
 
-
-#The page: "Percentages en cijfers"
+''''Percentages en cijfers page'''
 def percentagesEnCijfers():
     for widget in root.winfo_children():
         if str(widget) == ".!optionmenu":
@@ -538,8 +424,8 @@ def percentagesEnCijfers():
     lastPageArray.append("pec")
 
 
+''''Woningsadvies page'''
 def woningsadvies():
-    # the woningadvies page
     for widget in root.winfo_children():
         if str(widget) == ".!optionmenu":
             print("not deleting this!")
@@ -553,11 +439,11 @@ def woningsadvies():
     woningsadvies_text4 = "Traffic"
     woningsadvies_text5 = "Services"
 
-    # The selection buttons
+    ''''The selection buttons'''''
     woningsadvies__headText = Label(root, width=0, text=woningsadvies_text, font=("Helvetica", 20, "bold"))
     woningsadvies__headText.grid(row=2, column=0, sticky=W)
 
-    # the bevolking part (Woningsadvies page)
+    ''''the bevolking/population part'''''
     bevolking_text = Label(root, width=0, text=woningsadvies_text1, font=("Helvetica", 20, "bold"))
     bevolking_text.grid(row=3, column=0, sticky=W)
     bevolking_radioButtons = IntVar()
@@ -572,7 +458,7 @@ def woningsadvies():
                                                                                                             row=7,
                                                                                                             sticky=W)
 
-    # The Milieu part
+    ''''The Milieu/Economy part'''
     milieu_text = Label(root, width=0, text=woningsadvies_text2, font=("Helvetica", 20, "bold"))
     milieu_text.grid(row=8, column=0, sticky=W)
     milieu_radioButtons = IntVar()
@@ -588,7 +474,7 @@ def woningsadvies():
                                                                                                          row=12,
                                                                                                          sticky=W)
 
-    # The Veiligheid part
+    ''''The Veiligheid/Safety part'''
     veiligheid_text = Label(root, width=0, text=woningsadvies_text3, font=("Helvetica", 20, "bold"))
     veiligheid_text.grid(row=13, column=0, sticky=W)
     veiligheid_radioButtons = IntVar()
@@ -603,7 +489,7 @@ def woningsadvies():
                                                                                                              row=17,
                                                                                                              sticky=W)
 
-    # The Verkeer part
+    ''''The verkeer/trafic part'''
     verkeer_text = Label(root, width=0, text=woningsadvies_text4, font=("Helvetica", 20, "bold"))
     verkeer_text.grid(row=18, column=0, sticky=W)
     verkeer_radioButtons = IntVar()
@@ -618,7 +504,7 @@ def woningsadvies():
                                                                                                           row=22,
                                                                                                           sticky=W)
 
-    # The services part
+    ''''The voorzieningen/services part'''
     voorzieningen_text = Label(root, width=0, text=woningsadvies_text5, font=("Helvetica", 20, "bold"))
     voorzieningen_text.grid(row=23, column=0, sticky=W)
     voorzieningen_radioButtons = IntVar()
@@ -633,23 +519,5 @@ def woningsadvies():
         column=0, row=27, sticky=W)
     lastPageArray.append("woon")
 
-
-#permantly destroy widgit, with this you can also see the widgets that are currently open
-for widget in root.winfo_children():
-    if str(widget) == ".!optionmenu":
-        print("not deleting this!")
-    else:
-        widget.forget()
-        print("deleted")
-
-for widget in root.winfo_children():
-    print(widget)
-    widget.forget()
-
-#To forget a single item but keeps it in the memory
-# menu_button.forget()
-
-
-
-
+''''The loop'''
 root.mainloop()
