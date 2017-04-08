@@ -410,28 +410,22 @@ canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #draws the canvas
 #With this function, you know which button the from the drop down menu the user has pressed
 def menuSelector(event):
     if  str(variable.get()) == "Home":
-        lastPageArray.append("home")
+        lastPageArray.append("home") #When user visits a page, the page name will be added to the array
+        home()
 
     elif  str(variable.get()) == "Woningadvies":
          woningsadvies()
-         lastPageArray.append("woon")
-
     elif str(variable.get()) == "Percentages en cijfers":
         percentagesEnCijfers()
-        lastPageArray.append("pec")
-
     elif str(variable.get()) == "About":
         about()
-        lastPageArray.append("about")
-
     elif str(variable.get()) == "Settings":
         settings()
-        lastPageArray.append("settings")
-
     elif str(variable.get()) == "Exit":
         root.destroy()
     for i in lastPageArray:
         print(i)
+    print(len(lastPageArray))
 
 
 
@@ -451,8 +445,26 @@ welcome_text = "Select the home button to see the available options"
 description_text = Label(root,text=welcome_text,font=("Helvetica",15,"bold")) #puts image on screen
 description_text.grid(row=1,column=0,sticky=W)
 
+def home():
+    for widget in root.winfo_children():
+        if str(widget) == ".!optionmenu":
+            print("not deleting this!")
+        else:
+            widget.destroy()
+            print("deleted")
+
 #the page: Settings
 def settings():
+    # if len(lastPageArray) > 0:
+    #     if lastPageArray[-1] == "about":
+    for widget in root.winfo_children():
+        if str(widget) == ".!optionmenu":
+            print("not deleting this!")
+        else:
+            widget.destroy()
+            print("deleted")
+
+
 
     resolution_text = "Select your screen resolution"
     resolution1_text = Label(root, text=resolution_text, font=("Helvetica", 15, "bold"))  # puts image on screen
@@ -463,53 +475,77 @@ def settings():
     menu_button1 = OptionMenu(root, variable1, "1280x720", "1600x900", "1920x1080", "4k")
     menu_button1.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white")
     menu_button1.grid(row=3, column=0, sticky=N + W)
-
-
-
+    lastPageArray.append("settings")
 
 
 #The page: About
 def about():
+    for widget in root.winfo_children():
+        if str(widget) == ".!optionmenu":
+            print("not deleting this!")
+        else:
+            widget.destroy()
+            print("deleted")
 
-    if str(variable.get()) == "About":
-        about_text = "This application is made by Informatica students of the Hogeschool Rotterdam."
-        about1_text = "- Chris Santema"
-        about2_text = "- Sebastiaan Van Etten"
-        about3_text = "- Stefan Pesic"
-        about4_text = "- Milan Sas"
-        about5_text = " © 2017 Team NoGo"
 
-        about_information = Label(root, width=0, text=about_text, font=("Helvetica", 20, "bold"))  # puts text on screen
-        about_information.grid(row=1, column=0, sticky=W)
 
-        about_information1 = Label(root, width=0, text=about1_text, font=("Helvetica", 20, "bold"))
-        about_information1.grid(row=2, column=0, sticky=W)
 
-        about_information2 = Label(root, width=0, text=about2_text, font=("Helvetica", 20, "bold"))
-        about_information2.grid(row=3, column=0, sticky=W)
+    about_text = "This application is made by Informatica students of the Hogeschool Rotterdam."
+    about1_text = "- Chris Santema"
+    about2_text = "- Sebastiaan Van Etten"
+    about3_text = "- Stefan Pesic"
+    about4_text = "- Milan Sas"
+    about5_text = " © 2017 Team NoGo"
 
-        about_information3 = Label(root, width=0, text=about3_text, font=("Helvetica", 20, "bold"))
-        about_information3.grid(row=4, column=0, sticky=W)
+    about_information = Label(root, width=0, text=about_text, font=("Helvetica", 20, "bold"))  # puts text on screen
+    about_information.grid(row=1, column=0, sticky=W)
 
-        about_information4 = Label(root, width=0, text=about4_text, font=("Helvetica", 20, "bold"))
-        about_information4.grid(row=5, column=0, sticky=W)
+    about_information1 = Label(root, width=0, text=about1_text, font=("Helvetica", 20, "bold"))
+    about_information1.grid(row=2, column=0, sticky=W)
 
-        about_information5 = Label(root, width=0, text=about5_text, font=("Helvetica", 20, "bold"))
-        about_information5.grid(row=6, column=0, sticky=W)
+    about_information2 = Label(root, width=0, text=about2_text, font=("Helvetica", 20, "bold"))
+    about_information2.grid(row=3, column=0, sticky=W)
+
+    about_information3 = Label(root, width=0, text=about3_text, font=("Helvetica", 20, "bold"))
+    about_information3.grid(row=4, column=0, sticky=W)
+
+    about_information4 = Label(root, width=0, text=about4_text, font=("Helvetica", 20, "bold"))
+    about_information4.grid(row=5, column=0, sticky=W)
+
+    about_information5 = Label(root, width=0, text=about5_text, font=("Helvetica", 20, "bold"))
+    about_information5.grid(row=6, column=0, sticky=W)
+
+
+    lastPageArray.append("about")
+
 
 
 #The page: "Percentages en cijfers"
 def percentagesEnCijfers():
+    for widget in root.winfo_children():
+        if str(widget) == ".!optionmenu":
+            print("not deleting this!")
+        else:
+            widget.destroy()
+            print("deleted")
+
     button9 = NewButton("Population", 1, 0, screenx / 30, screeny / 150)
     button10 = NewButton("Environment", 2, 0, screenx / 45, screeny / 150)
     button11 = NewButton("Safety", 3, 0, screenx / 17, screeny / 150)
     button12 = NewButton("Traffic", 4, 0, screenx / 17, screeny / 150)
     button13 = NewButton("Services", 5, 0, screenx / 22, screeny / 150)
     button14 = NewButton("Overig", 6, 0, screenx / 18, screeny / 150)
+    lastPageArray.append("pec")
 
 
 def woningsadvies():
     # the woningadvies page
+    for widget in root.winfo_children():
+        if str(widget) == ".!optionmenu":
+            print("not deleting this!")
+        else:
+            widget.destroy()
+            print("deleted")
     woningsadvies_text = "Select your importance on the categories below"
     woningsadvies_text1 = "Population"
     woningsadvies_text2 = "Environment"
@@ -595,19 +631,25 @@ def woningsadvies():
         column=0, row=26, sticky=W)
     Radiobutton(root, indicatoron=False, text="7 or higher", variable=voorzieningen_radioButtons, value=4).grid(
         column=0, row=27, sticky=W)
+    lastPageArray.append("woon")
 
 
-#permantly destroy widgit
+#permantly destroy widgit, with this you can also see the widgets that are currently open
 for widget in root.winfo_children():
     if str(widget) == ".!optionmenu":
         print("not deleting this!")
     else:
-        widget.destroy()
+        widget.forget()
         print("deleted")
 
-
+for widget in root.winfo_children():
+    print(widget)
+    widget.forget()
 
 #To forget a single item but keeps it in the memory
-menu_button.forget()
+# menu_button.forget()
+
+
+
 
 root.mainloop()
