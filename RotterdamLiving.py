@@ -371,11 +371,14 @@ canvas.bind('<Button-1>', click, add="+") #mouse method applied to the label(pic
 #the canvas where the polygons are drawed
 canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #draws the canvas
 
+
+
 #With this function, you know which button the from the drop down menu the user has pressed
 def menuSelector(event):
+
     global canvas
     if  str(variable.get()) == "Home":
-        print("Homepage")
+        print("I am home")
     elif  str(variable.get()) == "Woningadvies":
          woningsadvies()
     elif str(variable.get()) == "Percentages en cijfers":
@@ -418,26 +421,33 @@ def settings():
 
 #The page: About
 def about():
-    about_text = "This application is made by students of the Hogeschool Rotterdam."
-    about1_text = "- Chris Santema"
-    about2_text = "- Sebastiaan Van Etten"
-    about3_text = "- Stefan Pesic"
-    about4_text = "- Milan Sas"
+    if str(variable.get()) == "About":
+        about_text = "This application is made by students of the Hogeschool Rotterdam."
+        about1_text = "- Chris Santema"
+        about2_text = "- Sebastiaan Van Etten"
+        about3_text = "- Stefan Pesic"
+        about4_text = "- Milan Sas"
 
-    about_information = Label(root, width=0, text=about_text, font=("Helvetica", 20, "bold"))  # puts text on screen
-    about_information.grid(row=1, column=0, sticky=W)
+        about_information = Label(root, width=0, text=about_text, font=("Helvetica", 20, "bold"))  # puts text on screen
+        about_information.grid(row=1, column=0, sticky=W)
 
-    about_information1 = Label(root, width=0, text=about1_text, font=("Helvetica", 20, "bold"))
-    about_information1.grid(row=2, column=0, sticky=W)
+        about_information1 = Label(root, width=0, text=about1_text, font=("Helvetica", 20, "bold"))
+        about_information1.grid(row=2, column=0, sticky=W)
 
-    about_information2 = Label(root, width=0, text=about2_text, font=("Helvetica", 20, "bold"))
-    about_information2.grid(row=3, column=0, sticky=W)
+        about_information2 = Label(root, width=0, text=about2_text, font=("Helvetica", 20, "bold"))
+        about_information2.grid(row=3, column=0, sticky=W)
 
-    about_information3 = Label(root, width=0, text=about3_text, font=("Helvetica", 20, "bold"))
-    about_information3.grid(row=4, column=0, sticky=W)
+        about_information3 = Label(root, width=0, text=about3_text, font=("Helvetica", 20, "bold"))
+        about_information3.grid(row=4, column=0, sticky=W)
 
-    about_information4 = Label(root, width=0, text=about4_text, font=("Helvetica", 20, "bold"))
-    about_information4.grid(row=5, column=0, sticky=W)
+        about_information4 = Label(root, width=0, text=about4_text, font=("Helvetica", 20, "bold"))
+        about_information4.grid(row=5, column=0, sticky=W)
+    else:
+        print("About should be closed now.....")
+        return None
+
+
+
 
 
 #The page: "Percentages en cijfers"
