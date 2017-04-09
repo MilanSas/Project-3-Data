@@ -2,6 +2,7 @@ from tkinter import *
 
 #TODO when user hoovers of an area, make it if it's possible the area change colour + change location text
 #TODO when user clicks on an area, that area needs to be zoomed in
+#TODO delete all widgets when the user opens a new page
 
 #To read the comments, the symbol: #, is after lines. the symbol: '''''' , is to explain the overall code.
 
@@ -52,6 +53,8 @@ class NewButton:
             elif self.clicked == True:
                  self.button.config(bg="DeepSkyBlue2")
                  setattr(self, 'clicked', False)
+    def pageClick(self,page): #changes the method of the button
+        self.button.config(command=page)
 
 
 '''Trigger for the polygons(area's)'''''
@@ -416,11 +419,17 @@ def percentagesEnCijfers():
             print("deleted")
 
     button9 = NewButton("Population", 1, 0, screenx / 30, screeny / 150)
+    button9.pageClick(categoryPopulation) #activates a method when the button is clicked
     button10 = NewButton("Environment", 2, 0, screenx / 45, screeny / 150)
+    button10.pageClick(categoryEnvironment)
     button11 = NewButton("Safety", 3, 0, screenx / 17, screeny / 150)
+    button11.pageClick(categorySafety)
     button12 = NewButton("Traffic", 4, 0, screenx / 17, screeny / 150)
+    button12.pageClick(categoryTraffic)
     button13 = NewButton("Services", 5, 0, screenx / 22, screeny / 150)
+    button13.pageClick(categoryServices)
     button14 = NewButton("Overig", 6, 0, screenx / 18, screeny / 150)
+    button14.pageClick(categoryOther)
     lastPageArray.append("pec")
 
 
@@ -518,6 +527,73 @@ def woningsadvies():
     Radiobutton(root, indicatoron=False, text="7 or higher", variable=voorzieningen_radioButtons, value=4).grid(
         column=0, row=27, sticky=W)
     lastPageArray.append("woon")
+
+''''Population/bevolking category, when it gets clicked these buttons appears'''
+def categoryPopulation():
+    button15 = NewButton("Population1_placehholder", 1, 0, screenx / 30, screeny / 150)
+    button16 = NewButton("Population2_placeholder", 2, 0, screenx / 45, screeny / 150)
+    button17 = NewButton("Population3_placeholder", 3, 0, screenx / 17, screeny / 150)
+    button18 = NewButton("Population4_placeholder", 4, 0, screenx / 17, screeny / 150)
+    button19 = NewButton("Population5_placeholder", 5, 0, screenx / 22, screeny / 150)
+    button20 = NewButton("Population6_placeholder", 6, 0, screenx / 22, screeny / 150)
+    buttonback1 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    buttonback1.pageClick(percentagesEnCijfers)
+
+''''Environment/milieu category, when it gets clicked these buttons appears'''
+def categoryEnvironment():
+    button21 = NewButton("Environmennt1_placehholder", 1, 0, screenx / 30, screeny / 150)
+    button22 = NewButton("Environment2_placeholder", 2, 0, screenx / 45, screeny / 150)
+    button23 = NewButton("Environment3_placeholder", 3, 0, screenx / 17, screeny / 150)
+    button24 = NewButton("Environment4_placeholder", 4, 0, screenx / 17, screeny / 150)
+    button25 = NewButton("Environment5_placeholder", 5, 0, screenx / 22, screeny / 150)
+    button26 = NewButton("Environment6_placeholder", 6, 0, screenx / 22, screeny / 150)
+    buttonback2 = NewButton("Back", 7, 0, screenx / 22, screeny / 150) #goes back to percentages 
+    buttonback2.pageClick(percentagesEnCijfers)
+
+''''Safety/veiligheid category, when it gets clicked these buttons appears'''
+def categorySafety():
+    button27 = NewButton("Safety1_placehholder", 1, 0, screenx / 30, screeny / 150)
+    button28 = NewButton("Safety2_placeholder", 2, 0, screenx / 45, screeny / 150)
+    button29 = NewButton("Safety3_placeholder", 3, 0, screenx / 17, screeny / 150)
+    button30 = NewButton("Safety4_placeholder", 4, 0, screenx / 17, screeny / 150)
+    button31 = NewButton("Safety5_placeholder", 5, 0, screenx / 22, screeny / 150)
+    button32 = NewButton("Safety6_placeholder", 6, 0, screenx / 22, screeny / 150)
+    buttonback3 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    buttonback3.pageClick(percentagesEnCijfers)
+
+''''Traffic/verkeer category, when it gets clicked these buttons appears'''
+def categoryTraffic():
+    button33 = NewButton("Traffic1_placehholder", 1, 0, screenx / 30, screeny / 150)
+    button34 = NewButton("Traffic2_placeholder", 2, 0, screenx / 45, screeny / 150)
+    button35 = NewButton("Traffic3_placeholder", 3, 0, screenx / 17, screeny / 150)
+    button36 = NewButton("Traffic4_placeholder", 4, 0, screenx / 17, screeny / 150)
+    button37 = NewButton("Traffic5_placeholder", 5, 0, screenx / 22, screeny / 150)
+    button38 = NewButton("Traffic6_placeholder", 6, 0, screenx / 22, screeny / 150)
+    buttonback4 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    buttonback4.pageClick(percentagesEnCijfers)
+
+''''Services/voorzieningen category, when it gets clicked these buttons appears'''
+def categoryServices():
+    button39 = NewButton("Services1_placehholder", 1, 0, screenx / 30, screeny / 150)
+    button40 = NewButton("Services2_placeholder", 2, 0, screenx / 45, screeny / 150)
+    button41 = NewButton("Services3_placeholder", 3, 0, screenx / 17, screeny / 150)
+    button42 = NewButton("Services4_placeholder", 4, 0, screenx / 17, screeny / 150)
+    button43 = NewButton("Services5_placeholder", 5, 0, screenx / 22, screeny / 150)
+    button44 = NewButton("Services6_placeholder", 6, 0, screenx / 22, screeny / 150)
+    buttonback5 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    buttonback5.pageClick(percentagesEnCijfers)
+
+''''Other/overig category, when it gets clicked these buttons appears'''
+def categoryOther():
+    button45 = NewButton("Other1_placehholder", 1, 0, screenx / 30, screeny / 150)
+    button46 = NewButton("Other2_placeholder", 2, 0, screenx / 45, screeny / 150)
+    button47 = NewButton("Other3_placeholder", 3, 0, screenx / 17, screeny / 150)
+    button48 = NewButton("Other4_placeholder", 4, 0, screenx / 17, screeny / 150)
+    button49 = NewButton("Other5_placeholder", 5, 0, screenx / 22, screeny / 150)
+    button50 = NewButton("Other6_placeholder", 6, 0, screenx / 22, screeny / 150)
+    buttonback6 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    buttonback6.pageClick(percentagesEnCijfers)
+
 
 ''''The loop'''
 root.mainloop()
