@@ -681,7 +681,7 @@ def databaseWoningsAdvies():
     if voorzieningen_radioButtons.get() == 4:
         pass
 
-''''Database query for the page: "Percentages en cijfers" ''''
+''''Database query for the page: "Percentages en cijfers" '''
 def databasePercentagesEnCijfers():
     pass
 
