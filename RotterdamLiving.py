@@ -63,6 +63,26 @@ class NewButton:
     def clickReset(self): # resets click
         self.clicked = False
 
+''''These buttons are meant for the buttons that are in the: "Percentages en cijfers sections'''
+class PecButton:
+    def __init__(self,text, row, column, ipadx, ipady, name):
+        self.clicked = False #state
+        self.button = Button(root, text =text, command = self.databaseSender,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
+        self.button.columnconfigure(0,weight=300000)
+        self.button.grid(row=row, column=column, sticky=W, ipadx=ipadx, ipady=ipady) #position of the button
+        self.name = name #this is for the buttonArray to know which button has been clicked
+
+    def databaseSender(self):
+        buttonArray.append(self.name) #the clicked button will go in the array
+        databasePercentagesEnCijfers()
+
+
+''''The items in the class get saved in an array, this is for the: "databasePercentagesEnCijfers Function"'''
+buttonArray = []
+
+
+
+
 '''Trigger for the polygons(area's)'''''
 class Trigger:
     def __init__(self, triggerValue,name):
@@ -564,90 +584,72 @@ def woningsadvies():
     polygons()
 
 ''''The buttonarray to remember the previous clicked button for the database method to know which method to activate'''
-buttonArray = []
+
 
 ''''Population/bevolking category, when it gets clicked these buttons appears'''
 def categoryPopulation():
     global buttonArray
-    button15 = NewButton("Population1_placehholder", 1, 0, screenx / 30, screeny / 150)
-    button16 = NewButton("Population2_placeholder", 2, 0, screenx / 45, screeny / 150)
-    button17 = NewButton("Population3_placeholder", 3, 0, screenx / 17, screeny / 150)
-    button18 = NewButton("Population4_placeholder", 4, 0, screenx / 17, screeny / 150)
-    button19 = NewButton("Population5_placeholder", 5, 0, screenx / 22, screeny / 150)
-    button20 = NewButton("Population6_placeholder", 6, 0, screenx / 22, screeny / 150)
+    button15 = PecButton("Population1_placehholder", 1, 0, screenx / 30, screeny / 150, 0)
+    button16 = PecButton("Population2_placeholder", 2, 0, screenx / 45, screeny / 150,1)
+    button17 = PecButton("Population3_placeholder", 3, 0, screenx / 17, screeny / 150,2)
+    button18 = PecButton("Population4_placeholder", 4, 0, screenx / 17, screeny / 150,3)
+    button19 = PecButton("Population5_placeholder", 5, 0, screenx / 22, screeny / 150,4)
+    button20 = PecButton("Population6_placeholder", 6, 0, screenx / 22, screeny / 150,5)
     buttonback1 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback1.pageClick(percentagesEnCijfers)
 
-
-    '''Gives which button is clicked'''
-    #TODO refine it so the function correctly gives the button which is pressed and then to have the function: "databasePercentagesEnCijfers()" process it
-    if button15.clicked == True:
-        return 0
-    elif button16.clicked == False:
-        return 1
-    elif button17.clicked == False:
-        return 2
-    elif button18.clicked == False:
-        return 3
-    elif button19.clicked == False:
-        return 4
-    elif button20.clicked == False:
-        return 5
-    else:
-        return None
-
 ''''Environment/milieu category, when it gets clicked these buttons appears'''
 def categoryEnvironment():
-    button21 = NewButton("Environmennt1_placehholder", 1, 0, screenx / 30, screeny / 150)
-    button22 = NewButton("Environment2_placeholder", 2, 0, screenx / 45, screeny / 150)
-    button23 = NewButton("Environment3_placeholder", 3, 0, screenx / 17, screeny / 150)
-    button24 = NewButton("Environment4_placeholder", 4, 0, screenx / 17, screeny / 150)
-    button25 = NewButton("Environment5_placeholder", 5, 0, screenx / 22, screeny / 150)
-    button26 = NewButton("Environment6_placeholder", 6, 0, screenx / 22, screeny / 150)
+    button21 = PecButton("Environmennt1_placehholder", 1, 0, screenx / 30, screeny / 150,6)
+    button22 = PecButton("Environment2_placeholder", 2, 0, screenx / 45, screeny / 150,7)
+    button23 = PecButton("Environment3_placeholder", 3, 0, screenx / 17, screeny / 150,8)
+    button24 = PecButton("Environment4_placeholder", 4, 0, screenx / 17, screeny / 150,9)
+    button25 = PecButton("Environment5_placeholder", 5, 0, screenx / 22, screeny / 150,10)
+    button26 = PecButton("Environment6_placeholder", 6, 0, screenx / 22, screeny / 150,11)
     buttonback2 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback2.pageClick(percentagesEnCijfers)
 
 ''''Safety/veiligheid category, when it gets clicked these buttons appears'''
 def categorySafety():
-    button27 = NewButton("Safety1_placehholder", 1, 0, screenx / 30, screeny / 150)
-    button28 = NewButton("Safety2_placeholder", 2, 0, screenx / 45, screeny / 150)
-    button29 = NewButton("Safety3_placeholder", 3, 0, screenx / 17, screeny / 150)
-    button30 = NewButton("Safety4_placeholder", 4, 0, screenx / 17, screeny / 150)
-    button31 = NewButton("Safety5_placeholder", 5, 0, screenx / 22, screeny / 150)
-    button32 = NewButton("Safety6_placeholder", 6, 0, screenx / 22, screeny / 150)
+    button27 = PecButton("Safety1_placehholder", 1, 0, screenx / 30, screeny / 150,12)
+    button28 = PecButton("Safety2_placeholder", 2, 0, screenx / 45, screeny / 150,12)
+    button29 = PecButton("Safety3_placeholder", 3, 0, screenx / 17, screeny / 150,13)
+    button30 = PecButton("Safety4_placeholder", 4, 0, screenx / 17, screeny / 150,14)
+    button31 = PecButton("Safety5_placeholder", 5, 0, screenx / 22, screeny / 150,15)
+    button32 = PecButton("Safety6_placeholder", 6, 0, screenx / 22, screeny / 150,16)
     buttonback3 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback3.pageClick(percentagesEnCijfers)
 
 ''''Traffic/verkeer category, when it gets clicked these buttons appears'''
 def categoryTraffic():
-    button33 = NewButton("Traffic1_placehholder", 1, 0, screenx / 30, screeny / 150)
-    button34 = NewButton("Traffic2_placeholder", 2, 0, screenx / 45, screeny / 150)
-    button35 = NewButton("Traffic3_placeholder", 3, 0, screenx / 17, screeny / 150)
-    button36 = NewButton("Traffic4_placeholder", 4, 0, screenx / 17, screeny / 150)
-    button37 = NewButton("Traffic5_placeholder", 5, 0, screenx / 22, screeny / 150)
-    button38 = NewButton("Traffic6_placeholder", 6, 0, screenx / 22, screeny / 150)
+    button33 = PecButton("Traffic1_placehholder", 1, 0, screenx / 30, screeny / 150,17)
+    button34 = PecButton("Traffic2_placeholder", 2, 0, screenx / 45, screeny / 150,18)
+    button35 = PecButton("Traffic3_placeholder", 3, 0, screenx / 17, screeny / 150,19)
+    button36 = PecButton("Traffic4_placeholder", 4, 0, screenx / 17, screeny / 150,20)
+    button37 = PecButton("Traffic5_placeholder", 5, 0, screenx / 22, screeny / 150,21)
+    button38 = PecButton("Traffic6_placeholder", 6, 0, screenx / 22, screeny / 150,22)
     buttonback4 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback4.pageClick(percentagesEnCijfers)
 
 ''''Services/voorzieningen category, when it gets clicked these buttons appears'''
 def categoryServices():
-    button39 = NewButton("Services1_placehholder", 1, 0, screenx / 30, screeny / 150)
-    button40 = NewButton("Services2_placeholder", 2, 0, screenx / 45, screeny / 150)
-    button41 = NewButton("Services3_placeholder", 3, 0, screenx / 17, screeny / 150)
-    button42 = NewButton("Services4_placeholder", 4, 0, screenx / 17, screeny / 150)
-    button43 = NewButton("Services5_placeholder", 5, 0, screenx / 22, screeny / 150)
-    button44 = NewButton("Services6_placeholder", 6, 0, screenx / 22, screeny / 150)
+    button39 = PecButton("Services1_placehholder", 1, 0, screenx / 30, screeny / 150,23)
+    button40 = PecButton("Services2_placeholder", 2, 0, screenx / 45, screeny / 150,24)
+    button41 = PecButton("Services3_placeholder", 3, 0, screenx / 17, screeny / 150,25)
+    button42 = PecButton("Services4_placeholder", 4, 0, screenx / 17, screeny / 150,26)
+    button43 = PecButton("Services5_placeholder", 5, 0, screenx / 22, screeny / 150,27)
+    button44 = PecButton("Services6_placeholder", 6, 0, screenx / 22, screeny / 150,28)
     buttonback5 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback5.pageClick(percentagesEnCijfers)
 
 ''''Other/overig category, when it gets clicked these buttons appears'''
 def categoryOther():
-    button45 = NewButton("Other1_placehholder", 1, 0, screenx / 30, screeny / 150)
-    button46 = NewButton("Other2_placeholder", 2, 0, screenx / 45, screeny / 150)
-    button47 = NewButton("Other3_placeholder", 3, 0, screenx / 17, screeny / 150)
-    button48 = NewButton("Other4_placeholder", 4, 0, screenx / 17, screeny / 150)
-    button49 = NewButton("Other5_placeholder", 5, 0, screenx / 22, screeny / 150)
-    button50 = NewButton("Other6_placeholder", 6, 0, screenx / 22, screeny / 150)
+    button45 = PecButton("Other1_placehholder", 1, 0, screenx / 30, screeny / 150,29)
+    button46 = PecButton("Other2_placeholder", 2, 0, screenx / 45, screeny / 150,30)
+    button47 = PecButton("Other3_placeholder", 3, 0, screenx / 17, screeny / 150,31)
+    button48 = PecButton("Other4_placeholder", 4, 0, screenx / 17, screeny / 150,32)
+    button49 = PecButton("Other5_placeholder", 5, 0, screenx / 22, screeny / 150,33)
+    button50 = PecButton("Other6_placeholder", 6, 0, screenx / 22, screeny / 150,34)
     buttonback6 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback6.pageClick(percentagesEnCijfers)
 
@@ -655,11 +657,14 @@ def categoryOther():
 ''''Database query for the page: "Woningsadvies (the user gets data based on selection)'''''
 
 def databaseWoningsAdvies():
+    #Status = database ready
     global bevolking_radioButtons
     global milieu_radioButtons
     global veiligheid_radioButtons
     global verkeer_radioButtons
     global voorzieningen_radioButtons
+
+    print(bevolking_radioButtons.get())
 
     if bevolking_radioButtons.get() == 0: #gets value of the radiobutton(which button the user selected)
         pass
@@ -731,105 +736,92 @@ def ResultsData(data):
     Figure1.get_tk_widget().grid(row=0, column=0, sticky=N, rowspan = 30)
 
 def databasePercentagesEnCijfers():
-    #TODO refine the method. When a button is selected the program must know which button and then execute the querry
-    if buttonArray in range(0, 7): #checks what the previous selected buton was , this way it knows which method to activate
-        answer = categoryPopulation()   #result(which button is pressed) gets assigned to answer variable
-    elif buttonArray in range(0,7):
-        answer1 = categoryEnvironment()
-    elif buttonArray in range(0,7):
-        answer2 = categorySafety()
-    elif buttonArray in range(0,7):
-        answer3 = categoryTraffic()
-    elif buttonArray in range(0,7):
-        answer3 = categoryTraffic()
-    elif buttonArray in range(0,7):
-        answer4 = categoryServices()
-    elif buttonArray in range(0,7):
-        answer5 = categoryOther()
+    #status = database Ready
+    global buttonArray #needed because the array has the last selected button
+    answer = (buttonArray[-1]) #last button gets stored in answer
+    print(answer)
 
 
-    if answer != None: #the result is stored in answer, based on the result, a certain database querry will be executed
-        if answer == 0: #the numbers are buttons.
-            pass
-        elif answer == 1:
-            pass
-        elif answer == 2:
-            pass
-        elif answer == 3:
-            pass
-        elif answer == 4:
-            pass
-        elif answer == 5:
-            pass
+    if answer == 0:  #the numbers represent the button, each button has his own number
+        pass
+    elif answer == 1:
+        pass
+    elif answer == 2:
+        pass
+    elif answer == 3:
+        pass
+    elif answer == 4:
+        pass
+    elif answer == 5:
+        pass
 
-    if answer != None:
-        if  answer1 == 0:
-            pass
-        elif answer1 == 1:
-            pass
-        elif answer1 == 2:
-            pass
-        elif answer1 == 3:
-            pass
-        elif answer1 == 4:
-            pass
-        elif answer1 == 5:
-            pass
+    elif  answer == 6:
+        pass
+    elif answer == 7:
+        pass
+    elif answer == 8:
+        pass
+    elif answer == 9:
+        pass
+    elif answer == 10:
+        pass
+    elif answer == 11:
+        pass
 
-    elif answer2 != None:
-        if answer2 == 0:
-            pass
-        elif answer2 == 1:
-            pass
-        elif answer2 == 2:
-            pass
-        elif answer2 == 3:
-            pass
-        elif answer2 == 4:
-            pass
-        elif answer2 == 5:
-            pass
+    elif answer == 12:
+        pass
+    elif answer == 13:
+        pass
+    elif answer == 14:
+        pass
+    elif answer == 15:
+        pass
+    elif answer == 16:
+        pass
+    elif answer == 17:
+        pass
 
-    elif answer3 != None:
-        if answer3 == 0:
-            pass
-        elif answer3 == 1:
-            pass
-        elif answer3 == 2:
-            pass
-        elif answer3 == 3:
-            pass
-        elif answer3 == 4:
-            pass
-        elif answer3 == 5:
-            pass
-    elif answer4 != None:
-        if answer4 == 0:
-            pass
-        elif answer4 == 1:
-            pass
-        elif answer4 == 2:
-            pass
-        elif answer4 == 3:
-            pass
-        elif answer4 == 4:
-            pass
-        elif answer4 == 5:
-            pass
 
-    elif answer5 != None:
-        if answer5 == 0:
-            pass
-        elif answer5 == 1:
-            pass
-        elif answer5 == 2:
-            pass
-        elif answer5 == 3:
-            pass
-        elif answer5 == 4:
-            pass
-        elif answer5 == 5:
-            pass
+    elif answer == 18:
+        pass
+    elif answer == 19:
+        pass
+    elif answer == 20:
+        pass
+    elif answer == 21:
+        pass
+    elif answer == 22:
+        pass
+    elif answer == 23:
+        pass
+
+
+    elif answer == 24:
+        pass
+    elif answer == 25:
+        pass
+    elif answer == 26:
+        pass
+    elif answer == 27:
+        pass
+    elif answer == 28:
+        pass
+    elif answer == 29:
+        pass
+
+
+    elif answer == 30:
+        pass
+    elif answer == 31:
+        pass
+    elif answer == 32:
+        pass
+    elif answer == 33:
+        pass
+    elif answer == 34:
+        pass
+    elif answer == 35:
+        pass
 
 
 root.mainloop() #for the loop
