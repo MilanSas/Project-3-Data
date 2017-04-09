@@ -53,9 +53,17 @@ class NewButton:
             elif self.clicked == True:
                  self.button.config(bg="DeepSkyBlue2")
                  setattr(self, 'clicked', False)
+            databasePercentagesEnCijfers()
     def pageClick(self,page): #changes the method of the button
         self.button.config(command=page)
-
+    def clickReset(self): # resets click
+        self.clicked = False
+    def databaseReset(self): #method to have the button reset for the database
+        if self.clicked == False:
+            setattr(self, 'clicked', True)
+            databasePercentagesEnCijfers()
+        elif self.clicked == True:
+            setattr(self, 'clicked', False)
 
 '''Trigger for the polygons(area's)'''''
 class Trigger:
@@ -551,17 +559,40 @@ def woningsadvies():
     canvas.grid(row=2, column=0, sticky=N, rowspan=999, padx=55)
     polygons()
 
-
+buttonArray = []
 ''''Population/bevolking category, when it gets clicked these buttons appears'''
 def categoryPopulation():
+    global buttonArray
     button15 = NewButton("Population1_placehholder", 1, 0, screenx / 30, screeny / 150)
+    button15.pageClick() #When clicked goes to that function, then a database query will be executed
     button16 = NewButton("Population2_placeholder", 2, 0, screenx / 45, screeny / 150)
     button17 = NewButton("Population3_placeholder", 3, 0, screenx / 17, screeny / 150)
+    button17.pageClick(databasePercentagesEnCijfers)
     button18 = NewButton("Population4_placeholder", 4, 0, screenx / 17, screeny / 150)
+    button18.pageClick(databasePercentagesEnCijfers)
     button19 = NewButton("Population5_placeholder", 5, 0, screenx / 22, screeny / 150)
+    button19.pageClick(databasePercentagesEnCijfers)
     button20 = NewButton("Population6_placeholder", 6, 0, screenx / 22, screeny / 150)
+    button20.pageClick(databasePercentagesEnCijfers)
     buttonback1 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback1.pageClick(percentagesEnCijfers)
+
+
+    '''Gives which button is clicked'''
+    if button15.clicked == True:
+        return 0
+    elif button16.clicked == False:
+        return 1
+    elif button17.clicked == False:
+        return 2
+    elif button18.clicked == False:
+        return 3
+    elif button19.clicked == False:
+        return 4
+    elif button20.clicked == False:
+        return 5
+    else:
+        return None
 
 ''''Environment/milieu category, when it gets clicked these buttons appears'''
 def categoryEnvironment():
@@ -572,7 +603,6 @@ def categoryEnvironment():
     button25 = NewButton("Environment5_placeholder", 5, 0, screenx / 22, screeny / 150)
     button26 = NewButton("Environment6_placeholder", 6, 0, screenx / 22, screeny / 150)
     buttonback2 = NewButton("Back", 7, 0, screenx / 22, screeny / 150) #goes back to percentages en cijfers section
-    buttonback2.pageClick(percentagesEnCijfers)
 
 ''''Safety/veiligheid category, when it gets clicked these buttons appears'''
 def categorySafety():
@@ -681,8 +711,108 @@ def databaseWoningsAdvies():
     if voorzieningen_radioButtons.get() == 4:
         pass
 
+
 ''''Database query for the page: "Percentages en cijfers" '''
 def databasePercentagesEnCijfers():
-    pass
+    if buttonArray[-1] in range(0, 7):
+        answer = categoryPopulation()
+    elif buttonArray[-1] in range(0,7):
+        answer1 = categoryEnvironment()
+    elif buttonArray[-1] in range(0,7):
+        answer2 = categorySafety()
+    elif buttonArray[-1] in range(0,7):
+        answer3 = categoryTraffic()
+    elif buttonArray[-1] in range(0,7):
+        answer3 = categoryTraffic()
+    elif buttonArray[-1] in range(0,7):
+        answer4 = categoryServices()
+    elif buttonArray[-1] in range(0,7):
+        answer5 = categoryOther()
+
+
+    if answer != None:
+        if answer == 0:
+            pass
+        elif answer == 1:
+            pass
+        elif answer == 2:
+            pass
+        elif answer == 3:
+            pass
+        elif answer == 4:
+            pass
+        elif answer == 5:
+            pass
+
+    if answer != None:
+        if  answer1 == 0:
+            pass
+        elif answer1 == 1:
+            pass
+        elif answer1 == 2:
+            pass
+        elif answer1 == 3:
+            pass
+        elif answer1 == 4:
+            pass
+        elif answer1 == 5:
+            pass
+
+    elif answer2 != None:
+        if answer2 == 0:
+            pass
+        elif answer2 == 1:
+            pass
+        elif answer2 == 2:
+            pass
+        elif answer2 == 3:
+            pass
+        elif answer2 == 4:
+            pass
+        elif answer2 == 5:
+            pass
+
+    elif answer3 != None:
+        if answer3 == 0:
+            pass
+        elif answer3 == 1:
+            pass
+        elif answer3 == 2:
+            pass
+        elif answer3 == 3:
+            pass
+        elif answer3 == 4:
+            pass
+        elif answer3 == 5:
+            pass
+    elif answer4 != None:
+        if answer4 == 0:
+            pass
+        elif answer4 == 1:
+            pass
+        elif answer4 == 2:
+            pass
+        elif answer4 == 3:
+            pass
+        elif answer4 == 4:
+            pass
+        elif answer4 == 5:
+            pass
+
+    elif answer5 != None:
+        if answer5 == 0:
+            pass
+        elif answer5 == 1:
+            pass
+        elif answer5 == 2:
+            pass
+        elif answer5 == 3:
+            pass
+        elif answer5 == 4:
+            pass
+        elif answer5 == 5:
+            pass
+
+
 
 root.mainloop()
