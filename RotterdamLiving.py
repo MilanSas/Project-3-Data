@@ -309,8 +309,6 @@ canvas.bind('<Button-1>', click, add="+") #binds the canvas to a method
 ''''Canvas that gets drawn'''
 canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #the lower the code(higher line) the later it will get drawn
 
-
-
 ''''Function that links the drop down menu sections to pages, it redirects to pages'''
 def menuSelector(event):
     if  str(variable.get()) == "Home":
@@ -411,10 +409,6 @@ def about():
 
     about_information5 = Label(root, width=0, text=about5_text, font=("Helvetica", 20, "bold"))
     about_information5.grid(row=6, column=0, sticky=W)
-
-
-
-
 
     lastPageArray.append("about")
 
@@ -558,10 +552,6 @@ def woningsadvies():
     polygons()
 
 
-
-
-
-
 ''''Population/bevolking category, when it gets clicked these buttons appears'''
 def categoryPopulation():
     button15 = NewButton("Population1_placehholder", 1, 0, screenx / 30, screeny / 150)
@@ -628,7 +618,7 @@ def categoryOther():
     buttonback6 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback6.pageClick(percentagesEnCijfers)
 
-''''Database query for the page: "Woningsadvies'''''
+''''Database query for the page: "Woningsadvies (the user gets data based on selection)'''''
 def databaseWoningsAdvies():
     global bevolking_radioButtons
     global milieu_radioButtons
@@ -636,15 +626,63 @@ def databaseWoningsAdvies():
     global verkeer_radioButtons
     global voorzieningen_radioButtons
 
-    
-    print(bevolking_radioButtons.get())
-    print(milieu_radioButtons.get())
-    print(veiligheid_radioButtons.get())
-    print(verkeer_radioButtons.get())
-    print(voorzieningen_radioButtons.get())
+    if bevolking_radioButtons.get() == 0: #gets value of bevolking radiobutton(which button the user selected)
+        pass
+    if bevolking_radioButtons.get() == 1:
+        pass
+    if bevolking_radioButtons.get() == 2:
+        pass
+    if bevolking_radioButtons.get() == 3:
+        pass
+    if bevolking_radioButtons.get() == 4:
+        pass
 
+    if milieu_radioButtons.get() == 0:
+        pass
+    if milieu_radioButtons.get() == 1:
+        pass
+    if milieu_radioButtons.get() == 2:
+        pass
+    if milieu_radioButtons.get() == 3:
+        pass
+    if milieu_radioButtons.get() == 4:
+        pass
 
+    if veiligheid_radioButtons.get() == 0:
+        pass
+    if veiligheid_radioButtons.get() == 1:
+        pass
+    if veiligheid_radioButtons.get() == 2:
+        pass
+    if veiligheid_radioButtons.get() == 3:
+        pass
+    if veiligheid_radioButtons.get() == 4:
+        pass
 
+    if verkeer_radioButtons.get() == 0:
+        pass
+    if verkeer_radioButtons.get() == 1:
+        pass
+    if verkeer_radioButtons.get() == 2:
+        pass
+    if verkeer_radioButtons.get() == 3:
+        pass
+    if verkeer_radioButtons.get() == 4:
+        pass
 
+    if voorzieningen_radioButtons.get() == 0:
+        pass
+    if voorzieningen_radioButtons.get() == 1:
+        pass
+    if voorzieningen_radioButtons.get() == 2:
+        pass
+    if voorzieningen_radioButtons.get() == 3:
+        pass
+    if voorzieningen_radioButtons.get() == 4:
+        pass
+
+''''Database query for the page: "Percentages en cijfers" ''''
+def databasePercentagesEnCijfers():
+    pass
 
 root.mainloop()
