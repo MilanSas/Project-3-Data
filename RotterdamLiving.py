@@ -1,11 +1,8 @@
 from tkinter import *
 
+#To read the comments, the symbol: #, is after lines. the symbol: '''''' , is to explain the overall code.
 #TODO when user hoovers of an area, make it if it's possible the area change colour + change location text
 #TODO when user clicks on an area, that area needs to be zoomed in
-#TODO delete all widgets when the user opens a new page
-
-#To read the comments, the symbol: #, is after lines. the symbol: '''''' , is to explain the overall code.
-
 
 root = Tk() #Needed to run
 
@@ -58,12 +55,6 @@ class NewButton:
         self.button.config(command=page)
     def clickReset(self): # resets click
         self.clicked = False
-    def databaseReset(self): #method to have the button reset for the database
-        if self.clicked == False:
-            setattr(self, 'clicked', True)
-            databasePercentagesEnCijfers()
-        elif self.clicked == True:
-            setattr(self, 'clicked', False)
 
 '''Trigger for the polygons(area's)'''''
 class Trigger:
@@ -81,7 +72,7 @@ def rs(size):
     ratio = (screeny + screeny/2) / size
     return (screeny / ratio)
 
-#TODO use changeColor function for the database.
+#TODO fix changeColor function to return the right area colours based on the result of the database.
 ''''Function to have the results from the database influence the colour of a polygon(area)'''
 def changecolor(object,percent):
     red = 0
@@ -157,7 +148,6 @@ def polygons():
     rs(1225), rs(646), rs(1227), rs(620), rs(1113), rs(596), rs(1038), rs(610), rs(954), rs(639), rs(862), rs(618),
     rs(885), rs(658), rs(917), rs(663), rs(921), rs(647), rs(972), rs(670), rs(962), rs(722), rs(937), rs(743), rs(934),
     rs(764), rs(923), rs(765), rs(927), rs(797), rs(1048), rs(795)))
-
 
 
 ''''The name of the area that is displayed in the top centre.'''
@@ -335,7 +325,7 @@ def menuSelector(event):
 
 ''''Drop down menu'''
 variable = StringVar(root)
-variable.set("Home")  # default value
+variable.set("Home")  # default value of the homebutton
 menu_button = OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "About",
                              "Exit", command=menuSelector)
 menu_button.config(font=("Helvetica", 50, "bold"), bg="DeepSkyBlue2", fg="white")
@@ -351,24 +341,27 @@ description_text.grid(row=1,column=0,sticky=W)
 def home():
     for widget in root.winfo_children(): #checks which wigets(buttons, text etc) are open
         if str(widget) == ".!optionmenu": #only the menu does not get deleted
-            print("not deleting this!")
-        elif str(widget) == ".!canvas":
-            widget.grid_forget() # does not delete, but only forgets/hides the item
+            print("Not deleting optionmenu")
+        elif str(widget) == ".!canvas": #the canvas only gets forgotten(hidden) and not deleted.
+            widget.grid_forget()
+            print("Canvas is forgotten")
         else:
-            widget.destroy() #widget gets deleted, widget.forget() to only hide the widget
+            widget.destroy() #Other widgets are destroyed and so are their value
             print(str(widget) + " Is deleted")
 
 ''''the settings page'''
 def settings():
     for widget in root.winfo_children():
-        if str(widget) == ".!optionmenu": #only the menu does not get deleted
-            print("not deleting this!")
+        if str(widget) == ".!optionmenu":
+            print("Not deleting optionmenu")
         elif str(widget) == ".!canvas":
-            widget.grid_forget() # does not delete, but only forgets/hides the item
+            widget.grid_forget()
+            print("Canvas is forgotten")
         else:
-            widget.destroy() #widget gets deleted, widget.forget() to only hide the widget
+            widget.destroy()
             print(str(widget) + " Is deleted")
 
+    ''''Resolution'''
     resolution_text = "Select your screen resolution"
     resolution1_text = Label(root, text=resolution_text, font=("Helvetica", 15, "bold"))  # puts image on screen
     resolution1_text.grid(row=2, column=0, sticky=W)
@@ -384,13 +377,14 @@ def settings():
 
 ''''The about page'''
 def about():
-    for widget in root.winfo_children():  # checks which wigets(buttons, text etc) are open
-        if str(widget) == ".!optionmenu": #only the menu does not get deleted
-            print("not deleting this!")
+    for widget in root.winfo_children():
+        if str(widget) == ".!optionmenu":
+            print("Not deleting the optionmenu")
         elif str(widget) == ".!canvas":
-            widget.grid_forget() # does not delete, but only forgets/hides the item
+            widget.grid_forget()
+            print("Canvas is forgotten")
         else:
-            widget.destroy() #widget gets deleted, widget.forget() to only hide the widget
+            widget.destroy()
             print(str(widget) + " Is deleted")
 
     about_text = "This application is made by first year Informatica students of the Hogeschool Rotterdam."
@@ -399,7 +393,6 @@ def about():
     about3_text = "- Stefan Pesic"
     about4_text = "- Milan Sas"
     about5_text = " © 2017 Team NoGo"
-
 
     about_information = Label(root, width=0, text=about_text, font=("Helvetica", 20, "bold"))  # puts text on screen
     about_information.grid(row=1, column=0, sticky=W)
@@ -424,17 +417,18 @@ def about():
 
 ''''Percentages en cijfers page'''
 def percentagesEnCijfers():
-    for widget in root.winfo_children():  # checks which wigets(buttons, text etc) are open
-        if str(widget) == ".!optionmenu": #only the menu does not get deleted
-            print("not deleting this!")
+    for widget in root.winfo_children():
+        if str(widget) == ".!optionmenu":
+            print("Optionmenu is not deleted")
         elif str(widget) == ".!canvas":
-            widget.grid_forget() # does not delete, but only forgets/hides the item
+            widget.grid_forget()
+            print("Canvas is forgotten")
         else:
-            widget.destroy() #widget gets deleted, widget.forget() to only hide the widget
+            widget.destroy()
             print(str(widget) + " Is deleted")
 
     button9 = NewButton("Population", 1, 0, screenx / 30, screeny / 150)
-    button9.pageClick(categoryPopulation) #activates a method when the button is clicked
+    button9.pageClick(categoryPopulation) #Goes to the sub categories
     button10 = NewButton("Environment", 2, 0, screenx / 45, screeny / 150)
     button10.pageClick(categoryEnvironment)
     button11 = NewButton("Safety", 3, 0, screenx / 17, screeny / 150)
@@ -446,9 +440,9 @@ def percentagesEnCijfers():
     button14 = NewButton("Overig", 6, 0, screenx / 18, screeny / 150)
     button14.pageClick(categoryOther)
     lastPageArray.append("pec")
-    button52 = NewButton("Give me statistics", 28, 0, screenx / 600, screeny / 150)
+    button52 = NewButton("Give me the statistics", 28, 0, screenx / 600, screeny / 150)
 
-''''The woningsadvies radiobuttons, these will catch the value of a button'''''
+''''The woningsadvies radiobuttons, these will catch the value of a button. It knows which button the user has selected'''''
 bevolking_radioButtons = IntVar()
 milieu_radioButtons = IntVar()
 veiligheid_radioButtons = IntVar()
@@ -463,14 +457,16 @@ def woningsadvies():
     global verkeer_radioButtons
     global voorzieningen_radioButtons
 
-    for widget in root.winfo_children():  # checks which wigets(buttons, text etc) are open
-        if str(widget) == ".!optionmenu": #only the menu does not get deleted
-            print("not deleting this!")
+    for widget in root.winfo_children():
+        if str(widget) == ".!optionmenu":
+            print("Optionmenu will not be deleted")
         elif str(widget) == ".!canvas":
-            widget.grid_forget() # does not delete, but only forgets/hides the item
+            widget.grid_forget()
+            print("Canvas is forgotten")
         else:
-            widget.destroy() #widget gets deleted, widget.forget() to only hide the widget
+            widget.destroy()
             print(str(widget) + " Is deleted")
+
     woningsadvies_text = "Select your importance on the categories below"
     woningsadvies_text1 = "Population"
     woningsadvies_text2 = "Environment"
@@ -560,26 +556,24 @@ def woningsadvies():
     canvas.grid(row=2, column=0, sticky=N, rowspan=999, padx=55)
     polygons()
 
+''''The buttonarray to remember the previous clicked button for the database method to know which method to activate'''
 buttonArray = []
+
 ''''Population/bevolking category, when it gets clicked these buttons appears'''
 def categoryPopulation():
     global buttonArray
     button15 = NewButton("Population1_placehholder", 1, 0, screenx / 30, screeny / 150)
-
     button16 = NewButton("Population2_placeholder", 2, 0, screenx / 45, screeny / 150)
     button17 = NewButton("Population3_placeholder", 3, 0, screenx / 17, screeny / 150)
-    button17.pageClick(databasePercentagesEnCijfers)
     button18 = NewButton("Population4_placeholder", 4, 0, screenx / 17, screeny / 150)
-    button18.pageClick(databasePercentagesEnCijfers)
     button19 = NewButton("Population5_placeholder", 5, 0, screenx / 22, screeny / 150)
-    button19.pageClick(databasePercentagesEnCijfers)
     button20 = NewButton("Population6_placeholder", 6, 0, screenx / 22, screeny / 150)
-    button20.pageClick(databasePercentagesEnCijfers)
     buttonback1 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback1.pageClick(percentagesEnCijfers)
 
 
     '''Gives which button is clicked'''
+    #TODO refine it so the function correctly gives the button which is pressed and then to have the function: "databasePercentagesEnCijfers()" process it
     if button15.clicked == True:
         return 0
     elif button16.clicked == False:
@@ -603,7 +597,8 @@ def categoryEnvironment():
     button24 = NewButton("Environment4_placeholder", 4, 0, screenx / 17, screeny / 150)
     button25 = NewButton("Environment5_placeholder", 5, 0, screenx / 22, screeny / 150)
     button26 = NewButton("Environment6_placeholder", 6, 0, screenx / 22, screeny / 150)
-    buttonback2 = NewButton("Back", 7, 0, screenx / 22, screeny / 150) #goes back to percentages en cijfers section
+    buttonback2 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    buttonback2.pageClick(percentagesEnCijfers)
 
 ''''Safety/veiligheid category, when it gets clicked these buttons appears'''
 def categorySafety():
@@ -649,6 +644,7 @@ def categoryOther():
     buttonback6 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback6.pageClick(percentagesEnCijfers)
 
+
 ''''Database query for the page: "Woningsadvies (the user gets data based on selection)'''''
 def databaseWoningsAdvies():
     global bevolking_radioButtons
@@ -657,7 +653,7 @@ def databaseWoningsAdvies():
     global verkeer_radioButtons
     global voorzieningen_radioButtons
 
-    if bevolking_radioButtons.get() == 0: #gets value of bevolking radiobutton(which button the user selected)
+    if bevolking_radioButtons.get() == 0: #gets value of the radiobutton(which button the user selected)
         pass
     if bevolking_radioButtons.get() == 1:
         pass
@@ -715,24 +711,25 @@ def databaseWoningsAdvies():
 
 ''''Database query for the page: "Percentages en cijfers" '''
 def databasePercentagesEnCijfers():
-    if buttonArray[-1] in range(0, 7):
-        answer = categoryPopulation()
-    elif buttonArray[-1] in range(0,7):
+    #TODO refine the method. When a button is selected the program must know which button and then execute the querry
+    if buttonArray in range(0, 7): #checks what the previous selected buton was , this way it knows which method to activate
+        answer = categoryPopulation()   #result(which button is pressed) gets assigned to answer variable
+    elif buttonArray in range(0,7):
         answer1 = categoryEnvironment()
-    elif buttonArray[-1] in range(0,7):
+    elif buttonArray in range(0,7):
         answer2 = categorySafety()
-    elif buttonArray[-1] in range(0,7):
+    elif buttonArray in range(0,7):
         answer3 = categoryTraffic()
-    elif buttonArray[-1] in range(0,7):
+    elif buttonArray in range(0,7):
         answer3 = categoryTraffic()
-    elif buttonArray[-1] in range(0,7):
+    elif buttonArray in range(0,7):
         answer4 = categoryServices()
-    elif buttonArray[-1] in range(0,7):
+    elif buttonArray in range(0,7):
         answer5 = categoryOther()
 
 
-    if answer != None:
-        if answer == 0:
+    if answer != None: #the result is stored in answer, based on the result, a certain database querry will be executed
+        if answer == 0: #the numbers are buttons.
             pass
         elif answer == 1:
             pass
@@ -815,5 +812,4 @@ def databasePercentagesEnCijfers():
             pass
 
 
-
-root.mainloop()
+root.mainloop() #for the loop
