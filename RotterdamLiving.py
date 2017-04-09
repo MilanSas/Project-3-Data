@@ -393,6 +393,7 @@ def about():
     about4_text = "- Milan Sas"
     about5_text = " © 2017 Team NoGo"
 
+
     about_information = Label(root, width=0, text=about_text, font=("Helvetica", 20, "bold"))  # puts text on screen
     about_information.grid(row=1, column=0, sticky=W)
 
@@ -410,6 +411,10 @@ def about():
 
     about_information5 = Label(root, width=0, text=about5_text, font=("Helvetica", 20, "bold"))
     about_information5.grid(row=6, column=0, sticky=W)
+
+
+
+
 
     lastPageArray.append("about")
 
@@ -440,9 +445,21 @@ def percentagesEnCijfers():
     lastPageArray.append("pec")
     button52 = NewButton("Give me statistics", 28, 0, screenx / 600, screeny / 150)
 
+''''The woningsadvies radiobuttons, these will catch the value of a button'''''
+bevolking_radioButtons = IntVar()
+milieu_radioButtons = IntVar()
+veiligheid_radioButtons = IntVar()
+verkeer_radioButtons = IntVar()
+voorzieningen_radioButtons = IntVar()
 
 ''''Woningsadvies page'''
 def woningsadvies():
+    global bevolking_radioButtons
+    global milieu_radioButtons
+    global veiligheid_radioButtons
+    global verkeer_radioButtons
+    global voorzieningen_radioButtons
+
     for widget in root.winfo_children():  # checks which wigets(buttons, text etc) are open
         if str(widget) == ".!optionmenu":  # only the menu does not get deleted
             print("not deleting this!")
@@ -465,7 +482,7 @@ def woningsadvies():
     ''''the bevolking/population part'''''
     bevolking_text = Label(root, width=0, text=woningsadvies_text1, font=("Helvetica", 20, "bold"))
     bevolking_text.grid(row=3, column=0, sticky=W)
-    bevolking_radioButtons = IntVar()
+
     Radiobutton(root, indicatoron=False, text="3 or lower", variable=bevolking_radioButtons, value=1).grid(column=0,
                                                                                                            row=4,
                                                                                                            sticky=W)
@@ -480,7 +497,6 @@ def woningsadvies():
     ''''The Milieu/Economy part'''
     milieu_text = Label(root, width=0, text=woningsadvies_text2, font=("Helvetica", 20, "bold"))
     milieu_text.grid(row=8, column=0, sticky=W)
-    milieu_radioButtons = IntVar()
     Radiobutton(root, indicatoron=False, text="3 or lower", variable=milieu_radioButtons, value=1).grid(column=0, row=9,
                                                                                                         sticky=W)
     Radiobutton(root, indicatoron=False, text="Between 3 and 5.5", variable=milieu_radioButtons, value=2).grid(column=0,
@@ -496,7 +512,6 @@ def woningsadvies():
     ''''The Veiligheid/Safety part'''
     veiligheid_text = Label(root, width=0, text=woningsadvies_text3, font=("Helvetica", 20, "bold"))
     veiligheid_text.grid(row=13, column=0, sticky=W)
-    veiligheid_radioButtons = IntVar()
     Radiobutton(root, indicatoron=False, text="3 or lower", variable=veiligheid_radioButtons, value=1).grid(column=0,
                                                                                                             row=14,
                                                                                                             sticky=W)
@@ -511,7 +526,7 @@ def woningsadvies():
     ''''The verkeer/trafic part'''
     verkeer_text = Label(root, width=0, text=woningsadvies_text4, font=("Helvetica", 20, "bold"))
     verkeer_text.grid(row=18, column=0, sticky=W)
-    verkeer_radioButtons = IntVar()
+
     Radiobutton(root, indicatoron=False, text="3 or lower", variable=verkeer_radioButtons, value=1).grid(column=0,
                                                                                                          row=19,
                                                                                                          sticky=W)
@@ -526,7 +541,7 @@ def woningsadvies():
     ''''The voorzieningen/services part'''
     voorzieningen_text = Label(root, width=0, text=woningsadvies_text5, font=("Helvetica", 20, "bold"))
     voorzieningen_text.grid(row=23, column=0, sticky=W)
-    voorzieningen_radioButtons = IntVar()
+
     Radiobutton(root, indicatoron=False, text="3 or lower", variable=voorzieningen_radioButtons, value=1).grid(column=0,
                                                                                                                row=24,
                                                                                                                sticky=W)
@@ -535,12 +550,15 @@ def woningsadvies():
     Radiobutton(root, indicatoron=False, text="Between 5.5 and 7", variable=voorzieningen_radioButtons, value=3).grid(
         column=0, row=26, sticky=W)
     Radiobutton(root, indicatoron=False, text="7 or higher", variable=voorzieningen_radioButtons, value=4).grid(
-        column=0, row=27, sticky=W)
+        column=0, row=27, sticky=W,comnmand=databaseWoningsAdvies())
     lastPageArray.append("woon")
     button51 = NewButton("I am ready to see my living options ", 28, 0, screenx / 600, screeny / 150)
-
+    button51.pageClick(databaseWoningsAdvies)
     canvas.grid(row=2, column=0, sticky=N, rowspan=999, padx=55)
     polygons()
+
+
+
 
 
 
@@ -610,12 +628,23 @@ def categoryOther():
     buttonback6 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback6.pageClick(percentagesEnCijfers)
 
-for widget in root.winfo_children():
-    if str(widget) == ".!optionmenu":
-        widget.place_forget()
-        widget.forget()
-        print(str(widget) + " Optionmenu!")
-    else:
-        print("Not forgetting this!")
+''''Database query for the page: "Woningsadvies'''''
+def databaseWoningsAdvies():
+    global bevolking_radioButtons
+    global milieu_radioButtons
+    global veiligheid_radioButtons
+    global verkeer_radioButtons
+    global voorzieningen_radioButtons
+
+    
+    print(bevolking_radioButtons.get())
+    print(milieu_radioButtons.get())
+    print(veiligheid_radioButtons.get())
+    print(verkeer_radioButtons.get())
+    print(voorzieningen_radioButtons.get())
+
+
+
+
 
 root.mainloop()
