@@ -151,6 +151,7 @@ def polygons():
     rs(764), rs(923), rs(765), rs(927), rs(797), rs(1048), rs(795)))
 
 
+
 ''''The name of the area that is displayed in the top centre.'''
 text = Label(root,width=0, height=1,text="",font=("Helvetica",35,"bold")) #Creates text
 text.grid(row=0,column=0,sticky=N) #Draws the text
@@ -346,14 +347,16 @@ def home():
     for widget in root.winfo_children(): #checks which wigets(buttons, text etc) are open
         if str(widget) == ".!optionmenu": #only the menu does not get deleted
             print("not deleting this!")
+        elif str(widget) == ".!canvas":
+            widget.grid_forget() # does not delete, but only forgets/hides the item
         else:
             widget.destroy() #widget gets deleted, widget.forget() to only hide the widget
-            print("deleted")
+            print(str(widget) + " Is deleted")
 
 ''''the settings page'''
 def settings():
     for widget in root.winfo_children():
-        if str(widget) == ".!optionmenu":
+        if str(widget) == ".!optionmenu"  or str(widget) == ".!canvas":
             print("not deleting this!")
         else:
             widget.destroy()
@@ -374,14 +377,16 @@ def settings():
 
 ''''The about page'''
 def about():
-    for widget in root.winfo_children():
-        if str(widget) == ".!optionmenu":
+    for widget in root.winfo_children():  # checks which wigets(buttons, text etc) are open
+        if str(widget) == ".!optionmenu":  # only the menu does not get deleted
             print("not deleting this!")
+        elif str(widget) == ".!canvas":
+            widget.grid_forget()  # does not delete, but only forgets/hides the item
         else:
-            widget.destroy()
-            print("deleted")
+            widget.destroy()  # widget gets deleted, widget.forget() to only hide the widget
+            print(str(widget) + " Is deleted")
 
-    about_text = "This application is made by Informatica students of the Hogeschool Rotterdam."
+    about_text = "This application is made by first year Informatica students of the Hogeschool Rotterdam."
     about1_text = "- Chris Santema"
     about2_text = "- Sebastiaan Van Etten"
     about3_text = "- Stefan Pesic"
@@ -411,12 +416,14 @@ def about():
 
 ''''Percentages en cijfers page'''
 def percentagesEnCijfers():
-    for widget in root.winfo_children():
-        if str(widget) == ".!optionmenu":
+    for widget in root.winfo_children():  # checks which wigets(buttons, text etc) are open
+        if str(widget) == ".!optionmenu":  # only the menu does not get deleted
             print("not deleting this!")
+        elif str(widget) == ".!canvas":
+            widget.grid_forget()  # does not delete, but only forgets/hides the item
         else:
-            widget.destroy()
-            print("deleted")
+            widget.destroy()  # widget gets deleted, widget.forget() to only hide the widget
+            print(str(widget) + " Is deleted")
 
     button9 = NewButton("Population", 1, 0, screenx / 30, screeny / 150)
     button9.pageClick(categoryPopulation) #activates a method when the button is clicked
@@ -431,16 +438,19 @@ def percentagesEnCijfers():
     button14 = NewButton("Overig", 6, 0, screenx / 18, screeny / 150)
     button14.pageClick(categoryOther)
     lastPageArray.append("pec")
+    button52 = NewButton("Give me statistics", 28, 0, screenx / 600, screeny / 150)
 
 
 ''''Woningsadvies page'''
 def woningsadvies():
-    for widget in root.winfo_children():
-        if str(widget) == ".!optionmenu":
+    for widget in root.winfo_children():  # checks which wigets(buttons, text etc) are open
+        if str(widget) == ".!optionmenu":  # only the menu does not get deleted
             print("not deleting this!")
+        elif str(widget) == ".!canvas":
+            widget.grid_forget()  # does not delete, but only forgets/hides the item
         else:
-            widget.destroy()
-            print("deleted")
+            widget.destroy()  # widget gets deleted, widget.forget() to only hide the widget
+            print(str(widget) + " Is deleted")
     woningsadvies_text = "Select your importance on the categories below"
     woningsadvies_text1 = "Population"
     woningsadvies_text2 = "Environment"
@@ -527,6 +537,12 @@ def woningsadvies():
     Radiobutton(root, indicatoron=False, text="7 or higher", variable=voorzieningen_radioButtons, value=4).grid(
         column=0, row=27, sticky=W)
     lastPageArray.append("woon")
+    button51 = NewButton("I am ready to see my living options ", 28, 0, screenx / 600, screeny / 150)
+
+    canvas.grid(row=2, column=0, sticky=N, rowspan=999, padx=55)
+    polygons()
+
+
 
 ''''Population/bevolking category, when it gets clicked these buttons appears'''
 def categoryPopulation():
@@ -547,7 +563,7 @@ def categoryEnvironment():
     button24 = NewButton("Environment4_placeholder", 4, 0, screenx / 17, screeny / 150)
     button25 = NewButton("Environment5_placeholder", 5, 0, screenx / 22, screeny / 150)
     button26 = NewButton("Environment6_placeholder", 6, 0, screenx / 22, screeny / 150)
-    buttonback2 = NewButton("Back", 7, 0, screenx / 22, screeny / 150) #goes back to percentages 
+    buttonback2 = NewButton("Back", 7, 0, screenx / 22, screeny / 150) #goes back to percentages en cijfers section
     buttonback2.pageClick(percentagesEnCijfers)
 
 ''''Safety/veiligheid category, when it gets clicked these buttons appears'''
@@ -594,6 +610,12 @@ def categoryOther():
     buttonback6 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback6.pageClick(percentagesEnCijfers)
 
+for widget in root.winfo_children():
+    if str(widget) == ".!optionmenu":
+        widget.place_forget()
+        widget.forget()
+        print(str(widget) + " Optionmenu!")
+    else:
+        print("Not forgetting this!")
 
-''''The loop'''
 root.mainloop()
