@@ -20,6 +20,7 @@ screeny = root.winfo_screenheight()
 ''''Array that will save the last page the user has visited, this is used so elements can be cleared on the screen.'''''
 lastPageArray = [] #The name of the elements(pages): home, woon, pec, about, settings
 
+
 ''''Area Text (names of the area that get loaded when user clicks the area'''''
 overschie = "Overschie"
 hillegersberg_schiebroek = "Hillegersberg-schiebroek"
@@ -53,6 +54,8 @@ class NewButton:
             elif self.clicked == True:
                  self.button.config(bg="DeepSkyBlue2")
                  setattr(self, 'clicked', False)
+
+
     def pageClick(self,page): #changes the method of the button
         self.button.config(command=page)
 
@@ -325,14 +328,13 @@ def menuSelector(event):
     elif str(variable.get()) == "Exit":
         root.destroy()
 
-
-
 ''''Drop down menu'''
 variable = StringVar(root)
-variable.set("Home") # default value
-menu_button= OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "About", "Exit", command=menuSelector)
-menu_button.config(font=("Helvetica",50,"bold"),bg="DeepSkyBlue2", fg="white")
-menu_button.grid(row=0,column=0,sticky=N+W)
+variable.set("Home")  # default value
+menu_button = OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "About",
+                             "Exit", command=menuSelector)
+menu_button.config(font=("Helvetica", 50, "bold"), bg="DeepSkyBlue2", fg="white")
+menu_button.grid(row=0, column=0, sticky=N + W)
 
 
 ''''Menu Text'''
@@ -342,10 +344,11 @@ description_text.grid(row=1,column=0,sticky=W)
 
 ''''the home page'''
 def home():
+
     for widget in root.winfo_children(): #checks which wigets(buttons, text etc) are open
-        if str(widget) == ".!optionmenu": #only the menu does not get deleted
+        if widget == menu_button: #only the menu does not get deleted
             print("not deleting this!")
-        elif str(widget) == ".!canvas":
+        elif widget == canvas:
             widget.grid_forget() # does not delete, but only forgets/hides the item
         else:
             widget.destroy() #widget gets deleted, widget.forget() to only hide the widget
@@ -354,11 +357,13 @@ def home():
 ''''the settings page'''
 def settings():
     for widget in root.winfo_children():
-        if str(widget) == ".!optionmenu"  or str(widget) == ".!canvas":
+        if widget == menu_button: #only the menu does not get deleted
             print("not deleting this!")
+        elif widget == canvas:
+            widget.grid_forget() # does not delete, but only forgets/hides the item
         else:
-            widget.destroy()
-            print("deleted")
+            widget.destroy() #widget gets deleted, widget.forget() to only hide the widget
+            print(str(widget) + " Is deleted")
 
     resolution_text = "Select your screen resolution"
     resolution1_text = Label(root, text=resolution_text, font=("Helvetica", 15, "bold"))  # puts image on screen
@@ -376,12 +381,12 @@ def settings():
 ''''The about page'''
 def about():
     for widget in root.winfo_children():  # checks which wigets(buttons, text etc) are open
-        if str(widget) == ".!optionmenu":  # only the menu does not get deleted
+        if widget == menu_button: #only the menu does not get deleted
             print("not deleting this!")
-        elif str(widget) == ".!canvas":
-            widget.grid_forget()  # does not delete, but only forgets/hides the item
+        elif widget == canvas:
+            widget.grid_forget() # does not delete, but only forgets/hides the item
         else:
-            widget.destroy()  # widget gets deleted, widget.forget() to only hide the widget
+            widget.destroy() #widget gets deleted, widget.forget() to only hide the widget
             print(str(widget) + " Is deleted")
 
     about_text = "This application is made by first year Informatica students of the Hogeschool Rotterdam."
@@ -416,12 +421,12 @@ def about():
 ''''Percentages en cijfers page'''
 def percentagesEnCijfers():
     for widget in root.winfo_children():  # checks which wigets(buttons, text etc) are open
-        if str(widget) == ".!optionmenu":  # only the menu does not get deleted
+        if widget == menu_button: #only the menu does not get deleted
             print("not deleting this!")
-        elif str(widget) == ".!canvas":
-            widget.grid_forget()  # does not delete, but only forgets/hides the item
+        elif widget == canvas:
+            widget.grid_forget() # does not delete, but only forgets/hides the item
         else:
-            widget.destroy()  # widget gets deleted, widget.forget() to only hide the widget
+            widget.destroy() #widget gets deleted, widget.forget() to only hide the widget
             print(str(widget) + " Is deleted")
 
     button9 = NewButton("Population", 1, 0, screenx / 30, screeny / 150)
@@ -455,12 +460,12 @@ def woningsadvies():
     global voorzieningen_radioButtons
 
     for widget in root.winfo_children():  # checks which wigets(buttons, text etc) are open
-        if str(widget) == ".!optionmenu":  # only the menu does not get deleted
+        if widget == menu_button: #only the menu does not get deleted
             print("not deleting this!")
-        elif str(widget) == ".!canvas":
-            widget.grid_forget()  # does not delete, but only forgets/hides the item
+        elif widget == canvas:
+            widget.grid_forget() # does not delete, but only forgets/hides the item
         else:
-            widget.destroy()  # widget gets deleted, widget.forget() to only hide the widget
+            widget.destroy() #widget gets deleted, widget.forget() to only hide the widget
             print(str(widget) + " Is deleted")
     woningsadvies_text = "Select your importance on the categories below"
     woningsadvies_text1 = "Population"
