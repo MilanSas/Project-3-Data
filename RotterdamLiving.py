@@ -1,6 +1,13 @@
 from tkinter import *
+import matplotlib
+matplotlib.use("TKAgg")
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
 
-#To read the comments, the symbol: #, is after lines. the symbol: '''''' , is to explain the overall code.
+
+
+
+#TODO read the comments, the symbol: , is after lines. the symbol: '''''' , is to explain the overall code
 #TODO when user hoovers of an area, make it if it's possible the area change colour + change location text
 #TODO when user clicks on an area, that area needs to be zoomed in
 
@@ -646,6 +653,7 @@ def categoryOther():
 
 
 ''''Database query for the page: "Woningsadvies (the user gets data based on selection)'''''
+
 def databaseWoningsAdvies():
     global bevolking_radioButtons
     global milieu_radioButtons
@@ -708,8 +716,20 @@ def databaseWoningsAdvies():
     if voorzieningen_radioButtons.get() == 4:
         pass
 
+    data = "data"
+    button52 = NewButton("ShowGraph", 0, 0, screenx / 600, screeny / 150)
+    button52.pageClick(lambda: ResultsData(data))
 
 ''''Database query for the page: "Percentages en cijfers" '''
+
+def ResultsData(data):
+    f = Figure(figsize= (5,5), dpi =50)
+    a = f.add_subplot(111) # means 1 chart 1 by 1
+    a.plot([1,2,3,4,5,6,7,8], [5,6,2,4,4,3,5,3])
+    Figure1 = FigureCanvasTkAgg(f, root)
+    Figure1.show()
+    Figure1.get_tk_widget().grid(row=0, column=0, sticky=N, rowspan = 30)
+
 def databasePercentagesEnCijfers():
     #TODO refine the method. When a button is selected the program must know which button and then execute the querry
     if buttonArray in range(0, 7): #checks what the previous selected buton was , this way it knows which method to activate
