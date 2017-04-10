@@ -634,14 +634,37 @@ def categoryOther():
     buttonback6.pageClick(percentagesEnCijfers)
 
 
-''''Database query for the page: "Woningsadvies (the user gets data based on selection)'''''
-
-
+''''Based on the data, the colour of the map changes'''
 def ShowResults(data):
-    global polygonsgebieden
+    global polygonsgebieden #The array of area's
+    data = {"Charlois":50, "Overschie":90} #Dictionary to simulate a query, this is to test the query
+    for result in data: #goes in the dictionary (the query)
+            for gebied in polygonsgebieden: #Goes in the area's
+                if result == "Charlois":
+                    result = int(data.get(result)) #Converts the dictionary value to an int
+                    changecolor(charlois_polygon, result) #Changes color of the area and also change colour based on percentage
+                    pass
+                elif result == "Overschie":
+                    pass
+                elif result == "Hillegersberg":
+                    pass
+                elif result == "Prins Alexander":
+                    pass
+                elif result == "Kralingen":
+                    pass
+                elif result == "Noord":
+                    pass
+                elif result == "Delftshaven":
+                    pass
+                elif result == "Noord":
+                    pass
+                elif result == "Centrum":
+                    pass
+                elif result == "Feijennoord":
+                    pass
+                elif result == "Waalhaven":
+                    pass
 
-    for gebied in polygonsgebieden:
-        changecolor(gebied, 2)
 
     f = Figure(figsize=(5, 5), dpi=50)
     a = f.add_subplot(111)  # means 1 chart 1 by 1
@@ -652,7 +675,7 @@ def ShowResults(data):
 
 
 
-
+''''Database query for the page: "Woningsadvies (the user gets data based on selection)'''''
 def databaseWoningsAdvies():
     #Status = database ready
     global bevolking_radioButtons
@@ -719,30 +742,24 @@ def databaseWoningsAdvies():
         pass
 
 
-    ShowResults(data)
+    #TODO add: ShowResults(data), for each button
 
 
 ''''Database query for the page: "Percentages en cijfers" the plot graphics '''
-
-
-
 ''''Function to have the results from the database influence the colour of a polygon(area)'''
 def changecolor(object,percent):
     red = 0
     green = 0
-    if percent < 30:
+    if percent <= 30: #If the percentage is a certain ammount, the colour wil
         red = 255
         green = 16
-    elif percent > 30 and percent < 70:
+    elif percent > 30 and percent <= 70:
+        red = 255
+        green = 255
+    elif percent > 70 and percent <= 100:
         green = 255
         red = 16
-    elif percent > 70:
-        green = 255
-        red = int((100 - percent) * 5.1)
-    elif percent <= 50:
-        red = 255
-        green = int(percent * 5.1)
-    color = (red, green, 16)
+    color = (red, green, 16) #3th value must be 16 or above
     canvas.itemconfig(object.shape, fill=HexToRGB(color))
 
 
@@ -754,91 +771,91 @@ def databasePercentagesEnCijfers():
     global buttonArray #needed because the array has the last selected button
     answer = (buttonArray[-1]) #last button gets stored in answer
     print(answer)
-    data = []
+    data = [] #Here comes the query, for every button a new query should be appended to the array
 
     # TODO ResultQuery = []
     if answer == 0:  #the numbers represent the button, each button has his own number
-        pass
+        #For every button, a new query should be send.
+        ShowResults(data) #The query get send into the showresults function, then the map colour gets changed based on it
     elif answer == 1:
-        pass
+        ShowResults(data)
     elif answer == 2:
-        pass
+        ShowResults(data)
     elif answer == 3:
-        pass
+        ShowResults(data)
     elif answer == 4:
-        pass
+        ShowResults(data)
     elif answer == 5:
-        pass
+        ShowResults(data)
 
     elif  answer == 6:
-        pass
+        ShowResults(data)
     elif answer == 7:
-        pass
+        ShowResults(data)
     elif answer == 8:
-        pass
+        ShowResults(data)
     elif answer == 9:
-        pass
+        ShowResults(data)
     elif answer == 10:
-        pass
+        ShowResults(data)
     elif answer == 11:
-        pass
+        ShowResults(data)
 
     elif answer == 12:
-        pass
+        ShowResults(data)
     elif answer == 13:
-        pass
+        ShowResults(data)
     elif answer == 14:
-        pass
+        ShowResults(data)
     elif answer == 15:
-        pass
+        ShowResults(data)
     elif answer == 16:
-        pass
+        ShowResults(data)
     elif answer == 17:
-        pass
+        ShowResults(data)
 
 
     elif answer == 18:
-        pass
+        ShowResults(data)
     elif answer == 19:
-        pass
+        ShowResults(data)
     elif answer == 20:
-        pass
+        ShowResults(data)
     elif answer == 21:
-        pass
+        ShowResults(data)
     elif answer == 22:
-        pass
+        ShowResults(data)
     elif answer == 23:
-        pass
+        ShowResults(data)
 
 
     elif answer == 24:
-        pass
+        ShowResults(data)
     elif answer == 25:
-        pass
+        ShowResults(data)
     elif answer == 26:
-        pass
+        ShowResults(data)
     elif answer == 27:
-        pass
+        ShowResults(data)
     elif answer == 28:
-        pass
+        ShowResults(data)
     elif answer == 29:
-        pass
+        ShowResults(data)
 
 
     elif answer == 30:
-        pass
+        ShowResults(data)
     elif answer == 31:
-        pass
+        ShowResults(data)
     elif answer == 32:
-        pass
+        ShowResults(data)
     elif answer == 33:
-        pass
+        ShowResults(data)
     elif answer == 34:
-        pass
+        ShowResults(data)
     elif answer == 35:
-        pass
+        ShowResults(data)
 
-    ShowResults(data)
 
 
 root.mainloop() #for the loop
