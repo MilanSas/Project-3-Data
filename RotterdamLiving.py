@@ -77,7 +77,7 @@ class PecButton:
         databasePercentagesEnCijfers()
 
 
-''''The items in the class get saved in an array, this is for the: "databasePercentagesEnCijfers Function"'''
+''''The last clicked button from the page: "Percentages en cijfers", are saved in an array, this is for the: "databasePercentagesEnCijfers Function"'''
 buttonArray = []
 
 
@@ -99,25 +99,6 @@ def rs(size):
     ratio = (screeny + screeny/2) / size
     return (screeny / ratio)
 
-#TODO fix changeColor function to return the right area colours based on the result of the database.
-''''Function to have the results from the database influence the colour of a polygon(area)'''
-def changecolor(object,percent):
-    red = 0
-    green = 0
-    if percent < 7:
-        red = 255
-        green = 16
-    elif percent > 93:
-        green = 255
-        red = 16
-    elif percent > 50:
-        green = 255
-        red = int((100 - percent) * 5.1)
-    elif percent <= 50:
-        red = 255
-        green = int(percent * 5.1)
-    color = (red, green, 16)
-    canvas.itemconfig(object.shape, fill=HexToRGB(color))
 
 '''Function that Converts hex to RGB'''
 def HexToRGB(rgb):
@@ -175,6 +156,7 @@ def polygons():
     rs(1225), rs(646), rs(1227), rs(620), rs(1113), rs(596), rs(1038), rs(610), rs(954), rs(639), rs(862), rs(618),
     rs(885), rs(658), rs(917), rs(663), rs(921), rs(647), rs(972), rs(670), rs(962), rs(722), rs(937), rs(743), rs(934),
     rs(764), rs(923), rs(765), rs(927), rs(797), rs(1048), rs(795)))
+
 
 
 ''''The name of the area that is displayed in the top centre.'''
@@ -725,8 +707,7 @@ def databaseWoningsAdvies():
     button52 = NewButton("ShowGraph", 0, 0, screenx / 600, screeny / 150)
     button52.pageClick(lambda: ResultsData(data))
 
-''''Database query for the page: "Percentages en cijfers" '''
-
+''''Database query for the page: "Percentages en cijfers" the plot graphics '''
 def ResultsData(data):
     f = Figure(figsize= (5,5), dpi =50)
     a = f.add_subplot(111) # means 1 chart 1 by 1
@@ -735,12 +716,34 @@ def ResultsData(data):
     Figure1.show()
     Figure1.get_tk_widget().grid(row=0, column=0, sticky=N, rowspan = 30)
 
+
+''''Function to have the results from the database influence the colour of a polygon(area)'''
+def changecolor(object,percent):
+    red = 0
+    green = 0
+    if percent < 30:
+        red = 255
+        green = 16
+    elif percent > 30 and percent < 70:
+        green = 255
+        red = 16
+    elif percent > 70:
+        green = 255
+        red = int((100 - percent) * 5.1)
+    elif percent <= 50:
+        red = 255
+        green = int(percent * 5.1)
+    color = (red, green, 16)
+    canvas.itemconfig(object.shape, fill=HexToRGB(color))
+
+
+
+''''Database query for the page: "Percentages en cijfers"'''
 def databasePercentagesEnCijfers():
     #status = database Ready
     global buttonArray #needed because the array has the last selected button
     answer = (buttonArray[-1]) #last button gets stored in answer
     print(answer)
-
 
     if answer == 0:  #the numbers represent the button, each button has his own number
         pass
