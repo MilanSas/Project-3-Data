@@ -113,51 +113,52 @@ class polygon:
         self.shape = canvas.create_polygon(list, fill=HexToRGB(self.color), outline='black', width = 2)
 
 ''''Function that draws the polygons(area's)'''''
-def polygons():
-    overschie_polgon = polygon((20, 50, 120), (
-    rs(904), rs(194), rs(947), rs(183), rs(955), rs(205), rs(1106), rs(109), rs(1176), rs(199), rs(1222), rs(163),
-    rs(1242), rs(185), rs(1237), rs(355), rs(1109), rs(432), rs(1138), rs(471), rs(1057), rs(479), rs(1017), rs(403),
-    rs(1059), rs(350), rs(1050), rs(345), rs(1003), rs(366), rs(964), rs(322), rs(949), rs(342)))
-    hillegersberg_polygon = polygon((20, 50, 120), (
-    rs(1242), rs(185), rs(1237), rs(355), rs(1520), rs(282), rs(1499), rs(189), rs(1475), rs(213), rs(1432), rs(195),
-    rs(1428), rs(172), rs(1387), rs(141), rs(1382), rs(154), rs(1280), rs(90)))
-    prins_alexander_polygon = polygon((20, 50, 120), (
-    rs(1562), rs(454), rs(1661), rs(425), rs(1651), rs(350), rs(1693), rs(337), rs(1650), rs(227), rs(1663), rs(222),
-    rs(1673), rs(233), rs(1821), rs(141), rs(1791), rs(116), rs(1815), rs(31), rs(1804), rs(12), rs(1617), rs(76),
-    rs(1680), rs(145), rs(1627), rs(169), rs(1595), rs(134), rs(1499), rs(189)))
-    kralingen_polygon = polygon((20, 50, 120), (
-    rs(1521), rs(282), rs(1562), rs(454), rs(1538), rs(498), rs(1572), rs(594), rs(1489), rs(616), rs(1469), rs(593),
-    rs(1453), rs(522), rs(1397), rs(500), rs(1382), rs(461), rs(1337), rs(454), rs(1331), rs(330)))
-    noord_polygon = polygon((20, 50, 120), (
-    rs(1331), rs(330), rs(1237), rs(355), rs(1109), rs(432), rs(1136), rs(468), rs(1206), rs(462), rs(1208), rs(455),
-    rs(1288), rs(443), rs(1337), rs(454)))
-    delftshaven_polygon = polygon((20, 50, 120), (
-    rs(1057), rs(479), rs(1034), rs(546), rs(1048), rs(582), rs(1038), rs(610), rs(1113), rs(596), rs(1227), rs(620),
-    rs(1262), rs(614), rs(1244), rs(558), rs(1223), rs(553), rs(1247), rs(539), rs(1243), rs(456)))
-    centrum_polygon = polygon((20, 50, 120), (
-    rs(1262), rs(614), rs(1244), rs(558), rs(1223), rs(553), rs(1247), rs(539), rs(1243), rs(461), rs(1206), rs(462),
-    rs(1208), rs(455), rs(1288), rs(443), rs(1337), rs(454), rs(1382), rs(461), rs(1397), rs(500), rs(1375), rs(506),
-    rs(1322), rs(574)))
-    feijenoord_polygon = polygon((20, 50, 120), (
-    rs(1397), rs(500), rs(1375), rs(506), rs(1322), rs(574), rs(1262), rs(614), rs(1288), rs(642), rs(1378), rs(617),
-    rs(1372), rs(694), rs(1361), rs(698), rs(1361), rs(720), rs(1417), rs(772), rs(1454), rs(735), rs(1487), rs(735),
-    rs(1496), rs(698), rs(1450), rs(605), rs(1469), rs(593), rs(1453), rs(522)))
-    ijsselmonde_polygon = polygon((20, 50, 120), (
-    rs(1572), rs(594), rs(1489), rs(616), rs(1469), rs(593), rs(1450), rs(605), rs(1496), rs(698), rs(1487), rs(735),
-    rs(1454), rs(735), rs(1417), rs(772), rs(1457), rs(824), rs(1524), rs(831), rs(1574), rs(813), rs(1657), rs(766),
-    rs(1666), rs(779), rs(1682), rs(769), rs(1712), rs(606), rs(1625), rs(584)))
-    charlois_polygon = polygon((20, 50, 120), (
-    rs(1262), rs(614), rs(1288), rs(642), rs(1378), rs(617), rs(1372), rs(694), rs(1361), rs(698), rs(1361), rs(720),
-    rs(1417), rs(772), rs(1457), rs(824), rs(1388), rs(820), rs(1315), rs(848), rs(1315), rs(869), rs(1242), rs(871),
-    rs(1161), rs(839), rs(1201), rs(824), rs(1218), rs(800), rs(1201), rs(792), rs(1199), rs(763), rs(1246), rs(656),
-    rs(1225), rs(646), rs(1227), rs(620)))
-    waalhaven_polygon = polygon((20, 50, 120), (
-    rs(1161), rs(839), rs(1201), rs(824), rs(1218), rs(800), rs(1201), rs(792), rs(1199), rs(763), rs(1246), rs(656),
-    rs(1225), rs(646), rs(1227), rs(620), rs(1113), rs(596), rs(1038), rs(610), rs(954), rs(639), rs(862), rs(618),
-    rs(885), rs(658), rs(917), rs(663), rs(921), rs(647), rs(972), rs(670), rs(962), rs(722), rs(937), rs(743), rs(934),
-    rs(764), rs(923), rs(765), rs(927), rs(797), rs(1048), rs(795)))
 
 
+overschie_polygon = polygon((20, 50, 120), (
+rs(904), rs(194), rs(947), rs(183), rs(955), rs(205), rs(1106), rs(109), rs(1176), rs(199), rs(1222), rs(163),
+rs(1242), rs(185), rs(1237), rs(355), rs(1109), rs(432), rs(1138), rs(471), rs(1057), rs(479), rs(1017), rs(403),
+rs(1059), rs(350), rs(1050), rs(345), rs(1003), rs(366), rs(964), rs(322), rs(949), rs(342)))
+hillegersberg_polygon = polygon((20, 50, 120), (
+rs(1242), rs(185), rs(1237), rs(355), rs(1520), rs(282), rs(1499), rs(189), rs(1475), rs(213), rs(1432), rs(195),
+rs(1428), rs(172), rs(1387), rs(141), rs(1382), rs(154), rs(1280), rs(90)))
+prins_alexander_polygon = polygon((20, 50, 120), (
+rs(1562), rs(454), rs(1661), rs(425), rs(1651), rs(350), rs(1693), rs(337), rs(1650), rs(227), rs(1663), rs(222),
+rs(1673), rs(233), rs(1821), rs(141), rs(1791), rs(116), rs(1815), rs(31), rs(1804), rs(12), rs(1617), rs(76),
+rs(1680), rs(145), rs(1627), rs(169), rs(1595), rs(134), rs(1499), rs(189)))
+kralingen_polygon = polygon((20, 50, 120), (
+rs(1521), rs(282), rs(1562), rs(454), rs(1538), rs(498), rs(1572), rs(594), rs(1489), rs(616), rs(1469), rs(593),
+rs(1453), rs(522), rs(1397), rs(500), rs(1382), rs(461), rs(1337), rs(454), rs(1331), rs(330)))
+noord_polygon = polygon((20, 50, 120), (
+rs(1331), rs(330), rs(1237), rs(355), rs(1109), rs(432), rs(1136), rs(468), rs(1206), rs(462), rs(1208), rs(455),
+rs(1288), rs(443), rs(1337), rs(454)))
+delftshaven_polygon = polygon((20, 50, 120), (
+rs(1057), rs(479), rs(1034), rs(546), rs(1048), rs(582), rs(1038), rs(610), rs(1113), rs(596), rs(1227), rs(620),
+rs(1262), rs(614), rs(1244), rs(558), rs(1223), rs(553), rs(1247), rs(539), rs(1243), rs(456)))
+centrum_polygon = polygon((20, 50, 120), (
+rs(1262), rs(614), rs(1244), rs(558), rs(1223), rs(553), rs(1247), rs(539), rs(1243), rs(461), rs(1206), rs(462),
+rs(1208), rs(455), rs(1288), rs(443), rs(1337), rs(454), rs(1382), rs(461), rs(1397), rs(500), rs(1375), rs(506),
+rs(1322), rs(574)))
+feijenoord_polygon = polygon((20, 50, 120), (
+rs(1397), rs(500), rs(1375), rs(506), rs(1322), rs(574), rs(1262), rs(614), rs(1288), rs(642), rs(1378), rs(617),
+rs(1372), rs(694), rs(1361), rs(698), rs(1361), rs(720), rs(1417), rs(772), rs(1454), rs(735), rs(1487), rs(735),
+rs(1496), rs(698), rs(1450), rs(605), rs(1469), rs(593), rs(1453), rs(522)))
+ijsselmonde_polygon = polygon((20, 50, 120), (
+rs(1572), rs(594), rs(1489), rs(616), rs(1469), rs(593), rs(1450), rs(605), rs(1496), rs(698), rs(1487), rs(735),
+rs(1454), rs(735), rs(1417), rs(772), rs(1457), rs(824), rs(1524), rs(831), rs(1574), rs(813), rs(1657), rs(766),
+rs(1666), rs(779), rs(1682), rs(769), rs(1712), rs(606), rs(1625), rs(584)))
+charlois_polygon = polygon((20, 50, 120), (
+rs(1262), rs(614), rs(1288), rs(642), rs(1378), rs(617), rs(1372), rs(694), rs(1361), rs(698), rs(1361), rs(720),
+rs(1417), rs(772), rs(1457), rs(824), rs(1388), rs(820), rs(1315), rs(848), rs(1315), rs(869), rs(1242), rs(871),
+rs(1161), rs(839), rs(1201), rs(824), rs(1218), rs(800), rs(1201), rs(792), rs(1199), rs(763), rs(1246), rs(656),
+rs(1225), rs(646), rs(1227), rs(620)))
+waalhaven_polygon = polygon((20, 50, 120), (
+rs(1161), rs(839), rs(1201), rs(824), rs(1218), rs(800), rs(1201), rs(792), rs(1199), rs(763), rs(1246), rs(656),
+rs(1225), rs(646), rs(1227), rs(620), rs(1113), rs(596), rs(1038), rs(610), rs(954), rs(639), rs(862), rs(618),
+rs(885), rs(658), rs(917), rs(663), rs(921), rs(647), rs(972), rs(670), rs(962), rs(722), rs(937), rs(743), rs(934),
+rs(764), rs(923), rs(765), rs(927), rs(797), rs(1048), rs(795)))
+
+polygonsgebieden = [overschie_polygon, hillegersberg_polygon, prins_alexander_polygon, kralingen_polygon, noord_polygon, delftshaven_polygon, centrum_polygon, feijenoord_polygon, ijsselmonde_polygon, charlois_polygon, waalhaven_polygon]
 
 ''''The name of the area that is displayed in the top centre.'''
 text = Label(root,width=0, height=1,text="",font=("Helvetica",35,"bold")) #Creates text
@@ -349,23 +350,24 @@ description_text.grid(row=1,column=0,sticky=W)
 ''''the home page'''
 def home():
     for widget in root.winfo_children(): #checks which wigets(buttons, text etc) are open
-        if str(widget) == ".!optionmenu": #only the menu does not get deleted
+        print(".!optionmenu")
+        if widget == menu_button: #only the menu does not get deleted
             print("Not deleting optionmenu")
-        elif str(widget) == ".!canvas": #the canvas only gets forgotten(hidden) and not deleted.
-            widget.grid_forget()
+        elif widget == canvas:
+            print("canvas")
             print("Canvas is forgotten")
         else:
             widget.destroy() #Other widgets are destroyed and so are their value
             print(str(widget) + " Is deleted")
 
+
 ''''the settings page'''
 def settings():
     for widget in root.winfo_children():
-        if str(widget) == ".!optionmenu":
+        if widget == menu_button:
             print("Not deleting optionmenu")
-        elif str(widget) == ".!canvas":
-            widget.grid_forget()
-            print("Canvas is forgotten")
+        elif widget == canvas:
+            print("canvas")
         else:
             widget.destroy()
             print(str(widget) + " Is deleted")
@@ -387,11 +389,10 @@ def settings():
 ''''The about page'''
 def about():
     for widget in root.winfo_children():
-        if str(widget) == ".!optionmenu":
+        if widget == menu_button:
             print("Not deleting the optionmenu")
-        elif str(widget) == ".!canvas":
-            widget.grid_forget()
-            print("Canvas is forgotten")
+        elif widget == canvas:
+            print("canvas")
         else:
             widget.destroy()
             print(str(widget) + " Is deleted")
@@ -427,11 +428,10 @@ def about():
 ''''Percentages en cijfers page'''
 def percentagesEnCijfers():
     for widget in root.winfo_children():
-        if str(widget) == ".!optionmenu":
+        if widget == menu_button:
             print("Optionmenu is not deleted")
-        elif str(widget) == ".!canvas":
-            widget.grid_forget()
-            print("Canvas is forgotten")
+        elif widget == canvas:
+            print("canvas")
         else:
             widget.destroy()
             print(str(widget) + " Is deleted")
@@ -467,11 +467,10 @@ def woningsadvies():
     global voorzieningen_radioButtons
 
     for widget in root.winfo_children():
-        if str(widget) == ".!optionmenu":
+        if widget == menu_button:
             print("Optionmenu will not be deleted")
-        elif str(widget) == ".!canvas":
-            widget.grid_forget()
-            print("Canvas is forgotten")
+        elif widget == canvas:
+            print("canvas")
         else:
             widget.destroy()
             print(str(widget) + " Is deleted")
@@ -563,7 +562,6 @@ def woningsadvies():
     button51 = NewButton("I am ready to see my living options ", 28, 0, screenx / 600, screeny / 150)
     button51.pageClick(databaseWoningsAdvies)
     canvas.grid(row=2, column=0, sticky=N, rowspan=999, padx=55)
-    polygons()
 
 ''''The buttonarray to remember the previous clicked button for the database method to know which method to activate'''
 
@@ -638,6 +636,23 @@ def categoryOther():
 
 ''''Database query for the page: "Woningsadvies (the user gets data based on selection)'''''
 
+
+def ShowResults(data):
+    global polygonsgebieden
+
+    for gebied in polygonsgebieden:
+        changecolor(gebied, 2)
+
+    f = Figure(figsize=(5, 5), dpi=50)
+    a = f.add_subplot(111)  # means 1 chart 1 by 1
+    a.plot([1, 2, 3, 4, 5, 6, 7, 8], [5, 6, 2, 4, 4, 3, 5, 3])
+    Figure1 = FigureCanvasTkAgg(f, root)
+    Figure1.show()
+    Figure1.get_tk_widget().grid(row=0, column=0, sticky=N, rowspan=30)
+
+
+
+
 def databaseWoningsAdvies():
     #Status = database ready
     global bevolking_radioButtons
@@ -647,7 +662,7 @@ def databaseWoningsAdvies():
     global voorzieningen_radioButtons
 
     print(bevolking_radioButtons.get())
-
+    data = []
     if bevolking_radioButtons.get() == 0: #gets value of the radiobutton(which button the user selected)
         pass
     if bevolking_radioButtons.get() == 1:
@@ -703,18 +718,12 @@ def databaseWoningsAdvies():
     if voorzieningen_radioButtons.get() == 4:
         pass
 
-    data = "data"
-    button52 = NewButton("ShowGraph", 0, 0, screenx / 600, screeny / 150)
-    button52.pageClick(lambda: ResultsData(data))
+
+    ShowResults(data)
+
 
 ''''Database query for the page: "Percentages en cijfers" the plot graphics '''
-def ResultsData(data):
-    f = Figure(figsize= (5,5), dpi =50)
-    a = f.add_subplot(111) # means 1 chart 1 by 1
-    a.plot([1,2,3,4,5,6,7,8], [5,6,2,4,4,3,5,3])
-    Figure1 = FigureCanvasTkAgg(f, root)
-    Figure1.show()
-    Figure1.get_tk_widget().grid(row=0, column=0, sticky=N, rowspan = 30)
+
 
 
 ''''Function to have the results from the database influence the colour of a polygon(area)'''
@@ -741,10 +750,13 @@ def changecolor(object,percent):
 ''''Database query for the page: "Percentages en cijfers"'''
 def databasePercentagesEnCijfers():
     #status = database Ready
+    global database
     global buttonArray #needed because the array has the last selected button
     answer = (buttonArray[-1]) #last button gets stored in answer
     print(answer)
+    data = []
 
+    # TODO ResultQuery = []
     if answer == 0:  #the numbers represent the button, each button has his own number
         pass
     elif answer == 1:
@@ -825,6 +837,8 @@ def databasePercentagesEnCijfers():
         pass
     elif answer == 35:
         pass
+
+    ShowResults(data)
 
 
 root.mainloop() #for the loop
