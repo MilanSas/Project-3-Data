@@ -22,7 +22,7 @@ def pieChart():
 
     labels = 'Nederlanders', 'Marokkanen', 'Turken', 'Kaapverdianen', 'Antilianen', 'Surinamers', 'Zuid-Europeanen', 'Overig'
     sizes = [data_Ned, data_Mar, data_Tur, data_Kaa, data_Ant, data_Sur, data_Zui, data_Ove]
-    explode = (0, 0, 0, 0, 0, 0, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+    explode = (0, 0, 0, 0, 0, 0, 0, 0)
 
     fig1, ax1 = plt.subplots()
     ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
