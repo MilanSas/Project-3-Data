@@ -1,29 +1,24 @@
-from tkinter import *
-import matplotlib
+from tkinter import * #Needed for GUI
+import matplotlib #Needed for graph
 matplotlib.use("TKAgg")
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
 
-
-
-
 #TODO read the comments, the symbol: , is after lines. the symbol: '''''' , is to explain the overall code
-#TODO when user hoovers of an area, make it if it's possible the area change colour + change location text
 #TODO when user clicks on an area, that area needs to be zoomed in
 
 root = Tk() #Needed to run
 
 ''''Window'''
 root.title("Rotterdam Living") #Window title
-root.geometry('{}x{}'.format(root.winfo_screenwidth(), root.winfo_screenheight())) #Window doesn't resize
+root.geometry('{}x{}'.format(root.winfo_screenwidth(), root.winfo_screenheight())) #Window doesn't automaticcaly resized this way
 
 ''''gets user's screen size (width and height)'''''
-screenx = root.winfo_screenwidth()
-screeny = root.winfo_screenheight()
+screenx = root.winfo_screenwidth() #width
+screeny = root.winfo_screenheight() #height
 
-''''Array that will save the last page the user has visited, this is used so elements can be cleared on the screen.'''''
+''''Array that will save the last page the user has visited, this is used so elements can be cleared on the screen, it may be helpful for knowing which widgets to delete, but for now it is not used.'''''
 lastPageArray = [] #The name of the elements(pages): home, woon, pec, about, settings
-
 
 ''''Area Text (names of the area that get loaded when user clicks the area'''''
 overschie = "Overschie"
@@ -39,18 +34,13 @@ feijenood = "Feijenoord"
 ijsselmonde = "Ijsselmonde"
 rotterdam = "Rotterdam"
 
-''''The buttons. Every button has a trigger, when button is pressed the state is set to true and vice versa'''
+''''The regular buttons. Every button has a trigger, when button is pressed the state is set to true and vice versa'''
 class NewButton:
-    def __init__(self,text, row, column, ipadx, ipady):
+    def __init__(self,text, row, column, ipadx, ipady): #row = which row, column = which column, ipadx = width, ipady = height
         self.clicked = False #state
         self.button = Button(root, text =text, command = self.click,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
-        self.button.columnconfigure(0,weight=300000)
-        self.button.grid(row=row, column=column, sticky=W, ipadx=ipadx, ipady=ipady) #position of the button
-        # command = method
-        # weight = if it will get moved when another button takes wide rows
-        # information you can set about a button
-        # ipadx = the size in width, ipady = the size it takes in height
-
+        self.button.columnconfigure(0,weight=300000) #Weight = that the button get less likely moved when another button takes a lot of space
+        self.button.grid(row=row, column=column, sticky=W, ipadx=ipadx, ipady=ipady) #The position and size of the button
     def click(self):
             if self.clicked == False: #When a button is pressed or depressed, the state of the button change
                 self.button.config(bg="green") #Button's colour
@@ -63,33 +53,27 @@ class NewButton:
     def clickReset(self): # resets click
         self.clicked = False
 
-''''These buttons are meant for the buttons that are in the: "Percentages en cijfers sections'''
+''''The Percentage en cijfers buttons'''''
 class PecButton:
     def __init__(self,text, row, column, ipadx, ipady, name):
-        self.clicked = False #state
+        self.clicked = False
         self.button = Button(root, text =text, command = self.databaseSender,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
         self.button.columnconfigure(0,weight=300000)
-        self.button.grid(row=row, column=column, sticky=W, ipadx=ipadx, ipady=ipady) #position of the button
-        self.name = name #this is for the buttonArray to know which button has been clicked
+        self.button.grid(row=row, column=column, sticky=W, ipadx=ipadx, ipady=ipady)
+        self.name = name #this is for the buttonArray to know what is the last button that is clicked
 
     def databaseSender(self):
         buttonArray.append(self.name) #the clicked button will go in the array
-        databasePercentagesEnCijfers()
-
+        databasePercentagesEnCijfers() #Opens the databasePercentageEnCijfers method that will create a database query.
 
 ''''The last clicked button from the page: "Percentages en cijfers", are saved in an array, this is for the: "databasePercentagesEnCijfers Function"'''
 buttonArray = []
 
-
-
-
-'''Trigger for the polygons(area's)'''''
+'''Trigger for the polygons(area's), to do something with an area when it's clicked'''''
 class Trigger:
     def __init__(self, triggerValue,name):
         self.trigger = triggerValue
-        self.name = name #name to uniquely identify the object. For example in a for loop
-    def __str__(self):
-        return self.name
+        self.name = name #name to uniquely identify the area.
 
 ''''The canvas, important variable. Everything gets drawn on the canvas'''
 canvas = Canvas(root, width=screenx,height=screeny) #root is in which window it will get drawn on.
@@ -98,7 +82,6 @@ canvas = Canvas(root, width=screenx,height=screeny) #root is in which window it 
 def rs(size):
     ratio = (screeny + screeny/2) / size
     return (screeny / ratio)
-
 
 '''Function that Converts hex to RGB'''
 def HexToRGB(rgb):
@@ -112,9 +95,7 @@ class polygon:
         self.color = color
         self.shape = canvas.create_polygon(list, fill=HexToRGB(self.color), outline='black', width = 2)
 
-''''Function that draws the polygons(area's)'''''
-
-
+''''The polygons(area's)'''''
 overschie_polygon = polygon((20, 50, 120), (
 rs(904), rs(194), rs(947), rs(183), rs(955), rs(205), rs(1106), rs(109), rs(1176), rs(199), rs(1222), rs(163),
 rs(1242), rs(185), rs(1237), rs(355), rs(1109), rs(432), rs(1138), rs(471), rs(1057), rs(479), rs(1017), rs(403),
@@ -158,12 +139,12 @@ rs(1225), rs(646), rs(1227), rs(620), rs(1113), rs(596), rs(1038), rs(610), rs(9
 rs(885), rs(658), rs(917), rs(663), rs(921), rs(647), rs(972), rs(670), rs(962), rs(722), rs(937), rs(743), rs(934),
 rs(764), rs(923), rs(765), rs(927), rs(797), rs(1048), rs(795)))
 
+''''Array that has the polygon area's, this is used to go through the array and then the colour will change. It is used in a database function'''
 polygonsgebieden = [overschie_polygon, hillegersberg_polygon, prins_alexander_polygon, kralingen_polygon, noord_polygon, delftshaven_polygon, centrum_polygon, feijenoord_polygon, ijsselmonde_polygon, charlois_polygon, waalhaven_polygon]
 
 ''''The name of the area that is displayed in the top centre.'''
 text = Label(root,width=0, height=1,text="",font=("Helvetica",35,"bold")) #Creates text
 text.grid(row=0,column=0,sticky=N) #Draws the text
-
 
 ''''Function that gives mouse positions'''
 def motion(event):
@@ -190,14 +171,13 @@ ijsselmonde_trigger = Trigger(False, "ijsselmonde")
 List1 = [overschie_trigger, hillegersberg_trigger,prins_alexander_trigger,noord_trigger, kralingen_crooswijk_trigger, centrum_trigger, delftshaven_trigger, waalhaven_trigger, charlois_trigger, feijenood_trigger, ijsselmonde_trigger]
 
 
-''''With this the selected polygons(area's) are recognized'''''
+''''With this the selected polygons(area's) are recognized when they are clicked on. '''''
 def click(event):
     if str(canvas.find_withtag(CURRENT)) == "(1,)": #every polygon(area) has his own tag
-        text.config(text=overschie)
-        for i in List1:
-            if i.name == "overschie":
+        text.config(text=overschie) #Text changes to the name of the selected area
+        for i in List1: #Goes through the array of the area triggers.
+            if i.name == "overschie":#Name is the attribute of the area's triggers, this is used to uniquely identify the area
                 setattr(i, 'trigger', True) #sets the clicked area to true
-
             else:
                 setattr(i, 'trigger', False) #set the other area's to false
                 print(i.trigger)
@@ -211,7 +191,6 @@ def click(event):
             else:
                 setattr(i, 'trigger', False)
                 print(i.trigger)
-
 
     elif str(canvas.find_withtag(CURRENT)) == "(3,)":
         text.config(text=prins_alexander)
@@ -275,8 +254,6 @@ def click(event):
                 setattr(i, 'trigger', False)
                 print(i.trigger)
 
-
-
     elif str(canvas.find_withtag(CURRENT)) == "(9,)":
         text.config(text=ijsselmonde)
         for i in List1:
@@ -297,8 +274,6 @@ def click(event):
                 print(i.trigger)
 
     elif str(canvas.find_withtag(CURRENT)) == "(11,)":
-
-
         text.config(text=waalhaven)
         for i in List1:
             if i.name == "waalhaven":
@@ -308,18 +283,15 @@ def click(event):
                 setattr(i, 'trigger', False)
                 print(i.trigger)
 
-
-
 ''''when a polygon(area) is clicked, the click method will be activated'''''
-canvas.bind('<Button-1>', click, add="+") #binds the canvas to a method
-
+canvas.bind('<Button-1>', click, add="+") #Binds the canvas to the click method
 
 ''''Canvas that gets drawn'''
 canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #the lower the code(higher line) the later it will get drawn
 
 ''''Function that links the drop down menu sections to pages, it redirects to pages'''
 def menuSelector(event):
-    if  str(variable.get()) == "Home":
+    if  str(variable.get()) == "Home": #variable is the drop down menu, when a menu page is selected, the value of the variable changes
         lastPageArray.append("home") #When user visits a page, the page name will be added to the array
         home() #goes to the home page
     elif  str(variable.get()) == "Woningadvies":
@@ -334,67 +306,63 @@ def menuSelector(event):
         root.destroy()
 
 ''''Drop down menu'''
-variable = StringVar(root)
-variable.set("Home")  # default value of the homebutton
+variable = StringVar(root) #Variable will store the page that is selected
+variable.set("Home")  # default value is the homebutton
 menu_button = OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "About",
-                             "Exit", command=menuSelector)
-menu_button.config(font=("Helvetica", 50, "bold"), bg="DeepSkyBlue2", fg="white")
-menu_button.grid(row=0, column=0, sticky=N + W)
-
+                             "Exit", command=menuSelector) #The pages that are in the drop down menu
+menu_button.config(font=("Helvetica", 50, "bold"), bg="DeepSkyBlue2", fg="white") #Changes the font/size of the drop down menu
+menu_button.grid(row=0, column=0, sticky=N + W) #Sets the position of the drop down menu
 
 ''''Menu Text'''
-welcome_text = "Select the home button to see the available options"
-description_text = Label(root,text=welcome_text,font=("Helvetica",15,"bold")) #puts image on screen
-description_text.grid(row=1,column=0,sticky=W)
+welcome_text = "Select the home button to see the available options" #Test that appears on the menu
+description_text = Label(root,text=welcome_text,font=("Helvetica",15,"bold")) #Sets the text on the page
+description_text.grid(row=1,column=0,sticky=W) #Sets the position of the text
 
 ''''the home page'''
 def home():
     for widget in root.winfo_children(): #checks which wigets(buttons, text etc) are open
-        print(".!optionmenu")
-        if widget == menu_button: #only the menu does not get deleted
-            print("Not deleting optionmenu")
-        elif widget == canvas:
+        if widget == menu_button: #The menu does not get deleted
+            print("Optionmenu")
+        elif widget == canvas: #The canvas will not be deleted
             print("canvas")
-            print("Canvas is forgotten")
         else:
             widget.destroy() #Other widgets are destroyed and so are their value
-            print(str(widget) + " Is deleted")
-
+            print(str(widget) + ": Is deleted")
 
 ''''the settings page'''
 def settings():
     for widget in root.winfo_children():
-        if widget == menu_button:
-            print("Not deleting optionmenu")
-        elif widget == canvas:
+        if widget == menu_button: #menubutton does not get deleted
+            print("Optionmenu")
+        elif widget == canvas: #canvas does not get deleted
             print("canvas")
         else:
-            widget.destroy()
-            print(str(widget) + " Is deleted")
+            widget.destroy() #other widgets get deleted and so are their value
+            print(str(widget) + ": Is deleted")
 
     ''''Resolution'''
     resolution_text = "Select your screen resolution"
-    resolution1_text = Label(root, text=resolution_text, font=("Helvetica", 15, "bold"))  # puts image on screen
+    resolution1_text = Label(root, text=resolution_text, font=("Helvetica", 15, "bold"))
     resolution1_text.grid(row=2, column=0, sticky=W)
 
     ''''The drop down resolution menu'''
-    variable1 = StringVar(root)
-    variable1.set(str(screenx) + " x " + str(screeny))  # default value
-    menu_button1 = OptionMenu(root, variable1, "1280x720", "1600x900", "1920x1080", "4k")
-    menu_button1.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white")
-    menu_button1.grid(row=3, column=0, sticky=N + W)
-    lastPageArray.append("settings") #adds last visited page to array
+    variable1 = StringVar(root)  #Variable will store the page that is selected
+    variable1.set(str(screenx) + " x " + str(screeny))  # default value of the drop down menu
+    menu_button1 = OptionMenu(root, variable1, "1280x720", "1600x900", "1920x1080", "4k")  #The options of the drop down menu
+    menu_button1.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white") #Sets the font/size of drop down menu
+    menu_button1.grid(row=3, column=0, sticky=N + W) #Sets position of the drop down menu
+    lastPageArray.append("settings") #adds last visited page to array, this is currently not used but may be used for later
 
 
 ''''The about page'''
 def about():
     for widget in root.winfo_children():
-        if widget == menu_button:
-            print("Not deleting the optionmenu")
-        elif widget == canvas:
+        if widget == menu_button: #Optionmenu does not get deleted
+            print("Optionmenu")
+        elif widget == canvas: #Canvas does not get deleted
             print("canvas")
         else:
-            widget.destroy()
+            widget.destroy() #Other widgets are deleted and so are their value
             print(str(widget) + " Is deleted")
 
     about_text = "This application is made by first year Informatica students of the Hogeschool Rotterdam."
@@ -405,7 +373,7 @@ def about():
     about5_text = " © 2017 Team NoGo"
 
     about_information = Label(root, width=0, text=about_text, font=("Helvetica", 20, "bold"))  # puts text on screen
-    about_information.grid(row=1, column=0, sticky=W)
+    about_information.grid(row=1, column=0, sticky=W) #Sets the position of the test
 
     about_information1 = Label(root, width=0, text=about1_text, font=("Helvetica", 20, "bold"))
     about_information1.grid(row=2, column=0, sticky=W)
@@ -422,22 +390,22 @@ def about():
     about_information5 = Label(root, width=0, text=about5_text, font=("Helvetica", 20, "bold"))
     about_information5.grid(row=6, column=0, sticky=W)
 
-    lastPageArray.append("about")
+    lastPageArray.append("about") #Adds last visited page to the array, may be used but is not used now
 
 
 ''''Percentages en cijfers page'''
 def percentagesEnCijfers():
     for widget in root.winfo_children():
-        if widget == menu_button:
+        if widget == menu_button: #Menu button will not be deleted
             print("Optionmenu is not deleted")
-        elif widget == canvas:
+        elif widget == canvas: #Canvas will not be deleted
             print("canvas")
         else:
-            widget.destroy()
+            widget.destroy() #Other widgets are deleted
             print(str(widget) + " Is deleted")
 
-    button9 = NewButton("Population", 1, 0, screenx / 30, screeny / 150)
-    button9.pageClick(categoryPopulation) #Goes to the sub categories
+    button9 = NewButton("Population", 1, 0, screenx / 30, screeny / 150) #Creates button
+    button9.pageClick(categoryPopulation) #Goes to the sub categories of the selected button
     button10 = NewButton("Environment", 2, 0, screenx / 45, screeny / 150)
     button10.pageClick(categoryEnvironment)
     button11 = NewButton("Safety", 3, 0, screenx / 17, screeny / 150)
@@ -448,11 +416,11 @@ def percentagesEnCijfers():
     button13.pageClick(categoryServices)
     button14 = NewButton("Overig", 6, 0, screenx / 18, screeny / 150)
     button14.pageClick(categoryOther)
+    button52 = NewButton("Give me the statistics", 28, 0, screenx / 600, screeny / 150)  #Currently not used, can be used to give the user stats when clicked
     lastPageArray.append("pec")
-    button52 = NewButton("Give me the statistics", 28, 0, screenx / 600, screeny / 150)
 
 ''''The woningsadvies radiobuttons, these will catch the value of a button. It knows which button the user has selected'''''
-bevolking_radioButtons = IntVar()
+bevolking_radioButtons = IntVar() #The value will change when a certain button is selected. Every button has his own value, and that value the main radiobutton will get
 milieu_radioButtons = IntVar()
 veiligheid_radioButtons = IntVar()
 verkeer_radioButtons = IntVar()
@@ -460,16 +428,16 @@ voorzieningen_radioButtons = IntVar()
 
 ''''Woningsadvies page'''
 def woningsadvies():
-    global bevolking_radioButtons
+    global bevolking_radioButtons #Reads a global variable, this was one of the best options for this
     global milieu_radioButtons
     global veiligheid_radioButtons
     global verkeer_radioButtons
     global voorzieningen_radioButtons
 
     for widget in root.winfo_children():
-        if widget == menu_button:
+        if widget == menu_button: #Menu does not get deleted
             print("Optionmenu will not be deleted")
-        elif widget == canvas:
+        elif widget == canvas: #Canvas does not get deleted
             print("canvas")
         else:
             widget.destroy()
@@ -483,10 +451,10 @@ def woningsadvies():
     woningsadvies_text5 = "Services"
 
     ''''The selection buttons'''''
-    woningsadvies__headText = Label(root, width=0, text=woningsadvies_text, font=("Helvetica", 20, "bold"))
-    woningsadvies__headText.grid(row=2, column=0, sticky=W)
+    woningsadvies__headText = Label(root, width=0, text=woningsadvies_text, font=("Helvetica", 20, "bold")) #Creats the text
+    woningsadvies__headText.grid(row=2, column=0, sticky=W) #Sets position of the text
 
-    ''''the bevolking/population part'''''
+    ''''the bevolking/population part with radiobuttons'''''
     bevolking_text = Label(root, width=0, text=woningsadvies_text1, font=("Helvetica", 20, "bold"))
     bevolking_text.grid(row=3, column=0, sticky=W)
 
@@ -501,7 +469,7 @@ def woningsadvies():
                                                                                                             row=7,
                                                                                                             sticky=W)
 
-    ''''The Milieu/Economy part'''
+    ''''The Milieu/Economy part with radiobuttons'''
     milieu_text = Label(root, width=0, text=woningsadvies_text2, font=("Helvetica", 20, "bold"))
     milieu_text.grid(row=8, column=0, sticky=W)
     Radiobutton(root, indicatoron=False, text="3 or lower", variable=milieu_radioButtons, value=1).grid(column=0, row=9,
@@ -516,7 +484,7 @@ def woningsadvies():
                                                                                                          row=12,
                                                                                                          sticky=W)
 
-    ''''The Veiligheid/Safety part'''
+    ''''The Veiligheid/Safety part with radiobuttons'''
     veiligheid_text = Label(root, width=0, text=woningsadvies_text3, font=("Helvetica", 20, "bold"))
     veiligheid_text.grid(row=13, column=0, sticky=W)
     Radiobutton(root, indicatoron=False, text="3 or lower", variable=veiligheid_radioButtons, value=1).grid(column=0,
@@ -530,7 +498,7 @@ def woningsadvies():
                                                                                                              row=17,
                                                                                                              sticky=W)
 
-    ''''The verkeer/trafic part'''
+    ''''The verkeer/trafic part with radiobuttons'''
     verkeer_text = Label(root, width=0, text=woningsadvies_text4, font=("Helvetica", 20, "bold"))
     verkeer_text.grid(row=18, column=0, sticky=W)
 
@@ -545,7 +513,7 @@ def woningsadvies():
                                                                                                           row=22,
                                                                                                           sticky=W)
 
-    ''''The voorzieningen/services part'''
+    ''''The voorzieningen/services part with radiobuttons'''
     voorzieningen_text = Label(root, width=0, text=woningsadvies_text5, font=("Helvetica", 20, "bold"))
     voorzieningen_text.grid(row=23, column=0, sticky=W)
 
@@ -563,12 +531,9 @@ def woningsadvies():
     button51.pageClick(databaseWoningsAdvies)
     canvas.grid(row=2, column=0, sticky=N, rowspan=999, padx=55)
 
-''''The buttonarray to remember the previous clicked button for the database method to know which method to activate'''
 
-
-''''Population/bevolking category, when it gets clicked these buttons appears'''
+''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categoryPopulation():
-    global buttonArray
     button15 = PecButton("Population1_placehholder", 1, 0, screenx / 30, screeny / 150, 0)
     button16 = PecButton("Population2_placeholder", 2, 0, screenx / 45, screeny / 150,1)
     button17 = PecButton("Population3_placeholder", 3, 0, screenx / 17, screeny / 150,2)
@@ -576,9 +541,9 @@ def categoryPopulation():
     button19 = PecButton("Population5_placeholder", 5, 0, screenx / 22, screeny / 150,4)
     button20 = PecButton("Population6_placeholder", 6, 0, screenx / 22, screeny / 150,5)
     buttonback1 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
-    buttonback1.pageClick(percentagesEnCijfers)
+    buttonback1.pageClick(percentagesEnCijfers) #The back button
 
-''''Environment/milieu category, when it gets clicked these buttons appears'''
+''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categoryEnvironment():
     button21 = PecButton("Environmennt1_placehholder", 1, 0, screenx / 30, screeny / 150,6)
     button22 = PecButton("Environment2_placeholder", 2, 0, screenx / 45, screeny / 150,7)
@@ -589,7 +554,7 @@ def categoryEnvironment():
     buttonback2 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback2.pageClick(percentagesEnCijfers)
 
-''''Safety/veiligheid category, when it gets clicked these buttons appears'''
+''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categorySafety():
     button27 = PecButton("Safety1_placehholder", 1, 0, screenx / 30, screeny / 150,12)
     button28 = PecButton("Safety2_placeholder", 2, 0, screenx / 45, screeny / 150,12)
@@ -600,7 +565,7 @@ def categorySafety():
     buttonback3 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback3.pageClick(percentagesEnCijfers)
 
-''''Traffic/verkeer category, when it gets clicked these buttons appears'''
+''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categoryTraffic():
     button33 = PecButton("Traffic1_placehholder", 1, 0, screenx / 30, screeny / 150,17)
     button34 = PecButton("Traffic2_placeholder", 2, 0, screenx / 45, screeny / 150,18)
@@ -611,7 +576,7 @@ def categoryTraffic():
     buttonback4 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback4.pageClick(percentagesEnCijfers)
 
-''''Services/voorzieningen category, when it gets clicked these buttons appears'''
+''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categoryServices():
     button39 = PecButton("Services1_placehholder", 1, 0, screenx / 30, screeny / 150,23)
     button40 = PecButton("Services2_placeholder", 2, 0, screenx / 45, screeny / 150,24)
@@ -622,7 +587,7 @@ def categoryServices():
     buttonback5 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback5.pageClick(percentagesEnCijfers)
 
-''''Other/overig category, when it gets clicked these buttons appears'''
+''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categoryOther():
     button45 = PecButton("Other1_placehholder", 1, 0, screenx / 30, screeny / 150,29)
     button46 = PecButton("Other2_placeholder", 2, 0, screenx / 45, screeny / 150,30)
@@ -633,17 +598,15 @@ def categoryOther():
     buttonback6 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback6.pageClick(percentagesEnCijfers)
 
-
-''''Based on the data, the colour of the map changes'''
+''''Based on the data, the colour of the map changes, the data represents the query that will come in the function'''
 def ShowResults(data):
     global polygonsgebieden #The array of area's
     data = {"Charlois":50, "Overschie":90} #Dictionary to simulate a query, this is to test the query
     for result in data: #goes in the dictionary (the query)
-            for gebied in polygonsgebieden: #Goes in the area's
-                if result == "Charlois":
+            for gebied in polygonsgebieden: #Goes in the area's array
+                if result == "Charlois": #Checks if result from the query is equal to an area
                     result = int(data.get(result)) #Converts the dictionary value to an int
                     changecolor(charlois_polygon, result) #Changes color of the area and also change colour based on percentage
-                    pass
                 elif result == "Overschie":
                     pass
                 elif result == "Hillegersberg":
@@ -665,7 +628,6 @@ def ShowResults(data):
                 elif result == "Waalhaven":
                     pass
 
-
     f = Figure(figsize=(5, 5), dpi=50)
     a = f.add_subplot(111)  # means 1 chart 1 by 1
     a.plot([1, 2, 3, 4, 5, 6, 7, 8], [5, 6, 2, 4, 4, 3, 5, 3])
@@ -674,18 +636,15 @@ def ShowResults(data):
     Figure1.get_tk_widget().grid(row=0, column=0, sticky=N, rowspan=30)
 
 
-
 ''''Database query for the page: "Woningsadvies (the user gets data based on selection)'''''
 def databaseWoningsAdvies():
-    #Status = database ready
     global bevolking_radioButtons
     global milieu_radioButtons
     global veiligheid_radioButtons
     global verkeer_radioButtons
     global voorzieningen_radioButtons
 
-    print(bevolking_radioButtons.get())
-    data = []
+    print(bevolking_radioButtons.get()) #To prove that when a different radiobutton is selected, the value changes
     if bevolking_radioButtons.get() == 0: #gets value of the radiobutton(which button the user selected)
         pass
     if bevolking_radioButtons.get() == 1:
@@ -742,15 +701,12 @@ def databaseWoningsAdvies():
         pass
 
 
-    #TODO add: ShowResults(data), for each button
-
-
 ''''Database query for the page: "Percentages en cijfers" the plot graphics '''
-''''Function to have the results from the database influence the colour of a polygon(area)'''
-def changecolor(object,percent):
+''''Function to have the results from the database change the colour of a polygon(area)'''
+def changecolor(object,percent): #object = polygon/area, and the percent is the percentage comes from the query
     red = 0
     green = 0
-    if percent <= 30: #If the percentage is a certain ammount, the colour wil
+    if percent <= 30: #If the percentage is a certain ammount, the colour of the area/polygon will change
         red = 255
         green = 16
     elif percent > 30 and percent <= 70:
@@ -760,23 +716,19 @@ def changecolor(object,percent):
         green = 255
         red = 16
     color = (red, green, 16) #3th value must be 16 or above
-    canvas.itemconfig(object.shape, fill=HexToRGB(color))
-
-
+    canvas.itemconfig(object.shape, fill=HexToRGB(color)) #Changes the colour of the area
 
 ''''Database query for the page: "Percentages en cijfers"'''
+''''This page will be called when buttons from the: "Percentages en cijfers", are selected. The method call is set in the class of the buttons'''
 def databasePercentagesEnCijfers():
-    #status = database Ready
-    global database
-    global buttonArray #needed because the array has the last selected button
-    answer = (buttonArray[-1]) #last button gets stored in answer
-    print(answer)
+    global buttonArray #needed because the array has the last selected button of the page: "Percentages en cijfers'
+    answer = (buttonArray[-1]) #last selected button gets stored in answer
+    print(answer) #To prove that the last selected button is saved in the array
     data = [] #Here comes the query, for every button a new query should be appended to the array
 
     # TODO ResultQuery = []
-    if answer == 0:  #the numbers represent the button, each button has his own number
-        #For every button, a new query should be send.
-        ShowResults(data) #The query get send into the showresults function, then the map colour gets changed based on it
+    if answer == 0:  #the numbers represent the button, each button has his own number. The attribute of the button that stores this is: name
+        ShowResults(data) #The query get send into the showresults function, then the map colour gets changed based on the results from it
     elif answer == 1:
         ShowResults(data)
     elif answer == 2:
@@ -814,7 +766,6 @@ def databasePercentagesEnCijfers():
     elif answer == 17:
         ShowResults(data)
 
-
     elif answer == 18:
         ShowResults(data)
     elif answer == 19:
@@ -827,7 +778,6 @@ def databasePercentagesEnCijfers():
         ShowResults(data)
     elif answer == 23:
         ShowResults(data)
-
 
     elif answer == 24:
         ShowResults(data)
@@ -842,7 +792,6 @@ def databasePercentagesEnCijfers():
     elif answer == 29:
         ShowResults(data)
 
-
     elif answer == 30:
         ShowResults(data)
     elif answer == 31:
@@ -855,7 +804,5 @@ def databasePercentagesEnCijfers():
         ShowResults(data)
     elif answer == 35:
         ShowResults(data)
-
-
 
 root.mainloop() #for the loop
