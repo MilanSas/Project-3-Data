@@ -18,7 +18,6 @@ screenx = root.winfo_screenwidth() #width
 screeny = root.winfo_screenheight() #height
 
 ''''Array that will save the last page the user has visited, this is used so elements can be cleared on the screen, it may be helpful for knowing which widgets to delete, but for now it is not used.'''''
-lastPageArray = [] #The name of the elements(pages): home, woon, pec, about, settings
 
 ''''Area Text (names of the area that get loaded when user clicks the area'''''
 overschie = "Overschie"
@@ -33,6 +32,9 @@ charlois = "Charlois"
 feijenood = "Feijenoord"
 ijsselmonde = "Ijsselmonde"
 rotterdam = "Rotterdam"
+
+''''Saves last page, '''
+searchPage = None
 
 ''''The regular buttons. Every button has a trigger, when button is pressed the state is set to true and vice versa'''
 class NewButton:
@@ -166,14 +168,12 @@ charlois_trigger = Trigger(False, "charlois")
 feijenood_trigger = Trigger(False, "feijenoord")
 ijsselmonde_trigger = Trigger(False, "ijsselmonde")
 
-
 ''''Array of the trigger objects'''
 List1 = [overschie_trigger, hillegersberg_trigger,prins_alexander_trigger,noord_trigger, kralingen_crooswijk_trigger, centrum_trigger, delftshaven_trigger, waalhaven_trigger, charlois_trigger, feijenood_trigger, ijsselmonde_trigger]
 
-
 ''''With this the selected polygons(area's) are recognized when they are clicked on. '''''
 def click(event):
-    if str(canvas.find_withtag(CURRENT)) == "(1,)": #every polygon(area) has his own tag
+    if str(canvas.find_withtag(CURRENT)) == "(1,)" and searchPage == True: #every polygon(area) has his own tag
         text.config(text=overschie) #Text changes to the name of the selected area
         for i in List1: #Goes through the array of the area triggers.
             if i.name == "overschie":#Name is the attribute of the area's triggers, this is used to uniquely identify the area
@@ -182,17 +182,18 @@ def click(event):
                 setattr(i, 'trigger', False) #set the other area's to false
                 print(i.trigger)
 
-    elif str(canvas.find_withtag(CURRENT)) == "(2,)":
+    elif str(canvas.find_withtag(CURRENT)) == "(2,)" and searchPage == True: #Checks if the page is the right page.
         text.config(text=hillegersberg_schiebroek)
         for i in List1:
             if i.name == "hillegersberg":
                 setattr(i, 'trigger', True)
 
+
             else:
                 setattr(i, 'trigger', False)
                 print(i.trigger)
 
-    elif str(canvas.find_withtag(CURRENT)) == "(3,)":
+    elif str(canvas.find_withtag(CURRENT)) == "(3,)" and searchPage == True:
         text.config(text=prins_alexander)
         for i in List1:
             if i.name == "prinsAlexander":
@@ -202,7 +203,7 @@ def click(event):
                 setattr(i, 'trigger', False)
                 print(i.trigger)
 
-    elif str(canvas.find_withtag(CURRENT)) == "(4,)":
+    elif str(canvas.find_withtag(CURRENT)) == "(4,)" and searchPage == True:
         text.config(text=kralingen_crooswijk)
         for i in List1:
             if i.name == "kralingenCrooswijk":
@@ -212,7 +213,7 @@ def click(event):
                 setattr(i, 'trigger', False)
                 print(i.trigger)
 
-    elif str(canvas.find_withtag(CURRENT)) == "(5,)":
+    elif str(canvas.find_withtag(CURRENT)) == "(5,)" and searchPage == True:
         text.config(text=noord)
         for i in List1:
             if i.name == "noord":
@@ -223,7 +224,7 @@ def click(event):
                 print(i.trigger)
 
 
-    elif str(canvas.find_withtag(CURRENT)) == "(6,)":
+    elif str(canvas.find_withtag(CURRENT)) == "(6,)" and searchPage == True:
         text.config(text=delftshaven)
         for i in List1:
             if i.name == "delftshaven":
@@ -233,7 +234,7 @@ def click(event):
                 setattr(i, 'trigger', False)
                 print(i.trigger)
 
-    elif str(canvas.find_withtag(CURRENT)) == "(7,)":
+    elif str(canvas.find_withtag(CURRENT)) == "(7,)" and searchPage == True:
         text.config(text=centrum)
         for i in List1:
             if i.name == "centrum":
@@ -244,7 +245,7 @@ def click(event):
                 print(i.trigger)
 
 
-    elif str(canvas.find_withtag(CURRENT)) == "(8,)":
+    elif str(canvas.find_withtag(CURRENT)) == "(8,)" and searchPage == True:
         text.config(text=feijenood)
         for i in List1:
             if i.name == "feijenoord":
@@ -254,7 +255,7 @@ def click(event):
                 setattr(i, 'trigger', False)
                 print(i.trigger)
 
-    elif str(canvas.find_withtag(CURRENT)) == "(9,)":
+    elif str(canvas.find_withtag(CURRENT)) == "(9,)" and searchPage == True:
         text.config(text=ijsselmonde)
         for i in List1:
             if i.name == "ijsselmonde":
@@ -263,7 +264,7 @@ def click(event):
                 setattr(i, 'trigger', False)
                 print(i.trigger)
 
-    elif str(canvas.find_withtag(CURRENT)) == "(10,)":
+    elif str(canvas.find_withtag(CURRENT)) == "(10,)" and searchPage == True:
         text.config(text=charlois)
         for i in List1:
             if i.name == "charlois":
@@ -273,7 +274,7 @@ def click(event):
                 setattr(i, 'trigger', False)
                 print(i.trigger)
 
-    elif str(canvas.find_withtag(CURRENT)) == "(11,)":
+    elif str(canvas.find_withtag(CURRENT)) == "(11,)" and searchPage == True:
         text.config(text=waalhaven)
         for i in List1:
             if i.name == "waalhaven":
@@ -292,7 +293,6 @@ canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #the lower the code(hi
 ''''Function that links the drop down menu sections to pages, it redirects to pages'''
 def menuSelector(event):
     if  str(variable.get()) == "Home": #variable is the drop down menu, when a menu page is selected, the value of the variable changes
-        lastPageArray.append("home") #When user visits a page, the page name will be added to the array
         home() #goes to the home page
     elif  str(variable.get()) == "Woningadvies":
          woningsadvies()
@@ -304,6 +304,7 @@ def menuSelector(event):
         settings()
     elif str(variable.get()) == "Exit":
         root.destroy()
+
 
 ''''Drop down menu'''
 variable = StringVar(root) #Variable will store the page that is selected
@@ -320,19 +321,24 @@ description_text.grid(row=1,column=0,sticky=W) #Sets the position of the text
 
 ''''the home page'''
 def home():
+    global searchPage
+    text.config(text="") #Resets the text when it reaches the home button
     for widget in root.winfo_children(): #checks which wigets(buttons, text etc) are open
-        if widget == menu_button: #The menu does not get deleted
+        if widget == menu_button or widget == text: #The menu does not get deleted
             print("Optionmenu")
         elif widget == canvas: #The canvas will not be deleted
             print("canvas")
         else:
             widget.destroy() #Other widgets are destroyed and so are their value
             print(str(widget) + ": Is deleted")
+    searchPage = False
 
 ''''the settings page'''
 def settings():
+    global searchPage
+    text.config(text="") #Resets the text when it reaches the home button
     for widget in root.winfo_children():
-        if widget == menu_button: #menubutton does not get deleted
+        if widget == menu_button or widget == text: #menubutton does not get deleted
             print("Optionmenu")
         elif widget == canvas: #canvas does not get deleted
             print("canvas")
@@ -351,13 +357,14 @@ def settings():
     menu_button1 = OptionMenu(root, variable1, "1280x720", "1600x900", "1920x1080", "4k")  #The options of the drop down menu
     menu_button1.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white") #Sets the font/size of drop down menu
     menu_button1.grid(row=3, column=0, sticky=N + W) #Sets position of the drop down menu
-    lastPageArray.append("settings") #adds last visited page to array, this is currently not used but may be used for later
-
+    searchPage = False
 
 ''''The about page'''
 def about():
+    global searchPage
+    text.config(text="") #Resets the text when it reaches the home button
     for widget in root.winfo_children():
-        if widget == menu_button: #Optionmenu does not get deleted
+        if widget == menu_button or widget == text: #Optionmenu does not get deleted
             print("Optionmenu")
         elif widget == canvas: #Canvas does not get deleted
             print("canvas")
@@ -390,13 +397,15 @@ def about():
     about_information5 = Label(root, width=0, text=about5_text, font=("Helvetica", 20, "bold"))
     about_information5.grid(row=6, column=0, sticky=W)
 
-    lastPageArray.append("about") #Adds last visited page to the array, may be used but is not used now
+    searchPage = False
 
 
 ''''Percentages en cijfers page'''
 def percentagesEnCijfers():
+    global searchPage
+    text.config(text="") #Resets the text when it reaches the home button
     for widget in root.winfo_children():
-        if widget == menu_button: #Menu button will not be deleted
+        if widget == menu_button or widget == text: #Menu button will not be deleted
             print("Optionmenu is not deleted")
         elif widget == canvas: #Canvas will not be deleted
             print("canvas")
@@ -417,7 +426,8 @@ def percentagesEnCijfers():
     button14 = NewButton("Overig", 6, 0, screenx / 18, screeny / 150)
     button14.pageClick(categoryOther)
     button52 = NewButton("Give me the statistics", 28, 0, screenx / 600, screeny / 150)  #Currently not used, can be used to give the user stats when clicked
-    lastPageArray.append("pec")
+    searchPage = False
+
 
 ''''The woningsadvies radiobuttons, these will catch the value of a button. It knows which button the user has selected'''''
 bevolking_radioButtons = IntVar() #The value will change when a certain button is selected. Every button has his own value, and that value the main radiobutton will get
@@ -428,14 +438,16 @@ voorzieningen_radioButtons = IntVar()
 
 ''''Woningsadvies page'''
 def woningsadvies():
+    global searchPage
     global bevolking_radioButtons #Reads a global variable, this was one of the best options for this
     global milieu_radioButtons
     global veiligheid_radioButtons
     global verkeer_radioButtons
     global voorzieningen_radioButtons
+    text.config(text="") #Resets the text when it reaches the home button
 
     for widget in root.winfo_children():
-        if widget == menu_button: #Menu does not get deleted
+        if widget == menu_button or widget == text: #Menu does not get deleted
             print("Optionmenu will not be deleted")
         elif widget == canvas: #Canvas does not get deleted
             print("canvas")
@@ -526,14 +538,16 @@ def woningsadvies():
         column=0, row=26, sticky=W)
     Radiobutton(root, indicatoron=False, text="7 or higher", variable=voorzieningen_radioButtons, value=4).grid(
         column=0, row=27, sticky=W,comnmand=databaseWoningsAdvies())
-    lastPageArray.append("woon")
     button51 = NewButton("I am ready to see my living options ", 28, 0, screenx / 600, screeny / 150)
     button51.pageClick(databaseWoningsAdvies)
     canvas.grid(row=2, column=0, sticky=N, rowspan=999, padx=55)
+    searchPage = True
 
 
 ''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categoryPopulation():
+    global searchPage
+    text.config(text="") #Resets the text when it reaches the home button
     button15 = PecButton("Population1_placehholder", 1, 0, screenx / 30, screeny / 150, 0)
     button16 = PecButton("Population2_placeholder", 2, 0, screenx / 45, screeny / 150,1)
     button17 = PecButton("Population3_placeholder", 3, 0, screenx / 17, screeny / 150,2)
@@ -542,9 +556,12 @@ def categoryPopulation():
     button20 = PecButton("Population6_placeholder", 6, 0, screenx / 22, screeny / 150,5)
     buttonback1 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback1.pageClick(percentagesEnCijfers) #The back button
+    searchPage = True
 
 ''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categoryEnvironment():
+    global searchPage
+    text.config(text="") #Resets the text when it reaches the home button
     button21 = PecButton("Environmennt1_placehholder", 1, 0, screenx / 30, screeny / 150,6)
     button22 = PecButton("Environment2_placeholder", 2, 0, screenx / 45, screeny / 150,7)
     button23 = PecButton("Environment3_placeholder", 3, 0, screenx / 17, screeny / 150,8)
@@ -553,9 +570,12 @@ def categoryEnvironment():
     button26 = PecButton("Environment6_placeholder", 6, 0, screenx / 22, screeny / 150,11)
     buttonback2 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback2.pageClick(percentagesEnCijfers)
+    searchPage = True
 
 ''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categorySafety():
+    global searchPage
+    text.config(text="") #Resets the text when it reaches the home button
     button27 = PecButton("Safety1_placehholder", 1, 0, screenx / 30, screeny / 150,12)
     button28 = PecButton("Safety2_placeholder", 2, 0, screenx / 45, screeny / 150,12)
     button29 = PecButton("Safety3_placeholder", 3, 0, screenx / 17, screeny / 150,13)
@@ -564,9 +584,12 @@ def categorySafety():
     button32 = PecButton("Safety6_placeholder", 6, 0, screenx / 22, screeny / 150,16)
     buttonback3 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback3.pageClick(percentagesEnCijfers)
+    searchPage = True
 
 ''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categoryTraffic():
+    global searchPage
+    text.config(text="") #Resets the text when it reaches the home button
     button33 = PecButton("Traffic1_placehholder", 1, 0, screenx / 30, screeny / 150,17)
     button34 = PecButton("Traffic2_placeholder", 2, 0, screenx / 45, screeny / 150,18)
     button35 = PecButton("Traffic3_placeholder", 3, 0, screenx / 17, screeny / 150,19)
@@ -575,9 +598,12 @@ def categoryTraffic():
     button38 = PecButton("Traffic6_placeholder", 6, 0, screenx / 22, screeny / 150,22)
     buttonback4 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback4.pageClick(percentagesEnCijfers)
+    searchPage = True
 
 ''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categoryServices():
+    global searchPage
+    text.config(text="") #Resets the text when it reaches the home button
     button39 = PecButton("Services1_placehholder", 1, 0, screenx / 30, screeny / 150,23)
     button40 = PecButton("Services2_placeholder", 2, 0, screenx / 45, screeny / 150,24)
     button41 = PecButton("Services3_placeholder", 3, 0, screenx / 17, screeny / 150,25)
@@ -586,9 +612,12 @@ def categoryServices():
     button44 = PecButton("Services6_placeholder", 6, 0, screenx / 22, screeny / 150,28)
     buttonback5 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback5.pageClick(percentagesEnCijfers)
+    searchPage = True
 
 ''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categoryOther():
+    global searchPage
+    text.config(text="") #Resets the text when it reaches the home button
     button45 = PecButton("Other1_placehholder", 1, 0, screenx / 30, screeny / 150,29)
     button46 = PecButton("Other2_placeholder", 2, 0, screenx / 45, screeny / 150,30)
     button47 = PecButton("Other3_placeholder", 3, 0, screenx / 17, screeny / 150,31)
@@ -597,6 +626,7 @@ def categoryOther():
     button50 = PecButton("Other6_placeholder", 6, 0, screenx / 22, screeny / 150,34)
     buttonback6 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback6.pageClick(percentagesEnCijfers)
+    searchPage = True
 
 ''''Based on the data, the colour of the map changes, the data represents the query that will come in the function'''
 def ShowResults(data):
@@ -804,5 +834,10 @@ def databasePercentagesEnCijfers():
         ShowResults(data)
     elif answer == 35:
         ShowResults(data)
+
+
+for widget in root.winfo_children():
+    print(widget)
+
 
 root.mainloop() #for the loop
