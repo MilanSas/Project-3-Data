@@ -8,32 +8,32 @@ jaartaldata_tabelnamen = ["tevredenheid", "fietsendiefstal", "geweldsdelicten","
 afkomstdata_kolomnamen = ['Nederlanders', 'Marokkanen', 'Turken', 'Kaapverdianen', 'Antilianen', 'Surinamers', 'Zuid-Europeanen', 'Overig']
 overigedata_tabelnamen = ["fiobj2016", "fisub2016", "si2016", "vi2016"]
 
-def create_connection(db_file):
-    try:
-        conn = sqlite3.connect(db_file)
-        return conn
-    except Error as e:
-        print(e)
-    return None
-
-
 class Plot:
     def __init__(self, dbnaam, wknaam):
+        self.database_file = "Database\StekOverflow.db"
         self.databasenaam = dbnaam
         self.wijknaam = wknaam
         self.plottitel = self.databasenaam + " in " + self.wijknaam
+        self.conn = self.create_connection(self.database_file)
+        self.cur = self.conn.cursor()
+
+    def create_connection(self,db):
+        try:
+            conn = sqlite3.connect(db)
+            return conn
+        except Error as e:
+            print(e)
+        return None
 
 class PlotLineChart(Plot):
     def show_plot(self):
-        database = "Database\StekOverflow.db"
-        conn = create_connection(database)
-        cur = conn.cursor()
+
         plt.style.use('ggplot')
         y = []
         jaartaldata_kolomnamen = [2006, 2007, 2008, 2009, 2011]
 
-        cur.execute("select data2006,data2007,data2008,data2009,data2011 from {} where wijknaam = '{}'".format(self.databasenaam, self.wijknaam))
-        wijkdata = cur.fetchone()
+        self.cur.execute("select data2006,data2007,data2008,data2009,data2011 from {} where wijknaam = '{}'".format(self.databasenaam, self.wijknaam))
+        wijkdata = self.cur.fetchone()
 
         for i in range(len(wijkdata)):
             y.append(wijkdata[i])
