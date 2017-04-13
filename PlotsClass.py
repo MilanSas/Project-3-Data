@@ -1,11 +1,7 @@
-
 import matplotlib.pyplot as plt
 import numpy as np
 import sqlite3
 from sqlite3 import Error
-
-
-
 
 
 jaartaldata_tabelnamen = ["tevredenheid", "fietsendiefstal", "geweldsdelicten","drugsoverlast"]
@@ -21,7 +17,6 @@ def create_connection(db_file):
     return None
 
 
-
 class Plot:
     def __init__(self, dbnaam, wknaam):
         self.databasenaam = dbnaam
@@ -30,7 +25,7 @@ class Plot:
 
 class PlotLineChart(Plot):
     def show_plot(self):
-        database = "C:\\sqlite\db\data.db"
+        database = "Database\StekOverflow.db"
         conn = create_connection(database)
         cur = conn.cursor()
         plt.style.use('ggplot')
@@ -55,7 +50,6 @@ class PlotLineChart(Plot):
 
 
 Lineplot1 = PlotLineChart("tevredenheid","Carnisse")
-
 Lineplot1.show_plot()
 
 
