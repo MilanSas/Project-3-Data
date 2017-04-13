@@ -3,7 +3,7 @@ import matplotlib #Needed for graph
 matplotlib.use("TKAgg")
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
-
+import time
 #TODO read the comments, the symbol: , is after lines. the symbol: '''''' , is to explain the overall code
 #TODO when user clicks on an area, that area needs to be zoomed in
 
@@ -111,7 +111,16 @@ def HexToRGB(rgb):
 class polygon:
     def __init__(self,color,list):
         self.color = color
-        self.shape = canvas.create_polygon(list, fill=HexToRGB(self.color), outline='black', width = 2)
+        self.shape = canvas.create_polygon(list, fill=(HexToRGB(color)), outline='black', width=2)
+
+    def ChangeColor(self, color):
+        for n in range(color[1]-16):
+            color = (n+16, n + 16, 16)
+            canvas.itemconfig(self.shape, fill=HexToRGB(color))
+            root.update()
+            time.sleep(0.0000000000001)
+
+
 
 ''''This function is to draw the polygon wijken'''
 class polygonWijk:
@@ -964,7 +973,7 @@ def changecolor(object,percent): #object = polygon/area, and the percent is the 
         green = 255
         red = 16
     color = (red, green, 16) #3th value must be 16 or above
-    canvas.itemconfig(object.shape, fill=HexToRGB(color)) #Changes the colour of the area
+    object.ChangeColor(color) #Changes the colour of the area
 
 ''''Database query for the page: "Percentages en cijfers"'''
 ''''This page will be called when buttons from the: "Percentages en cijfers", are selected. The method call is set in the class of the buttons'''
