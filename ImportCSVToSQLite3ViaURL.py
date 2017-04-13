@@ -1,21 +1,7 @@
 import pandas as pd
-import psycopg2 as psy
+import sqlite3
 
-con = psy.connect("dbname='StekOverflow' user='postgres' host='localhost' password='pgadmin2017'")
-cur = con.cursor()
 
-# cur.execute("DROP TABLE IF EXISTS geweldsdelicten")
-# cur.execute("DROP TABLE IF EXISTS fietsendiefstal")
-# cur.execute("DROP TABLE IF EXISTS drugsoverlast")
-# cur.execute("DROP TABLE IF EXISTS tevredenheid")
-# cur.execute("DROP TABLE IF EXISTS afkomst")
-# cur.execute("DROP TABLE IF EXISTS datatry")
-# cur.execute("DROP TABLE IF EXISTS vi2016")
-# cur.execute("DROP TABLE IF EXISTS si2016")
-# cur.execute("DROP TABLE IF EXISTS fisub2016")
-# cur.execute("DROP TABLE IF EXISTS fiobj2016")
-
-con.commit()
 
 geweldsdelicten_data = pd.read_csv('https://raw.githubusercontent.com/MilanSas/Project-3-Data/master/Data/Geweldsdelicten2006-2011.csv', sep=';')
 fietsendiefstal_data = pd.read_csv('https://raw.githubusercontent.com/MilanSas/Project-3-Data/master/Data/Fietsendiefstal2006-2011.csv', sep=';')
@@ -39,7 +25,7 @@ fisub2016_data.columns = [c.lower() for c in fisub2016_data.columns]
 fiobj2016_data.columns = [c.lower() for c in fiobj2016_data.columns]
 
 from sqlalchemy import create_engine
-engine = create_engine('postgresql://postgres:pgadmin2017@localhost:5432/StekOverflow')
+engine = create_engine('sqlite:///C:\sqlite\db\data.db')
 
 geweldsdelicten_data.to_sql("geweldsdelicten", engine)
 fietsendiefstal_data.to_sql("fietsendiefstal", engine)
