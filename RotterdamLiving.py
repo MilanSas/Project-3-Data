@@ -43,8 +43,8 @@ searchPage = None
 class NewButton:
     def __init__(self,text, row, column, ipadx, ipady): #row = which row, column = which column, ipadx = width, ipady = height
         self.clicked = False #state
-        self.var = 32 - len(text)
-        self.button = Button(root, text =(" " + text+ str(" "*self.var)), command = self.click,font=("courier",10,"bold"),bg="DeepSkyBlue2", fg="white")
+        self.var = 28 - len(text)
+        self.button = Button(root, text =(" " + text+ str(" "*self.var)), command = self.click,font=("courier",15,"bold"),bg="DeepSkyBlue2", fg="white")
         self.button.columnconfigure(0,weight=300000) #Weight = that the button get less likely moved when another button takes a lot of space
         self.button.grid(row=row, column=column, sticky=W, ipadx=0, ipady=ipady) #The position and size of the button
 
@@ -64,9 +64,9 @@ class NewButton:
 class PecButton:
     def __init__(self,text, row, column, ipadx, ipady, name):
         self.clicked = False
-        self.var = 32 - len(text)
+        self.var = 28 - len(text)
 
-        self.button = Button(root, text =(" " + text + str(" "*self.var)), command = self.databaseSender,font=("courier",10,"bold"),bg="DeepSkyBlue2", fg="white")
+        self.button = Button(root, text =(" " + text + str(" "*self.var)), command = self.databaseSender,font=("courier",15,"bold"),bg="DeepSkyBlue2", fg="white")
         self.button.columnconfigure(0,weight=300000)
         self.button.grid(row=row, column=column, sticky=W, ipadx=0, ipady=ipady)
         self.name = name #this is for the buttonArray to know what is the last button that is clicked
