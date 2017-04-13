@@ -9,8 +9,8 @@ db = "fiobj2016"
 
 cur.execute("select {} from {} where wijkNaam = '{}'".format(watwiljezien,db,wijknaam))
 wijkdata = cur.fetchone()
-print(wijkdata[0])
+print(wijkdata)
 
-lol = wijkdata[0] * 2
+lol = wijkdata * 2
 
 print(lol)
