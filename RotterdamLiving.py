@@ -135,29 +135,40 @@ class polygon:
             canvas.itemconfig(self.shape, fill=HexToRGB(color))
             root.update()
             time.sleep(0.01)
+    def forgetShape(self): #Forgets the shape
+        canvas.delete(self.shape)
 
 
 
 
 ''''This function is to draw the polygon wijken'''
-class polygonWijk:
-    def __init__(self,color,list):
-        self.color = color
-        self.shape = canvasWijk.create_polygon(list, fill=HexToRGB(self.color), outline='black', width = 2)
+
 
 ''''This function gets loaded when the area: "Overschie", gets selected'''
 def overschieWijk():
-    ov1 = polygon((120, 50, 120), (
-        rsWijken(949), rsWijken(342), rsWijken(964), rsWijken(322), rsWijken(1003), rsWijken(366), rsWijken(1050), rsWijken(345), rsWijken(1035), rsWijken(295), rsWijken(939), rsWijken(304)))
-    ov2 = polygon((120, 50, 120), (
-        rsWijken(1050), rsWijken(345), rsWijken(1059), rsWijken(350), rsWijken(1052), rsWijken(359), rsWijken(1073), rsWijken(389), rsWijken(1128), rsWijken(354), rsWijken(1101), rsWijken(310),
-        rsWijken(1076), rsWijken(269), rsWijken(1035), rsWijken(295)))
-    ov3 = polygon((120, 50, 120), (rsWijken(1052), rsWijken(359), rsWijken(1017), rsWijken(403), rsWijken(1057), rsWijken(479), rsWijken(1136), rsWijken(468)))
-    ov4 = polygon((120, 50, 120), (rsWijken(1109), rsWijken(432), rsWijken(1173), rsWijken(392), rsWijken(1128), rsWijken(354), rsWijken(1073), rsWijken(389)))
-    ov5 = polygon((120, 50, 120), (
-        rsWijken(904), rsWijken(194), rsWijken(947), rsWijken(183), rsWijken(955), rsWijken(205), rsWijken(1106), rsWijken(109), rsWijken(1176), rsWijken(199), rsWijken(1222), rsWijken(163),
-        rsWijken(1242), rsWijken(185), rsWijken(1237), rsWijken(355), rsWijken(1173), rsWijken(392), rsWijken(1128), rsWijken(354), rsWijken(1072), rsWijken(269), rsWijken(1035), rsWijken(295),
-        rsWijken(939), rsWijken(304)))
+        ov1 = polygon((120, 50, 120), (
+            rsWijken(949), rsWijken(342), rsWijken(964), rsWijken(322), rsWijken(1003), rsWijken(366), rsWijken(1050),
+            rsWijken(345), rsWijken(1035), rsWijken(295), rsWijken(939), rsWijken(304)))
+        ov2 = polygon((120, 50, 120), (
+            rsWijken(1050), rsWijken(345), rsWijken(1059), rsWijken(350), rsWijken(1052), rsWijken(359), rsWijken(1073),
+            rsWijken(389), rsWijken(1128), rsWijken(354), rsWijken(1101), rsWijken(310),
+            rsWijken(1076), rsWijken(269), rsWijken(1035), rsWijken(295)))
+        ov3 = polygon((120, 50, 120), (
+        rsWijken(1052), rsWijken(359), rsWijken(1017), rsWijken(403), rsWijken(1057), rsWijken(479), rsWijken(1136),
+        rsWijken(468)))
+        ov4 = polygon((120, 50, 120), (
+        rsWijken(1109), rsWijken(432), rsWijken(1173), rsWijken(392), rsWijken(1128), rsWijken(354), rsWijken(1073),
+        rsWijken(389)))
+        ov5 = polygon((120, 50, 120), (
+            rsWijken(904), rsWijken(194), rsWijken(947), rsWijken(183), rsWijken(955), rsWijken(205), rsWijken(1106),
+            rsWijken(109), rsWijken(1176), rsWijken(199), rsWijken(1222), rsWijken(163),
+            rsWijken(1242), rsWijken(185), rsWijken(1237), rsWijken(355), rsWijken(1173), rsWijken(392), rsWijken(1128),
+            rsWijken(354), rsWijken(1072), rsWijken(269), rsWijken(1035), rsWijken(295),
+            rsWijken(939), rsWijken(304)))
+
+
+
+
 
 ''''This function gets loaded when the area: "Hillegersberg", gets selected'''
 def hillegersbergWijk():
@@ -220,7 +231,7 @@ def centrumWijk():
         rsWijken(1299), rsWijken(445), rsWijken(1337), rsWijken(454), rsWijken(1382), rsWijken(461), rsWijken(1397), rsWijken(500), rsWijken(1375), rsWijken(506), rsWijken(1330), rsWijken(563),
         rsWijken(1314), rsWijken(547), rsWijken(1300), rsWijken(547), rsWijken(1298), rsWijken(541), rsWijken(1309), rsWijken(537), rsWijken(1316), rsWijken(501), rsWijken(1299), rsWijken(458),
         rsWijken(1299), rsWijken(445)))
-    centr6 = polygonWijk((120, 50, 120), (
+    centr6 = polygon((120, 50, 120), (
         rsWijken(1245), rsWijken(562), rsWijken(1298), rsWijken(541), rsWijken(1300), rsWijken(547), rsWijken(1314), rsWijken(547), rsWijken(1330), rsWijken(563), rsWijken(1322), rsWijken(574),
         rsWijken(1262), rsWijken(614)))
 
@@ -415,6 +426,8 @@ def click(event):
             if i.name == "overschie":#Name is the attribute of the area's triggers, this is used to uniquely identify the area
                 setattr(i, 'trigger', True) #sets the clicked area to true
                 overschieWijk() #The wijken get drawn
+                # canvas.delete(charlois_polygon.shape) #Deletes a polygon
+
             else:
                 setattr(i, 'trigger', False) #set the other area's to false
                 print(i.trigger)
@@ -425,6 +438,7 @@ def click(event):
             if i.name == "hillegersberg":
                 setattr(i, 'trigger', True)
                 hillegersbergWijk() #The wijken get drawn
+
 
 
             else:
