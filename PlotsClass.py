@@ -44,7 +44,7 @@ class PlotLineChart(Plot):
 
         plt.ylabel(self.databasenaam + " %")
         plt.xlabel('Jaren')
-        # plt.legend()
+        plt.legend()
         plt.title(self.plottitel, bbox={'facecolor': '0.8', 'pad': 5})
         plt.show()
 
@@ -52,24 +52,3 @@ class PlotLineChart(Plot):
 Lineplot1 = PlotLineChart("tevredenheid","Carnisse")
 Lineplot1.show_plot()
 
-
-
-
-# def select_all_tasks(conn):
-#     cur = conn.cursor()
-#     cur.execute("SELECT * FROM 'tevredenheid'")
-#
-#     rows = cur.fetchall()
-#     for row in rows:
-#         print(row)
-
-# def main():
-#     database = "C:\\sqlite\db\data.db"
-#
-#     conn = create_connection(database)
-#     with conn:
-#         print("2. Query all tasks")
-#         select_all_tasks(conn)
-#
-# if __name__ == '__main__':
-#     main()
