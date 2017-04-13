@@ -97,7 +97,7 @@ def rs(size):
 
 ''''Function that changes the size of the wijken'''
 def rsWijken(size):
-    ratio = (screeny + screeny/5) / size
+    ratio = 1080 / size
     return (screeny / ratio)
 
 
@@ -113,12 +113,27 @@ class polygon:
         self.color = color
         self.shape = canvas.create_polygon(list, fill=(HexToRGB(color)), outline='black', width=2)
         canvas.move(self.shape, rs(-400), 0)
-    def ChangeColor(self, color):
-        for n in range(color[1]-16):
-            color = (n+16, n + 16, 16)
+    def ChangeColor(self, percent):
+        for n in range(percent-16):
+            red = 16
+            green = 16
+            if percent < 7:
+                red = 255
+                green = 16
+            elif percent > 93:
+                green = 255
+                red = 16
+            elif percent > 50:
+                green = 255
+                red = int((100 - percent) * 5.1)
+            elif percent <= 50:
+                red = 255
+                green = int(percent * 5.1)
+            color = (red, green, 16)
             canvas.itemconfig(self.shape, fill=HexToRGB(color))
             root.update()
             time.sleep(0.0000000000001)
+
 
 
 
@@ -937,21 +952,6 @@ def databaseWoningsAdvies():
 
 
 ''''Database query for the page: "Percentages en cijfers" the plot graphics '''
-''''Function to have the results from the database change the colour of a polygon(area)'''
-def changecolor(object,percent): #object = polygon/area, and the percent is the percentage comes from the query
-    red = 0
-    green = 0
-    if percent <= 30: #If the percentage is a certain ammount, the colour of the area/polygon will change
-        red = 255
-        green = 16
-    elif percent > 30 and percent <= 70:
-        red = 255
-        green = 255
-    elif percent > 70 and percent <= 100:
-        green = 255
-        red = 16
-    color = (red, green, 16) #3th value must be 16 or above
-    object.ChangeColor(color) #Changes the colour of the area
 
 ''''Database query for the page: "Percentages en cijfers"'''
 ''''This page will be called when buttons from the: "Percentages en cijfers", are selected. The method call is set in the class of the buttons'''
