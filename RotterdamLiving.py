@@ -8,14 +8,17 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolb
 #TODO when user clicks on an area, that area needs to be zoomed in
 
 root = Tk() #Needed to run
-
-''''Window'''
-root.title("Rotterdam Living") #Window title
-root.geometry('{}x{}'.format(root.winfo_screenwidth(), root.winfo_screenheight())) #Window doesn't automaticcaly resized this way
+root.resizable(width=False, height=False)#no free-resizable possible while running
 
 ''''gets user's screen size (width and height)'''''
 screenx = root.winfo_screenwidth() #width
 screeny = root.winfo_screenheight() #height
+
+''''Window'''
+root.title("Rotterdam Living") #Window title
+root.geometry('{}x{}'.format(screenx, screeny)) #Window doesn't automaticcaly resized this way
+
+
 
 ''''Array that will save the last page the user has visited, this is used so elements can be cleared on the screen, it may be helpful for knowing which widgets to delete, but for now it is not used.'''''
 
@@ -333,9 +336,21 @@ def home():
             print(str(widget) + ": Is deleted")
     searchPage = False
 
+def resmenuoptions(event):
+    global variable1
+    if  str(variable1.get()) == "1280x720": #variable is the drop down menu, when a menu page is selected, the value of the variable changes
+        root.geometry("1280x720")
+    elif  str(variable1.get()) == "1600x900":
+        root.geometry("1600x900")
+    elif str(variable1.get()) == "1920x1080":
+        root.geometry("1920x1080")
+    elif str(variable1.get()) == "4k":
+        root.geometry("3860x2140")
+
+
 ''''the settings page'''
 def settings():
-    global searchPage
+    global searchPage, variable1
     text.config(text="") #Resets the text when it reaches the home button
     for widget in root.winfo_children():
         if widget == menu_button or widget == text: #menubutton does not get deleted
@@ -354,7 +369,7 @@ def settings():
     ''''The drop down resolution menu'''
     variable1 = StringVar(root)  #Variable will store the page that is selected
     variable1.set(str(screenx) + " x " + str(screeny))  # default value of the drop down menu
-    menu_button1 = OptionMenu(root, variable1, "1280x720", "1600x900", "1920x1080", "4k")  #The options of the drop down menu
+    menu_button1 = OptionMenu(root, variable1, "1280x720", "1600x900", "1920x1080", "4k", command=resmenuoptions)  #The options of the drop down menu
     menu_button1.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white") #Sets the font/size of drop down menu
     menu_button1.grid(row=3, column=0, sticky=N + W) #Sets position of the drop down menu
     searchPage = False
