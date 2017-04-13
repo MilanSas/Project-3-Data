@@ -92,7 +92,7 @@ canvasWijk = Canvas(root, width=screenx,height=screeny) #This canvas is for the 
 
 ''''Function to set polygon's(area) size'''
 def rs(size):
-    ratio = (screeny + screeny/2) / size
+    ratio = 1080 / size
     return (screeny / ratio)
 
 ''''Function that changes the size of the wijken'''
@@ -112,7 +112,7 @@ class polygon:
     def __init__(self,color,list):
         self.color = color
         self.shape = canvas.create_polygon(list, fill=(HexToRGB(color)), outline='black', width=2)
-
+        canvas.move(self.shape, rs(-400), 0)
     def ChangeColor(self, color):
         for n in range(color[1]-16):
             color = (n+16, n + 16, 16)
