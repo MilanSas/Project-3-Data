@@ -43,9 +43,11 @@ searchPage = None
 class NewButton:
     def __init__(self,text, row, column, ipadx, ipady): #row = which row, column = which column, ipadx = width, ipady = height
         self.clicked = False #state
-        self.button = Button(root, text =text, command = self.click,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
+        self.var = 32 - len(text)
+        self.button = Button(root, text =(" " + text+ str(" "*self.var)), command = self.click,font=("courier",10,"bold"),bg="DeepSkyBlue2", fg="white")
         self.button.columnconfigure(0,weight=300000) #Weight = that the button get less likely moved when another button takes a lot of space
-        self.button.grid(row=row, column=column, sticky=W, ipadx=ipadx, ipady=ipady) #The position and size of the button
+        self.button.grid(row=row, column=column, sticky=W, ipadx=0, ipady=ipady) #The position and size of the button
+
     def click(self):
             if self.clicked == False: #When a button is pressed or depressed, the state of the button change
                 self.button.config(bg="green") #Button's colour
@@ -62,9 +64,11 @@ class NewButton:
 class PecButton:
     def __init__(self,text, row, column, ipadx, ipady, name):
         self.clicked = False
-        self.button = Button(root, text =text, command = self.databaseSender,font=("arial",30,"bold"),bg="DeepSkyBlue2", fg="white")
+        self.var = 32 - len(text)
+
+        self.button = Button(root, text =(" " + text + str(" "*self.var)), command = self.databaseSender,font=("courier",10,"bold"),bg="DeepSkyBlue2", fg="white")
         self.button.columnconfigure(0,weight=300000)
-        self.button.grid(row=row, column=column, sticky=W, ipadx=ipadx, ipady=ipady)
+        self.button.grid(row=row, column=column, sticky=W, ipadx=0, ipady=ipady)
         self.name = name #this is for the buttonArray to know what is the last button that is clicked
 
     def databaseSender(self):
@@ -314,7 +318,7 @@ variable = StringVar(root) #Variable will store the page that is selected
 variable.set("Home")  # default value is the homebutton
 menu_button = OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "About",
                              "Exit", command=menuSelector) #The pages that are in the drop down menu
-menu_button.config(font=("Helvetica", 50, "bold"), bg="DeepSkyBlue2", fg="white") #Changes the font/size of the drop down menu
+menu_button.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white") #Changes the font/size of the drop down menu
 menu_button.grid(row=0, column=0, sticky=N + W) #Sets the position of the drop down menu
 
 ''''Menu Text'''
@@ -346,7 +350,6 @@ def resmenuoptions(event):
         root.geometry("1920x1080")
     elif str(variable1.get()) == "4k":
         root.geometry("3860x2140")
-
 
 ''''the settings page'''
 def settings():
@@ -451,6 +454,26 @@ veiligheid_radioButtons = IntVar()
 verkeer_radioButtons = IntVar()
 voorzieningen_radioButtons = IntVar()
 
+class categorie():
+    def __init__(self,textvar,textrow,fontsize,row1,row2,row3,row4,variable):
+        self.txt = textvar
+        self.txtrow = textrow
+        self.fontsize = fontsize
+        self.row1 = row1
+        self.row2 = row2
+        self.row3 = row3
+        self.row4 = row4
+        self.variable = variable
+
+        text = Label(root, width=0, text=self.txt, font=("Helvetica", self.fontsize, "bold"))
+        text.grid(row=self.txtrow, column=0, sticky=W)
+
+        Radiobutton(root, indicatoron=False, text="3 or lower", variable=self.variable, value=1).grid(column=0,row=self.row1,sticky=W)
+        Radiobutton(root, indicatoron=False, text="Between 3 and 5.5", variable=self.variable, value=2).grid(column=0, row=self.row2, sticky=W)
+        Radiobutton(root, indicatoron=False, text="Between 5.5 and 7", variable=self.variable, value=3).grid(column=0, row=self.row3, sticky=W)
+        Radiobutton(root, indicatoron=False, text="7 or higher", variable=self.variable, value=4).grid(column=0,row=self.row4,sticky=W)
+
+
 ''''Woningsadvies page'''
 def woningsadvies():
     global searchPage
@@ -478,84 +501,28 @@ def woningsadvies():
     woningsadvies_text5 = "Services"
 
     ''''The selection buttons'''''
-    woningsadvies__headText = Label(root, width=0, text=woningsadvies_text, font=("Helvetica", 20, "bold")) #Creats the text
+    woningsadvies__headText = Label(root, width=0, text=woningsadvies_text, font=("Helvetica", 15, "bold")) #Creats the text
     woningsadvies__headText.grid(row=2, column=0, sticky=W) #Sets position of the text
 
     ''''the bevolking/population part with radiobuttons'''''
-    bevolking_text = Label(root, width=0, text=woningsadvies_text1, font=("Helvetica", 20, "bold"))
-    bevolking_text.grid(row=3, column=0, sticky=W)
-
-    Radiobutton(root, indicatoron=False, text="3 or lower", variable=bevolking_radioButtons, value=1).grid(column=0,
-                                                                                                           row=4,
-                                                                                                           sticky=W)
-    Radiobutton(root, indicatoron=False, text="Between 3 and 5.5", variable=bevolking_radioButtons, value=2).grid(
-        column=0, row=5, sticky=W)
-    Radiobutton(root, indicatoron=False, text="Between 5.5 and 7", variable=bevolking_radioButtons, value=3).grid(
-        column=0, row=6, sticky=W)
-    Radiobutton(root, indicatoron=False, text="7 or higher", variable=bevolking_radioButtons, value=4).grid(column=0,
-                                                                                                            row=7,
-                                                                                                            sticky=W)
+    categorie(woningsadvies_text1,3,10,4,5,6,7,bevolking_radioButtons)
 
     ''''The Milieu/Economy part with radiobuttons'''
-    milieu_text = Label(root, width=0, text=woningsadvies_text2, font=("Helvetica", 20, "bold"))
-    milieu_text.grid(row=8, column=0, sticky=W)
-    Radiobutton(root, indicatoron=False, text="3 or lower", variable=milieu_radioButtons, value=1).grid(column=0, row=9,
-                                                                                                        sticky=W)
-    Radiobutton(root, indicatoron=False, text="Between 3 and 5.5", variable=milieu_radioButtons, value=2).grid(column=0,
-                                                                                                               row=10,
-                                                                                                               sticky=W)
-    Radiobutton(root, indicatoron=False, text="Between 5.5 and 7", variable=milieu_radioButtons, value=3).grid(column=0,
-                                                                                                               row=11,
-                                                                                                               sticky=W)
-    Radiobutton(root, indicatoron=False, text="7 or higher", variable=milieu_radioButtons, value=4).grid(column=0,
-                                                                                                         row=12,
-                                                                                                         sticky=W)
+    categorie(woningsadvies_text2,8, 10, 9, 10, 11, 12, milieu_radioButtons)
 
     ''''The Veiligheid/Safety part with radiobuttons'''
-    veiligheid_text = Label(root, width=0, text=woningsadvies_text3, font=("Helvetica", 20, "bold"))
-    veiligheid_text.grid(row=13, column=0, sticky=W)
-    Radiobutton(root, indicatoron=False, text="3 or lower", variable=veiligheid_radioButtons, value=1).grid(column=0,
-                                                                                                            row=14,
-                                                                                                            sticky=W)
-    Radiobutton(root, indicatoron=False, text="Between 3 and 5.5", variable=veiligheid_radioButtons, value=2).grid(
-        column=0, row=15, sticky=W)
-    Radiobutton(root, indicatoron=False, text="Between 5.5 and 7", variable=veiligheid_radioButtons, value=3).grid(
-        column=0, row=16, sticky=W)
-    Radiobutton(root, indicatoron=False, text="7 or higher", variable=veiligheid_radioButtons, value=4).grid(column=0,
-                                                                                                             row=17,
-                                                                                                             sticky=W)
+    categorie(woningsadvies_text3,13, 10, 14, 15, 16, 17, veiligheid_radioButtons)
 
     ''''The verkeer/trafic part with radiobuttons'''
-    verkeer_text = Label(root, width=0, text=woningsadvies_text4, font=("Helvetica", 20, "bold"))
-    verkeer_text.grid(row=18, column=0, sticky=W)
-
-    Radiobutton(root, indicatoron=False, text="3 or lower", variable=verkeer_radioButtons, value=1).grid(column=0,
-                                                                                                         row=19,
-                                                                                                         sticky=W)
-    Radiobutton(root, indicatoron=False, text="Between 3 and 5.5", variable=verkeer_radioButtons, value=2).grid(
-        column=0, row=20, sticky=W)
-    Radiobutton(root, indicatoron=False, text="Between 5.5 and 7", variable=verkeer_radioButtons, value=3).grid(
-        column=0, row=21, sticky=W)
-    Radiobutton(root, indicatoron=False, text="7 or higher", variable=verkeer_radioButtons, value=4).grid(column=0,
-                                                                                                          row=22,
-                                                                                                          sticky=W)
+    categorie(woningsadvies_text4,18, 10, 19, 20, 21, 22, verkeer_radioButtons)
 
     ''''The voorzieningen/services part with radiobuttons'''
-    voorzieningen_text = Label(root, width=0, text=woningsadvies_text5, font=("Helvetica", 20, "bold"))
-    voorzieningen_text.grid(row=23, column=0, sticky=W)
+    categorie(woningsadvies_text5,23, 10, 24, 25, 26, 27, voorzieningen_radioButtons)
 
-    Radiobutton(root, indicatoron=False, text="3 or lower", variable=voorzieningen_radioButtons, value=1).grid(column=0,
-                                                                                                               row=24,
-                                                                                                               sticky=W)
-    Radiobutton(root, indicatoron=False, text="Between 3 and 5.5", variable=voorzieningen_radioButtons, value=2).grid(
-        column=0, row=25, sticky=W)
-    Radiobutton(root, indicatoron=False, text="Between 5.5 and 7", variable=voorzieningen_radioButtons, value=3).grid(
-        column=0, row=26, sticky=W)
-    Radiobutton(root, indicatoron=False, text="7 or higher", variable=voorzieningen_radioButtons, value=4).grid(
-        column=0, row=27, sticky=W,comnmand=databaseWoningsAdvies())
-    button51 = NewButton("I am ready to see my living options ", 28, 0, screenx / 600, screeny / 150)
+    ''''the button wich makes everything caculate'''
+    button51 = NewButton("I am ready to see my living options ", 28, 0, screenx / 600, 0)
     button51.pageClick(databaseWoningsAdvies)
-    canvas.grid(row=2, column=0, sticky=N, rowspan=999, padx=55)
+    canvas.grid(row=2, column=0, sticky=W, rowspan=999, padx=55)
     searchPage = True
 
 
@@ -563,11 +530,11 @@ def woningsadvies():
 def categoryPopulation():
     global searchPage
     text.config(text="") #Resets the text when it reaches the home button
-    button15 = PecButton("Population1_placehholder", 1, 0, screenx / 30, screeny / 150, 0)
-    button16 = PecButton("Population2_placeholder", 2, 0, screenx / 45, screeny / 150,1)
-    button17 = PecButton("Population3_placeholder", 3, 0, screenx / 17, screeny / 150,2)
-    button18 = PecButton("Population4_placeholder", 4, 0, screenx / 17, screeny / 150,3)
-    button19 = PecButton("Population5_placeholder", 5, 0, screenx / 22, screeny / 150,4)
+    button15 = PecButton("hieriets", 1, 0, screenx / 30, screeny / 150, 0)
+    button16 = PecButton("hiernog iets met een lange lengte", 2, 0, screenx / 45, screeny / 150,1)
+    button17 = PecButton("wejo", 3, 0, screenx / 17, screeny / 150,2)
+    button18 = PecButton("pfffff lol oke", 4, 0, screenx / 17, screeny / 150,3)
+    button19 = PecButton("zeg maar niet te lang ok", 5, 0, screenx / 22, screeny / 150,4)
     button20 = PecButton("Population6_placeholder", 6, 0, screenx / 22, screeny / 150,5)
     buttonback1 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback1.pageClick(percentagesEnCijfers) #The back button
