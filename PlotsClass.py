@@ -26,20 +26,20 @@ class Plot:
         return None
 
 class PlotLineChart(Plot):
-    def show_plot(self):
+    y = []
+    jaartallen = [2006, 2007, 2008, 2009, 2011]
 
-        plt.style.use('ggplot')
-        y = []
-        jaartaldata_kolomnamen = [2006, 2007, 2008, 2009, 2011]
-
+    def sql_query(self):
         self.cur.execute("select data2006,data2007,data2008,data2009,data2011 from {} where wijknaam = '{}'".format(self.databasenaam, self.wijknaam))
-        wijkdata = self.cur.fetchone()
+        self.wijkdata = self.cur.fetchone()
 
-        for i in range(len(wijkdata)):
-            y.append(wijkdata[i])
+        for i in range(len(self.wijkdata)):
+            self.y.append(self.wijkdata[i])
 
-        plt.plot(jaartaldata_kolomnamen, y, label=self.wijknaam, color='lightblue', linewidth=2)
-        for a, b in zip(jaartaldata_kolomnamen, y):
+    def show_plot(self):
+        self.sql_query()
+        plt.plot(self.jaartallen, self.y, label=self.wijknaam, color='lightblue', linewidth=2)
+        for a, b in zip(self.jaartallen, self.y):
             plt.text(a, b, str(b))
 
         plt.ylabel(self.databasenaam + " %")
