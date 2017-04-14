@@ -109,6 +109,17 @@ def HexToRGB(rgb):
 
 ''''Function to create the polygons(area's)'''
 geselecteerdegebieden = []
+
+numcolor = 0
+def getcolor():
+    global numcolor
+    selectcolors = ['red', 'cyan', 'hot pink', 'orange', 'saddle brown', 'green2', 'yellow', 'dark green', 'purple1',
+                    'SlateGray4', 'khaki2']
+    color = selectcolors[numcolor]
+    numcolor += 1
+    return color
+
+
 class polygon:
     def __init__(self,name,color,list):
         self.name = name
@@ -116,6 +127,7 @@ class polygon:
         self.selected = False
         self.shape = canvas.create_polygon(list, fill=(HexToRGB(color)), outline='black', width=2, tags = self.name)
         canvas.move(self.shape, rs(-400), 0)
+        self.selectcolor = getcolor()
 
 
     def ChangeColor(self, percent):
@@ -133,12 +145,12 @@ class polygon:
             return
         geselecteerdegebieden.append(self.name)
         self.selected = True
-        canvas.itemconfig(self.shape, outline = 'red')
+        canvas.itemconfig(self.shape, outline = self.selectcolor, width = 6)
 
     def deSelect(self):
         geselecteerdegebieden.remove(self.name)
         self.selected = False
-        canvas.itemconfig(self.shape, outline='black')
+        canvas.itemconfig(self.shape, outline='black', width = 2)
 
 
 
