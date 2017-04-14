@@ -278,7 +278,7 @@ noord_polygon = polygon("Noord",(20, 50, 120), Polygons.noord)
 delftshaven_polygon = polygon("Delfshaven",(20, 50, 120), Polygons.delftshaven)
 centrum_polygon = polygon("Centrum",(20, 50, 120), Polygons.centrum)
 feijenoord_polygon = polygon("Feijenoord",(20, 50, 120), Polygons.feijenoord)
-ijsselmonde_polygon = polygon("Ijsselmonde",(20, 50, 120), Polygons.ijsselmonde)
+ijsselmonde_polygon = polygon("IJsselmonde",(20, 50, 120), Polygons.ijsselmonde)
 charlois_polygon = polygon("Charlois",(20, 50, 120), Polygons.charlois)
 waalhaven_polygon = polygon("Waalhaven",(20, 50, 120), Polygons.waalhaven)
 
