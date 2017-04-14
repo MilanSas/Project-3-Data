@@ -120,7 +120,8 @@ class polygon:
 
     def ChangeColor(self, percent):
         colorrange = percent * 255 //100
-        for n in range(colorrange-15):
+        for n in range(64, colorrange-15):
+            print(255-n)
             color = (255-n, 255-n, 255)
             canvas.itemconfig(self.shape, fill=HexToRGB(color))
             root.update()
