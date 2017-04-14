@@ -326,7 +326,7 @@ def ijsselmondeWijk():
         rsWijken(1469), rsWijken(593), rsWijken(1450), rsWijken(605), rsWijken(1485), rsWijken(673), rsWijken(1523), rsWijken(652), rsWijken(1619), rsWijken(644), rsWijken(1623), rsWijken(621),
         rsWijken(1705), rsWijken(639), rsWijken(1712), rsWijken(606), rsWijken(1625), rsWijken(584), rsWijken(1572), rsWijken(594), rsWijken(1489), rsWijken(616)))
 
-#TODO Add the other wijken
+
 
 ''''The polygons(area's)'''''
 overschie_polygon = polygon("Overschie",(20, 50, 120), (
@@ -585,7 +585,9 @@ def home():
 
 def resmenuoptions(event):
     global variable1
-    if  str(variable1.get()) == "1280x720": #variable is the drop down menu, when a menu page is selected, the value of the variable changes
+    if  str(variable1.get()) == (str(screenx) + "x" + str(screeny)):
+        root.geometry('{}x{}'.format(screenx, screeny))
+    elif  str(variable1.get()) == "1280x720": #variable is the drop down menu, when a menu page is selected, the value of the variable changes
         root.geometry("1280x720")
     elif  str(variable1.get()) == "1600x900":
         root.geometry("1600x900")
@@ -615,7 +617,7 @@ def settings():
     ''''The drop down resolution menu'''
     variable1 = StringVar(root)  #Variable will store the page that is selected
     variable1.set(str(screenx) + " x " + str(screeny))  # default value of the drop down menu
-    menu_button1 = OptionMenu(root, variable1, "1280x720", "1600x900", "1920x1080", "4k", command=resmenuoptions)  #The options of the drop down menu
+    menu_button1 = OptionMenu(root, variable1, (str(screenx) + "x" + str(screeny)), "1280x720", "1600x900", "1920x1080", "4k", command=resmenuoptions)  #The options of the drop down menu
     menu_button1.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white") #Sets the font/size of drop down menu
     menu_button1.grid(row=3, column=0, sticky=N + W) #Sets position of the drop down menu
     searchPage = False
