@@ -134,10 +134,13 @@ class PlotBarChart(Plot):
         plt.show()
 
 
-t = ["Oud/Nieuw Mathenesse/Witte Dorp"]
-PlotLineChart("geweldsdelicten", t)
+
+# t = ["Oud/Nieuw Mathenesse/Witte Dorp"]
+# PlotLineChart("geweldsdelicten", t)
 #
 #
 # PlotBarChart("fiobj2016", "fysiekeindex", t)
+
+
 
 

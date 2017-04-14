@@ -1,8 +1,10 @@
 from tkinter import * #Needed for GUI
 import matplotlib #Needed for graph
+import Polygons
 matplotlib.use("TKAgg")
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
+from PlotsClass import Plot, PlotBarChart, PlotLineChart
 import time
 #TODO read the comments, the symbol: , is after lines. the symbol: '''''' , is to explain the overall code
 #TODO when user clicks on an area, that area needs to be zoomed in
@@ -158,240 +160,127 @@ class lagenda():
             color = (255 - i*3, 255 - i*3, 255)
             self.shape = canvas.create_rectangle(50,i * 10,100,i * 10 + 10, fill=(HexToRGB(color)), outline='black')
             canvas.move(self.shape,rs(1700),rs(50))
-
 lagenda = lagenda()
 
 
 
 ''''This function gets loaded when the area: "Overschie", gets selected'''
 def overschieWijk():
-    ov1 = polygon("ov1",(120, 50, 120), (
-        rsWijken(949), rsWijken(342), rsWijken(964), rsWijken(322), rsWijken(1003), rsWijken(366), rsWijken(1050), rsWijken(345), rsWijken(1035), rsWijken(295), rsWijken(939), rsWijken(304)))
-    ov2 = polygon("ov2",(120, 50, 120), (
-        rsWijken(1050), rsWijken(345), rsWijken(1059), rsWijken(350), rsWijken(1052), rsWijken(359), rsWijken(1073), rsWijken(389), rsWijken(1128), rsWijken(354), rsWijken(1101), rsWijken(310),
-        rsWijken(1076), rsWijken(269), rsWijken(1035), rsWijken(295)))
-    ov3 = polygon("ov3",(120, 50, 120), (rsWijken(1052), rsWijken(359), rsWijken(1017), rsWijken(403), rsWijken(1057), rsWijken(479), rsWijken(1136), rsWijken(468)))
-    ov4 = polygon("ov4",(120, 50, 120), (rsWijken(1109), rsWijken(432), rsWijken(1173), rsWijken(392), rsWijken(1128), rsWijken(354), rsWijken(1073), rsWijken(389)))
-    ov5 = polygon("ov5",(120, 50, 120), (
-        rsWijken(904), rsWijken(194), rsWijken(947), rsWijken(183), rsWijken(955), rsWijken(205), rsWijken(1106), rsWijken(109), rsWijken(1176), rsWijken(199), rsWijken(1222), rsWijken(163),
-        rsWijken(1242), rsWijken(185), rsWijken(1237), rsWijken(355), rsWijken(1173), rsWijken(392), rsWijken(1128), rsWijken(354), rsWijken(1072), rsWijken(269), rsWijken(1035), rsWijken(295),
-        rsWijken(939), rsWijken(304)))
+    ov1 = polygon("ov1",(120, 50, 120), Polygons.ov1)
+    ov2 = polygon("ov2",(120, 50, 120), Polygons.ov2)
+    ov3 = polygon("ov3",(120, 50, 120), Polygons.ov3)
+    ov4 = polygon("ov4",(120, 50, 120), Polygons.ov4)
+    ov5 = polygon("ov5",(120, 50, 120), Polygons.ov5)
+    ovlijst = [ov1,ov2,ov3,ov4,ov5]
 
 ''''This function gets loaded when the area: "Hillegersberg", gets selected'''
 def hillegersbergWijk():
-    hill1 = polygon("hill1",(120, 50, 120),
-                    (rsWijken(1242), rsWijken(185), rsWijken(1239), rsWijken(309), rsWijken(1288), rsWijken(310), rsWijken(1363), rsWijken(143), rsWijken(1280), rsWijken(90)))
-    hill2 = polygon("hill2",(120, 50, 120), (
-        rsWijken(1239), rsWijken(306), rsWijken(1237), rsWijken(355), rsWijken(1356), rsWijken(322), rsWijken(1337), rsWijken(300), rsWijken(1328), rsWijken(312), rsWijken(1298), rsWijken(286),
-        rsWijken(1288), rsWijken(310)))
-    hill3 = polygon("hill3",(120, 50, 120), (
-        rsWijken(1298), rsWijken(286), rsWijken(1328), rsWijken(312), rsWijken(1337), rsWijken(300), rsWijken(1356), rsWijken(322), rsWijken(1430), rsWijken(282), rsWijken(1375), rsWijken(226),
-        rsWijken(1383), rsWijken(154), rsWijken(1363), rsWijken(143)))
-    hill4 = polygon("hill4",(120, 50, 120), (
-        rsWijken(1382), rsWijken(165), rsWijken(1375), rsWijken(226), rsWijken(1430), rsWijken(282), rsWijken(1475), rsWijken(213), rsWijken(1432), rsWijken(195), rsWijken(1428), rsWijken(172),
-        rsWijken(1387), rsWijken(141)))
-    hill5 = polygon("hill5",(120, 50, 120),
-                    (rsWijken(1356), rsWijken(322), rsWijken(1520), rsWijken(282), rsWijken(1499), rsWijken(189), rsWijken(1475), rsWijken(213), rsWijken(1432), rsWijken(195)))
+    hill1 = polygon("hill1",(120, 50, 120), Polygons.hill1)
+    hill2 = polygon("hill2",(120, 50, 120), Polygons.hill2)
+    hill3 = polygon("hill3",(120, 50, 120), Polygons.hill3)
+    hill4 = polygon("hill4",(120, 50, 120), Polygons.hill4)
+    hill5 = polygon("hill5",(120, 50, 120), Polygons.hill5)
+    hillijst = [hill1,hill2,hill3,hill4,hill5]
 
 def prinsalexanderWijk():
-    pa1 = polygon("pa1",(120, 50, 120), (
-        rsWijken(1499), rsWijken(189), rsWijken(1523), rsWijken(292), rsWijken(1602), rsWijken(269), rsWijken(1650), rsWijken(227), rsWijken(1627), rsWijken(169), rsWijken(1595), rsWijken(134)))
-    pa2 = polygon("pa2",(120, 50, 120), (rsWijken(1523), rsWijken(292), rsWijken(1543), rsWijken(370), rsWijken(1622), rsWijken(351), rsWijken(1602), rsWijken(269)))
-    pa3 = polygon("pa3",(120, 50, 120), (
-        rsWijken(1543), rsWijken(370), rsWijken(1562), rsWijken(454),rsWijken(1661), rsWijken(425), rsWijken(1654), rsWijken(384), rsWijken(1637), rsWijken(389), rsWijken(1622), rsWijken(351)))
-    pa4 = polygon("pa4",(120, 50, 120), (
-        rsWijken(1622), rsWijken(351), rsWijken(1637), rsWijken(389), rsWijken(1654), rsWijken(384), rsWijken(1651), rsWijken(350), rsWijken(1693), rsWijken(337), rsWijken(1650), rsWijken(227),
-        rsWijken(1602), rsWijken(269)))
-    pa5 = polygon("pa5",(120, 50, 120), (
-        rsWijken(1650), rsWijken(227), rsWijken(1663), rsWijken(222), rsWijken(1673), rsWijken(233), rsWijken(1742), rsWijken(188), rsWijken(1725), rsWijken(163), rsWijken(1719), rsWijken(119),
-        rsWijken(1680), rsWijken(145), rsWijken(1627), rsWijken(169)))
-    pa6 = polygon("pa6",(120, 50, 120), (
-        rsWijken(1680), rsWijken(145), rsWijken(1719), rsWijken(119), rsWijken(1725), rsWijken(163), rsWijken(1742), rsWijken(188), rsWijken(1821), rsWijken(141), rsWijken(1791), rsWijken(116),
-        rsWijken(1815), rsWijken(31), rsWijken(1804), rsWijken(12), rsWijken(1617), rsWijken(76)))
+    pa1 = polygon("pa1",(120, 50, 120), Polygons.pa1)
+    pa2 = polygon("pa2",(120, 50, 120), Polygons.pa2)
+    pa3 = polygon("pa3",(120, 50, 120), Polygons.pa3)
+    pa4 = polygon("pa4",(120, 50, 120), Polygons.pa4)
+    pa5 = polygon("pa5",(120, 50, 120), Polygons.pa5)
+    pa6 = polygon("pa6",(120, 50, 120), Polygons.pa6)
+    palijst = [pa1,pa2,pa3,pa4,pa5,pa6]
 
 def kralingenWijk():
-    kra6 = polygon("kra6",(120, 50, 120), (
-        rsWijken(1521), rsWijken(282), rsWijken(1464), rsWijken(296), rsWijken(1380), rsWijken(356), rsWijken(1407), rsWijken(396), rsWijken(1446), rsWijken(417), rsWijken(1447), rsWijken(448),
-        rsWijken(1434), rsWijken(481), rsWijken(1468), rsWijken(515), rsWijken(1542), rsWijken(512), rsWijken(1538), rsWijken(498), rsWijken(1562), rsWijken(454)))
-    kra1 = polygon("kra1",(120, 50, 120), (
-        rsWijken(1464), rsWijken(296), rsWijken(1380), rsWijken(356), rsWijken(1393), rsWijken(375), rsWijken(1377), rsWijken(395), rsWijken(1334), rsWijken(379), rsWijken(1331), rsWijken(330)))
-    kra2 = polygon("kra2",(120, 50, 120), (
-        rsWijken(1393), rsWijken(375), rsWijken(1377), rsWijken(395), rsWijken(1334), rsWijken(379), rsWijken(1335), rsWijken(419), rsWijken(1384), rsWijken(420), rsWijken(1407), rsWijken(396)))
-    kra3 = polygon("kra3",(120, 50, 120), (rsWijken(1335), rsWijken(419), rsWijken(1337), rsWijken(454), rsWijken(1382),rsWijken(461), rsWijken(1384), rsWijken(420)))
-    kra4 = polygon("kra4",(120, 50, 120), (
-        rsWijken(1382), rsWijken(461), rsWijken(1384), rsWijken(420), rsWijken(1407), rsWijken(396), rsWijken(1446), rsWijken(417), rsWijken(1447), rsWijken(448), rsWijken(1434), rsWijken(481)))
-    kra5 = polygon("kra5",(120, 50, 120),
-                   (rsWijken(1382), rsWijken(462), rsWijken(1434), rsWijken(481), rsWijken(1469), rsWijken(515), rsWijken(1453), rsWijken(522), rsWijken(1397), rsWijken(500)))
-    kra7 = polygon("kra7",(120, 50, 120), (
-        rsWijken(1453), rsWijken(522), rsWijken(1469), rsWijken(515), rsWijken(1542), rsWijken(514), rsWijken(1572), rsWijken(594), rsWijken(1489), rsWijken(616), rsWijken(1469), rsWijken(593)))
+    kra6 = polygon("kra6",(120, 50, 120), Polygons.kra6)
+    kra1 = polygon("kra1",(120, 50, 120), Polygons.kra1)
+    kra2 = polygon("kra2",(120, 50, 120), Polygons.kra2)
+    kra3 = polygon("kra3",(120, 50, 120), Polygons.kra3)
+    kra4 = polygon("kra4",(120, 50, 120), Polygons.kra4)
+    kra5 = polygon("kra5",(120, 50, 120), Polygons.kra5)
+    kra7 = polygon("kra7",(120, 50, 120), Polygons.kra6)
+    kralijst = [kra6,kra1,kra2,kra3,kra4,kra5,kra7]
 
 def centrumWijk():
-    centr1 = polygon("centr1",(120, 50, 120), (
-    (1243), rsWijken(461), rsWijken(1206), rsWijken(462), rsWijken(1208), rsWijken(455), rsWijken(1288), rsWijken(443), rsWijken(1299), rsWijken(445), rsWijken(1299), rsWijken(458),
-    rsWijken(1272), rsWijken(468), rsWijken(1243), rsWijken(470)))
-    centr2 = polygon("centr2",(120, 50, 120), (rsWijken(1243), rsWijken(470), rsWijken(1272), rsWijken(468), rsWijken(1281), rsWijken(511), rsWijken(1247), rsWijken(539)))
-    centr3 = polygon("centr3",(120, 50, 120), (
-        rsWijken(1247), rsWijken(539), rsWijken(1223), rsWijken(553), rsWijken(1244), rsWijken(558), rsWijken(1245), rsWijken(562), rsWijken(1298), rsWijken(541), rsWijken(1281), rsWijken(511)))
-    centr4 = polygon("centr4",(120, 50, 120), (
-        rsWijken(1299), rsWijken(458), rsWijken(1272), rsWijken(468), rsWijken(1281), rsWijken(511), rsWijken(1298), rsWijken(541), rsWijken(1309), rsWijken(537), rsWijken(1316), rsWijken(501)))
-    centr5 = polygon("centr5",(120, 50, 120), (
-        rsWijken(1299), rsWijken(445), rsWijken(1337), rsWijken(454), rsWijken(1382), rsWijken(461), rsWijken(1397), rsWijken(500), rsWijken(1375), rsWijken(506), rsWijken(1330), rsWijken(563),
-        rsWijken(1314), rsWijken(547), rsWijken(1300), rsWijken(547), rsWijken(1298), rsWijken(541), rsWijken(1309), rsWijken(537), rsWijken(1316), rsWijken(501), rsWijken(1299), rsWijken(458),
-        rsWijken(1299), rsWijken(445)))
-    centr6 = polygon("centr6",(120, 50, 120), (
-        rsWijken(1245), rsWijken(562), rsWijken(1298), rsWijken(541), rsWijken(1300), rsWijken(547), rsWijken(1314), rsWijken(547), rsWijken(1330), rsWijken(563), rsWijken(1322), rsWijken(574),
-        rsWijken(1262), rsWijken(614)))
+    centr1 = polygon("centr1",(120, 50, 120), Polygons.centr1)
+    centr2 = polygon("centr2",(120, 50, 120), Polygons.centr2)
+    centr3 = polygon("centr3",(120, 50, 120), Polygons.centr3)
+    centr4 = polygon("centr4",(120, 50, 120), Polygons.centr4)
+    centr5 = polygon("centr5",(120, 50, 120), Polygons.centr5)
+    centr6 = polygon("centr6",(120, 50, 120), Polygons.centr6)
+    centlijst = [centr1,centr2,centr3,centr4,centr5,centr6]
 
 def noordWijk():
-    nrd1 = polygon("nrd1", (120, 50, 120), (
-        rsWijken(1109), rsWijken(432), rsWijken(1136), rsWijken(468), rsWijken(1168), rsWijken(464), rsWijken(1181), rsWijken(452), rsWijken(1190), rsWijken(395), rsWijken(1173), rsWijken(394)))
-    nrd2 = polygon("nrd2",(120, 50, 120), (
-        rsWijken(1173), rsWijken(394), rsWijken(1190), rsWijken(395), rsWijken(1181), rsWijken(452), rsWijken(1168), rsWijken(464), rsWijken(1206), rsWijken(462), rsWijken(1208), rsWijken(455),
-        rsWijken(1240), rsWijken(448), rsWijken(1269), rsWijken(412), rsWijken(1243), rsWijken(408), rsWijken(1229), rsWijken(379),rsWijken(1241), rsWijken(370), rsWijken(1237), rsWijken(355)))
-    nrd3 = polygon("nrd3",(120, 50, 120), (
-        rsWijken(1237), rsWijken(355), rsWijken(1241), rsWijken(370), rsWijken(1229), rsWijken(379), rsWijken(1243), rsWijken(408), rsWijken(1269), rsWijken(412), rsWijken(1274), rsWijken(404),
-        rsWijken(1261), rsWijken(348)))
-    nrd4 = polygon("nrd4",(120, 50, 120), (rsWijken(1261), rsWijken(348), rsWijken(1274), rsWijken(404), rsWijken(1311), rsWijken(364), rsWijken(1310), rsWijken(335)))
-    nrd5 = polygon("nrd5",(120, 50, 120), (
-        rsWijken(1310), rsWijken(335), rsWijken(1311), rsWijken(364), rsWijken(1282), rsWijken(398), rsWijken(1323), rsWijken(423), rsWijken(1311), rsWijken(447), rsWijken(1337), rsWijken(454),
-        rsWijken(1331), rsWijken(330)))
-    nrd6 = polygon("nrd6",(120, 50, 120),
-                   (rsWijken(1282), rsWijken(398), rsWijken(1323), rsWijken(423), rsWijken(1311), rsWijken(447), rsWijken(1295), rsWijken(444), rsWijken(1269), rsWijken(412)))
-    nrd7 = polygon("nrd7",(120, 50, 120), (rsWijken(1269), rsWijken(412), rsWijken(1238), rsWijken(449), rsWijken(1288), rsWijken(443), rsWijken(1295), rsWijken(444)))
+    nrd1 = polygon("nrd1",(120, 50, 120), Polygons.nrd1)
+    nrd2 = polygon("nrd2",(120, 50, 120), Polygons.nrd2)
+    nrd3 = polygon("nrd3",(120, 50, 120), Polygons.nrd3)
+    nrd4 = polygon("nrd4",(120, 50, 120), Polygons.nrd4)
+    nrd5 = polygon("nrd5",(120, 50, 120), Polygons.nrd5)
+    nrd6 = polygon("nrd6",(120, 50, 120), Polygons.nrd6)
+    nrd7 = polygon("nrd7",(120, 50, 120), Polygons.nrd7)
+    nrdlijst = [nrd1,nrd2,nrd3,nrd4,nrd5,nrd6,nrd7]
 
 def delftWijk():
-    delf1 = polygon("delf1",(120, 50, 120), (rsWijken(1243), rsWijken(461), rsWijken(1205), rsWijken(460), rsWijken(1221), rsWijken(552), rsWijken(1247), rsWijken(539)))
-    delf2 = polygon("delf2",(120, 50, 120),
-                    (rsWijken(1205), rsWijken(460), rsWijken(1135), rsWijken(468), rsWijken(1164), rsWijken(506), rsWijken(1186), rsWijken(552), rsWijken(1221), rsWijken(552)))
-    delf3 = polygon("delf3",(120, 50, 120),
-                    (rsWijken(1135), rsWijken(468), rsWijken(1164), rsWijken(506), rsWijken(1186), rsWijken(552), rsWijken(1107), rsWijken(529), rsWijken(1107), rsWijken(495)))
-    delf4 = polygon("delf4",(120, 50, 120),
-                    (rsWijken(1135), rsWijken(468), rsWijken(1057), rsWijken(479), rsWijken(1041), rsWijken(522), rsWijken(1107), rsWijken(529), rsWijken(1107), rsWijken(495)))
-    delf5 = polygon("delf5",(120, 50, 120), (
-        rsWijken(1041), rsWijken(522), rsWijken(1107), rsWijken(529), rsWijken(1124), rsWijken(534), rsWijken(1154), rsWijken(573), rsWijken(1127), rsWijken(598), rsWijken(1113), rsWijken(595),
-        rsWijken(1038), rsWijken(610), rsWijken(1048), rsWijken(582), rsWijken(1034), rsWijken(546)))
-    delf6 = polygon("delf6",(120, 50, 120), (rsWijken(1124), rsWijken(534), rsWijken(1154), rsWijken(573), rsWijken(1180), rsWijken(592), rsWijken(1186), rsWijken(552)))
-    delf7 = polygon("delf7",(120, 50, 120),
-                    (rsWijken(1186), rsWijken(552), rsWijken(1221), rsWijken(552), rsWijken(1244), rsWijken(558), rsWijken(1248), rsWijken(572), rsWijken(1180), rsWijken(592)))
-    delf8 = polygon("delf8",(120, 50, 120), (
-        rsWijken(1154), rsWijken(573), rsWijken(1127),rsWijken(598), rsWijken(1227), rsWijken(620), rsWijken(1262), rsWijken(614), rsWijken(1248), rsWijken(573), rsWijken(1180), rsWijken(592)))
+    delf1 = polygon("delf1",(120, 50, 120), Polygons.delf1)
+    delf2 = polygon("delf2",(120, 50, 120), Polygons.delf2)
+    delf3 = polygon("delf3",(120, 50, 120), Polygons.delf3)
+    delf4 = polygon("delf4",(120, 50, 120), Polygons.delf4)
+    delf5 = polygon("delf5",(120, 50, 120), Polygons.delf5)
+    delf6 = polygon("delf6",(120, 50, 120), Polygons.delf6)
+    delf7 = polygon("delf7",(120, 50, 120), Polygons.delf7)
+    delf8 = polygon("delf8",(120, 50, 120), Polygons.delf8)
+    delflijst = [delf1,delf2,delf3,delf4,delf5,delf6,delf7,delf8]
 
 def waalhavenWijk():
-    waal1 = polygon("waal1",(120, 50, 120), (
-        rsWijken(1048), rsWijken(795), rsWijken(927), rsWijken(797), rsWijken(923), rsWijken(765), rsWijken(934), rsWijken(764), rsWijken(937), rsWijken(743), rsWijken(962), rsWijken(722),
-        rsWijken(972), rsWijken(670), rsWijken(921), rsWijken(647), rsWijken(917), rsWijken(663), rsWijken(885), rsWijken(658), rsWijken(862), rsWijken(618), rsWijken(954), rsWijken(639),
-        rsWijken(1022), rsWijken(615), rsWijken(1045), rsWijken(673), rsWijken(1062), rsWijken(703), rsWijken(1085), rsWijken(711), rsWijken(1110), rsWijken(762), rsWijken(1095), rsWijken(813)))
-    waal2 = polygon("waal2",(120, 50, 120), (
-        rsWijken(1045), rsWijken(673), rsWijken(1062), rsWijken(703), rsWijken(1085), rsWijken(711), rsWijken(1088), rsWijken(669), rsWijken(1077), rsWijken(635), rsWijken(1056), rsWijken(641),
-        rsWijken(1064), rsWijken(663)))
-    waal3 = polygon("waal3",(120, 50, 120), (
-        rsWijken(1085), rsWijken(711), rsWijken(1088), rsWijken(669), rsWijken(1077), rsWijken(635), rsWijken(1056), rsWijken(641), rsWijken(1064), rsWijken(663), rsWijken(1045), rsWijken(673),
-        rsWijken(1022), rsWijken(615), rsWijken(1038), rsWijken(610), rsWijken(1113), rsWijken(596), rsWijken(1227), rsWijken(620), rsWijken(1225), rsWijken(646), rsWijken(1246), rsWijken(656),
-        rsWijken(1199), rsWijken(763), rsWijken(1139), rsWijken(749), rsWijken(1111), rsWijken(760)))
-    waal4 = polygon("waal4",(120, 50, 120), (
-        rsWijken(1199), rsWijken(763), rsWijken(1139), rsWijken(749), rsWijken(1111), rsWijken(760), rsWijken(1095), rsWijken(813), rsWijken(1161), rsWijken(839), rsWijken(1201), rsWijken(824),
-        rsWijken(1218), rsWijken(800), rsWijken(1201), rsWijken(792)))
+    waal1 = polygon("waal1",(120, 50, 120), Polygons.waal1)
+    waal2 = polygon("waal2",(120, 50, 120), Polygons.waal2)
+    waal3 = polygon("waal3",(120, 50, 120), Polygons.waal3)
+    waal4 = polygon("waal4",(120, 50, 120), Polygons.waal4)
+    waallijst = [waal1,waal2,waal3,waal4]
 
 def charloisWijk():
-    char1 = polygon("char1",(120, 50, 120), (
-        rsWijken(1262), rsWijken(614), rsWijken(1227), rsWijken(620), rsWijken(1225), rsWijken(646), rsWijken(1246), rsWijken(656), rsWijken(1219), rsWijken(718), rsWijken(1273), rsWijken(729),
-        rsWijken(1278), rsWijken(690), rsWijken(1291), rsWijken(668), rsWijken(1257), rsWijken(630), rsWijken(1268), rsWijken(622)))
-    char2 = polygon("char2",(120, 50, 120), (
-        rsWijken(1268), rsWijken(622), rsWijken(1257), rsWijken(630), rsWijken(1291), rsWijken(668), rsWijken(1339), rsWijken(688), rsWijken(1349), rsWijken(684), rsWijken(1372), rsWijken(694),
-        rsWijken(1378), rsWijken(617), rsWijken(1288), rsWijken(642)))
-    char3 = polygon("char3",(120, 50, 120), (
-        rsWijken(1291), rsWijken(668), rsWijken(1278), rsWijken(690), rsWijken(1274), rsWijken(721), rsWijken(1289), rsWijken(724), rsWijken(1289), rsWijken(714), rsWijken(1333), rsWijken(715),
-        rsWijken(1338), rsWijken(724), rsWijken(1361), rsWijken(720), rsWijken(1361), rsWijken(698), rsWijken(1372), rsWijken(694), rsWijken(1349),rsWijken(684), rsWijken(1339), rsWijken(688)))
-    char4 = polygon("char4",(120, 50, 120), (
-        rsWijken(1219), rsWijken(718), rsWijken(1199), rsWijken(763), rsWijken(1201), rsWijken(792), rsWijken(1218), rsWijken(800), rsWijken(1253), rsWijken(758), rsWijken(1348), rsWijken(772),
-        rsWijken(1378), rsWijken(756), rsWijken(1397), rsWijken(819), rsWijken(1457), rsWijken(824), rsWijken(1417), rsWijken(772), rsWijken(1361), rsWijken(720), rsWijken(1338), rsWijken(724),
-        rsWijken(1333), rsWijken(715), rsWijken(1289), rsWijken(714), rsWijken(1289), rsWijken(724), rsWijken(1274), rsWijken(721), rsWijken(1273), rsWijken(728)))
-    char5 = polygon("char5",(120, 50, 120), (
-        rsWijken(1218), rsWijken(800), rsWijken(1253), rsWijken(758), rsWijken(1301), rsWijken(767), rsWijken(1290), rsWijken(824), rsWijken(1239), rsWijken(824), rsWijken(1212), rsWijken(808)))
-    char6 = polygon("char6",(120, 50, 120), (
-        rsWijken(1301), rsWijken(767), rsWijken(1290), rsWijken(824), rsWijken(1388), rsWijken(820), rsWijken(1397), rsWijken(819), rsWijken(1379), rsWijken(757), rsWijken(1348), rsWijken(772)))
-    char7 = polygon("char7",(120, 50, 120), (
-        rsWijken(1212), rsWijken(808), rsWijken(1201), rsWijken(824), rsWijken(1161), rsWijken(839), rsWijken(1242), rsWijken(871), rsWijken(1315), rsWijken(869), rsWijken(1315), rsWijken(848),
-        rsWijken(1388), rsWijken(820), rsWijken(1239), rsWijken(824)))
+    char1 = polygon("char1",(120, 50, 120), Polygons.char1)
+    char2 = polygon("char2",(120, 50, 120), Polygons.char2)
+    char3 = polygon("char3",(120, 50, 120), Polygons.char3)
+    char4 = polygon("char4",(120, 50, 120), Polygons.char4)
+    char5 = polygon("char5",(120, 50, 120), Polygons.char5)
+    char6 = polygon("char6",(120, 50, 120), Polygons.char6)
+    char7 = polygon("char7",(120, 50, 120), Polygons.char7)
+    charlijst = [char1,char2,char3,char4,char5,char6,char7]
 
 def feijenoordWijk():
-    fei1 = polygon("fei1",(120, 50, 120),
-                   ((1397), rsWijken(500), rsWijken(1375), rsWijken(506), rsWijken(1340), rsWijken(551), rsWijken(1368), rsWijken(558), (1421), rsWijken(510)))
-    fei2 = polygon("fei2",(120, 50, 120),
-                   (rsWijken(1421), rsWijken(510), rsWijken(1453), rsWijken(522), rsWijken(1469), rsWijken(593), rsWijken(1450), rsWijken(605), rsWijken(1394), rsWijken(532)))
-    fei3 = polygon("fei3",(120, 50, 120), (
-        rsWijken(1394), rsWijken(532), rsWijken(1450), rsWijken(605), rsWijken(1429), rsWijken(624), rsWijken(1381), rsWijken(583), rsWijken(1387), rsWijken(573), rsWijken(1368), rsWijken(558)))
-    fei4 = polygon("fei4",(120, 50, 120), (
-        rsWijken(1368), rsWijken(558), rsWijken(1340), rsWijken(551), rsWijken(1322), rsWijken(574), rsWijken(1306), rsWijken(583), rsWijken(1336), rsWijken(600), rsWijken(1378), rsWijken(591),
-        rsWijken(1387), rsWijken(573)))
-    fei5 = polygon("fei5",(120, 50, 120), (
-        rsWijken(1306), rsWijken(583), rsWijken(1336), rsWijken(600), rsWijken(1378), rsWijken(591), rsWijken(1378), rsWijken(617), rsWijken(1288), rsWijken(641), rsWijken(1262), rsWijken(614)))
-    fei6 = polygon("fei6",(120, 50, 120), (rsWijken(1378), rsWijken(617), rsWijken(1376), rsWijken(635), rsWijken(1429), rsWijken(624), rsWijken(1382), rsWijken(583)))
-    fei7 = polygon("fei7",(120, 50, 120), (
-        rsWijken(1428), rsWijken(624), rsWijken(1401), rsWijken(631), rsWijken(1430), rsWijken(664), rsWijken(1423), rsWijken(688), rsWijken(1483), rsWijken(671), rsWijken(1450), rsWijken(605)))
-    fei8 = polygon("fei8",(120, 50, 120),
-                   (rsWijken(1401), rsWijken(631), rsWijken(1430), rsWijken(664), rsWijken(1423), rsWijken(688), rsWijken(1372), rsWijken(694), rsWijken(1376), rsWijken(636)))
-    fei9 = polygon("fei9",(120, 50, 120), (
-        rsWijken(1372), rsWijken(694), rsWijken(1361), rsWijken(698), rsWijken(1361), rsWijken(720), rsWijken(1417), rsWijken(772), rsWijken(1454), rsWijken(735), rsWijken(1487), rsWijken(735),
-        rsWijken(1496), rsWijken(698), rsWijken(1483), rsWijken(671), rsWijken(1423), rsWijken(688)))
+    fei1 = polygon("fei1",(120, 50, 120), Polygons.fei1)
+    fei2 = polygon("fei2",(120, 50, 120), Polygons.fei2)
+    fei3 = polygon("fei3",(120, 50, 120), Polygons.fei3)
+    fei4 = polygon("fei4",(120, 50, 120), Polygons.fei4)
+    fei5 = polygon("fei5",(120, 50, 120), Polygons.fei5)
+    fei6 = polygon("fei6",(120, 50, 120), Polygons.fei6)
+    fei7 = polygon("fei7",(120, 50, 120), Polygons.fei7)
+    fei8 = polygon("fei8",(120, 50, 120), Polygons.fei8)
+    fei9 = polygon("fei9",(120, 50, 120), Polygons.fei9)
+    feilijst = [fei1,fei2,fei3,fei4,fei5,fei6,fei7,fei8,fei9]
 
 def ijsselmondeWijk():
-    ijs1 = polygon("ijs1",(120, 50, 120), (
-        rsWijken(1496), rsWijken(698), rsWijken(1487), rsWijken(735), rsWijken(1454), rsWijken(735), rsWijken(1417), rsWijken(772), rsWijken(1457), rsWijken(824), rsWijken(1524), rsWijken(831),
-        rsWijken(1553), rsWijken(819)))
-    ijs2 = polygon("ijs2",(120, 50, 120), (
-        rsWijken(1485), rsWijken(673), rsWijken(1523), rsWijken(652), rsWijken(1619), rsWijken(644), rsWijken(1682), rsWijken(769), rsWijken(1666), rsWijken(779), rsWijken(1657), rsWijken(766),
-        rsWijken(1574), rsWijken(813), rsWijken(1553), rsWijken(819)))
-    ijs3 = polygon("ijs3",(120, 50, 120), (rsWijken(1619), rsWijken(644), rsWijken(1623), rsWijken(621), rsWijken(1705), rsWijken(639), rsWijken(1682), rsWijken(769)))
-    ijs4 = polygon("ijs4",(120, 50, 120), (
-        rsWijken(1469), rsWijken(593), rsWijken(1450), rsWijken(605), rsWijken(1485), rsWijken(673), rsWijken(1523), rsWijken(652), rsWijken(1619), rsWijken(644), rsWijken(1623), rsWijken(621),
-        rsWijken(1705), rsWijken(639), rsWijken(1712), rsWijken(606), rsWijken(1625), rsWijken(584), rsWijken(1572), rsWijken(594), rsWijken(1489), rsWijken(616)))
+    ijs1 = polygon("ijs1",(120, 50, 120), Polygons.ijs1)
+    ijs2 = polygon("ijs2",(120, 50, 120), Polygons.ijs2)
+    ijs3 = polygon("ijs3",(120, 50, 120), Polygons.ijs3)
+    ijs4 = polygon("ijs4",(120, 50, 120), Polygons.ijs4)
+    ijslijst = [ijs1,ijs2,ijs3,ijs4]
 
 
 
 ''''The polygons(area's)'''''
-overschie_polygon = polygon("Overschie",(20, 50, 120), (
-rs(904), rs(194), rs(947), rs(183), rs(955), rs(205), rs(1106), rs(109), rs(1176), rs(199), rs(1222), rs(163),
-rs(1242), rs(185), rs(1237), rs(355), rs(1109), rs(432), rs(1138), rs(471), rs(1057), rs(479), rs(1017), rs(403),
-rs(1059), rs(350), rs(1050), rs(345), rs(1003), rs(366), rs(964), rs(322), rs(949), rs(342)))
-hillegersberg_polygon = polygon("Hillegersberg",(20, 50, 120), (
-rs(1242), rs(185), rs(1237), rs(355), rs(1520), rs(282), rs(1499), rs(189), rs(1475), rs(213), rs(1432), rs(195),
-rs(1428), rs(172), rs(1387), rs(141), rs(1382), rs(154), rs(1280), rs(90)))
-prins_alexander_polygon = polygon("Prins_alexander",(20, 50, 120), (
-rs(1562), rs(454), rs(1661), rs(425), rs(1651), rs(350), rs(1693), rs(337), rs(1650), rs(227), rs(1663), rs(222),
-rs(1673), rs(233), rs(1821), rs(141), rs(1791), rs(116), rs(1815), rs(31), rs(1804), rs(12), rs(1617), rs(76),
-rs(1680), rs(145), rs(1627), rs(169), rs(1595), rs(134), rs(1499), rs(189)))
-kralingen_polygon = polygon("Kralingen",(20, 50, 120), (
-rs(1521), rs(282), rs(1562), rs(454), rs(1538), rs(498), rs(1572), rs(594), rs(1489), rs(616), rs(1469), rs(593),
-rs(1453), rs(522), rs(1397), rs(500), rs(1382), rs(461), rs(1337), rs(454), rs(1331), rs(330)))
-noord_polygon = polygon("Noord",(20, 50, 120), (
-rs(1331), rs(330), rs(1237), rs(355), rs(1109), rs(432), rs(1136), rs(468), rs(1206), rs(462), rs(1208), rs(455),
-rs(1288), rs(443), rs(1337), rs(454)))
-delftshaven_polygon = polygon("Delftshaven",(20, 50, 120), (
-rs(1057), rs(479), rs(1034), rs(546), rs(1048), rs(582), rs(1038), rs(610), rs(1113), rs(596), rs(1227), rs(620),
-rs(1262), rs(614), rs(1244), rs(558), rs(1223), rs(553), rs(1247), rs(539), rs(1243), rs(456)))
-centrum_polygon = polygon("Centrum",(20, 50, 120), (
-rs(1262), rs(614), rs(1244), rs(558), rs(1223), rs(553), rs(1247), rs(539), rs(1243), rs(461), rs(1206), rs(462),
-rs(1208), rs(455), rs(1288), rs(443), rs(1337), rs(454), rs(1382), rs(461), rs(1397), rs(500), rs(1375), rs(506),
-rs(1322), rs(574)))
-feijenoord_polygon = polygon("Feijenoord",(20, 50, 120), (
-rs(1397), rs(500), rs(1375), rs(506), rs(1322), rs(574), rs(1262), rs(614), rs(1288), rs(642), rs(1378), rs(617),
-rs(1372), rs(694), rs(1361), rs(698), rs(1361), rs(720), rs(1417), rs(772), rs(1454), rs(735), rs(1487), rs(735),
-rs(1496), rs(698), rs(1450), rs(605), rs(1469), rs(593), rs(1453), rs(522)))
-ijsselmonde_polygon = polygon("Ijsselmonde",(20, 50, 120), (
-rs(1572), rs(594), rs(1489), rs(616), rs(1469), rs(593), rs(1450), rs(605), rs(1496), rs(698), rs(1487), rs(735),
-rs(1454), rs(735), rs(1417), rs(772), rs(1457), rs(824), rs(1524), rs(831), rs(1574), rs(813), rs(1657), rs(766),
-rs(1666), rs(779), rs(1682), rs(769), rs(1712), rs(606), rs(1625), rs(584)))
-charlois_polygon = polygon("Charlois",(20, 50, 120), (
-rs(1262), rs(614), rs(1288), rs(642), rs(1378), rs(617), rs(1372), rs(694), rs(1361), rs(698), rs(1361), rs(720),
-rs(1417), rs(772), rs(1457), rs(824), rs(1388), rs(820), rs(1315), rs(848), rs(1315), rs(869), rs(1242), rs(871),
-rs(1161), rs(839), rs(1201), rs(824), rs(1218), rs(800), rs(1201), rs(792), rs(1199), rs(763), rs(1246), rs(656),
-rs(1225), rs(646), rs(1227), rs(620)))
-waalhaven_polygon = polygon("Waalhaven",(20, 50, 120), (
-rs(1161), rs(839), rs(1201), rs(824), rs(1218), rs(800), rs(1201), rs(792), rs(1199), rs(763), rs(1246), rs(656),
-rs(1225), rs(646), rs(1227), rs(620), rs(1113), rs(596), rs(1038), rs(610), rs(954), rs(639), rs(862), rs(618),
-rs(885), rs(658), rs(917), rs(663), rs(921), rs(647), rs(972), rs(670), rs(962), rs(722), rs(937), rs(743), rs(934),
-rs(764), rs(923), rs(765), rs(927), rs(797), rs(1048), rs(795)))
+overschie_polygon = polygon("Overschie",(20, 50, 120), Polygons.overschie)
+hillegersberg_polygon = polygon("Hillegersberg",(20, 50, 120), Polygons.hillegersberg)
+prins_alexander_polygon = polygon("Prins_alexander",(20, 50, 120), Polygons.prins_alexander)
+kralingen_polygon = polygon("Kralingen",(20, 50, 120), Polygons.kralingen)
+noord_polygon = polygon("Noord",(20, 50, 120), Polygons.noord)
+delftshaven_polygon = polygon("Delftshaven",(20, 50, 120), Polygons.delftshaven)
+centrum_polygon = polygon("Centrum",(20, 50, 120), Polygons.centrum)
+feijenoord_polygon = polygon("Feijenoord",(20, 50, 120), Polygons.feijenoord)
+ijsselmonde_polygon = polygon("Ijsselmonde",(20, 50, 120), Polygons.ijsselmonde)
+charlois_polygon = polygon("Charlois",(20, 50, 120), Polygons.charlois)
+waalhaven_polygon = polygon("Waalhaven",(20, 50, 120), Polygons.waalhaven)
 
 
 
@@ -879,12 +768,12 @@ def categoryOther():
 ''''Based on the data, the colour of the map changes, the data represents the query that will come in the function'''
 def ShowResults(data):
     global polygonsgebieden #The array of area's
-    data = {"Charlois":50, "Overschie":90} #Dictionary to simulate a query, this is to test the query
+    data = [] #Dictionary to simulate a query, this is to test the query
     for result in data: #goes in the dictionary (the query)
             for gebied in polygonsgebieden: #Goes in the area's array
                 if result == "Charlois": #Checks if result from the query is equal to an area
                     result = int(data.get(result)) #Converts the dictionary value to an int
-                    charlois_polygon.ChangeColor(100) #Changes color of the area and also change the colour
+                     #Changes color of the area and also change the colour
                 elif result == "Overschie":
                     pass
                 elif result == "Hillegersberg":
@@ -906,12 +795,12 @@ def ShowResults(data):
                 elif result == "Waalhaven":
                     pass
 
-    f = Figure(figsize=(5, 5), dpi=50)
-    a = f.add_subplot(111)  # means 1 chart 1 by 1
-    a.plot([1, 2, 3, 4, 5, 6, 7, 8], [5, 6, 2, 4, 4, 3, 5, 3])
-    Figure1 = FigureCanvasTkAgg(f, root)
-    Figure1.show()
-    Figure1.get_tk_widget().grid(row=0, column=0, sticky=N, rowspan=30)
+    # f = Figure(figsize=(5, 5), dpi=50)
+    # a = f.add_subplot(111)  # means 1 chart 1 by 1
+    # a.plot([1, 2, 3, 4, 5, 6, 7, 8], [5, 6, 2, 4, 4, 3, 5, 3])
+    # Figure1 = FigureCanvasTkAgg(f, root)
+    # Figure1.show()
+    # Figure1.get_tk_widget().grid(row=0, column=0, sticky=N, rowspan=30)
 
 
 ''''Database query for the page: "Woningsadvies (the user gets data based on selection)'''''
@@ -987,11 +876,15 @@ def databasePercentagesEnCijfers():
     global buttonArray #needed because the array has the last selected button of the page: "Percentages en cijfers'
     answer = (buttonArray[-1]) #last selected button gets stored in answer
     print(answer) #To prove that the last selected button is saved in the array
-    data = [] #Here comes the query, for every button a new query should be appended to the array
-
-    # TODO ResultQuery = []
+    #Here comes the query, for every button a new query should be appended to the array
+    data =[]
     if answer == 0:  #the numbers represent the button, each button has his own number. The attribute of the button that stores this is: name
-        ShowResults(data) #The query get send into the showresults function, then the map colour gets changed based on the results from it
+        if len(geselecteerdegebieden)>0:
+            for i in geselecteerdegebieden:
+
+                print(i)
+                PlotLineChart("geweldsdelicten", geselecteerdegebieden)
+         #The query get send into the showresults function, then the map colour gets changed based on the results from it
     elif answer == 1:
         ShowResults(data)
     elif answer == 2:
