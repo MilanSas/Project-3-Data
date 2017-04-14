@@ -32,7 +32,7 @@ WijkenGebieden = {
                                         "Prins Alexander",	"Prinsenland",	"s-Gravenland",	"Zevenkamp"],
                 "Rotterdam" : ["Rotterdam"],
 
-                "Rotterdam Centrum" : ["Cool","CS-kwartier", "Nieuwe Werk/Dijkzigt","Oude Westen",	"Rotterdam Centrum", "Stadsdriehoek"],
+                "Rotterdam Centrum" : ["Cool","CS-kwartier", "Nieuwe Werk/Dijkzigt","Oude Westen","Rotterdam Centrum", "Stadsdriehoek"],
 
                 "Rozenburg" : ["Rozenburg"]
 

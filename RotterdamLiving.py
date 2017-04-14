@@ -26,9 +26,9 @@ root.geometry('{}x{}'.format(screenx, screeny)) #Window doesn't automaticcaly re
 
 ''''Area Text (names of the area that get loaded when user clicks the area'''''
 overschie = "Overschie"
-hillegersberg_schiebroek = "Hillegersberg-schiebroek"
+hillegersberg_schiebroek = "Hillegersberg-Schiebroek"
 prins_alexander = "Prins Alexander"
-kralingen_crooswijk = "Kralingen Crooswijk"
+kralingen_crooswijk = "Kralingen-Crooswijk"
 noord = "Noord"
 delftshaven = "Delfshaven"
 centrum = "Centrum"
