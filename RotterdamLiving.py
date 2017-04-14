@@ -119,27 +119,12 @@ class polygon:
 
 
     def ChangeColor(self, percent):
-        if percent < 17:
-            percent = 16
-        for n in range(percent):
-            red = 16
-            green = 16
-            if percent < 7:
-                red = 255
-                green = 16
-            elif percent > 93:
-                green = 255
-                red = 16
-            elif percent > 50:
-                green = 255
-                red = int((100 - percent) * 5.1)
-            elif percent <= 50:
-                red = 255
-                green = int(percent * 5.1)
-            color = (red, green, 16)
+        colorrange = percent * 255 //100
+        for n in range(colorrange-15):
+            color = (255-n, 255-n, 255)
             canvas.itemconfig(self.shape, fill=HexToRGB(color))
             root.update()
-            time.sleep(0.01)
+            time.sleep(0.0000000001)
 
     def Select(self):
         if self.selected:
@@ -876,7 +861,7 @@ def ShowResults(data):
             for gebied in polygonsgebieden: #Goes in the area's array
                 if result == "Charlois": #Checks if result from the query is equal to an area
                     result = int(data.get(result)) #Converts the dictionary value to an int
-                    charlois_polygon.ChangeColor(2) #Changes color of the area and also change the colour
+                    charlois_polygon.ChangeColor(100) #Changes color of the area and also change the colour
                 elif result == "Overschie":
                     pass
                 elif result == "Hillegersberg":
