@@ -152,6 +152,15 @@ class polygon:
         self.selected = False
         canvas.itemconfig(self.shape, outline='black', width = 2)
 
+class lagenda():
+    def __init__(self):
+        self.pos = 100
+        for i in range(80):
+            color = (255 - i*3, 255 - i*3, 255)
+            self.shape = canvas.create_rectangle(50,i * 10,100,i * 10 + 10, fill=(HexToRGB(color)), outline='black')
+            canvas.move(self.shape,rs(1700),rs(50))
+
+lagenda = lagenda()
 
 
 
