@@ -109,6 +109,17 @@ def HexToRGB(rgb):
 
 ''''Function to create the polygons(area's)'''
 geselecteerdegebieden = []
+
+numcolor = 0
+def getcolor():
+    global numcolor
+    selectcolors = ['red', 'cyan', 'hot pink', 'orange', 'saddle brown', 'green2', 'yellow', 'dark green', 'purple1',
+                    'SlateGray4', 'khaki2']
+    color = selectcolors[numcolor]
+    numcolor += 1
+    return color
+
+
 class polygon:
     def __init__(self,name,color,list):
         self.name = name
@@ -116,30 +127,16 @@ class polygon:
         self.selected = False
         self.shape = canvas.create_polygon(list, fill=(HexToRGB(color)), outline='black', width=2, tags = self.name)
         canvas.move(self.shape, rs(-400), 0)
+        self.selectcolor = getcolor()
 
 
     def ChangeColor(self, percent):
-        if percent < 17:
-            percent = 16
-        for n in range(percent):
-            red = 16
-            green = 16
-            if percent < 7:
-                red = 255
-                green = 16
-            elif percent > 93:
-                green = 255
-                red = 16
-            elif percent > 50:
-                green = 255
-                red = int((100 - percent) * 5.1)
-            elif percent <= 50:
-                red = 255
-                green = int(percent * 5.1)
-            color = (red, green, 16)
+        colorrange = percent * 255 //100
+        for n in range(colorrange-15):
+            color = (255-n, 255-n, 255)
             canvas.itemconfig(self.shape, fill=HexToRGB(color))
             root.update()
-            time.sleep(0.01)
+            time.sleep(0.0000000001)
 
     def Select(self):
         if self.selected:
@@ -147,13 +144,22 @@ class polygon:
             return
         geselecteerdegebieden.append(self.name)
         self.selected = True
-        canvas.itemconfig(self.shape, outline = 'red')
+        canvas.itemconfig(self.shape, outline = self.selectcolor, width = 6)
 
     def deSelect(self):
         geselecteerdegebieden.remove(self.name)
         self.selected = False
-        canvas.itemconfig(self.shape, outline='black')
+        canvas.itemconfig(self.shape, outline='black', width = 2)
 
+class lagenda():
+    def __init__(self):
+        self.pos = 100
+        for i in range(80):
+            color = (255 - i*3, 255 - i*3, 255)
+            self.shape = canvas.create_rectangle(50,i * 10,100,i * 10 + 10, fill=(HexToRGB(color)), outline='black')
+            canvas.move(self.shape,rs(1700),rs(50))
+
+lagenda = lagenda()
 
 
 
@@ -341,7 +347,7 @@ def ijsselmondeWijk():
         rsWijken(1469), rsWijken(593), rsWijken(1450), rsWijken(605), rsWijken(1485), rsWijken(673), rsWijken(1523), rsWijken(652), rsWijken(1619), rsWijken(644), rsWijken(1623), rsWijken(621),
         rsWijken(1705), rsWijken(639), rsWijken(1712), rsWijken(606), rsWijken(1625), rsWijken(584), rsWijken(1572), rsWijken(594), rsWijken(1489), rsWijken(616)))
 
-#TODO Add the other wijken
+
 
 ''''The polygons(area's)'''''
 overschie_polygon = polygon("Overschie",(20, 50, 120), (
@@ -600,7 +606,9 @@ def home():
 
 def resmenuoptions(event):
     global variable1
-    if  str(variable1.get()) == "1280x720": #variable is the drop down menu, when a menu page is selected, the value of the variable changes
+    if  str(variable1.get()) == (str(screenx) + "x" + str(screeny)):
+        root.geometry('{}x{}'.format(screenx, screeny))
+    elif  str(variable1.get()) == "1280x720": #variable is the drop down menu, when a menu page is selected, the value of the variable changes
         root.geometry("1280x720")
     elif  str(variable1.get()) == "1600x900":
         root.geometry("1600x900")
@@ -630,7 +638,7 @@ def settings():
     ''''The drop down resolution menu'''
     variable1 = StringVar(root)  #Variable will store the page that is selected
     variable1.set(str(screenx) + " x " + str(screeny))  # default value of the drop down menu
-    menu_button1 = OptionMenu(root, variable1, "1280x720", "1600x900", "1920x1080", "4k", command=resmenuoptions)  #The options of the drop down menu
+    menu_button1 = OptionMenu(root, variable1, (str(screenx) + "x" + str(screeny)), "1280x720", "1600x900", "1920x1080", "4k", command=resmenuoptions)  #The options of the drop down menu
     menu_button1.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white") #Sets the font/size of drop down menu
     menu_button1.grid(row=3, column=0, sticky=N + W) #Sets position of the drop down menu
     searchPage = False
@@ -876,7 +884,7 @@ def ShowResults(data):
             for gebied in polygonsgebieden: #Goes in the area's array
                 if result == "Charlois": #Checks if result from the query is equal to an area
                     result = int(data.get(result)) #Converts the dictionary value to an int
-                    charlois_polygon.ChangeColor(2) #Changes color of the area and also change the colour
+                    charlois_polygon.ChangeColor(100) #Changes color of the area and also change the colour
                 elif result == "Overschie":
                     pass
                 elif result == "Hillegersberg":
