@@ -228,3 +228,6 @@ ijs3 = (rsWijken(1619), rsWijken(644), rsWijken(1623), rsWijken(621), rsWijken(1
 ijs4 = (
     rsWijken(1469), rsWijken(593), rsWijken(1450), rsWijken(605), rsWijken(1485), rsWijken(673), rsWijken(1523), rsWijken(652), rsWijken(1619), rsWijken(644), rsWijken(1623), rsWijken(621),
     rsWijken(1705), rsWijken(639), rsWijken(1712), rsWijken(606), rsWijken(1625), rsWijken(584), rsWijken(1572), rsWijken(594), rsWijken(1489), rsWijken(616))
+
+
+root.destroy()

@@ -160,7 +160,6 @@ class lagenda():
             color = (255 - i*3, 255 - i*3, 255)
             self.shape = canvas.create_rectangle(50,i * 10,100,i * 10 + 10, fill=(HexToRGB(color)), outline='black')
             canvas.move(self.shape,rs(1700),rs(50))
-
 lagenda = lagenda()
 
 
@@ -172,6 +171,7 @@ def overschieWijk():
     ov3 = polygon("ov3",(120, 50, 120), Polygons.ov3)
     ov4 = polygon("ov4",(120, 50, 120), Polygons.ov4)
     ov5 = polygon("ov5",(120, 50, 120), Polygons.ov5)
+    ovlijst = [ov1,ov2,ov3,ov4,ov5]
 
 ''''This function gets loaded when the area: "Hillegersberg", gets selected'''
 def hillegersbergWijk():
@@ -180,6 +180,7 @@ def hillegersbergWijk():
     hill3 = polygon("hill3",(120, 50, 120), Polygons.hill3)
     hill4 = polygon("hill4",(120, 50, 120), Polygons.hill4)
     hill5 = polygon("hill5",(120, 50, 120), Polygons.hill5)
+    hillijst = [hill1,hill2,hill3,hill4,hill5]
 
 def prinsalexanderWijk():
     pa1 = polygon("pa1",(120, 50, 120), Polygons.pa1)
@@ -188,6 +189,7 @@ def prinsalexanderWijk():
     pa4 = polygon("pa4",(120, 50, 120), Polygons.pa4)
     pa5 = polygon("pa5",(120, 50, 120), Polygons.pa5)
     pa6 = polygon("pa6",(120, 50, 120), Polygons.pa6)
+    palijst = [pa1,pa2,pa3,pa4,pa5,pa6]
 
 def kralingenWijk():
     kra6 = polygon("kra6",(120, 50, 120), Polygons.kra6)
@@ -197,6 +199,7 @@ def kralingenWijk():
     kra4 = polygon("kra4",(120, 50, 120), Polygons.kra4)
     kra5 = polygon("kra5",(120, 50, 120), Polygons.kra5)
     kra7 = polygon("kra7",(120, 50, 120), Polygons.kra6)
+    kralijst = [kra6,kra1,kra2,kra3,kra4,kra5,kra7]
 
 def centrumWijk():
     centr1 = polygon("centr1",(120, 50, 120), Polygons.centr1)
@@ -205,6 +208,7 @@ def centrumWijk():
     centr4 = polygon("centr4",(120, 50, 120), Polygons.centr4)
     centr5 = polygon("centr5",(120, 50, 120), Polygons.centr5)
     centr6 = polygon("centr6",(120, 50, 120), Polygons.centr6)
+    centlijst = [centr1,centr2,centr3,centr4,centr5,centr6]
 
 def noordWijk():
     nrd1 = polygon("nrd1",(120, 50, 120), Polygons.nrd1)
@@ -214,6 +218,7 @@ def noordWijk():
     nrd5 = polygon("nrd5",(120, 50, 120), Polygons.nrd5)
     nrd6 = polygon("nrd6",(120, 50, 120), Polygons.nrd6)
     nrd7 = polygon("nrd7",(120, 50, 120), Polygons.nrd7)
+    nrdlijst = [nrd1,nrd2,nrd3,nrd4,nrd5,nrd6,nrd7]
 
 def delftWijk():
     delf1 = polygon("delf1",(120, 50, 120), Polygons.delf1)
@@ -224,12 +229,14 @@ def delftWijk():
     delf6 = polygon("delf6",(120, 50, 120), Polygons.delf6)
     delf7 = polygon("delf7",(120, 50, 120), Polygons.delf7)
     delf8 = polygon("delf8",(120, 50, 120), Polygons.delf8)
+    delflijst = [delf1,delf2,delf3,delf4,delf5,delf6,delf7,delf8]
 
 def waalhavenWijk():
     waal1 = polygon("waal1",(120, 50, 120), Polygons.waal1)
     waal2 = polygon("waal2",(120, 50, 120), Polygons.waal2)
     waal3 = polygon("waal3",(120, 50, 120), Polygons.waal3)
     waal4 = polygon("waal4",(120, 50, 120), Polygons.waal4)
+    waallijst = [waal1,waal2,waal3,waal4]
 
 def charloisWijk():
     char1 = polygon("char1",(120, 50, 120), Polygons.char1)
@@ -239,6 +246,7 @@ def charloisWijk():
     char5 = polygon("char5",(120, 50, 120), Polygons.char5)
     char6 = polygon("char6",(120, 50, 120), Polygons.char6)
     char7 = polygon("char7",(120, 50, 120), Polygons.char7)
+    charlijst = [char1,char2,char3,char4,char5,char6,char7]
 
 def feijenoordWijk():
     fei1 = polygon("fei1",(120, 50, 120), Polygons.fei1)
@@ -250,12 +258,14 @@ def feijenoordWijk():
     fei7 = polygon("fei7",(120, 50, 120), Polygons.fei7)
     fei8 = polygon("fei8",(120, 50, 120), Polygons.fei8)
     fei9 = polygon("fei9",(120, 50, 120), Polygons.fei9)
+    feilijst = [fei1,fei2,fei3,fei4,fei5,fei6,fei7,fei8,fei9]
 
 def ijsselmondeWijk():
     ijs1 = polygon("ijs1",(120, 50, 120), Polygons.ijs1)
     ijs2 = polygon("ijs2",(120, 50, 120), Polygons.ijs2)
     ijs3 = polygon("ijs3",(120, 50, 120), Polygons.ijs3)
     ijs4 = polygon("ijs4",(120, 50, 120), Polygons.ijs4)
+    ijslijst = [ijs1,ijs2,ijs3,ijs4]
 
 
 
