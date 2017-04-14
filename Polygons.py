@@ -1,6 +1,6 @@
 from tkinter import *
 root = Tk()
-screeny = 1080
+screeny = root.winfo_screenheight() #height
 
 def rs(size):
     ratio = 1080 / size
