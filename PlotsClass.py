@@ -91,10 +91,5 @@ class PlotBarChart(Plot):
         plt.show()
 
 
-t = ["Carnisse", "Bospolder", "Spangen", "Tarwewijk", "Zuidwijk" ]
-PlotLineChart("geweldsdelicten", t)
-
-
-PlotBarChart("fiobj2016", "fysiekeindex", t)
 
 

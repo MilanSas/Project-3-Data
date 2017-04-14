@@ -3,6 +3,7 @@ import matplotlib #Needed for graph
 matplotlib.use("TKAgg")
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
+from PlotsClass import Plot, PlotBarChart, PlotLineChart
 import time
 #TODO read the comments, the symbol: , is after lines. the symbol: '''''' , is to explain the overall code
 #TODO when user clicks on an area, that area needs to be zoomed in
@@ -879,12 +880,12 @@ def categoryOther():
 ''''Based on the data, the colour of the map changes, the data represents the query that will come in the function'''
 def ShowResults(data):
     global polygonsgebieden #The array of area's
-    data = {"Charlois":50, "Overschie":90} #Dictionary to simulate a query, this is to test the query
+    data = [] #Dictionary to simulate a query, this is to test the query
     for result in data: #goes in the dictionary (the query)
             for gebied in polygonsgebieden: #Goes in the area's array
                 if result == "Charlois": #Checks if result from the query is equal to an area
                     result = int(data.get(result)) #Converts the dictionary value to an int
-                    charlois_polygon.ChangeColor(100) #Changes color of the area and also change the colour
+                     #Changes color of the area and also change the colour
                 elif result == "Overschie":
                     pass
                 elif result == "Hillegersberg":
@@ -906,12 +907,12 @@ def ShowResults(data):
                 elif result == "Waalhaven":
                     pass
 
-    f = Figure(figsize=(5, 5), dpi=50)
-    a = f.add_subplot(111)  # means 1 chart 1 by 1
-    a.plot([1, 2, 3, 4, 5, 6, 7, 8], [5, 6, 2, 4, 4, 3, 5, 3])
-    Figure1 = FigureCanvasTkAgg(f, root)
-    Figure1.show()
-    Figure1.get_tk_widget().grid(row=0, column=0, sticky=N, rowspan=30)
+    # f = Figure(figsize=(5, 5), dpi=50)
+    # a = f.add_subplot(111)  # means 1 chart 1 by 1
+    # a.plot([1, 2, 3, 4, 5, 6, 7, 8], [5, 6, 2, 4, 4, 3, 5, 3])
+    # Figure1 = FigureCanvasTkAgg(f, root)
+    # Figure1.show()
+    # Figure1.get_tk_widget().grid(row=0, column=0, sticky=N, rowspan=30)
 
 
 ''''Database query for the page: "Woningsadvies (the user gets data based on selection)'''''
@@ -987,11 +988,15 @@ def databasePercentagesEnCijfers():
     global buttonArray #needed because the array has the last selected button of the page: "Percentages en cijfers'
     answer = (buttonArray[-1]) #last selected button gets stored in answer
     print(answer) #To prove that the last selected button is saved in the array
-    data = [] #Here comes the query, for every button a new query should be appended to the array
-
-    # TODO ResultQuery = []
+    #Here comes the query, for every button a new query should be appended to the array
+    data =[]
     if answer == 0:  #the numbers represent the button, each button has his own number. The attribute of the button that stores this is: name
-        ShowResults(data) #The query get send into the showresults function, then the map colour gets changed based on the results from it
+        if len(geselecteerdegebieden)>0:
+            for i in geselecteerdegebieden:
+
+                print(i)
+                PlotLineChart("geweldsdelicten", geselecteerdegebieden)
+         #The query get send into the showresults function, then the map colour gets changed based on the results from it
     elif answer == 1:
         ShowResults(data)
     elif answer == 2:
