@@ -99,7 +99,7 @@ class PlotLineChart(Plot):
         plt.ylabel("Percentage")
         plt.xlabel('Jaren')
         plt.title(self.tabelNaam)
-        plt.legend()
+        plt.legend(loc='best', fancybox=True, framealpha=0.5)
         plt.show()
 
 
@@ -137,7 +137,7 @@ class PlotBarChart(Plot):
 
 # t = ["Oud/Nieuw Mathenesse/Witte Dorp"]
 # PlotLineChart("geweldsdelicten", t)
-#
+
 #
 # PlotBarChart("fiobj2016", "fysiekeindex", t)
 

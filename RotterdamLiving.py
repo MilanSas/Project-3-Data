@@ -271,11 +271,11 @@ def ijsselmondeWijk():
 
 ''''The polygons(area's)'''''
 overschie_polygon = polygon("Overschie",(20, 50, 120), Polygons.overschie)
-hillegersberg_polygon = polygon("Hillegersberg",(20, 50, 120), Polygons.hillegersberg)
+hillegersberg_polygon = polygon("Hillegersberg-Schiebroek",(20, 50, 120), Polygons.hillegersberg)
 prins_alexander_polygon = polygon("Prins_alexander",(20, 50, 120), Polygons.prins_alexander)
-kralingen_polygon = polygon("Kralingen",(20, 50, 120), Polygons.kralingen)
+kralingen_polygon = polygon("Kralingen-Crooswijk",(20, 50, 120), Polygons.kralingen)
 noord_polygon = polygon("Noord",(20, 50, 120), Polygons.noord)
-delftshaven_polygon = polygon("Delftshaven",(20, 50, 120), Polygons.delftshaven)
+delftshaven_polygon = polygon("Delfshaven",(20, 50, 120), Polygons.delftshaven)
 centrum_polygon = polygon("Centrum",(20, 50, 120), Polygons.centrum)
 feijenoord_polygon = polygon("Feijenoord",(20, 50, 120), Polygons.feijenoord)
 ijsselmonde_polygon = polygon("Ijsselmonde",(20, 50, 120), Polygons.ijsselmonde)
