@@ -1,13 +1,56 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import sqlite3
-
+from pandas import*
 from sqlite3 import Error
+
+
+WijkenGebieden = {
+                "Charlois":["Carnisse","Charlois","Heijplaat","Oud-Charlois","Pendrecht","Tarwewijk",
+                              "Wielewaal","Zuiderpark en Zuidrand","Zuidplein","Zuidwijk"],
+                "Delfshaven":["Bospolder","Delfshaven","Delfshaven","Middelland","Nieuwe Westen",
+                             "OudMathenesse/Witte Dorp","Schiemond","Spangen","Tussendijken"],
+                "Feijenoord":["Afrikaanderwijk","Bloemhof", "Feijenoord","Hillesluis","Katendrecht",
+                              "Kop van Zuid",	"Kop van Zuid-Entrepot","Noordereiland", "Vreewijk"],
+                "Hillegersberg-Schiebroek": ["Hillegersberg-noord",	"Hillegersberg-Schiebroek",
+                                             "Hillegersberg-zuid", "Molenlaankwartier", "Schiebroek", "Terbregge"],
+                "Hoek van Holland":	["Dorp/Rijnpoort", "Hoek van Holland", "Strand en duin"],
+
+                "Hoogvliet" : ["Hoogvliet",	"Hoogvliet-noord",	"Hoogvliet-zuid"],
+
+                "IJsselmonde" : ["Beverwaard","Groot IJsselmonde-Noord","Groot IJsselmonde-Zuid","IJsselmonde",
+                                 "Lombardijen", "Oud IJsselmonde"],
+                "Kralingen-Crooswijk" : ["De Esch", "Kralingen Oost/Kralingse Bos", "Kralingen-Crooswijk",
+                                         "Kralingen-west","Nieuw Crooswijk","Oud Crooswijk","Rubroek","Struisenburg"],
+                "Noord"	: [ "Agniesebuurt",	"Bergpolder", "Blijdorp/Blijdorpsepolder", "Liskwartier	Noord",
+                                            "Oude Noorden",	"Provenierswijk"],
+                "Overschie" :  ["Kleinpolder", "NoordKethel/Schieveen/Zestienhoven", "Overschie"],
+
+                "Pernis" : ["Pernis"],
+
+                "Prins Alexander" :	["Het Lage Land", "Kralingseveer","Nesselande",	"Ommoord",	"Oosterflank",
+                                        "Prins Alexander",	"Prinsenland",	"s-Gravenland",	"Zevenkamp"],
+                "Rotterdam" : ["Rotterdam"],
+
+                "Rotterdam Centrum" : ["Cool","CS-kwartier", "Nieuwe Werk/Dijkzigt","Oude Westen",	"Rotterdam Centrum", "Stadsdriehoek"],
+
+                "Rozenburg" : ["Rozenburg"]
+
+                }
+
+ab = "Kralingen Oost/"
+def search(values, searchFor):
+    for k in values:
+        for v in values[k]:
+            if searchFor in v:
+                return k
+    return None
+
+# print(search(WijkenGebieden, ab))
 
 
 jaarTabelNamen = ["tevredenheid", "fietsendiefstal", "geweldsdelicten","drugsoverlast"]
 afkomstTabelNamen = ['Nederlanders', 'Marokkanen', 'Turken', 'Kaapverdianen', 'Antilianen', 'Surinamers', 'Zuid-Europeanen', 'Overig']
-
 
 class Plot:
     def __init__(self, tabelnaam, wijknamenlist):
@@ -43,7 +86,7 @@ class PlotLineChart(Plot):
     def sql_query_linechart(self):
         for namen in (self.wijkNamenList):
             self.cur.execute("select data2006,data2007,data2008,data2009,data2011 from"
-                             " {} where wijknaam = '{}'".format(self.tabelNaam, namen))
+                             " {} where wijknaam LIKE '{}'".format(self.tabelNaam, namen))
             self.wijkData = self.cur.fetchone()
             for i in range(len(self.wijkData)):
                 self.g['data_{}'.format(namen)].append(self.wijkData[i])
@@ -91,10 +134,10 @@ class PlotBarChart(Plot):
         plt.show()
 
 
-t = ["Carnisse", "Bospolder", "Spangen", "Tarwewijk", "Zuidwijk" ]
+t = ["Oud/Nieuw Mathenesse/Witte Dorp"]
 PlotLineChart("geweldsdelicten", t)
-
-
-PlotBarChart("fiobj2016", "fysiekeindex", t)
+#
+#
+# PlotBarChart("fiobj2016", "fysiekeindex", t)
 
 
