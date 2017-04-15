@@ -80,21 +80,21 @@ class PlotLineChart(Plot):
         self.show_plot()
 
     def generate_empty_lists(self):
-        for namen in (self.wijkNamenList):
-            self.g['data_{}'.format(namen)] = []
+        for wijk in (self.wijkNamenList):
+            self.g['data_{}'.format(wijk.name)] = []
 
     def sql_query_linechart(self):
-        for namen in (self.wijkNamenList):
+        for wijk in (self.wijkNamenList):
             self.cur.execute("select data2006,data2007,data2008,data2009,data2011 from"
-                             " {} where wijknaam LIKE '{}'".format(self.tabelNaam, namen))
+                             " {} where wijknaam LIKE '{}'".format(self.tabelNaam, wijk.name))
             self.wijkData = self.cur.fetchone()
             for i in range(len(self.wijkData)):
-                self.g['data_{}'.format(namen)].append(self.wijkData[i])
+                self.g['data_{}'.format(wijk.name)].append(self.wijkData[i])
 
     def show_plot(self):
-        for namen in (self.wijkNamenList):
-            plt.plot(self.jaartallen, self.g['data_{}'.format(namen)], label=namen, linewidth=1)
-            for a, b in zip(self.jaartallen, self.g['data_{}'.format(namen)]):
+        for wijk in (self.wijkNamenList):
+            plt.plot(self.jaartallen, self.g['data_{}'.format(wijk.name)], label=wijk.name, linewidth=1)
+            for a, b in zip(self.jaartallen, self.g['data_{}'.format(wijk.name)]):
                 plt.text(a, b, str(b))
         plt.ylabel("Percentage")
         plt.xlabel('Jaren')
@@ -115,8 +115,8 @@ class PlotBarChart(Plot):
         self.show_plot()
 
     def sql_query_barchart(self):
-        for namen in (self.wijkNamenList):
-            self.cur.execute("select {} from {} where wijknaam = '{}'".format(self.dataSet, self.tabelNaam, namen))
+        for wijk in (self.wijkNamenList):
+            self.cur.execute("select {} from {} where wijknaam = '{}'".format(self.dataSet, self.tabelNaam, wijk.name))
             b = self.cur.fetchone()
             self.data.append(b[0])
 
@@ -133,7 +133,33 @@ class PlotBarChart(Plot):
 
         plt.show()
 
+class PlotOnMap(Plot):
+    def __init__(self, tabelnaam, wijknamenlist):
+        super().__init__(tabelnaam, wijknamenlist)
+        self.y = []
+        self.g = globals()
 
+        self.generate_empty_lists()
+        self.sql_query_linechart()
+        self.show_plot()
+
+    def generate_empty_lists(self):
+        for wijk in (self.wijkNamenList):
+            self.g['data_{}'.format(wijk.name)] = []
+
+    def sql_query_linechart(self):
+        for wijk in (self.wijkNamenList):
+            self.cur.execute("select data2011 from"
+                             " {} where wijknaam LIKE '{}'".format(self.tabelNaam, wijk.name))
+            self.wijkData = self.cur.fetchone()
+            for i in range(len(self.wijkData)):
+                self.g['data_{}'.format(wijk.name)].append(self.wijkData[i])
+
+    def show_plot(self):
+        for wijk in (self.wijkNamenList):
+            print(self.g['data_{}'.format(wijk.name)])
+            b = (self.g['data_{}'.format(wijk.name)])
+            wijk.ChangeColor(int(b[0]))
 
 # t = ["Oud/Nieuw Mathenesse/Witte Dorp"]
 # PlotLineChart("geweldsdelicten", t)
