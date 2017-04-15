@@ -133,24 +133,27 @@ class polygon:
 
 
     def ChangeColor(self, percent):
-        colorchange = percent * 255 //100
-        changedcolor = 255
-        for n in range(20):
-            if changedcolor >= 16:
+        basevalue = 255
+        colorchange = percent * basevalue // 100
+        changedcolor = basevalue
+        finalcolor = basevalue - colorchange
+        looptime = 200
+
+        for n in range(looptime):
+            if changedcolor >= 16 and changedcolor > finalcolor:
                 color = (changedcolor, changedcolor, 255)
                 canvas.itemconfig(self.shape, fill=HexToRGB(color))
-                changedcolor = changedcolor - (colorchange // 20)
+                changedcolor = int(changedcolor - (colorchange / looptime))
                 root.update()
-                time.sleep(0.00000000000001)
-        finalcolor = 255 - colorchange
-        if finalcolor < 16:
+            time.sleep(0.00000000000001)
+
+        if finalcolor <= 16:
             color = (16, 16, 255)
-            canvas.itemconfig(self.shape, fill=HexToRGB(color))
-            root.update()
-        else:
+        if finalcolor > 16:
             color = (finalcolor, finalcolor, 255)
-            canvas.itemconfig(self.shape, fill=HexToRGB(color))
-            root.update()
+        canvas.itemconfig(self.shape, fill=HexToRGB(color))
+        root.update()
+
 
 
 
@@ -899,7 +902,7 @@ def databasePercentagesEnCijfers():
                 PlotLineChart("geweldsdelicten", geselecteerdegebieden)
          #The query get send into the showresults function, then the map colour gets changed based on the results from it
     elif answer == 1:
-        PlotOnMap("geweldsdelicten", polygonsgebieden2)
+        PlotOnMap("tevredenheid", polygonsgebieden2)
     elif answer == 2:
         ShowResults(data)
     elif answer == 3:
