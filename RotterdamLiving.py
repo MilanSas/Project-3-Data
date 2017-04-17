@@ -909,7 +909,7 @@ def databasePercentagesEnCijfers():
             PlotLineChart("fietsendiefstal".lower(), geselecteerdegebieden)
     elif answer == 35:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("vi2016","PercentageVaakHondenpoep".lower(),geselecteerdegebieden)
+            PlotBarChart("fisub2016","PercentageVaakHondenpoep".lower(),geselecteerdegebieden)
 
 for widget in root.winfo_children():
     print(widget)

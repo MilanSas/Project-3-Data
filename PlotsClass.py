@@ -95,7 +95,7 @@ class PlotLineChart(Plot):
             p = plt.plot(self.jaartallen, self.g['data_{}'.format(wijk.name)], label=wijk.name, linewidth=1)
             for a, b in zip(self.jaartallen, self.g['data_{}'.format(wijk.name)]):
                 plt.text(a, b, str(b))
-            wijk.ChangeBorderColor(p[0].get_color())
+            # wijk.ChangeBorderColor(p[0].get_color())
         plt.ylabel("Percentage")
         plt.xlabel('Jaren')
         plt.title(self.tabelNaam)
