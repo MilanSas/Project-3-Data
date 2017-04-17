@@ -112,15 +112,6 @@ def HexToRGB(rgb):
 ''''Function to create the polygons(area's)'''
 geselecteerdegebieden = []
 
-numcolor = 0
-def getcolor():
-    global numcolor
-    selectcolors = ['red', 'cyan', 'hot pink', 'orange', 'saddle brown', 'green2', 'yellow', 'dark green', 'purple1',
-                    'SlateGray4', 'khaki2']
-    color = selectcolors[numcolor]
-    numcolor += 1
-    return color
-
 
 class polygon:
     def __init__(self,name,color,list):
@@ -129,7 +120,7 @@ class polygon:
         self.selected = False
         self.shape = canvas.create_polygon(list, fill=(HexToRGB(color)), outline='black', width=2, tags = self.name)
         canvas.move(self.shape, rs(-400), 0)
-        self.selectcolor = getcolor()
+        self.selectcolor = 'red'
 
 
     def ChangeColor(self, percent):
@@ -137,7 +128,7 @@ class polygon:
         colorchange = percent * basevalue // 100
         changedcolor = basevalue
         finalcolor = basevalue - colorchange
-        looptime = 200
+        looptime = 20
 
         for n in range(looptime):
             if changedcolor >= 16 and changedcolor > finalcolor:
@@ -156,6 +147,8 @@ class polygon:
 
 
 
+    def ChangeBorderColor(self, color):
+        canvas.itemconfig(self.shape, outline=color, width=6)
 
     def Select(self):
         if self.selected:
@@ -169,6 +162,11 @@ class polygon:
         geselecteerdegebieden.remove(self)
         self.selected = False
         canvas.itemconfig(self.shape, outline='black', width = 2)
+
+    def Hover(self, event):
+        if canvas.find_withtag(CURRENT) == canvas.find_withtag(self.name):
+            text.config(text=self.name)
+
 
 class lagenda():
     def __init__(self):
@@ -460,9 +458,15 @@ def rightclick(event):
         if canvas.find_withtag(CURRENT) == canvas.find_withtag(wijk.name):
             wijk.Select()
 
+def hover(event):
+    for wijk in polygonsgebieden:
+        wijk.Hover(event)
+
+
 ''''when a polygon(area) is clicked, the click method will be activated'''''
 canvas.bind('<Button-1>', click, add="+") #Binds the canvas to the click method
 canvas.bind('<Button-3>', rightclick, add="+")
+canvas.bind('<Motion>', hover)
 
 ''''Canvas that gets drawn'''
 canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #the lower the code(higher line) the later it will get drawn
@@ -979,5 +983,4 @@ def databasePercentagesEnCijfers():
 
 for widget in root.winfo_children():
     print(widget)
-
 root.mainloop() #for the loop
