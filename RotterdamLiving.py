@@ -107,11 +107,6 @@ def HexToRGB(rgb):
 ''''Function to create the polygons(area's)'''
 geselecteerdegebieden = []
 
-def kek():
-    for i in wijklist:
-        for k in i:
-            canvas.delete(k.shape)
-
 class polygon:
     def __init__(self,name,color,list):
         self.name = name
@@ -520,7 +515,6 @@ def percentagesEnCijfers():
     button14 = NewButton("Overig", 6, 0, screenx / 18, screeny / 150)
     button14.pageClick(categoryOther)
     button52 = NewButton("Give me the statistics", 28, 0, screenx / 600, screeny / 150)  #Currently not used, can be used to give the user stats when clicked
-    button52.pageClick(kek)
     searchPage = False
 
 
