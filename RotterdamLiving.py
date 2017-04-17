@@ -26,12 +26,12 @@ root.geometry('{}x{}'.format(screenx, screeny)) #Window doesn't automaticcaly re
 
 ''''Area Text (names of the area that get loaded when user clicks the area'''''
 overschie = "Overschie"
-hillegersberg_schiebroek = "Hillegersberg-Schiebroek"
-prins_alexander = "Prins Alexander"
-kralingen_crooswijk = "Kralingen-Crooswijk"
+hillegersberg_schiebroek = "HillegersbergSchiebroek"
+prins_alexander = "PrinsAlexander"
+kralingen_crooswijk = "KralingenCrooswijk"
 noord = "Noord"
 delftshaven = "Delfshaven"
-centrum = "Centrum"
+centrum = "RotterdamCentrum"
 waalhaven = "Waalhaven"
 charlois = "Charlois"
 feijenood = "Feijenoord"
@@ -164,17 +164,17 @@ class polygon:
     def spawnchild(self):
         if self.name == "Overschie":
             overschieWijk()
-        if self.name == "Hillegersberg-Schiebroek":
+        if self.name == "HillegersbergSchiebroek":
             hillegersbergWijk()
-        if self.name == "Prins_alexander":
+        if self.name == "PrinsAlexander":
             prinsalexanderWijk()
-        if self.name == "Kralingen-Crooswijk":
+        if self.name == "KralingenCrooswijk":
             kralingenWijk()
         if self.name == "Noord":
             noordWijk()
         if self.name == "Delfshaven":
             delftWijk()
-        if self.name == "Centrum":
+        if self.name == "RotterdamCentrum":
             centrumWijk()
         if self.name == "Feijenoord":
             feijenoordWijk()
@@ -506,19 +506,19 @@ def percentagesEnCijfers():
             widget.destroy() #Other widgets are deleted
             print(str(widget) + " Is deleted")
 
-    button9 = NewButton("Population", 1, 0, screenx / 30, screeny / 150) #Creates button
+    button9 = NewButton("Bevolking", 1, 0, screenx / 30, screeny / 150) #Creates button
     button9.pageClick(categoryPopulation) #Goes to the sub categories of the selected button
-    button10 = NewButton("Environment", 2, 0, screenx / 45, screeny / 150)
+    button10 = NewButton("Veiligheid", 2, 0, screenx / 45, screeny / 150)
     button10.pageClick(categoryEnvironment)
-    button11 = NewButton("Safety", 3, 0, screenx / 17, screeny / 150)
+    button11 = NewButton("Omgeving & Milieu", 3, 0, screenx / 17, screeny / 150)
     button11.pageClick(categorySafety)
-    button12 = NewButton("Traffic", 4, 0, screenx / 17, screeny / 150)
+    button12 = NewButton("Sociaal", 4, 0, screenx / 17, screeny / 150)
     button12.pageClick(categoryTraffic)
-    button13 = NewButton("Services", 5, 0, screenx / 22, screeny / 150)
+    button13 = NewButton("Voorzieningen", 5, 0, screenx / 22, screeny / 150)
     button13.pageClick(categoryServices)
     button14 = NewButton("Overig", 6, 0, screenx / 18, screeny / 150)
     button14.pageClick(categoryOther)
-    button52 = NewButton("Give me the statistics", 28, 0, screenx / 600, screeny / 150)  #Currently not used, can be used to give the user stats when clicked
+    button52 = NewButton("Statistieken", 28, 0, screenx / 600, screeny / 150)  #Currently not used, can be used to give the user stats when clicked
     searchPage = False
 
 
