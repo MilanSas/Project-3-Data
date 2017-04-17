@@ -41,6 +41,7 @@ rotterdam = "Rotterdam"
 ''''Saves last page, '''
 searchPage = None
 
+
 ''''The regular buttons. Every button has a trigger, when button is pressed the state is set to true and vice versa'''
 class NewButton:
     def __init__(self,text, row, column, ipadx, ipady): #row = which row, column = which column, ipadx = width, ipady = height
@@ -189,120 +190,122 @@ class lagenda():
             color = (255 - i*3, 255 - i*3, 255)
             self.shape = canvas.create_rectangle(50,i * 10,100,i * 10 + 10, fill=(HexToRGB(color)), outline='black')
             canvas.move(self.shape,rs(1700),rs(50))
+            canvas.create_text(rs(1710),rs(60),text="0%", font=("Helvetica",15,"bold"))
+            canvas.create_text(rs(1700), rs(840), text="100%", font=("Helvetica", 15, "bold"))
 lagenda = lagenda()
 
 
 ''''This function gets loaded when the area: "Overschie", gets selected'''
 def overschieWijk():
-    ov1 = polygon("ov1",(120, 50, 120), Polygons.ov1)
-    ov2 = polygon("ov2",(120, 50, 120), Polygons.ov2)
-    ov3 = polygon("ov3",(120, 50, 120), Polygons.ov3)
-    ov4 = polygon("ov4",(120, 50, 120), Polygons.ov4)
-    ov5 = polygon("ov5",(120, 50, 120), Polygons.ov5)
+    ov1 = polygon("ov1",(16, 16, 255), Polygons.ov1)
+    ov2 = polygon("ov2",(16, 16, 255), Polygons.ov2)
+    ov3 = polygon("ov3",(16, 16, 255), Polygons.ov3)
+    ov4 = polygon("ov4",(16, 16, 255), Polygons.ov4)
+    ov5 = polygon("ov5",(16, 16, 255), Polygons.ov5)
     ovlijst = [ov1,ov2,ov3,ov4,ov5]
     wijklist.append(ovlijst)
 
 ''''This function gets loaded when the area: "Hillegersberg", gets selected'''
 def hillegersbergWijk():
-    hill1 = polygon("hill1",(120, 50, 120), Polygons.hill1)
-    hill2 = polygon("hill2",(120, 50, 120), Polygons.hill2)
-    hill3 = polygon("hill3",(120, 50, 120), Polygons.hill3)
-    hill4 = polygon("hill4",(120, 50, 120), Polygons.hill4)
-    hill5 = polygon("hill5",(120, 50, 120), Polygons.hill5)
+    hill1 = polygon("hill1",(16, 16, 255), Polygons.hill1)
+    hill2 = polygon("hill2",(16, 16, 255), Polygons.hill2)
+    hill3 = polygon("hill3",(16, 16, 255), Polygons.hill3)
+    hill4 = polygon("hill4",(16, 16, 255), Polygons.hill4)
+    hill5 = polygon("hill5",(16, 16, 255), Polygons.hill5)
     hillijst = [hill1,hill2,hill3,hill4,hill5]
     wijklist.append(hillijst)
 
 def prinsalexanderWijk():
-    pa1 = polygon("pa1",(120, 50, 120), Polygons.pa1)
-    pa2 = polygon("pa2",(120, 50, 120), Polygons.pa2)
-    pa3 = polygon("pa3",(120, 50, 120), Polygons.pa3)
-    pa4 = polygon("pa4",(120, 50, 120), Polygons.pa4)
-    pa5 = polygon("pa5",(120, 50, 120), Polygons.pa5)
-    pa6 = polygon("pa6",(120, 50, 120), Polygons.pa6)
+    pa1 = polygon("pa1",(16, 16, 255), Polygons.pa1)
+    pa2 = polygon("pa2",(16, 16, 255), Polygons.pa2)
+    pa3 = polygon("pa3",(16, 16, 255), Polygons.pa3)
+    pa4 = polygon("pa4",(16, 16, 255), Polygons.pa4)
+    pa5 = polygon("pa5",(16, 16, 255), Polygons.pa5)
+    pa6 = polygon("pa6",(16, 16, 255), Polygons.pa6)
     palijst = [pa1,pa2,pa3,pa4,pa5,pa6]
     wijklist.append(palijst)
 
 def kralingenWijk():
-    kra6 = polygon("kra6",(120, 50, 120), Polygons.kra6)
-    kra1 = polygon("kra1",(120, 50, 120), Polygons.kra1)
-    kra2 = polygon("kra2",(120, 50, 120), Polygons.kra2)
-    kra3 = polygon("kra3",(120, 50, 120), Polygons.kra3)
-    kra4 = polygon("kra4",(120, 50, 120), Polygons.kra4)
-    kra5 = polygon("kra5",(120, 50, 120), Polygons.kra5)
-    kra7 = polygon("kra7",(120, 50, 120), Polygons.kra7)
+    kra6 = polygon("kra6",(16, 16, 255), Polygons.kra6)
+    kra1 = polygon("kra1",(16, 16, 255), Polygons.kra1)
+    kra2 = polygon("kra2",(16, 16, 255), Polygons.kra2)
+    kra3 = polygon("kra3",(16, 16, 255), Polygons.kra3)
+    kra4 = polygon("kra4",(16, 16, 255), Polygons.kra4)
+    kra5 = polygon("kra5",(16, 16, 255), Polygons.kra5)
+    kra7 = polygon("kra7",(16, 16, 255), Polygons.kra7)
     kralijst = [kra6,kra1,kra2,kra3,kra4,kra5,kra7]
     wijklist.append(kralijst)
 
 def centrumWijk():
-    centr1 = polygon("centr1",(120, 50, 120), Polygons.centr1)
-    centr2 = polygon("centr2",(120, 50, 120), Polygons.centr2)
-    centr3 = polygon("centr3",(120, 50, 120), Polygons.centr3)
-    centr4 = polygon("centr4",(120, 50, 120), Polygons.centr4)
-    centr5 = polygon("centr5",(120, 50, 120), Polygons.centr5)
-    centr6 = polygon("centr6",(120, 50, 120), Polygons.centr6)
+    centr1 = polygon("centr1",(16, 16, 255), Polygons.centr1)
+    centr2 = polygon("centr2",(16, 16, 255), Polygons.centr2)
+    centr3 = polygon("centr3",(16, 16, 255), Polygons.centr3)
+    centr4 = polygon("centr4",(16, 16, 255), Polygons.centr4)
+    centr5 = polygon("centr5",(16, 16, 255), Polygons.centr5)
+    centr6 = polygon("centr6",(16, 16, 255), Polygons.centr6)
     centlijst = [centr1,centr2,centr3,centr4,centr5,centr6]
     wijklist.append(centlijst)
 
 def noordWijk():
-    nrd1 = polygon("nrd1",(120, 50, 120), Polygons.nrd1)
-    nrd2 = polygon("nrd2",(120, 50, 120), Polygons.nrd2)
-    nrd3 = polygon("nrd3",(120, 50, 120), Polygons.nrd3)
-    nrd4 = polygon("nrd4",(120, 50, 120), Polygons.nrd4)
-    nrd5 = polygon("nrd5",(120, 50, 120), Polygons.nrd5)
-    nrd6 = polygon("nrd6",(120, 50, 120), Polygons.nrd6)
-    nrd7 = polygon("nrd7",(120, 50, 120), Polygons.nrd7)
+    nrd1 = polygon("nrd1",(16, 16, 255), Polygons.nrd1)
+    nrd2 = polygon("nrd2",(16, 16, 255), Polygons.nrd2)
+    nrd3 = polygon("nrd3",(16, 16, 255), Polygons.nrd3)
+    nrd4 = polygon("nrd4",(16, 16, 255), Polygons.nrd4)
+    nrd5 = polygon("nrd5",(16, 16, 255), Polygons.nrd5)
+    nrd6 = polygon("nrd6",(16, 16, 255), Polygons.nrd6)
+    nrd7 = polygon("nrd7",(16, 16, 255), Polygons.nrd7)
     nrdlijst = [nrd1,nrd2,nrd3,nrd4,nrd5,nrd6,nrd7]
     wijklist.append(nrdlijst)
 
 def delftWijk():
-    delf1 = polygon("delf1",(120, 50, 120), Polygons.delf1)
-    delf2 = polygon("delf2",(120, 50, 120), Polygons.delf2)
-    delf3 = polygon("delf3",(120, 50, 120), Polygons.delf3)
-    delf4 = polygon("delf4",(120, 50, 120), Polygons.delf4)
-    delf5 = polygon("delf5",(120, 50, 120), Polygons.delf5)
-    delf6 = polygon("delf6",(120, 50, 120), Polygons.delf6)
-    delf7 = polygon("delf7",(120, 50, 120), Polygons.delf7)
-    delf8 = polygon("delf8",(120, 50, 120), Polygons.delf8)
+    delf1 = polygon("delf1",(16, 16, 255), Polygons.delf1)
+    delf2 = polygon("delf2",(16, 16, 255), Polygons.delf2)
+    delf3 = polygon("delf3",(16, 16, 255), Polygons.delf3)
+    delf4 = polygon("delf4",(16, 16, 255), Polygons.delf4)
+    delf5 = polygon("delf5",(16, 16, 255), Polygons.delf5)
+    delf6 = polygon("delf6",(16, 16, 255), Polygons.delf6)
+    delf7 = polygon("delf7",(16, 16, 255), Polygons.delf7)
+    delf8 = polygon("delf8",(16, 16, 255), Polygons.delf8)
     delflijst = [delf1,delf2,delf3,delf4,delf5,delf6,delf7,delf8]
     wijklist.append(delflijst)
 
 def waalhavenWijk():
-    waal1 = polygon("waal1",(120, 50, 120), Polygons.waal1)
-    waal2 = polygon("waal2",(120, 50, 120), Polygons.waal2)
-    waal3 = polygon("waal3",(120, 50, 120), Polygons.waal3)
-    waal4 = polygon("waal4",(120, 50, 120), Polygons.waal4)
+    waal1 = polygon("waal1",(16, 16, 255), Polygons.waal1)
+    waal2 = polygon("waal2",(16, 16, 255), Polygons.waal2)
+    waal3 = polygon("waal3",(16, 16, 255), Polygons.waal3)
+    waal4 = polygon("waal4",(16, 16, 255), Polygons.waal4)
     waallijst = [waal1,waal2,waal3,waal4]
     wijklist.append(waallijst)
 
 def charloisWijk():
-    char1 = polygon("char1",(120, 50, 120), Polygons.char1)
-    char2 = polygon("char2",(120, 50, 120), Polygons.char2)
-    char3 = polygon("char3",(120, 50, 120), Polygons.char3)
-    char4 = polygon("char4",(120, 50, 120), Polygons.char4)
-    char5 = polygon("char5",(120, 50, 120), Polygons.char5)
-    char6 = polygon("char6",(120, 50, 120), Polygons.char6)
-    char7 = polygon("char7",(120, 50, 120), Polygons.char7)
+    char1 = polygon("char1",(16, 16, 255), Polygons.char1)
+    char2 = polygon("char2",(16, 16, 255), Polygons.char2)
+    char3 = polygon("char3",(16, 16, 255), Polygons.char3)
+    char4 = polygon("char4",(16, 16, 255), Polygons.char4)
+    char5 = polygon("char5",(16, 16, 255), Polygons.char5)
+    char6 = polygon("char6",(16, 16, 255), Polygons.char6)
+    char7 = polygon("char7",(16, 16, 255), Polygons.char7)
     charlijst = [char1,char2,char3,char4,char5,char6,char7]
     wijklist.append(charlijst)
 
 def feijenoordWijk():
-    fei1 = polygon("fei1",(120, 50, 120), Polygons.fei1)
-    fei2 = polygon("fei2",(120, 50, 120), Polygons.fei2)
-    fei3 = polygon("fei3",(120, 50, 120), Polygons.fei3)
-    fei4 = polygon("fei4",(120, 50, 120), Polygons.fei4)
-    fei5 = polygon("fei5",(120, 50, 120), Polygons.fei5)
-    fei6 = polygon("fei6",(120, 50, 120), Polygons.fei6)
-    fei7 = polygon("fei7",(120, 50, 120), Polygons.fei7)
-    fei8 = polygon("fei8",(120, 50, 120), Polygons.fei8)
-    fei9 = polygon("fei9",(120, 50, 120), Polygons.fei9)
+    fei1 = polygon("fei1",(16, 16, 255), Polygons.fei1)
+    fei2 = polygon("fei2",(16, 16, 255), Polygons.fei2)
+    fei3 = polygon("fei3",(16, 16, 255), Polygons.fei3)
+    fei4 = polygon("fei4",(16, 16, 255), Polygons.fei4)
+    fei5 = polygon("fei5",(16, 16, 255), Polygons.fei5)
+    fei6 = polygon("fei6",(16, 16, 255), Polygons.fei6)
+    fei7 = polygon("fei7",(16, 16, 255), Polygons.fei7)
+    fei8 = polygon("fei8",(16, 16, 255), Polygons.fei8)
+    fei9 = polygon("fei9",(16, 16, 255), Polygons.fei9)
     feilijst = [fei1,fei2,fei3,fei4,fei5,fei6,fei7,fei8,fei9]
     wijklist.append(feilijst)
 
 def ijsselmondeWijk():
-    ijs1 = polygon("ijs1",(120, 50, 120), Polygons.ijs1)
-    ijs2 = polygon("ijs2",(120, 50, 120), Polygons.ijs2)
-    ijs3 = polygon("ijs3",(120, 50, 120), Polygons.ijs3)
-    ijs4 = polygon("ijs4",(120, 50, 120), Polygons.ijs4)
+    ijs1 = polygon("ijs1",(16, 16, 255), Polygons.ijs1)
+    ijs2 = polygon("ijs2",(16, 16, 255), Polygons.ijs2)
+    ijs3 = polygon("ijs3",(16, 16, 255), Polygons.ijs3)
+    ijs4 = polygon("ijs4",(16, 16, 255), Polygons.ijs4)
     ijslijst = [ijs1,ijs2,ijs3,ijs4]
     wijklist.append(ijslijst)
 
