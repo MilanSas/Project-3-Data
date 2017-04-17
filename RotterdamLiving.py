@@ -185,15 +185,15 @@ class polygon:
         if self.name == "Waalhaven":
             waalhavenWijk()
 
-class lagenda():
+class legenda():
     def __init__(self):
         for i in range(80):
             color = (255 - i*3, 255 - i*3, 255)
-            self.shape = canvas.create_rectangle(50,i * 10,100,i * 10 + 10, fill=(HexToRGB(color)), outline='black')
+            self.shape = canvas.create_rectangle(rs(50),rs(i * 10 + 1),rs(100),rs(i * 10 + 10), fill=(HexToRGB(color)), outline='black')
             canvas.move(self.shape,rs(1700),rs(50))
             canvas.create_text(rs(1710),rs(60),text="0%", font=("Helvetica",15,"bold"))
             canvas.create_text(rs(1700), rs(840), text="100%", font=("Helvetica", 15, "bold"))
-lagenda = lagenda()
+legenda = legenda()
 
 
 ''''This function gets loaded when the area: "Overschie", gets selected'''
