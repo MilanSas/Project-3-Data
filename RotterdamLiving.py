@@ -843,7 +843,7 @@ def databasePercentagesEnCijfers():
             PlotBarChart("fiobj2016","percentagewoningeningeluidscontourvanaf55db".lower(),geselecteerdegebieden)
     elif answer == 14:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fiobj2016","gemiddeldeNo2-Concentratie2009IrtGrenswaarde40µg/M3".lower(),geselecteerdegebieden)
+            PlotBarChart("fiobj2016","gemiddeldeNo2Concentratie2009IrtGrenswaarde40µgM3".lower(),geselecteerdegebieden)
     elif answer == 15:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("fisub2016","PercentageVoldoendeAanwezigGroenGrasveldjes,Bomen".lower(),geselecteerdegebieden)
