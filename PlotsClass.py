@@ -109,7 +109,7 @@ class PlotBarChart(Plot):
         super().__init__(tabelnaam,wijknamenlist)
         self.data = []
         self.overigeTabelNamen = ["fiobj2016", "fisub2016", "si2016", "vi2016"]
-        self.aantalWijken = len(self.wijkNamenList)
+        self.xlabels = []
 
         self.sql_query_barchart()
         self.show_plot()
@@ -118,6 +118,7 @@ class PlotBarChart(Plot):
         for wijk in (self.wijkNamenList):
             self.cur.execute("select {} from {} where wijknaam = '{}'".format(self.dataSet, self.tabelNaam, wijk.name))
             b = self.cur.fetchone()
+            self.xlabels.append(wijk.name)
             self.data.append(b[0])
 
     def show_plot(self):
@@ -128,9 +129,9 @@ class PlotBarChart(Plot):
             plt.text(a, b, str(b))
 
 
-        plt.xticks(y_pos, self.wijkNamenList.name)
+        plt.xticks(y_pos,self.xlabels, wrap = True)
         plt.ylabel('Cijfer')
-        # plt.title(self.dataSet)
+        plt.title(self.dataSet)
 
         plt.show()
 
