@@ -38,11 +38,6 @@ feijenood = "Feijenoord"
 ijsselmonde = "Ijsselmonde"
 rotterdam = "Rotterdam"
 
-def kek():
-    for i in wijklist:
-        for k in i:
-            canvas.delete(k.shape)
-
 ''''Saves last page, '''
 searchPage = None
 
@@ -112,6 +107,10 @@ def HexToRGB(rgb):
 ''''Function to create the polygons(area's)'''
 geselecteerdegebieden = []
 
+def kek():
+    for i in wijklist:
+        for k in i:
+            canvas.delete(k.shape)
 
 class polygon:
     def __init__(self,name,color,list):
@@ -189,7 +188,6 @@ class polygon:
         if self.name == "Waalhaven":
             waalhavenWijk()
 
-
 class lagenda():
     def __init__(self):
         for i in range(80):
@@ -197,7 +195,6 @@ class lagenda():
             self.shape = canvas.create_rectangle(50,i * 10,100,i * 10 + 10, fill=(HexToRGB(color)), outline='black')
             canvas.move(self.shape,rs(1700),rs(50))
 lagenda = lagenda()
-
 
 
 ''''This function gets loaded when the area: "Overschie", gets selected'''
@@ -331,7 +328,6 @@ charlois_polygon = polygon("Charlois",(20, 50, 120), Polygons.charlois)
 waalhaven_polygon = polygon("Waalhaven",(20, 50, 120), Polygons.waalhaven)
 
 
-
 ''''Array that has the polygon area's, this is used to go through the array and then the colour will change. It is used in a database function'''
 polygonsgebieden = [overschie_polygon, hillegersberg_polygon, prins_alexander_polygon, kralingen_polygon, noord_polygon, delftshaven_polygon, centrum_polygon, feijenoord_polygon, ijsselmonde_polygon, charlois_polygon, waalhaven_polygon]
 polygonsgebieden2 = [overschie_polygon, hillegersberg_polygon, prins_alexander_polygon, kralingen_polygon, noord_polygon, delftshaven_polygon, feijenoord_polygon, ijsselmonde_polygon, charlois_polygon]
@@ -355,6 +351,12 @@ def leftclick(event):
     for wijk in polygonsgebieden:
         if canvas.find_withtag(CURRENT) == canvas.find_withtag(wijk.name):
             wijk.spawnchild()
+    for i in wijklist:
+        for k in i:
+            if canvas.find_withtag(CURRENT) == canvas.find_withtag(k.name):
+                for c in wijklist:
+                    for p in c:
+                        canvas.delete(p.shape)
 
 def hover(event):
     for wijk in polygonsgebieden:
