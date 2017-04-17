@@ -1,2 +1,9 @@
 *.xml
 .idea/Code.iml
+*.iml
+*.pyc
+__pycache__/Polygons.cpython-35.pyc
+__pycache__/PlotsClass.cpython-35.pyc
+*.iml
+*.pyc
+__pycache__/Polygons.cpython-35.pyc

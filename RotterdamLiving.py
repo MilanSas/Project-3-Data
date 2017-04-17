@@ -475,9 +475,9 @@ def menuSelector(event):
          woningsadvies()
     elif str(variable.get()) == "Percentages en cijfers":
         percentagesEnCijfers()
-    elif str(variable.get()) == "About":
+    elif str(variable.get()) == "Over":
         about()
-    elif str(variable.get()) == "Settings":
+    elif str(variable.get()) == "Instellingen":
         settings()
     elif str(variable.get()) == "Exit":
         root.destroy()
@@ -486,13 +486,13 @@ def menuSelector(event):
 ''''Drop down menu'''
 variable = StringVar(root) #Variable will store the page that is selected
 variable.set("Home")  # default value is the homebutton
-menu_button = OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "About",
+menu_button = OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Instellingen", "Over",
                              "Exit", command=menuSelector) #The pages that are in the drop down menu
 menu_button.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white") #Changes the font/size of the drop down menu
 menu_button.grid(row=0, column=0, sticky=N + W) #Sets the position of the drop down menu
 
 ''''Menu Text'''
-welcome_text = "Select the home button to see the available options" #Test that appears on the menu
+welcome_text = "Klik op de Homeknop om het menu te bereiken." #Test that appears on the menu
 description_text = Label(root,text=welcome_text,font=("Helvetica",15,"bold")) #Sets the text on the page
 description_text.grid(row=1,column=0,sticky=W) #Sets the position of the text
 
@@ -603,19 +603,19 @@ def percentagesEnCijfers():
             widget.destroy() #Other widgets are deleted
             print(str(widget) + " Is deleted")
 
-    button9 = NewButton("Population", 1, 0, screenx / 30, screeny / 150) #Creates button
+    button9 = NewButton("Bevolking", 1, 0, screenx / 30, screeny / 150) #Creates button
     button9.pageClick(categoryPopulation) #Goes to the sub categories of the selected button
-    button10 = NewButton("Environment", 2, 0, screenx / 45, screeny / 150)
+    button10 = NewButton("Milieu", 2, 0, screenx / 45, screeny / 150)
     button10.pageClick(categoryEnvironment)
-    button11 = NewButton("Safety", 3, 0, screenx / 17, screeny / 150)
+    button11 = NewButton("Veiligheid", 3, 0, screenx / 17, screeny / 150)
     button11.pageClick(categorySafety)
-    button12 = NewButton("Traffic", 4, 0, screenx / 17, screeny / 150)
-    button12.pageClick(categoryTraffic)
-    button13 = NewButton("Services", 5, 0, screenx / 22, screeny / 150)
+    button12 = NewButton("Sociaal", 4, 0, screenx / 17, screeny / 150)
+    button12.pageClick(categorySociaal)
+    button13 = NewButton("Voorzieningen", 5, 0, screenx / 22, screeny / 150)
     button13.pageClick(categoryServices)
     button14 = NewButton("Overig", 6, 0, screenx / 18, screeny / 150)
     button14.pageClick(categoryOther)
-    button52 = NewButton("Give me the statistics", 28, 0, screenx / 600, screeny / 150)  #Currently not used, can be used to give the user stats when clicked
+    button52 = NewButton("Statistieken", 28, 0, screenx / 600, screeny / 150)  #Currently not used, can be used to give the user stats when clicked
     searchPage = False
 
 
@@ -708,7 +708,7 @@ def categoryPopulation():
     button18 = PecButton("pfffff lol oke", 4, 0, screenx / 17, screeny / 150,3)
     button19 = PecButton("zeg maar niet te lang ok", 5, 0, screenx / 22, screeny / 150,4)
     button20 = PecButton("Population6_placeholder", 6, 0, screenx / 22, screeny / 150,5)
-    buttonback1 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    buttonback1 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
     buttonback1.pageClick(percentagesEnCijfers) #The back button
     searchPage = True
 
@@ -722,7 +722,7 @@ def categoryEnvironment():
     button24 = PecButton("Environment4_placeholder", 4, 0, screenx / 17, screeny / 150,9)
     button25 = PecButton("Environment5_placeholder", 5, 0, screenx / 22, screeny / 150,10)
     button26 = PecButton("Environment6_placeholder", 6, 0, screenx / 22, screeny / 150,11)
-    buttonback2 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    buttonback2 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
     buttonback2.pageClick(percentagesEnCijfers)
     searchPage = True
 
@@ -736,21 +736,21 @@ def categorySafety():
     button30 = PecButton("Safety4_placeholder", 4, 0, screenx / 17, screeny / 150,14)
     button31 = PecButton("Safety5_placeholder", 5, 0, screenx / 22, screeny / 150,15)
     button32 = PecButton("Safety6_placeholder", 6, 0, screenx / 22, screeny / 150,16)
-    buttonback3 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    buttonback3 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
     buttonback3.pageClick(percentagesEnCijfers)
     searchPage = True
 
 ''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
-def categoryTraffic():
+def categorySociaal():
     global searchPage
     text.config(text="") #Resets the text when it reaches the home button
-    button33 = PecButton("Traffic1_placehholder", 1, 0, screenx / 30, screeny / 150,17)
-    button34 = PecButton("Traffic2_placeholder", 2, 0, screenx / 45, screeny / 150,18)
-    button35 = PecButton("Traffic3_placeholder", 3, 0, screenx / 17, screeny / 150,19)
-    button36 = PecButton("Traffic4_placeholder", 4, 0, screenx / 17, screeny / 150,20)
-    button37 = PecButton("Traffic5_placeholder", 5, 0, screenx / 22, screeny / 150,21)
-    button38 = PecButton("Traffic6_placeholder", 6, 0, screenx / 22, screeny / 150,22)
-    buttonback4 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    button33 = PecButton("Sociaal_placehholder", 1, 0, screenx / 30, screeny / 150,17)
+    button34 = PecButton("Sociaal2_placeholder", 2, 0, screenx / 45, screeny / 150,18)
+    button35 = PecButton("Sociaal3_placeholder", 3, 0, screenx / 17, screeny / 150,19)
+    button36 = PecButton("Sociaal4_placeholder", 4, 0, screenx / 17, screeny / 150,20)
+    button37 = PecButton("Sociaal5_placeholder", 5, 0, screenx / 22, screeny / 150,21)
+    button38 = PecButton("Sociaal6_placeholder", 6, 0, screenx / 22, screeny / 150,22)
+    buttonback4 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
     buttonback4.pageClick(percentagesEnCijfers)
     searchPage = True
 
@@ -764,7 +764,7 @@ def categoryServices():
     button42 = PecButton("Services4_placeholder", 4, 0, screenx / 17, screeny / 150,26)
     button43 = PecButton("Services5_placeholder", 5, 0, screenx / 22, screeny / 150,27)
     button44 = PecButton("Services6_placeholder", 6, 0, screenx / 22, screeny / 150,28)
-    buttonback5 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    buttonback5 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
     buttonback5.pageClick(percentagesEnCijfers)
     searchPage = True
 
@@ -778,7 +778,7 @@ def categoryOther():
     button48 = PecButton("Other4_placeholder", 4, 0, screenx / 17, screeny / 150,32)
     button49 = PecButton("Other5_placeholder", 5, 0, screenx / 22, screeny / 150,33)
     button50 = PecButton("Other6_placeholder", 6, 0, screenx / 22, screeny / 150,34)
-    buttonback6 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    buttonback6 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
     buttonback6.pageClick(percentagesEnCijfers)
     searchPage = True
 
