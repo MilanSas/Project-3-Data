@@ -98,7 +98,7 @@ class PlotLineChart(Plot):
             # wijk.ChangeBorderColor(p[0].get_color())
         plt.ylabel("Percentage")
         plt.xlabel('Jaren')
-        # plt.title(self.tabelNaam)
+        plt.title(self.tabelNaam)
         plt.legend(loc='best', fancybox=True, framealpha=0.5)
         plt.show()
 
