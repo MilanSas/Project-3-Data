@@ -107,7 +107,8 @@ def HexToRGB(rgb):
 
 ''''Function to create the polygons(area's)'''
 geselecteerdegebieden = []
-
+image = PhotoImage(file="Noord.png")
+canvas.create_image(rs(850),rs(360),image=image)
 class polygon:
     def __init__(self,name,color,list):
         self.name = name
