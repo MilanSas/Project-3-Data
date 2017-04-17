@@ -38,6 +38,11 @@ feijenood = "Feijenoord"
 ijsselmonde = "Ijsselmonde"
 rotterdam = "Rotterdam"
 
+def kek():
+    for i in wijklist:
+        for k in i:
+            canvas.delete(k.shape)
+
 ''''Saves last page, '''
 searchPage = None
 
@@ -80,11 +85,6 @@ class PecButton:
 ''''The last clicked button from the page: "Percentages en cijfers", are saved in an array, this is for the: "databasePercentagesEnCijfers Function"'''
 buttonArray = []
 
-'''Trigger for the polygons(area's), to do something with an area when it's clicked'''''
-class Trigger:
-    def __init__(self, triggerValue,name):
-        self.trigger = triggerValue
-        self.name = name #name to uniquely identify the area.
 
 ''''The canvas, important variable. Everything gets drawn on the canvas'''
 canvas = Canvas(root, width=screenx,height=screeny) #root is in which window it will get drawn on.
@@ -112,15 +112,6 @@ def HexToRGB(rgb):
 ''''Function to create the polygons(area's)'''
 geselecteerdegebieden = []
 
-numcolor = 0
-def getcolor():
-    global numcolor
-    selectcolors = ['red', 'cyan', 'hot pink', 'orange', 'saddle brown', 'green2', 'yellow', 'dark green', 'purple1',
-                    'SlateGray4', 'khaki2']
-    color = selectcolors[numcolor]
-    numcolor += 1
-    return color
-
 
 class polygon:
     def __init__(self,name,color,list):
@@ -129,7 +120,7 @@ class polygon:
         self.selected = False
         self.shape = canvas.create_polygon(list, fill=(HexToRGB(color)), outline='black', width=2, tags = self.name)
         canvas.move(self.shape, rs(-400), 0)
-        self.selectcolor = getcolor()
+        self.selectcolor = 'red'
 
 
     def ChangeColor(self, percent):
@@ -137,7 +128,7 @@ class polygon:
         colorchange = percent * basevalue // 100
         changedcolor = basevalue
         finalcolor = basevalue - colorchange
-        looptime = 200
+        looptime = 20
 
         for n in range(looptime):
             if changedcolor >= 16 and changedcolor > finalcolor:
@@ -154,8 +145,8 @@ class polygon:
         canvas.itemconfig(self.shape, fill=HexToRGB(color))
         root.update()
 
-
-
+    def ChangeBorderColor(self, color):
+        canvas.itemconfig(self.shape, outline=color, width=6)
 
     def Select(self):
         if self.selected:
@@ -170,9 +161,37 @@ class polygon:
         self.selected = False
         canvas.itemconfig(self.shape, outline='black', width = 2)
 
+    def Hover(self, event):
+        if canvas.find_withtag(CURRENT) == canvas.find_withtag(self.name):
+            text.config(text=self.name)
+
+    def spawnchild(self):
+        if self.name == "Overschie":
+            overschieWijk()
+        if self.name == "Hillegersberg-Schiebroek":
+            hillegersbergWijk()
+        if self.name == "Prins_alexander":
+            prinsalexanderWijk()
+        if self.name == "Kralingen-Crooswijk":
+            kralingenWijk()
+        if self.name == "Noord":
+            noordWijk()
+        if self.name == "Delfshaven":
+            delftWijk()
+        if self.name == "Centrum":
+            centrumWijk()
+        if self.name == "Feijenoord":
+            feijenoordWijk()
+        if self.name == "IJsselmonde":
+            ijsselmondeWijk()
+        if self.name == "Charlois":
+            charloisWijk()
+        if self.name == "Waalhaven":
+            waalhavenWijk()
+
+
 class lagenda():
     def __init__(self):
-        self.pos = 100
         for i in range(80):
             color = (255 - i*3, 255 - i*3, 255)
             self.shape = canvas.create_rectangle(50,i * 10,100,i * 10 + 10, fill=(HexToRGB(color)), outline='black')
@@ -189,6 +208,7 @@ def overschieWijk():
     ov4 = polygon("ov4",(120, 50, 120), Polygons.ov4)
     ov5 = polygon("ov5",(120, 50, 120), Polygons.ov5)
     ovlijst = [ov1,ov2,ov3,ov4,ov5]
+    wijklist.append(ovlijst)
 
 ''''This function gets loaded when the area: "Hillegersberg", gets selected'''
 def hillegersbergWijk():
@@ -198,6 +218,7 @@ def hillegersbergWijk():
     hill4 = polygon("hill4",(120, 50, 120), Polygons.hill4)
     hill5 = polygon("hill5",(120, 50, 120), Polygons.hill5)
     hillijst = [hill1,hill2,hill3,hill4,hill5]
+    wijklist.append(hillijst)
 
 def prinsalexanderWijk():
     pa1 = polygon("pa1",(120, 50, 120), Polygons.pa1)
@@ -207,6 +228,7 @@ def prinsalexanderWijk():
     pa5 = polygon("pa5",(120, 50, 120), Polygons.pa5)
     pa6 = polygon("pa6",(120, 50, 120), Polygons.pa6)
     palijst = [pa1,pa2,pa3,pa4,pa5,pa6]
+    wijklist.append(palijst)
 
 def kralingenWijk():
     kra6 = polygon("kra6",(120, 50, 120), Polygons.kra6)
@@ -215,8 +237,9 @@ def kralingenWijk():
     kra3 = polygon("kra3",(120, 50, 120), Polygons.kra3)
     kra4 = polygon("kra4",(120, 50, 120), Polygons.kra4)
     kra5 = polygon("kra5",(120, 50, 120), Polygons.kra5)
-    kra7 = polygon("kra7",(120, 50, 120), Polygons.kra6)
+    kra7 = polygon("kra7",(120, 50, 120), Polygons.kra7)
     kralijst = [kra6,kra1,kra2,kra3,kra4,kra5,kra7]
+    wijklist.append(kralijst)
 
 def centrumWijk():
     centr1 = polygon("centr1",(120, 50, 120), Polygons.centr1)
@@ -226,6 +249,7 @@ def centrumWijk():
     centr5 = polygon("centr5",(120, 50, 120), Polygons.centr5)
     centr6 = polygon("centr6",(120, 50, 120), Polygons.centr6)
     centlijst = [centr1,centr2,centr3,centr4,centr5,centr6]
+    wijklist.append(centlijst)
 
 def noordWijk():
     nrd1 = polygon("nrd1",(120, 50, 120), Polygons.nrd1)
@@ -236,6 +260,7 @@ def noordWijk():
     nrd6 = polygon("nrd6",(120, 50, 120), Polygons.nrd6)
     nrd7 = polygon("nrd7",(120, 50, 120), Polygons.nrd7)
     nrdlijst = [nrd1,nrd2,nrd3,nrd4,nrd5,nrd6,nrd7]
+    wijklist.append(nrdlijst)
 
 def delftWijk():
     delf1 = polygon("delf1",(120, 50, 120), Polygons.delf1)
@@ -247,6 +272,7 @@ def delftWijk():
     delf7 = polygon("delf7",(120, 50, 120), Polygons.delf7)
     delf8 = polygon("delf8",(120, 50, 120), Polygons.delf8)
     delflijst = [delf1,delf2,delf3,delf4,delf5,delf6,delf7,delf8]
+    wijklist.append(delflijst)
 
 def waalhavenWijk():
     waal1 = polygon("waal1",(120, 50, 120), Polygons.waal1)
@@ -254,6 +280,7 @@ def waalhavenWijk():
     waal3 = polygon("waal3",(120, 50, 120), Polygons.waal3)
     waal4 = polygon("waal4",(120, 50, 120), Polygons.waal4)
     waallijst = [waal1,waal2,waal3,waal4]
+    wijklist.append(waallijst)
 
 def charloisWijk():
     char1 = polygon("char1",(120, 50, 120), Polygons.char1)
@@ -264,6 +291,7 @@ def charloisWijk():
     char6 = polygon("char6",(120, 50, 120), Polygons.char6)
     char7 = polygon("char7",(120, 50, 120), Polygons.char7)
     charlijst = [char1,char2,char3,char4,char5,char6,char7]
+    wijklist.append(charlijst)
 
 def feijenoordWijk():
     fei1 = polygon("fei1",(120, 50, 120), Polygons.fei1)
@@ -276,6 +304,7 @@ def feijenoordWijk():
     fei8 = polygon("fei8",(120, 50, 120), Polygons.fei8)
     fei9 = polygon("fei9",(120, 50, 120), Polygons.fei9)
     feilijst = [fei1,fei2,fei3,fei4,fei5,fei6,fei7,fei8,fei9]
+    wijklist.append(feilijst)
 
 def ijsselmondeWijk():
     ijs1 = polygon("ijs1",(120, 50, 120), Polygons.ijs1)
@@ -283,7 +312,9 @@ def ijsselmondeWijk():
     ijs3 = polygon("ijs3",(120, 50, 120), Polygons.ijs3)
     ijs4 = polygon("ijs4",(120, 50, 120), Polygons.ijs4)
     ijslijst = [ijs1,ijs2,ijs3,ijs4]
+    wijklist.append(ijslijst)
 
+wijklist = []
 
 
 ''''The polygons(area's)'''''
@@ -315,154 +346,25 @@ def motion(event):
     else:
         text.config(text="Rotterdam")
 
-'''triggers for when an area gets selected'''''
-overschie_trigger = Trigger(False, "overschie")
-hillegersberg_trigger = Trigger(False,"hillegersberg")
-prins_alexander_trigger = Trigger(False, "prinsAlexander")
-noord_trigger = Trigger(False,"noord")
-kralingen_crooswijk_trigger = Trigger(False, "kralingenCrooswijk")
-centrum_trigger = Trigger(False, "centrum")
-delftshaven_trigger = Trigger(False, "delftshaven")
-waalhaven_trigger = Trigger(False, "waalhaven")
-charlois_trigger = Trigger(False, "charlois")
-feijenood_trigger = Trigger(False, "feijenoord")
-ijsselmonde_trigger = Trigger(False, "ijsselmonde")
-
-''''Array of the trigger objects'''
-List1 = [overschie_trigger, hillegersberg_trigger,prins_alexander_trigger,noord_trigger, kralingen_crooswijk_trigger, centrum_trigger, delftshaven_trigger, waalhaven_trigger, charlois_trigger, feijenood_trigger, ijsselmonde_trigger]
-
-''''With this the selected polygons(area's) are recognized when they are clicked on. '''''
-def click(event):
-    if str(canvas.find_withtag(CURRENT)) == "(1,)" and searchPage == True: #every polygon(area) has his own tag
-        text.config(text=overschie) #Text changes to the name of the selected area
-        for i in List1: #Goes through the array of the area triggers.
-            if i.name == "overschie":#Name is the attribute of the area's triggers, this is used to uniquely identify the area
-                setattr(i, 'trigger', True) #sets the clicked area to true
-                overschieWijk() #The wijken get drawn
-            else:
-                setattr(i, 'trigger', False) #set the other area's to false
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(2,)" and searchPage == True: #Checks if the page is the right page.
-        text.config(text=hillegersberg_schiebroek)
-        for i in List1:
-            if i.name == "hillegersberg":
-                setattr(i, 'trigger', True)
-                hillegersbergWijk() #The wijken get drawn
-
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(3,)" and searchPage == True:
-        text.config(text=prins_alexander)
-        for i in List1:
-            if i.name == "prinsAlexander":
-                setattr(i, 'trigger', True)
-                prinsalexanderWijk() #The wijken get drawn
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(4,)" and searchPage == True:
-        text.config(text=kralingen_crooswijk)
-        for i in List1:
-            if i.name == "kralingenCrooswijk":
-                setattr(i, 'trigger', True)
-                kralingenWijk() #The wijken get drawn
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(5,)" and searchPage == True:
-        text.config(text=noord)
-        for i in List1:
-            if i.name == "noord":
-                setattr(i, 'trigger', True)
-                noordWijk() #The wijken get drawn
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-
-    elif str(canvas.find_withtag(CURRENT)) == "(6,)" and searchPage == True:
-        text.config(text=delftshaven)
-        for i in List1:
-            if i.name == "delftshaven":
-                setattr(i, 'trigger', True)
-                delftWijk()
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(7,)" and searchPage == True:
-        text.config(text=centrum)
-        for i in List1:
-            if i.name == "centrum":
-                setattr(i, 'trigger', True)
-                centrumWijk()
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-
-    elif str(canvas.find_withtag(CURRENT)) == "(8,)" and searchPage == True:
-        text.config(text=feijenood)
-        for i in List1:
-            if i.name == "feijenoord":
-                setattr(i, 'trigger', True)
-                feijenoordWijk()
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(9,)" and searchPage == True:
-        text.config(text=ijsselmonde)
-        for i in List1:
-            if i.name == "ijsselmonde":
-                setattr(i, 'trigger', True)
-                ijsselmondeWijk()
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(10,)" and searchPage == True:
-        text.config(text=charlois)
-        for i in List1:
-            if i.name == "charlois":
-                setattr(i, 'trigger', True)
-                charloisWijk()
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(11,)" and searchPage == True:
-        text.config(text=waalhaven)
-        for i in List1:
-            if i.name == "waalhaven":
-                setattr(i, 'trigger', True)
-                waalhavenWijk()
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
 def rightclick(event):
     for wijk in polygonsgebieden:
         if canvas.find_withtag(CURRENT) == canvas.find_withtag(wijk.name):
             wijk.Select()
 
+def leftclick(event):
+    for wijk in polygonsgebieden:
+        if canvas.find_withtag(CURRENT) == canvas.find_withtag(wijk.name):
+            wijk.spawnchild()
+
+def hover(event):
+    for wijk in polygonsgebieden:
+        wijk.Hover(event)
+
+
 ''''when a polygon(area) is clicked, the click method will be activated'''''
-canvas.bind('<Button-1>', click, add="+") #Binds the canvas to the click method
+canvas.bind('<Button-1>', leftclick, add="+") #Binds the canvas to the click method
 canvas.bind('<Button-3>', rightclick, add="+")
+canvas.bind('<Motion>', hover)
 
 ''''Canvas that gets drawn'''
 canvas.grid(row=2, column=0,sticky=N,rowspan=999,padx=55) #the lower the code(higher line) the later it will get drawn
@@ -475,9 +377,9 @@ def menuSelector(event):
          woningsadvies()
     elif str(variable.get()) == "Percentages en cijfers":
         percentagesEnCijfers()
-    elif str(variable.get()) == "Over":
+    elif str(variable.get()) == "About":
         about()
-    elif str(variable.get()) == "Instellingen":
+    elif str(variable.get()) == "Settings":
         settings()
     elif str(variable.get()) == "Exit":
         root.destroy()
@@ -486,13 +388,13 @@ def menuSelector(event):
 ''''Drop down menu'''
 variable = StringVar(root) #Variable will store the page that is selected
 variable.set("Home")  # default value is the homebutton
-menu_button = OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Instellingen", "Over",
+menu_button = OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "About",
                              "Exit", command=menuSelector) #The pages that are in the drop down menu
 menu_button.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white") #Changes the font/size of the drop down menu
 menu_button.grid(row=0, column=0, sticky=N + W) #Sets the position of the drop down menu
 
 ''''Menu Text'''
-welcome_text = "Klik op de Homeknop om het menu te bereiken." #Test that appears on the menu
+welcome_text = "Select the home button to see the available options" #Test that appears on the menu
 description_text = Label(root,text=welcome_text,font=("Helvetica",15,"bold")) #Sets the text on the page
 description_text.grid(row=1,column=0,sticky=W) #Sets the position of the text
 
@@ -603,19 +505,20 @@ def percentagesEnCijfers():
             widget.destroy() #Other widgets are deleted
             print(str(widget) + " Is deleted")
 
-    button9 = NewButton("Bevolking", 1, 0, screenx / 30, screeny / 150) #Creates button
+    button9 = NewButton("Population", 1, 0, screenx / 30, screeny / 150) #Creates button
     button9.pageClick(categoryPopulation) #Goes to the sub categories of the selected button
-    button10 = NewButton("Milieu", 2, 0, screenx / 45, screeny / 150)
+    button10 = NewButton("Environment", 2, 0, screenx / 45, screeny / 150)
     button10.pageClick(categoryEnvironment)
-    button11 = NewButton("Veiligheid", 3, 0, screenx / 17, screeny / 150)
+    button11 = NewButton("Safety", 3, 0, screenx / 17, screeny / 150)
     button11.pageClick(categorySafety)
-    button12 = NewButton("Sociaal", 4, 0, screenx / 17, screeny / 150)
-    button12.pageClick(categorySociaal)
-    button13 = NewButton("Voorzieningen", 5, 0, screenx / 22, screeny / 150)
+    button12 = NewButton("Traffic", 4, 0, screenx / 17, screeny / 150)
+    button12.pageClick(categoryTraffic)
+    button13 = NewButton("Services", 5, 0, screenx / 22, screeny / 150)
     button13.pageClick(categoryServices)
     button14 = NewButton("Overig", 6, 0, screenx / 18, screeny / 150)
     button14.pageClick(categoryOther)
-    button52 = NewButton("Statistieken", 28, 0, screenx / 600, screeny / 150)  #Currently not used, can be used to give the user stats when clicked
+    button52 = NewButton("Give me the statistics", 28, 0, screenx / 600, screeny / 150)  #Currently not used, can be used to give the user stats when clicked
+    button52.pageClick(kek)
     searchPage = False
 
 
@@ -702,12 +605,12 @@ def woningsadvies():
 def categoryPopulation():
     global searchPage
     text.config(text="") #Resets the text when it reaches the home button
-    button15 = PecButton("hieriets", 1, 0, screenx / 30, screeny / 150, 0)
-    button16 = PecButton("hiernog iets met een lange lengte", 2, 0, screenx / 45, screeny / 150,1)
-    button17 = PecButton("wejo", 3, 0, screenx / 17, screeny / 150,2)
-    button18 = PecButton("pfffff lol oke", 4, 0, screenx / 17, screeny / 150,3)
-    button19 = PecButton("zeg maar niet te lang ok", 5, 0, screenx / 22, screeny / 150,4)
-    button20 = PecButton("Population6_placeholder", 6, 0, screenx / 22, screeny / 150,5)
+    button15 = PecButton("schoolgaande en studerende jongeren (18 t/m 22 jr)", 1, 0, screenx / 30, screeny / 150, 0)
+    button16 = PecButton("werkende jongeren (18 t/m 22 jr)", 2, 0, screenx / 45, screeny / 150,1)
+    button17 = PecButton("werkzoekende jongeren (18 t/m 22 jr)", 3, 0, screenx / 17, screeny / 150,2)
+    button18 = PecButton("bewoners met werk(23 t/m 64 jr)", 4, 0, screenx / 17, screeny / 150,3)
+    button19 = PecButton("werkzoeknde bewoners(23 t/m 64 jr)", 5, 0, screenx / 22, screeny / 150,4)
+    button20 = PecButton("Bewoners (18 jr en ouder) dat kort in Nederland woont", 6, 0, screenx / 22, screeny / 150,5)
     buttonback1 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
     buttonback1.pageClick(percentagesEnCijfers) #The back button
     searchPage = True
@@ -722,7 +625,7 @@ def categoryEnvironment():
     button24 = PecButton("Environment4_placeholder", 4, 0, screenx / 17, screeny / 150,9)
     button25 = PecButton("Environment5_placeholder", 5, 0, screenx / 22, screeny / 150,10)
     button26 = PecButton("Environment6_placeholder", 6, 0, screenx / 22, screeny / 150,11)
-    buttonback2 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
+    buttonback2 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback2.pageClick(percentagesEnCijfers)
     searchPage = True
 
@@ -736,21 +639,21 @@ def categorySafety():
     button30 = PecButton("Safety4_placeholder", 4, 0, screenx / 17, screeny / 150,14)
     button31 = PecButton("Safety5_placeholder", 5, 0, screenx / 22, screeny / 150,15)
     button32 = PecButton("Safety6_placeholder", 6, 0, screenx / 22, screeny / 150,16)
-    buttonback3 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
+    buttonback3 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback3.pageClick(percentagesEnCijfers)
     searchPage = True
 
 ''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
-def categorySociaal():
+def categoryTraffic():
     global searchPage
     text.config(text="") #Resets the text when it reaches the home button
-    button33 = PecButton("Sociaal_placehholder", 1, 0, screenx / 30, screeny / 150,17)
-    button34 = PecButton("Sociaal2_placeholder", 2, 0, screenx / 45, screeny / 150,18)
-    button35 = PecButton("Sociaal3_placeholder", 3, 0, screenx / 17, screeny / 150,19)
-    button36 = PecButton("Sociaal4_placeholder", 4, 0, screenx / 17, screeny / 150,20)
-    button37 = PecButton("Sociaal5_placeholder", 5, 0, screenx / 22, screeny / 150,21)
-    button38 = PecButton("Sociaal6_placeholder", 6, 0, screenx / 22, screeny / 150,22)
-    buttonback4 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
+    button33 = PecButton("Traffic1_placehholder", 1, 0, screenx / 30, screeny / 150,17)
+    button34 = PecButton("Traffic2_placeholder", 2, 0, screenx / 45, screeny / 150,18)
+    button35 = PecButton("Traffic3_placeholder", 3, 0, screenx / 17, screeny / 150,19)
+    button36 = PecButton("Traffic4_placeholder", 4, 0, screenx / 17, screeny / 150,20)
+    button37 = PecButton("Traffic5_placeholder", 5, 0, screenx / 22, screeny / 150,21)
+    button38 = PecButton("Traffic6_placeholder", 6, 0, screenx / 22, screeny / 150,22)
+    buttonback4 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback4.pageClick(percentagesEnCijfers)
     searchPage = True
 
@@ -764,7 +667,7 @@ def categoryServices():
     button42 = PecButton("Services4_placeholder", 4, 0, screenx / 17, screeny / 150,26)
     button43 = PecButton("Services5_placeholder", 5, 0, screenx / 22, screeny / 150,27)
     button44 = PecButton("Services6_placeholder", 6, 0, screenx / 22, screeny / 150,28)
-    buttonback5 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
+    buttonback5 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback5.pageClick(percentagesEnCijfers)
     searchPage = True
 
@@ -778,7 +681,7 @@ def categoryOther():
     button48 = PecButton("Other4_placeholder", 4, 0, screenx / 17, screeny / 150,32)
     button49 = PecButton("Other5_placeholder", 5, 0, screenx / 22, screeny / 150,33)
     button50 = PecButton("Other6_placeholder", 6, 0, screenx / 22, screeny / 150,34)
-    buttonback6 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
+    buttonback6 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback6.pageClick(percentagesEnCijfers)
     searchPage = True
 
@@ -897,12 +800,13 @@ def databasePercentagesEnCijfers():
     data =[]
     if answer == 0:  #the numbers represent the button, each button has his own number. The attribute of the button that stores this is: name
         if len(geselecteerdegebieden)>0:
-            for i in geselecteerdegebieden:
-                print(i.name)
-                PlotLineChart("geweldsdelicten", geselecteerdegebieden)
+            print("PercentageSchoolgaandeEnStuderendeJongeren18T/M22Jr")
+            PlotBarChart("si2016","PercentageSchoolgaandeEnStuderendeJongeren18T",geselecteerdegebieden)
          #The query get send into the showresults function, then the map colour gets changed based on the results from it
     elif answer == 1:
-        PlotOnMap("tevredenheid", polygonsgebieden2)
+        if len(geselecteerdegebieden)>0:
+            print("PercentageSchoolgaandeEnStuderendeJongeren18T/M22Jr")
+            PlotBarChart("si2016","PercentageWerkendeJongeren18T",geselecteerdegebieden)
     elif answer == 2:
         ShowResults(data)
     elif answer == 3:
@@ -979,5 +883,4 @@ def databasePercentagesEnCijfers():
 
 for widget in root.winfo_children():
     print(widget)
-
 root.mainloop() #for the loop
