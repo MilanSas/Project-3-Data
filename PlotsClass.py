@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import sqlite3
-from pandas import*
 from sqlite3 import Error
 
 
@@ -22,7 +21,7 @@ WijkenGebieden = {
                                  "Lombardijen", "Oud IJsselmonde"],
                 "Kralingen-Crooswijk" : ["De Esch", "Kralingen Oost/Kralingse Bos", "Kralingen-Crooswijk",
                                          "Kralingen-west","Nieuw Crooswijk","Oud Crooswijk","Rubroek","Struisenburg"],
-                "Noord"	: [ "Agniesebuurt",	"Bergpolder", "Blijdorp/Blijdorpsepolder", "Liskwartier	Noord",
+                "Noord"	: ["Agniesebuurt",	"Bergpolder", "Blijdorp/Blijdorpsepolder", "Liskwartier	Noord",
                                             "Oude Noorden",	"Provenierswijk"],
                 "Overschie" :  ["Kleinpolder", "NoordKethel/Schieveen/Zestienhoven", "Overschie"],
 
