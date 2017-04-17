@@ -67,11 +67,11 @@ class NewButton:
 class PecButton:
     def __init__(self,text, row, column, ipadx, ipady, name):
         self.clicked = False
-        self.var = 28 - len(text)
+        self.var = 50 - len(text)
 
-        self.button = Button(root, text =(" " + text + str(" "*self.var)), command = self.databaseSender,font=("courier",15,"bold"),bg="DeepSkyBlue2", fg="white")
+        self.button = Button(root, text =(" " + text + str(" "*self.var)), command = self.databaseSender,font=("courier",9,"bold"),bg="DeepSkyBlue2", fg="white")
         self.button.columnconfigure(0,weight=300000)
-        self.button.grid(row=row, column=column, sticky=W, ipadx=0, ipady=ipady)
+        self.button.grid(row=row, column=column, sticky=W, ipadx=0, ipady=15)
         self.name = name #this is for the buttonArray to know what is the last button that is clicked
 
     def databaseSender(self):
@@ -160,7 +160,8 @@ class polygon:
     def Hover(self, event):
         if canvas.find_withtag(CURRENT) == canvas.find_withtag(self.name):
             text.config(text=self.name)
-
+    def Reset(self):
+        canvas.itemconfig(self.shape, fill=(HexToRGB(self.color)), outline='black', width=2)
     def spawnchild(self):
         if self.name == "Overschie":
             overschieWijk()
@@ -329,7 +330,7 @@ waalhaven_polygon = polygon("Waalhaven",(20, 50, 120), Polygons.waalhaven)
 
 ''''Array that has the polygon area's, this is used to go through the array and then the colour will change. It is used in a database function'''
 polygonsgebieden = [overschie_polygon, hillegersberg_polygon, prins_alexander_polygon, kralingen_polygon, noord_polygon, delftshaven_polygon, centrum_polygon, feijenoord_polygon, ijsselmonde_polygon, charlois_polygon, waalhaven_polygon]
-polygonsgebieden2 = [overschie_polygon, hillegersberg_polygon, prins_alexander_polygon, kralingen_polygon, noord_polygon, delftshaven_polygon, feijenoord_polygon, ijsselmonde_polygon, charlois_polygon]
+polygonsgebieden2 = [overschie_polygon, hillegersberg_polygon, prins_alexander_polygon, kralingen_polygon, noord_polygon, delftshaven_polygon, centrum_polygon, feijenoord_polygon, ijsselmonde_polygon, charlois_polygon]
 ''''The name of the area that is displayed in the top centre.'''
 text = Label(root,width=0, height=1,text="",font=("Helvetica",35,"bold")) #Creates text
 text.grid(row=0,column=0,sticky=N) #Draws the text
@@ -361,6 +362,9 @@ def hover(event):
     for wijk in polygonsgebieden:
         wijk.Hover(event)
 
+def resetwijken():
+    for wijk in polygonsgebieden:
+        wijk.Reset()
 
 ''''when a polygon(area) is clicked, the click method will be activated'''''
 canvas.bind('<Button-1>', leftclick, add="+") #Binds the canvas to the click method
@@ -402,6 +406,7 @@ description_text.grid(row=1,column=0,sticky=W) #Sets the position of the text
 ''''the home page'''
 def home():
     global searchPage
+    resetwijken()
     text.config(text="") #Resets the text when it reaches the home button
     for widget in root.winfo_children(): #checks which wigets(buttons, text etc) are open
         if widget == menu_button or widget == text: #The menu does not get deleted
@@ -455,6 +460,7 @@ def home():
 ''''The about page'''
 def about():
     global searchPage
+    resetwijken()
     text.config(text="") #Resets the text when it reaches the home button
     for widget in root.winfo_children():
         if widget == menu_button or widget == text: #Optionmenu does not get deleted
@@ -496,6 +502,7 @@ def about():
 ''''Percentages en cijfers page'''
 def percentagesEnCijfers():
     global searchPage
+    resetwijken()
     text.config(text="") #Resets the text when it reaches the home button
     for widget in root.winfo_children():
         if widget == menu_button or widget == text: #Menu button will not be deleted
@@ -557,6 +564,7 @@ def woningsadvies():
     global veiligheid_radioButtons
     global verkeer_radioButtons
     global voorzieningen_radioButtons
+    resetwijken()
     text.config(text="") #Resets the text when it reaches the home button
 
     for widget in root.winfo_children():
@@ -898,15 +906,23 @@ def databasePercentagesEnCijfers():
     elif answer == 31:
         if len(geselecteerdegebieden)>0:
             PlotLineChart("drugsoverlast".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("drugsoverlast".lower(),polygonsgebieden2)
     elif answer == 32:
         if len(geselecteerdegebieden)>0:
             PlotLineChart("geweldsdelicten".lower(), geselecteerdegebieden)
+        else:
+            PlotOnMap("geweldsdelicten".lower(),polygonsgebieden2)
     elif answer == 33:
         if len(geselecteerdegebieden)>0:
             PlotLineChart("tevredenheid".lower(), geselecteerdegebieden)
+        else:
+            PlotOnMap("tevredenheid".lower(),polygonsgebieden2)
     elif answer == 34:
         if len(geselecteerdegebieden)>0:
             PlotLineChart("fietsendiefstal".lower(), geselecteerdegebieden)
+        else:
+            PlotOnMap("fietsendiefstal".lower(),polygonsgebieden2)
     elif answer == 35:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("fisub2016","PercentageVaakHondenpoep".lower(),geselecteerdegebieden)

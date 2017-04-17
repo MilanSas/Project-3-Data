@@ -95,7 +95,7 @@ class PlotLineChart(Plot):
             p = plt.plot(self.jaartallen, self.g['data_{}'.format(wijk.name)], label=wijk.name, linewidth=1)
             for a, b in zip(self.jaartallen, self.g['data_{}'.format(wijk.name)]):
                 plt.text(a, b, str(b))
-            # wijk.ChangeBorderColor(p[0].get_color())
+            wijk.ChangeBorderColor(p[0].get_color())
         plt.ylabel("Percentage")
         plt.xlabel('Jaren')
         plt.title(self.tabelNaam)
@@ -139,6 +139,7 @@ class PlotOnMap(Plot):
     def __init__(self, tabelnaam, wijknamenlist):
         super().__init__(tabelnaam, wijknamenlist)
         self.y = []
+        self.jaartallen = [2006, 2007, 2008, 2009, 2011]
         self.g = globals()
 
         self.generate_empty_lists()
