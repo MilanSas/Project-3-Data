@@ -8,67 +8,67 @@ Bloemhof;Wijk;Feijenoord;18.1;16.7;24.6;20.2;23.2
 Bospolder;Wijk;Delfshaven;19.1;12;17.7;22.7;23.6
 Carnisse;Wijk;Charlois;13.7;12.3;15;18.9;25
 Charlois;Gebied;Charlois;13.3;10.1;14.2;16;15.5
-Cool/Nieuwe Werk/Dijkzigt;Wijk;Rotterdam Centrum;15.7;6.1;10;12.1;10.2
-De Esch;Wijk;Kralingen-Crooswijk;2.7;6.9;7.2;12.3;11.9
+CoolNieuweWerkDijkzigt;Wijk;RotterdamCentrum;15.7;6.1;10;12.1;10.2
+DeEsch;Wijk;KralingenCrooswijk;2.7;6.9;7.2;12.3;11.9
 Delfshaven;;Delfshaven;9.6;5.8;14;10.3;14.2
 Delfshaven;;Delfshaven;12.3;9.7;14.3;15.1;16.6
 Feijenoord;;Feijenoord;4.5;7.8;16;17.9;16.8
 Feijenoord;;Feijenoord;13.4;9.7;16.4;15.1;15.4
-Groot IJsselmonde;Wijk;Ijsselmonde;5.1;4.4;6.4;6.7;5.6
+GrootIJsselmonde;Wijk;Ijsselmonde;5.1;4.4;6.4;6.7;5.6
 Heijplaat;Wijk;Charlois;9.6;1.7;4;6;13.9
-Het Lage Land;Wijk;Prins Alexander;1.7;1.9;2.7;1.9;2.5
-Hillegersberg-Noord;Wijk;Hillegersberg-Schiebroek;1.1;3.2;1.8;1.6;1.3
-Hillegersberg-Zuid;Wijk;Hillegersberg-Schiebroek;5.7;1.3;0.5;2.9;3.4
-Hillegersberg-Schiebroek;Wijk;Hillegersberg-Schiebroek;2.9;2.6;1.8;2.9;3.7
+HetLageLand;Wijk;PrinsAlexander;1.7;1.9;2.7;1.9;2.5
+HillegersbergNoord;Wijk;HillegersbergSchiebroek;1.1;3.2;1.8;1.6;1.3
+HillegersbergZuid;Wijk;HillegersbergSchiebroek;5.7;1.3;0.5;2.9;3.4
+HillegersbergSchiebroek;Wijk;HillegersbergSchiebroek;2.9;2.6;1.8;2.9;3.7
 Hillesluis;Wijk;Feijenoord;18;17;20.8;23.7;19.9
 Hoogvliet;;Hoogvliet;2.5;2.7;7.3;6.2;7.4
-Hoogvliet Noord;Wijk;Hoogvliet;2.3;2.6;10.3;6.3;9.8
-Hoogvliet Zuid;Wijk;Hoogvliet;2.7;2.8;5.4;6.2;6
+HoogvlietNoord;Wijk;Hoogvliet;2.3;2.6;10.3;6.3;9.8
+HoogvlietZuid;Wijk;Hoogvliet;2.7;2.8;5.4;6.2;6
 IJsselmonde;;IJsselmonde;4.4;6.4;8.4;7.2;9.6
 Katendrecht;;Feijenoord;10.8;4.6;8.6;4.3;5.3
 Kleinpolder;;Overschie;1.1;2.5;3;4.9;7.6
-Kop van Zuid Entrepot;;Feijenoord;7.4;5.1;9.8;6.3;7.5
-Kralingen Oost/Kralingse Bos;;Kralingen-Crooswijk;4;3.3;1.3;2;0.9
-Kralingen West;;Kralingen-Crooswijk;8.7;5;11.8;12.3;10.7
-Kralingen-Crooswijk;;Kralingen-Crooswijk;6.5;5.3;8.3;9.6;9.3
-Kralingse Veer;;Kralingen-Crooswijk;2.9;0;1.1;1.1;0.9
+KopvanZuidEntrepot;;Feijenoord;7.4;5.1;9.8;6.3;7.5
+KralingenOostKralingseBos;;KralingenCrooswijk;4;3.3;1.3;2;0.9
+KralingenWest;;KralingenCrooswijk;8.7;5;11.8;12.3;10.7
+KralingenCrooswijk;;KralingenCrooswijk;6.5;5.3;8.3;9.6;9.3
+KralingseVeer;;KralingenCrooswijk;2.9;0;1.1;1.1;0.9
 Liskwartier;;Noord;3.5;7.9;5.2;9.4;4.2
 Lombardijen;;IJsselmonde;2.3;9;12.2;7;8.3
 Middelland;;Delfshaven;19.1;13.7;20.6;24.4;21
-Molenlaankwartier;;Hillegersberg-Schiebroek;1.1;1.9;1.1;0.9;0.7
-Nesselande;;Prins Alexander;1.2;1.8;0.7;2.3;2.2
-Nieuw Crooswijk;;Kralingen-Crooswijk;7.3;7.4;8.3;14.6;9
-Nieuwe Westen;;Delfshaven;11.2;10;18.6;14.9;19.4
+Molenlaankwartier;;HillegersbergSchiebroek;1.1;1.9;1.1;0.9;0.7
+Nesselande;;PrinsAlexander;1.2;1.8;0.7;2.3;2.2
+NieuwCrooswijk;;KralingenCrooswijk;7.3;7.4;8.3;14.6;9
+NieuweWesten;;Delfshaven;11.2;10;18.6;14.9;19.4
 Noord;;Noord;9.2;6.2;9.6;10.1;9.4
 Noordereiland;;Feijenoord;5.5;2.2;9.3;7.1;12.8
-Ommoord;;Prins Alexander;4.7;3.2;3;2.3;1.6
-Oosterflank;;Prins Alexander;2.2;4.6;5.6;6.1;6.6
-Oud Charlois;;Prins Alexander;15.3;12.2;17.2;15.3;13.6
-Oud Crooswijk;;Kralingen-Crooswijk;7.8;7.4;10.9;11.6;12.9
-Oud IJsselmonde;;IJsselmonde;1.7;4.4;2.2;7.1;4.6
-Oud/Nieuw Mathenesse/Witte Dorp;;IJsselmonde;6.3;5.9;4.4;6.7;12.8
-Oude Noorden;;Noord;17.3;9.2;15.7;14.6;16.2
-Oude Westen;;Rotterdam Centrum;28.2;28.7;47.3;37.3;18.9
+Ommoord;;PrinsAlexander;4.7;3.2;3;2.3;1.6
+Oosterflank;;PrinsAlexander;2.2;4.6;5.6;6.1;6.6
+OudCharlois;;PrinsAlexander;15.3;12.2;17.2;15.3;13.6
+OudCrooswijk;;KralingenCrooswijk;7.8;7.4;10.9;11.6;12.9
+OudIJsselmonde;;IJsselmonde;1.7;4.4;2.2;7.1;4.6
+OudNieuwMathenesseWitteDorp;;IJsselmonde;6.3;5.9;4.4;6.7;12.8
+OudeNoorden;;Noord;17.3;9.2;15.7;14.6;16.2
+OudeWesten;;RotterdamCentrum;28.2;28.7;47.3;37.3;18.9
 Overschie;;Overschie;1.4;2.5;3.1;4.2;4.6
-Overschie eo;;Overschie;1.7;2.5;3.1;3.6;2.2
+Overschieeo;;Overschie;1.7;2.5;3.1;3.6;2.2
 Pendrecht;;Charlois;17.6;9.2;13.8;18.4;13.1
-Prins Alexander;;Prins Alexander;3.4;3.4;3.3;3.7;3.2
-Prinsenland;;Prins Alexander;2.9;1.8;1.3;2.7;2.4
+PrinsAlexander;;PrinsAlexander;3.4;3.4;3.3;3.7;3.2
+Prinsenland;;PrinsAlexander;2.9;1.8;1.3;2.7;2.4
 Provenierswijk;;Noord;3.9;3.3;7.1;7.9;7.7
 Rotterdam;;Rotterdam;8.2;6.7;9.9;10.2;10.1
-Rubroek;;Kralingen-Crooswijk;4.8;5.2;6;7.4;11.5
-Schiebroek;;Hillegersberg-Schiebroek;3.4;3.8;3;4.8;7.1
+Rubroek;;KralingenCrooswijk;4.8;5.2;6;7.4;11.5
+Schiebroek;;HillegersbergSchiebroek;3.4;3.8;3;4.8;7.1
 Schiemond;;Delfshaven;5.7;7.8;5.8;9.2;9.6
-s-Gravenland;;Prins Alexander;1.7;1.3;2.1;3.8;2.2
+sGravenland;;PrinsAlexander;1.7;1.3;2.1;3.8;2.2
 Spangen;;Delfshaven;8.1;7.3;7.8;12.1;10.7
 Stadscentrum;;Delfshaven;17.3;14.1;22.4;20.7;11.8
-Stadsdriehoek/C.S. Kwartier;;Rotterdam Centrum;12.2;7.1;10.3;13;7.8
-Struisenburg;;Kralingen-Crooswijk;5.7;2.6;6.8;6.3;4.8
+StadsdriehoekC.S.Kwartier;;RotterdamCentrum;12.2;7.1;10.3;13;7.8
+Struisenburg;;KralingenCrooswijk;5.7;2.6;6.8;6.3;4.8
 Tarwewijk;;Charlois;14.8;14.1;23.7;28.8;17.8
-Terbregge;;Hillegersberg-Schiebroek;2.3;0;0.7;1.4;1.1
+Terbregge;;HillegersbergSchiebroek;2.3;0;0.7;1.4;1.1
 Tussendijken;;Delfshaven;16;12.1;13.4;13.8;14.6
 Vreewijk;;Feijenoord;8.5;2.7;5.7;6.5;10.2
 Wielewaal;;Charlois;2.9;0;2;11.3;6.9
-Zevenkamp;;Prins Alexander;6.5;8.6;7;7.5;6.2
+Zevenkamp;;PrinsAlexander;6.5;8.6;7;7.5;6.2
 Zuidplein;;Charlois;18.5;13.6;13.8;13.6;10.2
 Zuidwijk;;Charlois;6.2;5.3;7.3;7.2;10.4

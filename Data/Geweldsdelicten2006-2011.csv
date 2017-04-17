@@ -1,13 +1,13 @@
 wijknaam;data2006;data2007;data2008;data2009;data2011
-Stadsdriehoek/C.S. Kwartier;5.2;4;6.2;3.9;4.1
-Oude Westen;7.7;10.7;16.7;11.7;5.6
-Cool/Nieuwe Werk/Dijkzigt;5.9;5;4.8;11.4;4.4
+StadsdriehoekC.S.Kwartier;5.2;4;6.2;3.9;4.1
+OudeWesten;7.7;10.7;16.7;11.7;5.6
+CoolNieuweWerkDijkzigt;5.9;5;4.8;11.4;4.4
 Stadscentrum;5.8;6.4;9.3;8;4.6
 Rotterdam;3.9;3.7;4.6;4.7;5.9
 Tarwewijk;3.4;9.5;7.5;12.8;11
 Carnisse;5.7;5.1;6.4;6.6;11
 Zuidwijk;6.8;4.7;7.4;5.5;9.4
-Oud Charlois;4.4;7.8;7.8;4.3;9.8
+OudCharlois;4.4;7.8;7.8;4.3;9.8
 Wielewaal;1.4;0;2;4.8;5.2
 Zuidplein;13.2;11.1;5.6;5.6;3.3
 Pendrecht;10.1;3.3;10.1;9.6;11.7
@@ -17,12 +17,12 @@ Delfshaven;5.5;8.4;6.2;2.3;12.7
 Bospolder;7.6;4.3;8.7;11.8;13.1
 Tussendijken;6.3;4.1;6.8;5.4;11.2
 Spangen;2.9;5.7;3.1;6.7;7.2
-Nieuwe Westen;6.4;2.8;12.6;7.1;9.5
+NieuweWesten;6.4;2.8;12.6;7.1;9.5
 Middelland;8;4.4;9.3;10.1;12.5
-Oud/Nieuw Mathenesse/Witte Dorp;2.9;2.6;2.8;3.1;5.8
+OudNieuwMathenesseWitteDorp;2.9;2.6;2.8;3.1;5.8
 Schiemond;5.7;3.2;1.1;4.5;6.1
 Delfshaven;5.8;4.2;7.6;6.8;9.8
-Kop van Zuid Entrepot;2.1;3.8;6.1;3.3;6.3
+KopvanZuidEntrepot;2.1;3.8;6.1;3.3;6.3
 Vreewijk;6;2.7;2.2;3.3;3.4
 Bloemhof;6.2;6.2;6.4;9.5;11.8
 Hillesluis;7.6;7.4;11.7;11.4;10
@@ -32,45 +32,45 @@ Feijenoord;3.5;9;9.3;11.4;11.2
 Noordereiland;1.2;1.4;3;1.1;2.6
 Feijenoord;5.9;5.6;7.4;7.1;7.7
 Schiebroek;1.8;1.1;2.8;2.1;3.5
-Hillegersberg Zuid;1.1;0;0;1.3;0
-Hillegersberg Noord;1.1;0.6;1.4;0.5;2.2
+HillegersbergZuid;1.1;0;0;1.3;0
+HillegersbergNoord;1.1;0.6;1.4;0.5;2.2
 Terbregge;0;0;0.7;0.4;0.6
 Molenlaankwartier;0.6;0.7;0.8;0;0.7
-Hillegersberg-Schiebroek;1.2;0.6;1.5;1.1;1.9
-Oud IJsselmonde;0;2.6;0.5;1.7;2.1
+HillegersbergSchiebroek;1.2;0.6;1.5;1.1;1.9
+OudIJsselmonde;0;2.6;0.5;1.7;2.1
 Lombardijen;0.6;3.2;3.6;4;5.5
-Groot IJsselmonde;2.4;4.6;5.7;5.5;5.8
+GrootIJsselmonde;2.4;4.6;5.7;5.5;5.8
 Beverwaard;6.2;9.1;6.7;7.7;32
 IJsselmonde;2.5;5.1;4.9;5.4;10.8
-Hoek van Holland;2.3;0;0;0.8;1.7
-Hoogvliet Noord;0.6;1.9;1;4.6;5.6
-Hoogvliet Zuid;1.5;0;2.5;3.7;2.2
+HoekvanHolland;2.3;0;0;0.8;1.7
+HoogvlietNoord;0.6;1.9;1;4.6;5.6
+HoogvlietZuid;1.5;0;2.5;3.7;2.2
 Hoogvliet;1.2;0.7;1.9;4.1;3.5
 Rubroek;2.3;5.9;5.5;3.8;3.9
-Nieuw Crooswijk;5;4.9;6.2;6;1.6
-Oud Crooswijk;7.2;3.3;6.2;7.7;4
-Kralingen West;5;2.2;4;1.6;4.7
-Kralingen Oost/Kralingse Bos;1.6;2;1.4;1.1;1.3
-De Esch;0.6;5.5;2.4;2.5;5.4
+NieuwCrooswijk;5;4.9;6.2;6;1.6
+OudCrooswijk;7.2;3.3;6.2;7.7;4
+KralingenWest;5;2.2;4;1.6;4.7
+KralingenOostKralingseBos;1.6;2;1.4;1.1;1.3
+DeEsch;0.6;5.5;2.4;2.5;5.4
 Struisenburg;3.3;0;1.2;1.4;1.5
-Kralingen-Crooswijk;4;3.2;4;3.1;3.6
+KralingenCrooswijk;4;3.2;4;3.1;3.6
 Agniesebuurt;4;5.1;5.7;6.2;3
 Provenierswijk;1.6;1.3;2;4.9;3.9
 Bergpolder;1.1;1.9;2;2.4;1.7
 Blijdorp;0;1.5;0;0.8;1.8
 Liskwartier;2.9;0.7;1.6;3.1;3.1
-Oude Noorden;11;2.4;4.4;8.5;10.4
+OudeNoorden;11;2.4;4.4;8.5;10.4
 Noord;4.7;2;2.7;4.8;5.1
 Kleinpolder;1.1;1.3;2;2;3.6
-Overschie eo;0;1.9;1.1;2.5;1.3
+Overschieeo;0;1.9;1.1;2.5;1.3
 Overschie;0.5;1.8;1.5;2.3;2.3
 Pernis;1.1;1.9;1.3;1.8;1.6
-s-Gravenland;0.6;0;0.3;0.6;0.4
-Kralingse Veer;0.7;0;1.3;0;0
+sGravenland;0.6;0;0.3;0.6;0.4
+KralingseVeer;0.7;0;1.3;0;0
 Prinsenland;3.4;1.3;1.3;1.4;0.7
-Het Lage Land;1.7;3.8;0.6;0;1.6
+HetLageLand;1.7;3.8;0.6;0;1.6
 Ommoord;2.4;4.9;1.6;0.9;0.7
 Oosterflank;2.5;3.9;2.2;2.5;3.8
 Zevenkamp;1.9;5.6;3.4;4.5;2.9
 Nesselande;0.6;0;0.5;0.3;1.9
-Prins Alexander;1.9;3.2;1.5;1.5;1.6
+PrinsAlexander;1.9;3.2;1.5;1.5;1.6
