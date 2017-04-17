@@ -315,12 +315,12 @@ wijklist = []
 
 ''''The polygons(area's)'''''
 overschie_polygon = polygon("Overschie",(20, 50, 120), Polygons.overschie)
-hillegersberg_polygon = polygon("Hillegersberg-Schiebroek",(20, 50, 120), Polygons.hillegersberg)
-prins_alexander_polygon = polygon("Prins_alexander",(20, 50, 120), Polygons.prins_alexander)
-kralingen_polygon = polygon("Kralingen-Crooswijk",(20, 50, 120), Polygons.kralingen)
+hillegersberg_polygon = polygon("HillegersbergSchiebroek",(20, 50, 120), Polygons.hillegersberg)
+prins_alexander_polygon = polygon("PrinsAlexander",(20, 50, 120), Polygons.prins_alexander)
+kralingen_polygon = polygon("KralingenCrooswijk",(20, 50, 120), Polygons.kralingen)
 noord_polygon = polygon("Noord",(20, 50, 120), Polygons.noord)
 delftshaven_polygon = polygon("Delfshaven",(20, 50, 120), Polygons.delftshaven)
-centrum_polygon = polygon("Centrum",(20, 50, 120), Polygons.centrum)
+centrum_polygon = polygon("RotterdamCentrum",(20, 50, 120), Polygons.centrum)
 feijenoord_polygon = polygon("Feijenoord",(20, 50, 120), Polygons.feijenoord)
 ijsselmonde_polygon = polygon("IJsselmonde",(20, 50, 120), Polygons.ijsselmonde)
 charlois_polygon = polygon("Charlois",(20, 50, 120), Polygons.charlois)
@@ -846,7 +846,7 @@ def databasePercentagesEnCijfers():
             PlotBarChart("fiobj2016","GemiddeldeNo2Concentratie2009IrtGrenswaarde40mgM3".lower(),geselecteerdegebieden)
     elif answer == 15:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fisub2016","PercentageVoldoendeAanwezigGroenGrasveldjes".lower(),geselecteerdegebieden)
+            PlotBarChart("fisub2016","PercentageVoldoendeAanwezigGroenGrasveldjesBomen".lower(),geselecteerdegebieden)
     elif answer == 16:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("fisub2016","PercentageVeelStankoverlastVerkeer".lower(),geselecteerdegebieden)
