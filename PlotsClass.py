@@ -92,9 +92,10 @@ class PlotLineChart(Plot):
 
     def show_plot(self):
         for wijk in (self.wijkNamenList):
-            plt.plot(self.jaartallen, self.g['data_{}'.format(wijk.name)], label=wijk.name, linewidth=1)
+            p = plt.plot(self.jaartallen, self.g['data_{}'.format(wijk.name)], label=wijk.name, linewidth=1)
             for a, b in zip(self.jaartallen, self.g['data_{}'.format(wijk.name)]):
                 plt.text(a, b, str(b))
+            wijk.ChangeBorderColor(p[0].get_color())
         plt.ylabel("Percentage")
         plt.xlabel('Jaren')
         plt.title(self.tabelNaam)
@@ -125,6 +126,7 @@ class PlotBarChart(Plot):
         plt.bar(y_pos, self.data, align='center', alpha=0.5)
         for a, b in zip(y_pos, self.data):
             plt.text(a, b, str(b))
+
 
         plt.xticks(y_pos, self.wijkNamenList)
         plt.ylabel('Cijfer')
