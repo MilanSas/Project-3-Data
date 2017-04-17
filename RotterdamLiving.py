@@ -4,7 +4,7 @@ import Polygons
 matplotlib.use("TKAgg")
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
-from PlotsClass import Plot, PlotBarChart, PlotLineChart, PlotOnMap
+#from PlotsClass import Plot, PlotBarChart, PlotLineChart, PlotOnMap
 import time
 #TODO read the comments, the symbol: , is after lines. the symbol: '''''' , is to explain the overall code
 #TODO when user clicks on an area, that area needs to be zoomed in
@@ -37,6 +37,11 @@ charlois = "Charlois"
 feijenood = "Feijenoord"
 ijsselmonde = "Ijsselmonde"
 rotterdam = "Rotterdam"
+
+def kek():
+    for i in wijklist:
+        for k in i:
+            canvas.delete(k.shape)
 
 ''''Saves last page, '''
 searchPage = None
@@ -80,11 +85,6 @@ class PecButton:
 ''''The last clicked button from the page: "Percentages en cijfers", are saved in an array, this is for the: "databasePercentagesEnCijfers Function"'''
 buttonArray = []
 
-'''Trigger for the polygons(area's), to do something with an area when it's clicked'''''
-class Trigger:
-    def __init__(self, triggerValue,name):
-        self.trigger = triggerValue
-        self.name = name #name to uniquely identify the area.
 
 ''''The canvas, important variable. Everything gets drawn on the canvas'''
 canvas = Canvas(root, width=screenx,height=screeny) #root is in which window it will get drawn on.
@@ -145,8 +145,6 @@ class polygon:
         canvas.itemconfig(self.shape, fill=HexToRGB(color))
         root.update()
 
-
-
     def ChangeBorderColor(self, color):
         canvas.itemconfig(self.shape, outline=color, width=6)
 
@@ -167,10 +165,33 @@ class polygon:
         if canvas.find_withtag(CURRENT) == canvas.find_withtag(self.name):
             text.config(text=self.name)
 
+    def spawnchild(self):
+        if self.name == "Overschie":
+            overschieWijk()
+        if self.name == "Hillegersberg-Schiebroek":
+            hillegersbergWijk()
+        if self.name == "Prins_alexander":
+            prinsalexanderWijk()
+        if self.name == "Kralingen-Crooswijk":
+            kralingenWijk()
+        if self.name == "Noord":
+            noordWijk()
+        if self.name == "Delfshaven":
+            delftWijk()
+        if self.name == "Centrum":
+            centrumWijk()
+        if self.name == "Feijenoord":
+            feijenoordWijk()
+        if self.name == "IJsselmonde":
+            ijsselmondeWijk()
+        if self.name == "Charlois":
+            charloisWijk()
+        if self.name == "Waalhaven":
+            waalhavenWijk()
+
 
 class lagenda():
     def __init__(self):
-        self.pos = 100
         for i in range(80):
             color = (255 - i*3, 255 - i*3, 255)
             self.shape = canvas.create_rectangle(50,i * 10,100,i * 10 + 10, fill=(HexToRGB(color)), outline='black')
@@ -187,6 +208,7 @@ def overschieWijk():
     ov4 = polygon("ov4",(120, 50, 120), Polygons.ov4)
     ov5 = polygon("ov5",(120, 50, 120), Polygons.ov5)
     ovlijst = [ov1,ov2,ov3,ov4,ov5]
+    wijklist.append(ovlijst)
 
 ''''This function gets loaded when the area: "Hillegersberg", gets selected'''
 def hillegersbergWijk():
@@ -196,6 +218,7 @@ def hillegersbergWijk():
     hill4 = polygon("hill4",(120, 50, 120), Polygons.hill4)
     hill5 = polygon("hill5",(120, 50, 120), Polygons.hill5)
     hillijst = [hill1,hill2,hill3,hill4,hill5]
+    wijklist.append(hillijst)
 
 def prinsalexanderWijk():
     pa1 = polygon("pa1",(120, 50, 120), Polygons.pa1)
@@ -205,6 +228,7 @@ def prinsalexanderWijk():
     pa5 = polygon("pa5",(120, 50, 120), Polygons.pa5)
     pa6 = polygon("pa6",(120, 50, 120), Polygons.pa6)
     palijst = [pa1,pa2,pa3,pa4,pa5,pa6]
+    wijklist.append(palijst)
 
 def kralingenWijk():
     kra6 = polygon("kra6",(120, 50, 120), Polygons.kra6)
@@ -213,8 +237,9 @@ def kralingenWijk():
     kra3 = polygon("kra3",(120, 50, 120), Polygons.kra3)
     kra4 = polygon("kra4",(120, 50, 120), Polygons.kra4)
     kra5 = polygon("kra5",(120, 50, 120), Polygons.kra5)
-    kra7 = polygon("kra7",(120, 50, 120), Polygons.kra6)
+    kra7 = polygon("kra7",(120, 50, 120), Polygons.kra7)
     kralijst = [kra6,kra1,kra2,kra3,kra4,kra5,kra7]
+    wijklist.append(kralijst)
 
 def centrumWijk():
     centr1 = polygon("centr1",(120, 50, 120), Polygons.centr1)
@@ -224,6 +249,7 @@ def centrumWijk():
     centr5 = polygon("centr5",(120, 50, 120), Polygons.centr5)
     centr6 = polygon("centr6",(120, 50, 120), Polygons.centr6)
     centlijst = [centr1,centr2,centr3,centr4,centr5,centr6]
+    wijklist.append(centlijst)
 
 def noordWijk():
     nrd1 = polygon("nrd1",(120, 50, 120), Polygons.nrd1)
@@ -234,6 +260,7 @@ def noordWijk():
     nrd6 = polygon("nrd6",(120, 50, 120), Polygons.nrd6)
     nrd7 = polygon("nrd7",(120, 50, 120), Polygons.nrd7)
     nrdlijst = [nrd1,nrd2,nrd3,nrd4,nrd5,nrd6,nrd7]
+    wijklist.append(nrdlijst)
 
 def delftWijk():
     delf1 = polygon("delf1",(120, 50, 120), Polygons.delf1)
@@ -245,6 +272,7 @@ def delftWijk():
     delf7 = polygon("delf7",(120, 50, 120), Polygons.delf7)
     delf8 = polygon("delf8",(120, 50, 120), Polygons.delf8)
     delflijst = [delf1,delf2,delf3,delf4,delf5,delf6,delf7,delf8]
+    wijklist.append(delflijst)
 
 def waalhavenWijk():
     waal1 = polygon("waal1",(120, 50, 120), Polygons.waal1)
@@ -252,6 +280,7 @@ def waalhavenWijk():
     waal3 = polygon("waal3",(120, 50, 120), Polygons.waal3)
     waal4 = polygon("waal4",(120, 50, 120), Polygons.waal4)
     waallijst = [waal1,waal2,waal3,waal4]
+    wijklist.append(waallijst)
 
 def charloisWijk():
     char1 = polygon("char1",(120, 50, 120), Polygons.char1)
@@ -262,6 +291,7 @@ def charloisWijk():
     char6 = polygon("char6",(120, 50, 120), Polygons.char6)
     char7 = polygon("char7",(120, 50, 120), Polygons.char7)
     charlijst = [char1,char2,char3,char4,char5,char6,char7]
+    wijklist.append(charlijst)
 
 def feijenoordWijk():
     fei1 = polygon("fei1",(120, 50, 120), Polygons.fei1)
@@ -274,6 +304,7 @@ def feijenoordWijk():
     fei8 = polygon("fei8",(120, 50, 120), Polygons.fei8)
     fei9 = polygon("fei9",(120, 50, 120), Polygons.fei9)
     feilijst = [fei1,fei2,fei3,fei4,fei5,fei6,fei7,fei8,fei9]
+    wijklist.append(feilijst)
 
 def ijsselmondeWijk():
     ijs1 = polygon("ijs1",(120, 50, 120), Polygons.ijs1)
@@ -281,7 +312,9 @@ def ijsselmondeWijk():
     ijs3 = polygon("ijs3",(120, 50, 120), Polygons.ijs3)
     ijs4 = polygon("ijs4",(120, 50, 120), Polygons.ijs4)
     ijslijst = [ijs1,ijs2,ijs3,ijs4]
+    wijklist.append(ijslijst)
 
+wijklist = []
 
 
 ''''The polygons(area's)'''''
@@ -313,150 +346,15 @@ def motion(event):
     else:
         text.config(text="Rotterdam")
 
-'''triggers for when an area gets selected'''''
-overschie_trigger = Trigger(False, "overschie")
-hillegersberg_trigger = Trigger(False,"hillegersberg")
-prins_alexander_trigger = Trigger(False, "prinsAlexander")
-noord_trigger = Trigger(False,"noord")
-kralingen_crooswijk_trigger = Trigger(False, "kralingenCrooswijk")
-centrum_trigger = Trigger(False, "centrum")
-delftshaven_trigger = Trigger(False, "delftshaven")
-waalhaven_trigger = Trigger(False, "waalhaven")
-charlois_trigger = Trigger(False, "charlois")
-feijenood_trigger = Trigger(False, "feijenoord")
-ijsselmonde_trigger = Trigger(False, "ijsselmonde")
-
-''''Array of the trigger objects'''
-List1 = [overschie_trigger, hillegersberg_trigger,prins_alexander_trigger,noord_trigger, kralingen_crooswijk_trigger, centrum_trigger, delftshaven_trigger, waalhaven_trigger, charlois_trigger, feijenood_trigger, ijsselmonde_trigger]
-
-''''With this the selected polygons(area's) are recognized when they are clicked on. '''''
-def click(event):
-    if str(canvas.find_withtag(CURRENT)) == "(1,)" and searchPage == True: #every polygon(area) has his own tag
-        text.config(text=overschie) #Text changes to the name of the selected area
-        for i in List1: #Goes through the array of the area triggers.
-            if i.name == "overschie":#Name is the attribute of the area's triggers, this is used to uniquely identify the area
-                setattr(i, 'trigger', True) #sets the clicked area to true
-                overschieWijk() #The wijken get drawn
-            else:
-                setattr(i, 'trigger', False) #set the other area's to false
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(2,)" and searchPage == True: #Checks if the page is the right page.
-        text.config(text=hillegersberg_schiebroek)
-        for i in List1:
-            if i.name == "hillegersberg":
-                setattr(i, 'trigger', True)
-                hillegersbergWijk() #The wijken get drawn
-
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(3,)" and searchPage == True:
-        text.config(text=prins_alexander)
-        for i in List1:
-            if i.name == "prinsAlexander":
-                setattr(i, 'trigger', True)
-                prinsalexanderWijk() #The wijken get drawn
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(4,)" and searchPage == True:
-        text.config(text=kralingen_crooswijk)
-        for i in List1:
-            if i.name == "kralingenCrooswijk":
-                setattr(i, 'trigger', True)
-                kralingenWijk() #The wijken get drawn
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(5,)" and searchPage == True:
-        text.config(text=noord)
-        for i in List1:
-            if i.name == "noord":
-                setattr(i, 'trigger', True)
-                noordWijk() #The wijken get drawn
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-
-    elif str(canvas.find_withtag(CURRENT)) == "(6,)" and searchPage == True:
-        text.config(text=delftshaven)
-        for i in List1:
-            if i.name == "delftshaven":
-                setattr(i, 'trigger', True)
-                delftWijk()
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(7,)" and searchPage == True:
-        text.config(text=centrum)
-        for i in List1:
-            if i.name == "centrum":
-                setattr(i, 'trigger', True)
-                centrumWijk()
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-
-    elif str(canvas.find_withtag(CURRENT)) == "(8,)" and searchPage == True:
-        text.config(text=feijenood)
-        for i in List1:
-            if i.name == "feijenoord":
-                setattr(i, 'trigger', True)
-                feijenoordWijk()
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(9,)" and searchPage == True:
-        text.config(text=ijsselmonde)
-        for i in List1:
-            if i.name == "ijsselmonde":
-                setattr(i, 'trigger', True)
-                ijsselmondeWijk()
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(10,)" and searchPage == True:
-        text.config(text=charlois)
-        for i in List1:
-            if i.name == "charlois":
-                setattr(i, 'trigger', True)
-                charloisWijk()
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
-    elif str(canvas.find_withtag(CURRENT)) == "(11,)" and searchPage == True:
-        text.config(text=waalhaven)
-        for i in List1:
-            if i.name == "waalhaven":
-                setattr(i, 'trigger', True)
-                waalhavenWijk()
-
-            else:
-                setattr(i, 'trigger', False)
-                print(i.trigger)
-
 def rightclick(event):
     for wijk in polygonsgebieden:
         if canvas.find_withtag(CURRENT) == canvas.find_withtag(wijk.name):
             wijk.Select()
+
+def leftclick(event):
+    for wijk in polygonsgebieden:
+        if canvas.find_withtag(CURRENT) == canvas.find_withtag(wijk.name):
+            wijk.spawnchild()
 
 def hover(event):
     for wijk in polygonsgebieden:
@@ -464,7 +362,7 @@ def hover(event):
 
 
 ''''when a polygon(area) is clicked, the click method will be activated'''''
-canvas.bind('<Button-1>', click, add="+") #Binds the canvas to the click method
+canvas.bind('<Button-1>', leftclick, add="+") #Binds the canvas to the click method
 canvas.bind('<Button-3>', rightclick, add="+")
 canvas.bind('<Motion>', hover)
 
@@ -620,6 +518,7 @@ def percentagesEnCijfers():
     button14 = NewButton("Overig", 6, 0, screenx / 18, screeny / 150)
     button14.pageClick(categoryOther)
     button52 = NewButton("Give me the statistics", 28, 0, screenx / 600, screeny / 150)  #Currently not used, can be used to give the user stats when clicked
+    button52.pageClick(kek)
     searchPage = False
 
 
