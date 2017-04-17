@@ -618,13 +618,13 @@ def categoryPopulation():
 def categoryEnvironment():
     global searchPage
     text.config(text="") #Resets the text when it reaches the home button
-    button21 = PecButton("Environmennt1_placehholder", 1, 0, screenx / 30, screeny / 150,6)
-    button22 = PecButton("Environment2_placeholder", 2, 0, screenx / 45, screeny / 150,7)
-    button23 = PecButton("Environment3_placeholder", 3, 0, screenx / 17, screeny / 150,8)
-    button24 = PecButton("Environment4_placeholder", 4, 0, screenx / 17, screeny / 150,9)
-    button25 = PecButton("Environment5_placeholder", 5, 0, screenx / 22, screeny / 150,10)
-    button26 = PecButton("Environment6_placeholder", 6, 0, screenx / 22, screeny / 150,11)
-    buttonback2 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    button21 = PecButton("Veiligheidsindex -objectief", 1, 0, screenx / 30, screeny / 150,6)
+    button22 = PecButton("Diefstal-objectief", 2, 0, screenx / 45, screeny / 150,7)
+    button23 = PecButton("Geweld-objectief", 3, 0, screenx / 17, screeny / 150,8)
+    button24 = PecButton("Inbraak-objectief", 4, 0, screenx / 17, screeny / 150,9)
+    button25 = PecButton("Vandalisme-objectief", 5, 0, screenx / 22, screeny / 150,10)
+    button26 = PecButton("Overlast objectief", 6, 0, screenx / 22, screeny / 150,11)
+    buttonback2 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
     buttonback2.pageClick(percentagesEnCijfers)
     searchPage = True
 
@@ -632,12 +632,12 @@ def categoryEnvironment():
 def categorySafety():
     global searchPage
     text.config(text="") #Resets the text when it reaches the home button
-    button27 = PecButton("Safety1_placehholder", 1, 0, screenx / 30, screeny / 150,12)
-    button28 = PecButton("Safety2_placeholder", 2, 0, screenx / 45, screeny / 150,12)
-    button29 = PecButton("Safety3_placeholder", 3, 0, screenx / 17, screeny / 150,13)
-    button30 = PecButton("Safety4_placeholder", 4, 0, screenx / 17, screeny / 150,14)
-    button31 = PecButton("Safety5_placeholder", 5, 0, screenx / 22, screeny / 150,15)
-    button32 = PecButton("Safety6_placeholder", 6, 0, screenx / 22, screeny / 150,16)
+    button27 = PecButton("Milieu objectief", 1, 0, screenx / 30, screeny / 150,12)
+    button28 = PecButton("% woningen in geluidscontour vanaf 55 dB", 2, 0, screenx / 45, screeny / 150,13)
+    button29 = PecButton("gemiddelde NO2-concentratie 2009 irt grenswaarde 40 µg/m3", 3, 0, screenx / 17, screeny / 150,14)
+    button30 = PecButton("% voldoende aanwezig groen (grasveldjes, bomen)", 4, 0, screenx / 17, screeny / 150,15)
+    button31 = PecButton("% veel stankoverlast verkeer", 5, 0, screenx / 22, screeny / 150,16)
+    button32 = PecButton("% veel geluidsoverlast verkeer", 6, 0, screenx / 22, screeny / 150,17)
     buttonback3 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback3.pageClick(percentagesEnCijfers)
     searchPage = True
@@ -646,12 +646,12 @@ def categorySafety():
 def categoryTraffic():
     global searchPage
     text.config(text="") #Resets the text when it reaches the home button
-    button33 = PecButton("Traffic1_placehholder", 1, 0, screenx / 30, screeny / 150,17)
-    button34 = PecButton("Traffic2_placeholder", 2, 0, screenx / 45, screeny / 150,18)
-    button35 = PecButton("Traffic3_placeholder", 3, 0, screenx / 17, screeny / 150,19)
-    button36 = PecButton("Traffic4_placeholder", 4, 0, screenx / 17, screeny / 150,20)
-    button37 = PecButton("Traffic5_placeholder", 5, 0, screenx / 22, screeny / 150,21)
-    button38 = PecButton("Traffic6_placeholder", 6, 0, screenx / 22, screeny / 150,22)
+    button33 = PecButton("Sociale Index subjectief", 1, 0, screenx / 30, screeny / 150,18)
+    button34 = PecButton("Oordeel kwaliteit van leven", 2, 0, screenx / 45, screeny / 150,19)
+    button35 = PecButton("Capaciteiten-subjectief", 3, 0, screenx / 17, screeny / 150,20)
+    button36 = PecButton("Leefomgeving-subjectief", 4, 0, screenx / 17, screeny / 150,21)
+    button37 = PecButton("Meedoen-subjectief", 5, 0, screenx / 22, screeny / 150,22)
+    button38 = PecButton("Binding-subjectief", 6, 0, screenx / 22, screeny / 150,23)
     buttonback4 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback4.pageClick(percentagesEnCijfers)
     searchPage = True
@@ -660,12 +660,12 @@ def categoryTraffic():
 def categoryServices():
     global searchPage
     text.config(text="") #Resets the text when it reaches the home button
-    button39 = PecButton("Services1_placehholder", 1, 0, screenx / 30, screeny / 150,23)
-    button40 = PecButton("Services2_placeholder", 2, 0, screenx / 45, screeny / 150,24)
-    button41 = PecButton("Services3_placeholder", 3, 0, screenx / 17, screeny / 150,25)
-    button42 = PecButton("Services4_placeholder", 4, 0, screenx / 17, screeny / 150,26)
-    button43 = PecButton("Services5_placeholder", 5, 0, screenx / 22, screeny / 150,27)
-    button44 = PecButton("Services6_placeholder", 6, 0, screenx / 22, screeny / 150,28)
+    button39 = PecButton("% woningen met bakker binnen normafstand", 1, 0, screenx / 30, screeny / 150,24)
+    button40 = PecButton("% woningen met groenteboer binnen normafstand", 2, 0, screenx / 45, screeny / 150,25)
+    button41 = PecButton("% woningen met slager binnen normafstand", 3, 0, screenx / 17, screeny / 150,26)
+    button42 = PecButton("% woningen met bushaltes binnen normafstand", 4, 0, screenx / 17, screeny / 150,27)
+    button43 = PecButton("% woningen met metrostations binnen normafstand", 5, 0, screenx / 22, screeny / 150,28)
+    button44 = PecButton("% woningen met tramhaltes binnen normafstand", 6, 0, screenx / 22, screeny / 150,29)
     buttonback5 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback5.pageClick(percentagesEnCijfers)
     searchPage = True
@@ -674,12 +674,12 @@ def categoryServices():
 def categoryOther():
     global searchPage
     text.config(text="") #Resets the text when it reaches the home button
-    button45 = PecButton("Other1_placehholder", 1, 0, screenx / 30, screeny / 150,29)
-    button46 = PecButton("Other2_placeholder", 2, 0, screenx / 45, screeny / 150,30)
-    button47 = PecButton("Other3_placeholder", 3, 0, screenx / 17, screeny / 150,31)
-    button48 = PecButton("Other4_placeholder", 4, 0, screenx / 17, screeny / 150,32)
-    button49 = PecButton("Other5_placeholder", 5, 0, screenx / 22, screeny / 150,33)
-    button50 = PecButton("Other6_placeholder", 6, 0, screenx / 22, screeny / 150,34)
+    button45 = PecButton("gemiddelde WOZ per m2 woningoppervlakte", 1, 0, screenx / 30, screeny / 150,30)
+    button46 = PecButton("drugsoverlast gedurende de jaren 2006-2011", 2, 0, screenx / 45, screeny / 150,31)
+    button47 = PecButton("geweldsdelicten gedurende de jaren 2006-2011", 3, 0, screenx / 17, screeny / 150,32)
+    button48 = PecButton("tevredenheid gedurende de jaren 2006-2011", 4, 0, screenx / 17, screeny / 150,33)
+    button49 = PecButton("fietsendiefstal gedurende de jaren 2006-2011", 5, 0, screenx / 22, screeny / 150,34)
+    button50 = PecButton("% vaak hondenpoep", 6, 0, screenx / 22, screeny / 150,35)
     buttonback6 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
     buttonback6.pageClick(percentagesEnCijfers)
     searchPage = True
@@ -795,90 +795,120 @@ def databasePercentagesEnCijfers():
     global buttonArray #needed because the array has the last selected button of the page: "Percentages en cijfers'
     answer = (buttonArray[-1]) #last selected button gets stored in answer
     print(answer) #To prove that the last selected button is saved in the array
-    #Here comes the query, for every button a new query should be appended to the array
-    data =[]
     if answer == 0:  #the numbers represent the button, each button has his own number. The attribute of the button that stores this is: name
         if len(geselecteerdegebieden)>0:
-            print("PercentageSchoolgaandeEnStuderendeJongeren18T/M22Jr")
-            PlotBarChart("si2016","PercentageSchoolgaandeEnStuderendeJongeren18T",geselecteerdegebieden)
+            PlotBarChart("si2016","PercentageSchoolgaandeEnStuderendeJongeren18TM22jr".lower(),geselecteerdegebieden)
          #The query get send into the showresults function, then the map colour gets changed based on the results from it
     elif answer == 1:
         if len(geselecteerdegebieden)>0:
-            print("PercentageSchoolgaandeEnStuderendeJongeren18T/M22Jr")
-            PlotBarChart("si2016","PercentageWerkendeJongeren18T",geselecteerdegebieden)
+            PlotBarChart("si2016","PercentageWerkendeJongeren18TM22jr".lower(),geselecteerdegebieden)
     elif answer == 2:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("si2016","PercentageWerkzoekendeJongeren18TM22JrZonderBaan".lower(),geselecteerdegebieden)
     elif answer == 3:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("si2016","PercentageBewoners23TM64JrMetWerk".lower(),geselecteerdegebieden)
     elif answer == 4:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("si2016","PercentageWerkzoekendeBewoners23TM64JrZonderBaan".lower(),geselecteerdegebieden)
     elif answer == 5:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("si2016","PercentageBewoners18JrEnOuderDatNogMaarKortInNederlandWoont".lower(),geselecteerdegebieden)
 
     elif  answer == 6:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("vi2016","Veiligheidsindex-Objectief".lower(),geselecteerdegebieden)
     elif answer == 7:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("vi2016","Diefstal-Objectief".lower(),geselecteerdegebieden)
     elif answer == 8:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("vi2016","Geweld-Objectief".lower(),geselecteerdegebieden)
     elif answer == 9:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("vi2016","Inbraak-Objectief".lower(),geselecteerdegebieden)
     elif answer == 10:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("vi2016","Vandalisme-Objectief".lower(),geselecteerdegebieden)
     elif answer == 11:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("vi2016","OverlastObjectief".lower(),geselecteerdegebieden)
 
     elif answer == 12:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("fiob2016","MilieuObjectief".lower(),geselecteerdegebieden)
     elif answer == 13:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("fiob2016","PercentageWoningenInGeluidscontourVanaf55Db".lower(),geselecteerdegebieden)
     elif answer == 14:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("fiob2016","GemiddeldeNo2-Concentratie2009IrtGrenswaarde40µg/M3".lower(),geselecteerdegebieden)
     elif answer == 15:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("fisub2016","PercentageVoldoendeAanwezigGroenGrasveldjes,Bomen".lower(),geselecteerdegebieden)
     elif answer == 16:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("fisub2016","PercentageVeelStankoverlastVerkeer".lower(),geselecteerdegebieden)
     elif answer == 17:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("fisub2016","PercentageVeelGeluidsoverlastVerkeer".lower(),geselecteerdegebieden)
 
     elif answer == 18:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("si2016","SocialeIndexSubjectief".lower(),geselecteerdegebieden)
     elif answer == 19:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("si2016","OordeelKwaliteitVanLeven".lower(),geselecteerdegebieden)
     elif answer == 20:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("si2016","Capaciteiten-Subjectief".lower(),geselecteerdegebieden)
     elif answer == 21:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("si2016","Leefomgeving-Subjectief".lower(),geselecteerdegebieden)
     elif answer == 22:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("si2016","Meedoen-Subjectief".lower(),geselecteerdegebieden)
     elif answer == 23:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("si2016","Binding-Subjectief".lower(),geselecteerdegebieden)
 
     elif answer == 24:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("fiob2016","PercentageWoningenMetBakkerBinnenNormafstand".lower(),geselecteerdegebieden)
     elif answer == 25:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("fiob2016","PercentageWoningenMetGroenteboerBinnenNormafstand".lower(),geselecteerdegebieden)
     elif answer == 26:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("fiob2016","PercentageWoningenMetSlagerBinnenNormafstand".lower(),geselecteerdegebieden)
     elif answer == 27:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("fiob2016","PercentageWoningenMetBushaltesBinnenNormafstand".lower(),geselecteerdegebieden)
     elif answer == 28:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("fiob2016","PercentageWoningenMetMetrostationsBinnenNormafstand".lower(),geselecteerdegebieden)
     elif answer == 29:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("fiob2016","PercentageWoningenMetTramhaltesBinnenNormafstand".lower(),geselecteerdegebieden)
 
     elif answer == 30:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("fiob2016","GemiddeldeWozPerM2Woningoppervlakte".lower(),geselecteerdegebieden)
     elif answer == 31:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotLineChart("drugsoverlast".lower(),geselecteerdegebieden)
     elif answer == 32:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotLineChart("geweldsdelicten".lower(), geselecteerdegebieden)
     elif answer == 33:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotLineChart("tevredenheid".lower(), geselecteerdegebieden)
     elif answer == 34:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotLineChart("fietsendiefstal".lower(), geselecteerdegebieden)
     elif answer == 35:
-        ShowResults(data)
+        if len(geselecteerdegebieden)>0:
+            PlotBarChart("vi2016","PercentageVaakHondenpoep".lower(),geselecteerdegebieden)
 
 for widget in root.winfo_children():
     print(widget)
