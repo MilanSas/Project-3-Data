@@ -4,7 +4,7 @@ import Polygons
 matplotlib.use("TKAgg")
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
-from PlotsClass import Plot, PlotBarChart, PlotLineChart
+from PlotsClass import Plot, PlotBarChart, PlotLineChart, PlotOnMap
 import time
 #TODO read the comments, the symbol: , is after lines. the symbol: '''''' , is to explain the overall code
 #TODO when user clicks on an area, that area needs to be zoomed in
@@ -133,23 +133,40 @@ class polygon:
 
 
     def ChangeColor(self, percent):
-        colorrange = percent * 255 //100
-        for n in range(colorrange-15):
-            color = (255-n, 255-n, 255)
-            canvas.itemconfig(self.shape, fill=HexToRGB(color))
-            root.update()
-            time.sleep(0.0000000001)
+        basevalue = 255
+        colorchange = percent * basevalue // 100
+        changedcolor = basevalue
+        finalcolor = basevalue - colorchange
+        looptime = 200
+
+        for n in range(looptime):
+            if changedcolor >= 16 and changedcolor > finalcolor:
+                color = (changedcolor, changedcolor, 255)
+                canvas.itemconfig(self.shape, fill=HexToRGB(color))
+                changedcolor = int(changedcolor - (colorchange / looptime))
+                root.update()
+            time.sleep(0.00000000000001)
+
+        if finalcolor <= 16:
+            color = (16, 16, 255)
+        if finalcolor > 16:
+            color = (finalcolor, finalcolor, 255)
+        canvas.itemconfig(self.shape, fill=HexToRGB(color))
+        root.update()
+
+
+
 
     def Select(self):
         if self.selected:
             self.deSelect()
             return
-        geselecteerdegebieden.append(self.name)
+        geselecteerdegebieden.append(self)
         self.selected = True
         canvas.itemconfig(self.shape, outline = self.selectcolor, width = 6)
 
     def deSelect(self):
-        geselecteerdegebieden.remove(self.name)
+        geselecteerdegebieden.remove(self)
         self.selected = False
         canvas.itemconfig(self.shape, outline='black', width = 2)
 
@@ -286,7 +303,7 @@ waalhaven_polygon = polygon("Waalhaven",(20, 50, 120), Polygons.waalhaven)
 
 ''''Array that has the polygon area's, this is used to go through the array and then the colour will change. It is used in a database function'''
 polygonsgebieden = [overschie_polygon, hillegersberg_polygon, prins_alexander_polygon, kralingen_polygon, noord_polygon, delftshaven_polygon, centrum_polygon, feijenoord_polygon, ijsselmonde_polygon, charlois_polygon, waalhaven_polygon]
-
+polygonsgebieden2 = [overschie_polygon, hillegersberg_polygon, prins_alexander_polygon, kralingen_polygon, noord_polygon, delftshaven_polygon, feijenoord_polygon, ijsselmonde_polygon, charlois_polygon]
 ''''The name of the area that is displayed in the top centre.'''
 text = Label(root,width=0, height=1,text="",font=("Helvetica",35,"bold")) #Creates text
 text.grid(row=0,column=0,sticky=N) #Draws the text
@@ -881,12 +898,11 @@ def databasePercentagesEnCijfers():
     if answer == 0:  #the numbers represent the button, each button has his own number. The attribute of the button that stores this is: name
         if len(geselecteerdegebieden)>0:
             for i in geselecteerdegebieden:
-
-                print(i)
+                print(i.name)
                 PlotLineChart("geweldsdelicten", geselecteerdegebieden)
          #The query get send into the showresults function, then the map colour gets changed based on the results from it
     elif answer == 1:
-        ShowResults(data)
+        PlotOnMap("tevredenheid", polygonsgebieden2)
     elif answer == 2:
         ShowResults(data)
     elif answer == 3:
