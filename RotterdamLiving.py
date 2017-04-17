@@ -376,8 +376,8 @@ def menuSelector(event):
         percentagesEnCijfers()
     elif str(variable.get()) == "About":
         about()
-    elif str(variable.get()) == "Settings":
-        settings()
+    # elif str(variable.get()) == "Settings":
+    #     settings()
     elif str(variable.get()) == "Exit":
         root.destroy()
 
@@ -385,7 +385,7 @@ def menuSelector(event):
 ''''Drop down menu'''
 variable = StringVar(root) #Variable will store the page that is selected
 variable.set("Home")  # default value is the homebutton
-menu_button = OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "Settings", "About",
+menu_button = OptionMenu(root, variable, "Home", "Woningadvies", "Percentages en cijfers", "About",
                              "Exit", command=menuSelector) #The pages that are in the drop down menu
 menu_button.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white") #Changes the font/size of the drop down menu
 menu_button.grid(row=0, column=0, sticky=N + W) #Sets the position of the drop down menu
@@ -409,44 +409,44 @@ def home():
             print(str(widget) + ": Is deleted")
     searchPage = False
 
-def resmenuoptions(event):
-    global variable1
-    if  str(variable1.get()) == (str(screenx) + "x" + str(screeny)):
-        root.geometry('{}x{}'.format(screenx, screeny))
-    elif  str(variable1.get()) == "1280x720": #variable is the drop down menu, when a menu page is selected, the value of the variable changes
-        root.geometry("1280x720")
-    elif  str(variable1.get()) == "1600x900":
-        root.geometry("1600x900")
-    elif str(variable1.get()) == "1920x1080":
-        root.geometry("1920x1080")
-    elif str(variable1.get()) == "4k":
-        root.geometry("3860x2140")
-
-''''the settings page'''
-def settings():
-    global searchPage, variable1
-    text.config(text="") #Resets the text when it reaches the home button
-    for widget in root.winfo_children():
-        if widget == menu_button or widget == text: #menubutton does not get deleted
-            print("Optionmenu")
-        elif widget == canvas: #canvas does not get deleted
-            print("canvas")
-        else:
-            widget.destroy() #other widgets get deleted and so are their value
-            print(str(widget) + ": Is deleted")
-
-    ''''Resolution'''
-    resolution_text = "Select your screen resolution"
-    resolution1_text = Label(root, text=resolution_text, font=("Helvetica", 15, "bold"))
-    resolution1_text.grid(row=2, column=0, sticky=W)
-
-    ''''The drop down resolution menu'''
-    variable1 = StringVar(root)  #Variable will store the page that is selected
-    variable1.set(str(screenx) + " x " + str(screeny))  # default value of the drop down menu
-    menu_button1 = OptionMenu(root, variable1, (str(screenx) + "x" + str(screeny)), "1280x720", "1600x900", "1920x1080", "4k", command=resmenuoptions)  #The options of the drop down menu
-    menu_button1.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white") #Sets the font/size of drop down menu
-    menu_button1.grid(row=3, column=0, sticky=N + W) #Sets position of the drop down menu
-    searchPage = False
+# def resmenuoptions(event):
+#     global variable1
+#     if  str(variable1.get()) == (str(screenx) + "x" + str(screeny)):
+#         root.geometry('{}x{}'.format(screenx, screeny))
+#     elif  str(variable1.get()) == "1280x720": #variable is the drop down menu, when a menu page is selected, the value of the variable changes
+#         root.geometry("1280x720")
+#     elif  str(variable1.get()) == "1600x900":
+#         root.geometry("1600x900")
+#     elif str(variable1.get()) == "1920x1080":
+#         root.geometry("1920x1080")
+#     elif str(variable1.get()) == "4k":
+#         root.geometry("3860x2140")
+#
+# ''''the settings page'''
+# def settings():
+#     global searchPage, variable1
+#     text.config(text="") #Resets the text when it reaches the home button
+#     for widget in root.winfo_children():
+#         if widget == menu_button or widget == text: #menubutton does not get deleted
+#             print("Optionmenu")
+#         elif widget == canvas: #canvas does not get deleted
+#             print("canvas")
+#         else:
+#             widget.destroy() #other widgets get deleted and so are their value
+#             print(str(widget) + ": Is deleted")
+#
+#     ''''Resolution'''
+#     resolution_text = "Select your screen resolution"
+#     resolution1_text = Label(root, text=resolution_text, font=("Helvetica", 15, "bold"))
+#     resolution1_text.grid(row=2, column=0, sticky=W)
+#
+#     ''''The drop down resolution menu'''
+#     variable1 = StringVar(root)  #Variable will store the page that is selected
+#     variable1.set(str(screenx) + " x " + str(screeny))  # default value of the drop down menu
+#     menu_button1 = OptionMenu(root, variable1, (str(screenx) + "x" + str(screeny)), "1280x720", "1600x900", "1920x1080", "4k", command=resmenuoptions)  #The options of the drop down menu
+#     menu_button1.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white") #Sets the font/size of drop down menu
+#     menu_button1.grid(row=3, column=0, sticky=N + W) #Sets position of the drop down menu
+#     searchPage = False
 
 ''''The about page'''
 def about():
