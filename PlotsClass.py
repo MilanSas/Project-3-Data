@@ -4,6 +4,12 @@ import sqlite3
 from sqlite3 import Error
 
 
+WijkenStrings = { "HillegersbergSchiebroek" : "Hillegers\nberg-\nSchiebroek", "KralingenCrooswijk" : "Kralingen-\nCrooswijk",
+                  "PrinsAlexander" : "Prins\nAlexander","Charlois" : "Charlois", "IJsselmonde" : "IJsselmonde",
+                  "Delfshaven" : "Delfshaven", "Feijenoord" : "Feijenoord", "Overschie" : "Overschie", "Noord" : "Noord",
+                  "RotterdamCentrum" : "Rotterdam\nCentrum"
+}
+
 WijkenGebieden = {
                 "Charlois":["Carnisse","Charlois","Heijplaat","Oud-Charlois","Pendrecht","Tarwewijk",
                               "Wielewaal","Zuiderpark en Zuidrand","Zuidplein","Zuidwijk"],
@@ -102,6 +108,7 @@ class PlotLineChart(Plot):
         plt.xlabel('Jaren')
         plt.title(self.kolomstring)
         plt.legend(loc='best', fancybox=True, framealpha=0.5)
+
         plt.show()
 
 
@@ -125,7 +132,7 @@ class PlotBarChart(Plot):
         for wijk in (self.wijkNamenList):
             self.cur.execute("select {} from {} where wijknaam = '{}'".format(self.dataSet, self.tabelNaam, wijk.name))
             b = self.cur.fetchone()
-            self.xlabels.append(wijk.name)
+            self.xlabels.append((WijkenStrings.get(wijk.name)))
             self.data.append(b[0])
 
     def show_plot(self):
@@ -135,7 +142,8 @@ class PlotBarChart(Plot):
         for a, b in zip(y_pos, self.data):
             plt.text(a, b, str(b))
 
-        plt.xticks(y_pos,self.xlabels, wrap = True)
+        plt.gca().tick_params(axis='x', pad=6)
+        plt.xticks(y_pos, self.xlabels, wrap=True)
         plt.ylabel('Cijfer')
         plt.title(self.kolomstring)
 
