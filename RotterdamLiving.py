@@ -327,6 +327,16 @@ ijsselmonde_polygon = polygon("IJsselmonde",(20, 50, 120), Polygons.ijsselmonde)
 charlois_polygon = polygon("Charlois",(20, 50, 120), Polygons.charlois)
 waalhaven_polygon = polygon("Waalhaven",(20, 50, 120), Polygons.waalhaven)
 
+canvas.create_text(rs(710),rs(290),text="Overschie", font=("Helvetica",15,"bold"))
+canvas.create_text(rs(966),rs(250),text="HillegersbergSchiebroek", font=("Helvetica",15,"bold"))
+canvas.create_text(rs(1200),rs(209),text="PrinsAlexander", font=("Helvetica",15,"bold"))
+canvas.create_text(rs(1040),rs(400),text="KralingenCrooswijk", font=("Helvetica",15,"bold"))
+canvas.create_text(rs(860),rs(400),text="Noord", font=("Helvetica",15,"bold"))
+canvas.create_text(rs(730),rs(534),text="Delfshaven", font=("Helvetica",15,"bold"))
+canvas.create_text(rs(900),rs(514),text="Centrum", font=("Helvetica",15,"bold"))
+canvas.create_text(rs(1000),rs(580),text="Feijenoord", font=("Helvetica",15,"bold"))
+canvas.create_text(rs(1180),rs(700),text="IJsselmonde", font=("Helvetica",15,"bold"))
+canvas.create_text(rs(885),rs(735),text="Charlois", font=("Helvetica",15,"bold"))
 
 ''''Array that has the polygon area's, this is used to go through the array and then the colour will change. It is used in a database function'''
 polygonsgebieden = [overschie_polygon, hillegersberg_polygon, prins_alexander_polygon, kralingen_polygon, noord_polygon, delftshaven_polygon, centrum_polygon, feijenoord_polygon, ijsselmonde_polygon, charlois_polygon, waalhaven_polygon]
