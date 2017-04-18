@@ -52,10 +52,11 @@ jaarTabelNamen = ["tevredenheid", "fietsendiefstal", "geweldsdelicten","drugsove
 afkomstTabelNamen = ['Nederlanders', 'Marokkanen', 'Turken', 'Kaapverdianen', 'Antilianen', 'Surinamers', 'Zuid-Europeanen', 'Overig']
 
 class Plot:
-    def __init__(self, tabelnaam, wijknamenlist):
+    def __init__(self, tabelnaam, wijknamenlist, kolomstring):
         self.databaseFile = "Database\StekOverflow.db"
         self.tabelNaam = tabelnaam
         self.wijkNamenList = wijknamenlist
+        self.kolomstring = kolomstring
         self.conn = self.create_connection(self.databaseFile)
         self.cur = self.conn.cursor()
 
@@ -68,8 +69,8 @@ class Plot:
         return None
 
 class PlotLineChart(Plot):
-    def __init__(self, tabelnaam, wijknamenlist):
-        super().__init__(tabelnaam, wijknamenlist)
+    def __init__(self, tabelnaam, wijknamenlist, kolomstring):
+        super().__init__(tabelnaam, wijknamenlist, kolomstring)
         self.y = []
         self.jaartallen = [2006, 2007, 2008, 2009, 2011]
         self.g = globals()
@@ -98,15 +99,15 @@ class PlotLineChart(Plot):
             wijk.ChangeBorderColor(p[0].get_color())
         plt.ylabel("Percentage")
         plt.xlabel('Jaren')
-        plt.title(self.tabelNaam)
+        plt.title(self.kolomstring)
         plt.legend(loc='best', fancybox=True, framealpha=0.5)
         plt.show()
 
 
 class PlotBarChart(Plot):
-    def __init__(self,tabelnaam, dataset, wijknamenlist):
+    def __init__(self,tabelnaam, dataset, wijknamenlist, kolomstring):
         self.dataSet = dataset
-        super().__init__(tabelnaam,wijknamenlist)
+        super().__init__(tabelnaam,wijknamenlist, kolomstring)
         self.data = []
         self.overigeTabelNamen = ["fiobj2016", "fisub2016", "si2016", "vi2016"]
         self.xlabels = []
@@ -131,13 +132,13 @@ class PlotBarChart(Plot):
 
         plt.xticks(y_pos,self.xlabels, wrap = True)
         plt.ylabel('Cijfer')
-        plt.title(self.dataSet)
+        plt.title(self.kolomstring)
 
         plt.show()
 
 class PlotOnMap(Plot):
-    def __init__(self, tabelnaam, wijknamenlist):
-        super().__init__(tabelnaam, wijknamenlist)
+    def __init__(self, tabelnaam, wijknamenlist,kolomstring):
+        super().__init__(tabelnaam, wijknamenlist, kolomstring)
         self.y = []
         self.jaartallen = [2006, 2007, 2008, 2009, 2011]
         self.g = globals()
