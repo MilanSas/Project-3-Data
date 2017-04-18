@@ -890,6 +890,8 @@ def databasePercentagesEnCijfers():
     elif answer == 30:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("gemiddelde WOZ per m2 woningoppervlakte","fiobj2016","GemiddeldeWozPerM2Woningoppervlakte".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("fiobj2016","GemiddeldeWozPerM2Woningoppervlakte".lower(),polygonsgebieden)
     elif answer == 31:
         if len(geselecteerdegebieden)>0:
             PlotLineChart("drugsoverlast gedurende de jaren 2006-2011","drugsoverlast".lower(),geselecteerdegebieden)
@@ -913,6 +915,8 @@ def databasePercentagesEnCijfers():
     elif answer == 35:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("% vaak hondenpoep","fisub2016","PercentageVaakHondenpoep".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("fisub2016", "PercentageVaakHondenpoep".lower(),polygonsgebieden)
 
 for widget in root.winfo_children():
     print(widget)

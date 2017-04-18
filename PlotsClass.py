@@ -52,11 +52,10 @@ jaarTabelNamen = ["tevredenheid", "fietsendiefstal", "geweldsdelicten","drugsove
 afkomstTabelNamen = ['Nederlanders', 'Marokkanen', 'Turken', 'Kaapverdianen', 'Antilianen', 'Surinamers', 'Zuid-Europeanen', 'Overig']
 
 class Plot:
-    def __init__(self, kolomstring, tabelnaam, wijknamenlist):
+    def __init__(self, tabelnaam, wijknamenlist):
         self.databaseFile = "Database\StekOverflow.db"
         self.tabelNaam = tabelnaam
         self.wijkNamenList = wijknamenlist
-        self.kolomstring = kolomstring
         self.conn = self.create_connection(self.databaseFile)
         self.cur = self.conn.cursor()
 
@@ -70,10 +69,12 @@ class Plot:
 
 class PlotLineChart(Plot):
     def __init__(self, kolomstring,tabelnaam, wijknamenlist):
-        super().__init__(kolomstring,tabelnaam, wijknamenlist)
+        self.kolomstring = kolomstring
+        super().__init__(tabelnaam, wijknamenlist)
         self.y = []
         self.jaartallen = [2006, 2007, 2008, 2009, 2011]
         self.g = globals()
+        plt.clf()
 
         self.generate_empty_lists()
         self.sql_query_linechart()
@@ -107,15 +108,20 @@ class PlotLineChart(Plot):
 class PlotBarChart(Plot):
     def __init__(self,kolomstring,tabelnaam, dataset, wijknamenlist):
         self.dataSet = dataset
-        super().__init__(kolomstring,tabelnaam,wijknamenlist)
+        self.kolomstring = kolomstring
+        super().__init__(tabelnaam,wijknamenlist)
         self.data = []
         self.overigeTabelNamen = ["fiobj2016", "fisub2016", "si2016", "vi2016"]
         self.xlabels = []
-
+        self.kleuren = 'rgbymc'
+        plt.clf()
         self.sql_query_barchart()
         self.show_plot()
 
+
     def sql_query_barchart(self):
+        self.data = []
+        self.xlabels = []
         for wijk in (self.wijkNamenList):
             self.cur.execute("select {} from {} where wijknaam = '{}'".format(self.dataSet, self.tabelNaam, wijk.name))
             b = self.cur.fetchone()
@@ -125,10 +131,9 @@ class PlotBarChart(Plot):
     def show_plot(self):
         y_pos = np.arange(len(self.wijkNamenList))
 
-        plt.bar(y_pos, self.data, align='center', alpha=0.5)
+        plt.bar(y_pos, self.data, align='center', alpha=0.5, color=self.kleuren)
         for a, b in zip(y_pos, self.data):
             plt.text(a, b, str(b))
-
 
         plt.xticks(y_pos,self.xlabels, wrap = True)
         plt.ylabel('Cijfer')
@@ -137,11 +142,9 @@ class PlotBarChart(Plot):
         plt.show()
 
 class PlotOnMap(Plot):
-    def __init__(self,kolomstring, tabelnaam, dataset, wijknamenlist):
+    def __init__(self, tabelnaam, dataset, wijknamenlist):
         self.dataset = dataset
-        super().__init__(kolomstring,tabelnaam, wijknamenlist)
-        self.y = []
-        self.jaartallen = [2006, 2007, 2008, 2009, 2011]
+        super().__init__(tabelnaam, wijknamenlist)
 
         self.g = globals()
 
