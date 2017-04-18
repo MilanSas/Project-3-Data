@@ -137,10 +137,12 @@ class PlotBarChart(Plot):
         plt.show()
 
 class PlotOnMap(Plot):
-    def __init__(self, tabelnaam, wijknamenlist,kolomstring):
+    def __init__(self, tabelnaam, dataset, wijknamenlist, kolomstring):
+        self.dataset = dataset
         super().__init__(tabelnaam, wijknamenlist, kolomstring)
         self.y = []
         self.jaartallen = [2006, 2007, 2008, 2009, 2011]
+
         self.g = globals()
 
         self.generate_empty_lists()
@@ -153,8 +155,8 @@ class PlotOnMap(Plot):
 
     def sql_query_linechart(self):
         for wijk in (self.wijkNamenList):
-            self.cur.execute("select data2011 from"
-                             " {} where wijknaam LIKE '{}'".format(self.tabelNaam, wijk.name))
+            self.cur.execute("select {} from"
+                             " {} where wijknaam LIKE '{}'".format(self.dataset, self.tabelNaam, wijk.name))
             self.wijkData = self.cur.fetchone()
             for i in range(len(self.wijkData)):
                 self.g['data_{}'.format(wijk.name)].append(self.wijkData[i])
@@ -164,6 +166,7 @@ class PlotOnMap(Plot):
             print(self.g['data_{}'.format(wijk.name)])
             b = (self.g['data_{}'.format(wijk.name)])
             wijk.ChangeColor(int(b[0]))
+
 
 # t = ["Oud/Nieuw Mathenesse/Witte Dorp"]
 # PlotLineChart("geweldsdelicten", t)
