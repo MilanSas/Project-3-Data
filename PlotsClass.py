@@ -52,7 +52,7 @@ jaarTabelNamen = ["tevredenheid", "fietsendiefstal", "geweldsdelicten","drugsove
 afkomstTabelNamen = ['Nederlanders', 'Marokkanen', 'Turken', 'Kaapverdianen', 'Antilianen', 'Surinamers', 'Zuid-Europeanen', 'Overig']
 
 class Plot:
-    def __init__(self, tabelnaam, wijknamenlist, kolomstring):
+    def __init__(self, kolomstring, tabelnaam, wijknamenlist):
         self.databaseFile = "Database\StekOverflow.db"
         self.tabelNaam = tabelnaam
         self.wijkNamenList = wijknamenlist
@@ -69,8 +69,8 @@ class Plot:
         return None
 
 class PlotLineChart(Plot):
-    def __init__(self, tabelnaam, wijknamenlist, kolomstring):
-        super().__init__(tabelnaam, wijknamenlist, kolomstring)
+    def __init__(self, kolomstring,tabelnaam, wijknamenlist):
+        super().__init__(kolomstring,tabelnaam, wijknamenlist)
         self.y = []
         self.jaartallen = [2006, 2007, 2008, 2009, 2011]
         self.g = globals()
@@ -105,9 +105,9 @@ class PlotLineChart(Plot):
 
 
 class PlotBarChart(Plot):
-    def __init__(self,tabelnaam, dataset, wijknamenlist, kolomstring):
+    def __init__(self,kolomstring,tabelnaam, dataset, wijknamenlist):
         self.dataSet = dataset
-        super().__init__(tabelnaam,wijknamenlist, kolomstring)
+        super().__init__(kolomstring,tabelnaam,wijknamenlist)
         self.data = []
         self.overigeTabelNamen = ["fiobj2016", "fisub2016", "si2016", "vi2016"]
         self.xlabels = []
@@ -137,9 +137,9 @@ class PlotBarChart(Plot):
         plt.show()
 
 class PlotOnMap(Plot):
-    def __init__(self, tabelnaam, dataset, wijknamenlist, kolomstring):
+    def __init__(self,kolomstring, tabelnaam, dataset, wijknamenlist):
         self.dataset = dataset
-        super().__init__(tabelnaam, wijknamenlist, kolomstring)
+        super().__init__(kolomstring,tabelnaam, wijknamenlist)
         self.y = []
         self.jaartallen = [2006, 2007, 2008, 2009, 2011]
 

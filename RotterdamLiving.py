@@ -176,8 +176,7 @@ class polygon:
             text.config(text=self.name)
 
     def Reset(self):
-        self.deSelect()
-        canvas.itemconfig(self.shape, fill=(HexToRGB(self.color)), outline='black', width=2)
+        canvas.itemconfig(self.shape, fill=(HexToRGB(self.color)))
 
     def spawnchild(self):
         if self.name == "Overschie":
@@ -794,126 +793,126 @@ def databasePercentagesEnCijfers():
     print(answer) #To prove that the last selected button is saved in the array
     if answer == 0:  #the numbers represent the button, each button has his own number. The attribute of the button that stores this is: name
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("si2016","PercentageSchoolgaandeEnStuderendeJongeren18TM22jr".lower(),geselecteerdegebieden)
+            PlotBarChart("schoolgaande en studerende jongeren (18 t/m 22 jr)","si2016","PercentageSchoolgaandeEnStuderendeJongeren18TM22jr".lower(),geselecteerdegebieden)
          #The query get send into the showresults function, then the map colour gets changed based on the results from it
     elif answer == 1:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("si2016","PercentageWerkendeJongeren18TM22jr".lower(),geselecteerdegebieden)
+            PlotBarChart("werkende jongeren (18 t/m 22 jr)","si2016","PercentageWerkendeJongeren18TM22jr".lower(),geselecteerdegebieden)
     elif answer == 2:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("si2016","PercentageWerkzoekendeJongeren18TM22JrZonderBaan".lower(),geselecteerdegebieden)
+            PlotBarChart("werkzoekende jongeren (18 t/m 22 jr)","si2016","PercentageWerkzoekendeJongeren18TM22JrZonderBaan".lower(),geselecteerdegebieden)
     elif answer == 3:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("si2016","PercentageBewoners23TM64JrMetWerk".lower(),geselecteerdegebieden)
+            PlotBarChart("werkzoeknde bewoners(23 t/m 64 jr)","si2016","PercentageBewoners23TM64JrMetWerk".lower(),geselecteerdegebieden)
     elif answer == 4:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("si2016","PercentageWerkzoekendeBewoners23TM64JrZonderBaan".lower(),geselecteerdegebieden)
+            PlotBarChart("werkzoeknde bewoners(23 t/m 64 jr)","si2016","PercentageWerkzoekendeBewoners23TM64JrZonderBaan".lower(),geselecteerdegebieden)
     elif answer == 5:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("si2016","PercentageBewoners18JrEnOuderDatNogMaarKortInNederlandWoont".lower(),geselecteerdegebieden)
+            PlotBarChart("Bewoners 18jr en ouder dat kort in Nederland woont","si2016","PercentageBewoners18JrEnOuderDatNogMaarKortInNederlandWoont".lower(),geselecteerdegebieden)
 
     elif  answer == 6:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("vi2016","veiligheidsindexobjectief".lower(),geselecteerdegebieden)
+            PlotBarChart("Veiligheidsindex -objectief","vi2016","veiligheidsindexobjectief".lower(),geselecteerdegebieden)
     elif answer == 7:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("vi2016","diefstalobjectief".lower(),geselecteerdegebieden)
+            PlotBarChart("Diefstal-objectief","vi2016","diefstalobjectief".lower(),geselecteerdegebieden)
     elif answer == 8:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("vi2016","geweldobjectief".lower(),geselecteerdegebieden)
+            PlotBarChart("Geweld-objectief","vi2016","geweldobjectief".lower(),geselecteerdegebieden)
     elif answer == 9:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("vi2016","inbraakobjectief".lower(),geselecteerdegebieden)
+            PlotBarChart("Inbraak-objectief","vi2016","inbraakobjectief".lower(),geselecteerdegebieden)
     elif answer == 10:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("vi2016","vandalismeobjectief".lower(),geselecteerdegebieden)
+            PlotBarChart("Vandalisme-objectief","vi2016","vandalismeobjectief".lower(),geselecteerdegebieden)
     elif answer == 11:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("vi2016","overlastobjectief".lower(),geselecteerdegebieden)
+            PlotBarChart("Overlast objectief","vi2016","overlastobjectief".lower(),geselecteerdegebieden)
 
     elif answer == 12:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fiobj2016","milieuobjectief".lower(),geselecteerdegebieden)
+            PlotBarChart("Milieu objectief","fiobj2016","milieuobjectief".lower(),geselecteerdegebieden)
     elif answer == 13:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fiobj2016","percentagewoningeningeluidscontourvanaf55db".lower(),geselecteerdegebieden)
+            PlotBarChart("% woningen in geluidscontour vanaf 55 dB","fiobj2016","percentagewoningeningeluidscontourvanaf55db".lower(),geselecteerdegebieden)
     elif answer == 14:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fiobj2016","GemiddeldeNo2Concentratie2009IrtGrenswaarde40mgM3".lower(),geselecteerdegebieden)
+            PlotBarChart("gemiddelde NO2-concentratie","fiobj2016","GemiddeldeNo2Concentratie2009IrtGrenswaarde40mgM3".lower(),geselecteerdegebieden)
     elif answer == 15:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fisub2016","PercentageVoldoendeAanwezigGroenGrasveldjesBomen".lower(),geselecteerdegebieden)
+            PlotBarChart("% voldoende aanwezig groen (grasveldjes, bomen)","fisub2016","PercentageVoldoendeAanwezigGroenGrasveldjesBomen".lower(),geselecteerdegebieden)
     elif answer == 16:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fisub2016","PercentageVeelStankoverlastVerkeer".lower(),geselecteerdegebieden)
+            PlotBarChart("% veel stankoverlast verkeer","fisub2016","PercentageVeelStankoverlastVerkeer".lower(),geselecteerdegebieden)
     elif answer == 17:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fisub2016","PercentageVeelGeluidsoverlastVerkeer".lower(),geselecteerdegebieden)
+            PlotBarChart("% veel geluidsoverlast verkeer","fisub2016","PercentageVeelGeluidsoverlastVerkeer".lower(),geselecteerdegebieden)
 
     elif answer == 18:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("si2016","SocialeIndexSubjectief".lower(),geselecteerdegebieden)
+            PlotBarChart("Sociale Index subjectief","si2016","SocialeIndexSubjectief".lower(),geselecteerdegebieden)
     elif answer == 19:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("si2016","OordeelKwaliteitVanLeven".lower(),geselecteerdegebieden)
+            PlotBarChart("Oordeel kwaliteit van leven","si2016","OordeelKwaliteitVanLeven".lower(),geselecteerdegebieden)
     elif answer == 20:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("si2016","CapaciteitenSubjectief".lower(),geselecteerdegebieden)
+            PlotBarChart("Capaciteiten-subjectief","si2016","CapaciteitenSubjectief".lower(),geselecteerdegebieden)
     elif answer == 21:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("si2016","LeefomgevingSubjectief".lower(),geselecteerdegebieden)
+            PlotBarChart("Leefomgeving-subjectief","si2016","LeefomgevingSubjectief".lower(),geselecteerdegebieden)
     elif answer == 22:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("si2016","MeedoenSubjectief".lower(),geselecteerdegebieden)
+            PlotBarChart("Meedoen-subjectief","si2016","MeedoenSubjectief".lower(),geselecteerdegebieden)
     elif answer == 23:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("si2016","BindingSubjectief".lower(),geselecteerdegebieden)
+            PlotBarChart("Binding-subjectief","si2016","BindingSubjectief".lower(),geselecteerdegebieden)
 
     elif answer == 24:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fiobj2016","PercentageWoningenMetBakkerBinnenNormafstand".lower(),geselecteerdegebieden)
+            PlotBarChart("% woningen met bakker binnen normafstand","fiobj2016","PercentageWoningenMetBakkerBinnenNormafstand".lower(),geselecteerdegebieden)
     elif answer == 25:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fiobj2016","PercentageWoningenMetGroenteboerBinnenNormafstand".lower(),geselecteerdegebieden)
+            PlotBarChart("% woningen met groenteboer binnen normafstand","fiobj2016","PercentageWoningenMetGroenteboerBinnenNormafstand".lower(),geselecteerdegebieden)
     elif answer == 26:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fiobj2016","PercentageWoningenMetSlagerBinnenNormafstand".lower(),geselecteerdegebieden)
+            PlotBarChart("% woningen met slager binnen normafstand","fiobj2016","PercentageWoningenMetSlagerBinnenNormafstand".lower(),geselecteerdegebieden)
     elif answer == 27:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fiobj2016","PercentageWoningenMetBushaltesBinnenNormafstand".lower(),geselecteerdegebieden)
+            PlotBarChart("% woningen met bushaltes binnen normafstand","fiobj2016","PercentageWoningenMetBushaltesBinnenNormafstand".lower(),geselecteerdegebieden)
     elif answer == 28:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fiobj2016","PercentageWoningenMetMetrostationsBinnenNormafstand".lower(),geselecteerdegebieden)
+            PlotBarChart("% woningen met metrostations binnen normafstand","fiobj2016","PercentageWoningenMetMetrostationsBinnenNormafstand".lower(),geselecteerdegebieden)
     elif answer == 29:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fiobj2016","PercentageWoningenMetTramhaltesBinnenNormafstand".lower(),geselecteerdegebieden)
+            PlotBarChart("% woningen met tramhaltes binnen normafstand","fiobj2016","PercentageWoningenMetTramhaltesBinnenNormafstand".lower(),geselecteerdegebieden)
 
     elif answer == 30:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fiobj2016","GemiddeldeWozPerM2Woningoppervlakte".lower(),geselecteerdegebieden)
+            PlotBarChart("gemiddelde WOZ per m2 woningoppervlakte","fiobj2016","GemiddeldeWozPerM2Woningoppervlakte".lower(),geselecteerdegebieden)
     elif answer == 31:
         if len(geselecteerdegebieden)>0:
-            PlotLineChart("drugsoverlast".lower(),geselecteerdegebieden)
+            PlotLineChart("drugsoverlast gedurende de jaren 2006-2011","drugsoverlast".lower(),geselecteerdegebieden)
         else:
             PlotOnMap("drugsoverlast".lower(),"data2011", polygonsgebieden)
     elif answer == 32:
         if len(geselecteerdegebieden)>0:
-            PlotLineChart("geweldsdelicten".lower(), geselecteerdegebieden)
+            PlotLineChart("geweldsdelicten gedurende de jaren 2006-2011","geweldsdelicten".lower(), geselecteerdegebieden)
         else:
             PlotOnMap("geweldsdelicten".lower(), "data2011", polygonsgebieden)
     elif answer == 33:
         if len(geselecteerdegebieden)>0:
-            PlotLineChart("tevredenheid".lower(), geselecteerdegebieden)
+            PlotLineChart("tevredenheid gedurende de jaren 2006-2011","tevredenheid".lower(), geselecteerdegebieden)
         else:
             PlotOnMap("tevredenheid".lower(),"data2011",polygonsgebieden)
     elif answer == 34:
         if len(geselecteerdegebieden)>0:
-            PlotLineChart("fietsendiefstal".lower(), geselecteerdegebieden)
+            PlotLineChart("fietsendiefstal gedurende de jaren 2006-2011","fietsendiefstal".lower(), geselecteerdegebieden)
         else:
             PlotOnMap("fietsendiefstal".lower(),"data2011",polygonsgebieden)
     elif answer == 35:
         if len(geselecteerdegebieden)>0:
-            PlotBarChart("fisub2016","PercentageVaakHondenpoep".lower(),geselecteerdegebieden)
+            PlotBarChart("% vaak hondenpoep","fisub2016","PercentageVaakHondenpoep".lower(),geselecteerdegebieden)
 
 for widget in root.winfo_children():
     print(widget)
