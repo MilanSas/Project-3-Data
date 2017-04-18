@@ -107,8 +107,21 @@ def HexToRGB(rgb):
 
 ''''Function to create the polygons(area's)'''
 geselecteerdegebieden = []
-image = PhotoImage(file="Noord.png")
+
+if (screeny > 1800):
+    image = PhotoImage(file="afbeelding/Noord2160.png")
+elif (screeny > 1260):
+    image = PhotoImage(file="afbeelding/Noord1440.png")
+elif (screeny > 990):
+    image = PhotoImage(file="afbeelding/Noord1080.png")
+elif (screeny > 810):
+    image = PhotoImage(file="afbeelding/Noord900.png")
+else:
+    image = PhotoImage(file="afbeelding/Noord720.png")
+
 canvas.create_image(rs(850),rs(360),image=image)
+
+
 class polygon:
     def __init__(self,name,color,list):
         self.name = name
