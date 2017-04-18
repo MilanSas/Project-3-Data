@@ -129,7 +129,7 @@ class polygon:
         self.selected = False
         self.shape = canvas.create_polygon(list, fill=(HexToRGB(color)), outline='black', width=2, tags = self.name)
         canvas.move(self.shape, rs(-400), 0)
-        self.selectcolor = 'red'
+        self.selectcolor = HexToRGB((159,200,104))
 
 
     def ChangeColor(self, percent):
@@ -326,19 +326,19 @@ def ijsselmondeWijk():
 
 wijklist = []
 
-
+wijkkleur = (16,16,255)
 ''''The polygons(area's)'''''
-overschie_polygon = polygon("Overschie",(20, 50, 120), Polygons.overschie)
-hillegersberg_polygon = polygon("HillegersbergSchiebroek",(20, 50, 120), Polygons.hillegersberg)
-prins_alexander_polygon = polygon("PrinsAlexander",(20, 50, 120), Polygons.prins_alexander)
-kralingen_polygon = polygon("KralingenCrooswijk",(20, 50, 120), Polygons.kralingen)
-noord_polygon = polygon("Noord",(20, 50, 120), Polygons.noord)
-delftshaven_polygon = polygon("Delfshaven",(20, 50, 120), Polygons.delftshaven)
-centrum_polygon = polygon("RotterdamCentrum",(20, 50, 120), Polygons.centrum)
-feijenoord_polygon = polygon("Feijenoord",(20, 50, 120), Polygons.feijenoord)
-ijsselmonde_polygon = polygon("IJsselmonde",(20, 50, 120), Polygons.ijsselmonde)
-charlois_polygon = polygon("Charlois",(20, 50, 120), Polygons.charlois)
-waalhaven_polygon = polygon("Waalhaven",(20, 50, 120), Polygons.waalhaven)
+overschie_polygon = polygon("Overschie",wijkkleur, Polygons.overschie)
+hillegersberg_polygon = polygon("HillegersbergSchiebroek",wijkkleur, Polygons.hillegersberg)
+prins_alexander_polygon = polygon("PrinsAlexander",wijkkleur, Polygons.prins_alexander)
+kralingen_polygon = polygon("KralingenCrooswijk",wijkkleur, Polygons.kralingen)
+noord_polygon = polygon("Noord",wijkkleur, Polygons.noord)
+delftshaven_polygon = polygon("Delfshaven",wijkkleur, Polygons.delftshaven)
+centrum_polygon = polygon("RotterdamCentrum",wijkkleur, Polygons.centrum)
+feijenoord_polygon = polygon("Feijenoord",wijkkleur, Polygons.feijenoord)
+ijsselmonde_polygon = polygon("IJsselmonde",wijkkleur, Polygons.ijsselmonde)
+charlois_polygon = polygon("Charlois",wijkkleur, Polygons.charlois)
+waalhaven_polygon = polygon("Waalhaven",(220,215,204), Polygons.waalhaven)
 
 canvas.create_text(rs(710),rs(290),text="Overschie", font=("Helvetica",15,"bold"))
 canvas.create_text(rs(966),rs(250),text="HillegersbergSchiebroek", font=("Helvetica",15,"bold"))
@@ -352,8 +352,7 @@ canvas.create_text(rs(1180),rs(700),text="IJsselmonde", font=("Helvetica",15,"bo
 canvas.create_text(rs(885),rs(735),text="Charlois", font=("Helvetica",15,"bold"))
 
 ''''Array that has the polygon area's, this is used to go through the array and then the colour will change. It is used in a database function'''
-polygonsgebieden = [overschie_polygon, hillegersberg_polygon, prins_alexander_polygon, kralingen_polygon, noord_polygon, delftshaven_polygon, centrum_polygon, feijenoord_polygon, ijsselmonde_polygon, charlois_polygon, waalhaven_polygon]
-polygonsgebieden2 = [overschie_polygon, hillegersberg_polygon, prins_alexander_polygon, kralingen_polygon, noord_polygon, delftshaven_polygon, centrum_polygon, feijenoord_polygon, ijsselmonde_polygon, charlois_polygon]
+polygonsgebieden = [overschie_polygon, hillegersberg_polygon, prins_alexander_polygon, kralingen_polygon, noord_polygon, delftshaven_polygon, centrum_polygon, feijenoord_polygon, ijsselmonde_polygon, charlois_polygon]
 ''''The name of the area that is displayed in the top centre.'''
 text = Label(root,width=0, height=1,text="",font=("Helvetica",35,"bold")) #Creates text
 text.grid(row=0,column=0,sticky=N) #Draws the text
@@ -441,44 +440,6 @@ def home():
             print(str(widget) + ": Is deleted")
     searchPage = False
 
-# def resmenuoptions(event):
-#     global variable1
-#     if  str(variable1.get()) == (str(screenx) + "x" + str(screeny)):
-#         root.geometry('{}x{}'.format(screenx, screeny))
-#     elif  str(variable1.get()) == "1280x720": #variable is the drop down menu, when a menu page is selected, the value of the variable changes
-#         root.geometry("1280x720")
-#     elif  str(variable1.get()) == "1600x900":
-#         root.geometry("1600x900")
-#     elif str(variable1.get()) == "1920x1080":
-#         root.geometry("1920x1080")
-#     elif str(variable1.get()) == "4k":
-#         root.geometry("3860x2140")
-#
-# ''''the settings page'''
-# def settings():
-#     global searchPage, variable1
-#     text.config(text="") #Resets the text when it reaches the home button
-#     for widget in root.winfo_children():
-#         if widget == menu_button or widget == text: #menubutton does not get deleted
-#             print("Optionmenu")
-#         elif widget == canvas: #canvas does not get deleted
-#             print("canvas")
-#         else:
-#             widget.destroy() #other widgets get deleted and so are their value
-#             print(str(widget) + ": Is deleted")
-#
-#     ''''Resolution'''
-#     resolution_text = "Select your screen resolution"
-#     resolution1_text = Label(root, text=resolution_text, font=("Helvetica", 15, "bold"))
-#     resolution1_text.grid(row=2, column=0, sticky=W)
-#
-#     ''''The drop down resolution menu'''
-#     variable1 = StringVar(root)  #Variable will store the page that is selected
-#     variable1.set(str(screenx) + " x " + str(screeny))  # default value of the drop down menu
-#     menu_button1 = OptionMenu(root, variable1, (str(screenx) + "x" + str(screeny)), "1280x720", "1600x900", "1920x1080", "4k", command=resmenuoptions)  #The options of the drop down menu
-#     menu_button1.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white") #Sets the font/size of drop down menu
-#     menu_button1.grid(row=3, column=0, sticky=N + W) #Sets position of the drop down menu
-#     searchPage = False
 
 ''''The about page'''
 def about():
@@ -641,7 +602,7 @@ def categoryPopulation():
     button17 = PecButton("werkzoekende jongeren (18 t/m 22 jr)", 3, 0, screenx / 17, screeny / 150,2)
     button18 = PecButton("bewoners met werk(23 t/m 64 jr)", 4, 0, screenx / 17, screeny / 150,3)
     button19 = PecButton("werkzoeknde bewoners(23 t/m 64 jr)", 5, 0, screenx / 22, screeny / 150,4)
-    button20 = PecButton("Bewoners (18 jr en ouder) dat kort in Nederland woont", 6, 0, screenx / 22, screeny / 150,5)
+    button20 = PecButton("Bewoners 18jr en ouder dat kort in Nederland woont", 6, 0, screenx / 22, screeny / 150,5)
     buttonback1 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
     buttonback1.pageClick(percentagesEnCijfers) #The back button
     searchPage = True
@@ -666,7 +627,7 @@ def categorySafety():
     text.config(text="") #Resets the text when it reaches the home button
     button27 = PecButton("Milieu objectief", 1, 0, screenx / 30, screeny / 150,12)
     button28 = PecButton("% woningen in geluidscontour vanaf 55 dB", 2, 0, screenx / 45, screeny / 150,13)
-    button29 = PecButton("gemiddelde NO2-concentratie 2009 irt grenswaarde 40 µg/m3", 3, 0, screenx / 17, screeny / 150,14)
+    button29 = PecButton("gemiddelde NO2-concentratie", 3, 0, screenx / 17, screeny / 150,14)
     button30 = PecButton("% voldoende aanwezig groen (grasveldjes, bomen)", 4, 0, screenx / 17, screeny / 150,15)
     button31 = PecButton("% veel stankoverlast verkeer", 5, 0, screenx / 22, screeny / 150,16)
     button32 = PecButton("% veel geluidsoverlast verkeer", 6, 0, screenx / 22, screeny / 150,17)
@@ -930,22 +891,22 @@ def databasePercentagesEnCijfers():
         if len(geselecteerdegebieden)>0:
             PlotLineChart("drugsoverlast".lower(),geselecteerdegebieden)
         else:
-            PlotOnMap("drugsoverlast".lower(),polygonsgebieden2)
+            PlotOnMap("drugsoverlast".lower(),"data2011", polygonsgebieden)
     elif answer == 32:
         if len(geselecteerdegebieden)>0:
             PlotLineChart("geweldsdelicten".lower(), geselecteerdegebieden)
         else:
-            PlotOnMap("geweldsdelicten".lower(),polygonsgebieden2)
+            PlotOnMap("geweldsdelicten".lower(), "data2011", polygonsgebieden)
     elif answer == 33:
         if len(geselecteerdegebieden)>0:
             PlotLineChart("tevredenheid".lower(), geselecteerdegebieden)
         else:
-            PlotOnMap("tevredenheid".lower(),polygonsgebieden2)
+            PlotOnMap("tevredenheid".lower(),"data2011",polygonsgebieden)
     elif answer == 34:
         if len(geselecteerdegebieden)>0:
             PlotLineChart("fietsendiefstal".lower(), geselecteerdegebieden)
         else:
-            PlotOnMap("fietsendiefstal".lower(),polygonsgebieden2)
+            PlotOnMap("fietsendiefstal".lower(),"data2011",polygonsgebieden)
     elif answer == 35:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("fisub2016","PercentageVaakHondenpoep".lower(),geselecteerdegebieden)
