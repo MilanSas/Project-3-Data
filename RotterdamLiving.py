@@ -174,7 +174,9 @@ class polygon:
         if canvas.find_withtag(CURRENT) == canvas.find_withtag(self.name):
             text.config(text=self.name)
     def Reset(self):
+        self.deSelect()
         canvas.itemconfig(self.shape, fill=(HexToRGB(self.color)), outline='black', width=2)
+
     def spawnchild(self):
         if self.name == "Overschie":
             overschieWijk()
