@@ -329,7 +329,7 @@ def ijsselmondeWijk():
 
 wijklist = []
 
-wijkkleur = (16,16,255)
+wijkkleur = (150,150,230)
 ''''The polygons(area's)'''''
 overschie_polygon = polygon("Overschie",wijkkleur, Polygons.overschie)
 hillegersberg_polygon = polygon("HillegersbergSchiebroek",wijkkleur, Polygons.hillegersberg)
@@ -341,15 +341,15 @@ centrum_polygon = polygon("RotterdamCentrum",wijkkleur, Polygons.centrum)
 feijenoord_polygon = polygon("Feijenoord",wijkkleur, Polygons.feijenoord)
 ijsselmonde_polygon = polygon("IJsselmonde",wijkkleur, Polygons.ijsselmonde)
 charlois_polygon = polygon("Charlois",wijkkleur, Polygons.charlois)
-waalhaven_polygon = polygon("Waalhaven",(220,215,204), Polygons.waalhaven)
+# waalhaven_polygon = polygon("Waalhaven",(220,215,204), Polygons.waalhaven)
 
-canvas.create_text(rs(710),rs(290),text="Overschie", font=("Helvetica",rs(15),"bold"))
-canvas.create_text(rs(966),rs(250),text="HillegersbergSchiebroek", font=("Helvetica",rs(15),"bold"))
-canvas.create_text(rs(1200),rs(209),text="PrinsAlexander", font=("Helvetica",rs(15),"bold"))
-canvas.create_text(rs(1040),rs(400),text="KralingenCrooswijk", font=("Helvetica",rs(15),"bold"))
+canvas.create_text(rs(710),rs(290),text="Overschie\n" , font=("Helvetica",rs(15),"bold"))
+canvas.create_text(rs(966),rs(250),text="Hillegersberg-\nSchiebroek", font=("Helvetica",rs(15),"bold"))
+canvas.create_text(rs(1200),rs(209),text="Prins Alexander", font=("Helvetica",rs(15),"bold"))
+canvas.create_text(rs(1040),rs(400),text="Kralingen-Crooswijk", font=("Helvetica",rs(15),"bold"))
 canvas.create_text(rs(860),rs(400),text="Noord", font=("Helvetica",rs(15),"bold"))
 canvas.create_text(rs(730),rs(534),text="Delfshaven", font=("Helvetica",rs(15),"bold"))
-canvas.create_text(rs(900),rs(514),text="Centrum", font=("Helvetica",rs(15),"bold"))
+canvas.create_text(rs(900),rs(514),text="Rotterdam\nCentrum", font=("Helvetica",rs(15),"bold"))
 canvas.create_text(rs(1000),rs(580),text="Feijenoord", font=("Helvetica",rs(15),"bold"))
 canvas.create_text(rs(1180),rs(700),text="IJsselmonde", font=("Helvetica",rs(15),"bold"))
 canvas.create_text(rs(885),rs(735),text="Charlois", font=("Helvetica",rs(15),"bold"))
