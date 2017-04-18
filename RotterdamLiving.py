@@ -166,13 +166,15 @@ class polygon:
         canvas.itemconfig(self.shape, outline = self.selectcolor, width = 6)
 
     def deSelect(self):
-        geselecteerdegebieden.remove(self)
+        if self in geselecteerdegebieden:
+            geselecteerdegebieden.remove(self)
         self.selected = False
         canvas.itemconfig(self.shape, outline='black', width = 2)
 
     def Hover(self, event):
         if canvas.find_withtag(CURRENT) == canvas.find_withtag(self.name):
             text.config(text=self.name)
+
     def Reset(self):
         self.deSelect()
         canvas.itemconfig(self.shape, fill=(HexToRGB(self.color)), outline='black', width=2)
