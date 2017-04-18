@@ -431,6 +431,7 @@ description_text.grid(row=1,column=0,sticky=W) #Sets the position of the text
 ''''the home page'''
 def home():
     global searchPage
+    variable.set("Home")
     resetwijken()
     text.config(text="") #Resets the text when it reaches the home button
     for widget in root.winfo_children(): #checks which wigets(buttons, text etc) are open
@@ -489,6 +490,7 @@ def about():
 ''''Percentages en cijfers page'''
 def percentagesEnCijfers():
     global searchPage
+
     resetwijken()
     text.config(text="") #Resets the text when it reaches the home button
     for widget in root.winfo_children():
@@ -512,7 +514,8 @@ def percentagesEnCijfers():
     button13.pageClick(categoryServices)
     button14 = NewButton("Overig", 6, 0, screenx / 18, screeny / 150)
     button14.pageClick(categoryOther)
-    button52 = NewButton("Statistieken", 28, 0, screenx / 600, screeny / 150)  #Currently not used, can be used to give the user stats when clicked
+    button52 = NewButton("Terug", 28, 0, screenx / 600, screeny / 150)  #Currently not used, can be used to give the user stats when clicked
+    button52.pageClick(home)
     searchPage = False
 
 
@@ -599,6 +602,16 @@ def woningsadvies():
 ''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categoryPopulation():
     global searchPage
+    for widget in root.winfo_children():
+        if widget == menu_button or widget == text: #Optionmenu does not get deleted
+            print("Optionmenu")
+        elif widget == canvas: #Canvas does not get deleted
+            print("canvas")
+        else:
+            widget.destroy() #Other widgets are deleted and so are their value
+            print(str(widget) + " Is deleted")
+
+
     text.config(text="") #Resets the text when it reaches the home button
     button15 = PecButton("schoolgaande en studerende jongeren (18 t/m 22 jr)", 1, 0, screenx / 30, screeny / 150, 0)
     button16 = PecButton("werkende jongeren (18 t/m 22 jr)", 2, 0, screenx / 45, screeny / 150,1)
@@ -613,6 +626,15 @@ def categoryPopulation():
 ''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categoryEnvironment():
     global searchPage
+    for widget in root.winfo_children():
+        if widget == menu_button or widget == text: #Optionmenu does not get deleted
+            print("Optionmenu")
+        elif widget == canvas: #Canvas does not get deleted
+            print("canvas")
+        else:
+            widget.destroy() #Other widgets are deleted and so are their value
+            print(str(widget) + " Is deleted")
+
     text.config(text="") #Resets the text when it reaches the home button
     button21 = PecButton("Veiligheidsindex -objectief", 1, 0, screenx / 30, screeny / 150,6)
     button22 = PecButton("Diefstal-objectief", 2, 0, screenx / 45, screeny / 150,7)
@@ -627,6 +649,15 @@ def categoryEnvironment():
 ''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categorySafety():
     global searchPage
+    for widget in root.winfo_children():
+        if widget == menu_button or widget == text: #Optionmenu does not get deleted
+            print("Optionmenu")
+        elif widget == canvas: #Canvas does not get deleted
+            print("canvas")
+        else:
+            widget.destroy() #Other widgets are deleted and so are their value
+            print(str(widget) + " Is deleted")
+
     text.config(text="") #Resets the text when it reaches the home button
     button27 = PecButton("Milieu objectief", 1, 0, screenx / 30, screeny / 150,12)
     button28 = PecButton("% woningen in geluidscontour vanaf 55 dB", 2, 0, screenx / 45, screeny / 150,13)
@@ -641,6 +672,15 @@ def categorySafety():
 ''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categoryTraffic():
     global searchPage
+    for widget in root.winfo_children():
+        if widget == menu_button or widget == text: #Optionmenu does not get deleted
+            print("Optionmenu")
+        elif widget == canvas: #Canvas does not get deleted
+            print("canvas")
+        else:
+            widget.destroy() #Other widgets are deleted and so are their value
+            print(str(widget) + " Is deleted")
+
     text.config(text="") #Resets the text when it reaches the home button
     button33 = PecButton("Sociale Index subjectief", 1, 0, screenx / 30, screeny / 150,18)
     button34 = PecButton("Oordeel kwaliteit van leven", 2, 0, screenx / 45, screeny / 150,19)
@@ -655,6 +695,15 @@ def categoryTraffic():
 ''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categoryServices():
     global searchPage
+    for widget in root.winfo_children():
+        if widget == menu_button or widget == text: #Optionmenu does not get deleted
+            print("Optionmenu")
+        elif widget == canvas: #Canvas does not get deleted
+            print("canvas")
+        else:
+            widget.destroy() #Other widgets are deleted and so are their value
+            print(str(widget) + " Is deleted")
+
     text.config(text="") #Resets the text when it reaches the home button
     button39 = PecButton("% woningen met bakker binnen normafstand", 1, 0, screenx / 30, screeny / 150,24)
     button40 = PecButton("% woningen met groenteboer binnen normafstand", 2, 0, screenx / 45, screeny / 150,25)
@@ -669,6 +718,15 @@ def categoryServices():
 ''''Population/bevolking category, when it gets clicked these buttons appears, and when buttons are clicked they will go to the database function'''
 def categoryOther():
     global searchPage
+    for widget in root.winfo_children():
+        if widget == menu_button or widget == text: #Optionmenu does not get deleted
+            print("Optionmenu")
+        elif widget == canvas: #Canvas does not get deleted
+            print("canvas")
+        else:
+            widget.destroy() #Other widgets are deleted and so are their value
+            print(str(widget) + " Is deleted")
+
     text.config(text="") #Resets the text when it reaches the home button
     button45 = PecButton("gemiddelde WOZ per m2 woningoppervlakte", 1, 0, screenx / 30, screeny / 150,30)
     button46 = PecButton("drugsoverlast gedurende de jaren 2006-2011", 2, 0, screenx / 45, screeny / 150,31)
