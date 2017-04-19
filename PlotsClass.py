@@ -81,7 +81,7 @@ class PlotLineChart(Plot):
         self.jaartallen = [2006, 2007, 2008, 2009, 2011]
         self.g = globals()
         plt.clf()
-
+        plt.figure(figsize=(100, 100))  # change size of the frame
         self.generate_empty_lists()
         self.sql_query_linechart()
         self.show_plot()
@@ -122,6 +122,7 @@ class PlotBarChart(Plot):
         self.xlabels = []
         self.kleuren = 'rgbymc'
         plt.clf()
+        plt.figure(figsize=(100,100)) #change size of the frame
         self.sql_query_barchart()
         self.show_plot()
 

@@ -367,12 +367,12 @@ def motion(event):
     else:
         text.config(text="Rotterdam")
 
-def rightclick(event):
+def leftclick(event):
     for wijk in polygonsgebieden:
         if canvas.find_withtag(CURRENT) == canvas.find_withtag(wijk.name):
             wijk.Select()
 
-def leftclick(event):
+def rightclick(event):
     for wijk in polygonsgebieden:
         if canvas.find_withtag(CURRENT) == canvas.find_withtag(wijk.name):
             wijk.spawnchild()
@@ -393,7 +393,7 @@ def resetwijken():
 
 ''''when a polygon(area) is clicked, the click method will be activated'''''
 canvas.bind('<Button-1>', leftclick, add="+") #Binds the canvas to the click method
-canvas.bind('<Button-3>', rightclick, add="+")
+#canvas.bind('<Button-3>', rightclick, add="+")
 canvas.bind('<Motion>', hover)
 
 ''''Canvas that gets drawn'''
@@ -737,43 +737,6 @@ def categoryOther():
     buttonback6 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
     buttonback6.pageClick(percentagesEnCijfers)
     searchPage = True
-
-''''Based on the data, the colour of the map changes, the data represents the query that will come in the function'''
-def ShowResults(data):
-    global polygonsgebieden #The array of area's
-    data = [] #Dictionary to simulate a query, this is to test the query
-    for result in data: #goes in the dictionary (the query)
-            for gebied in polygonsgebieden: #Goes in the area's array
-                if result == "Charlois": #Checks if result from the query is equal to an area
-                    result = int(data.get(result)) #Converts the dictionary value to an int
-                     #Changes color of the area and also change the colour
-                elif result == "Overschie":
-                    pass
-                elif result == "Hillegersberg":
-                    pass
-                elif result == "Prins Alexander":
-                    pass
-                elif result == "Kralingen":
-                    pass
-                elif result == "Noord":
-                    pass
-                elif result == "Delftshaven":
-                    pass
-                elif result == "Noord":
-                    pass
-                elif result == "Centrum":
-                    pass
-                elif result == "Feijennoord":
-                    pass
-                elif result == "Waalhaven":
-                    pass
-
-    # f = Figure(figsize=(5, 5), dpi=50)
-    # a = f.add_subplot(111)  # means 1 chart 1 by 1
-    # a.plot([1, 2, 3, 4, 5, 6, 7, 8], [5, 6, 2, 4, 4, 3, 5, 3])
-    # Figure1 = FigureCanvasTkAgg(f, root)
-    # Figure1.show()
-    # Figure1.get_tk_widget().grid(row=0, column=0, sticky=N, rowspan=30)
 
 
 ''''Database query for the page: "Woningsadvies (the user gets data based on selection)'''''
