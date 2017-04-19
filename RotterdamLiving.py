@@ -44,7 +44,6 @@ searchPage = None
 ''''The last clicked button from the page: "Percentages en cijfers", are saved in an array, this is for the: "databasePercentagesEnCijfers Function"'''
 buttonArray = []
 
-
 ''''The regular buttons. Every button has a trigger, when button is pressed the state is set to true and vice versa'''
 class NewButton:
     def __init__(self,text, row, column, ipadx, ipady): #row = which row, column = which column, ipadx = width, ipady = height
@@ -65,6 +64,11 @@ class NewButton:
         self.button.config(command=page)
     def clickReset(self): # resets click
         self.clicked = False
+    def resetColor(self):
+        self.button.config(bg="DeepSkyBlue2")
+        setattr(self, 'clicked', False)
+
+
 
 ''''The Percentage en cijfers buttons'''''
 class PecButton:
@@ -77,25 +81,24 @@ class PecButton:
         self.button.grid(row=row, column=column, sticky=W, ipadx=0, ipady=15)
         self.name = name #this is for the buttonArray to know what is the last button that is clicked
     def click(self):
-            if self.clicked == False: #When a button is pressed or depressed, the state of the button change
+        if self.clicked == False: #When a button is pressed or depressed, the state of the button change
                 self.button.config(bg="DeepSkyBlue4") #Button's colour
                 setattr(self, 'clicked', True) #State of the button is set to true.
-                doublick = True
-            elif self.clicked == True:
+        elif self.clicked == True:
                  self.button.config(bg="DeepSkyBlue2")
                  setattr(self, 'clicked', False)
 
     def databaseSender(self):
-        buttonArray.append(self.name) #the clicked button will go in the array
-        self.click()
-        databasePercentagesEnCijfers() #Opens the databasePercentageEnCijfers method that will create a database query.
-
+        buttonArray.append(self.name)
+        databasePercentagesEnCijfers()
+    def resetColor(self):
+        self.button.config(bg="DeepSkyBlue2")
+        setattr(self, 'clicked', False)
 
 
 ''''The canvas, important variable. Everything gets drawn on the canvas'''
 canvas = Canvas(root, width=screenx,height=screeny) #root is in which window it will get drawn on.
 canvasWijk = Canvas(root, width=screenx,height=screeny) #This canvas is for the wijken
-
 
 
 ''''Function to set polygon's(area) size'''
@@ -501,6 +504,7 @@ def about():
     about_information5.grid(row=6, column=0, sticky=W)
 
     searchPage = False
+
 
 
 ''''Percentages en cijfers page'''
