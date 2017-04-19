@@ -4,7 +4,7 @@ import sqlite3
 from sqlite3 import Error
 
 
-WijkenStrings = { "HillegersbergSchiebroek" : "Hillegers\nberg-\nSchiebroek", "KralingenCrooswijk" : "Kralingen-\nCrooswijk",
+WijkenStrings = { "HillegersbergSchiebroek" : "Hillegersberg-\nSchiebroek", "KralingenCrooswijk" : "Kralingen-\nCrooswijk",
                   "PrinsAlexander" : "Prins\nAlexander","Charlois" : "Charlois", "IJsselmonde" : "IJsselmonde",
                   "Delfshaven" : "Delfshaven", "Feijenoord" : "Feijenoord", "Overschie" : "Overschie", "Noord" : "Noord",
                   "RotterdamCentrum" : "Rotterdam\nCentrum"
