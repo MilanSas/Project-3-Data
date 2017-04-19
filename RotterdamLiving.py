@@ -129,7 +129,7 @@ class polygon:
         self.selected = False
         self.shape = canvas.create_polygon(list, fill=(HexToRGB(color)), outline='black', width=2, tags = self.name)
         canvas.move(self.shape, rs(-400), 0)
-        self.selectcolor = HexToRGB((159,200,104))
+        self.selectcolor = HexToRGB((129,170,74))
 
 
     def ChangeColor(self, percent):
