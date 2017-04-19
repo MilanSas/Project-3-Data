@@ -184,6 +184,41 @@ class PlotOnMap(Plot):
             wijk.ChangeColor(int(b[0]))
 
 
+class PlotWijkAdvies(Plot):
+    def __init__(self, tabelnaam, dataset,wijknamenlist):
+        self.dataset = dataset
+        super().__init__(tabelnaam, wijknamenlist)
+
+        self.g = globals()
+        self.sql_query()
+
+
+    def sql_query(self):
+
+        for wijk in (self.wijkNamenList):
+            # print(wijk.waarde)
+            self.cur.execute("select {} from"
+                             " {} where wijknaam LIKE '{}'".format(self.dataset, self.tabelNaam, wijk.name))
+            self.wijkData = self.cur.fetchone()
+            for i in range(len(self.wijkData)):
+                wijk.waarde += self.wijkData[i]
+            # print(wijk.name + "-" + str(wijk.waarde))
+
+        resultwijk = None
+        wijkwaarde = 0
+        for wijk in self.wijkNamenList:
+            # print(wijk.waarde)
+            if wijk.waarde > wijkwaarde:
+                resultwijk = wijk
+                wijkwaarde = wijk.waarde
+
+        # print(resultwijk.name + str(wijk.waarde))
+        resultwijk.ChosenWijk()
+
+
+
+
+
 # t = ["Oud/Nieuw Mathenesse/Witte Dorp"]
 # PlotLineChart("geweldsdelicten", t)
 

@@ -4,7 +4,7 @@ import Polygons
 matplotlib.use("TKAgg")
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
-from PlotsClass import Plot, PlotBarChart, PlotLineChart, PlotOnMap
+from PlotsClass import Plot, PlotBarChart, PlotLineChart, PlotOnMap, PlotWijkAdvies
 import time
 #TODO read the comments, the symbol: , is after lines. the symbol: '''''' , is to explain the overall code
 #TODO when user clicks on an area, that area needs to be zoomed in
@@ -135,6 +135,7 @@ canvas.create_image(rs(850),rs(360),image=image)
 class polygon:
     def __init__(self,name,color,list, description):
         self.name = name
+        self.waarde = 0
         self.color = color
         self.selected = False
         self.shape = canvas.create_polygon(list, fill=(HexToRGB(color)), outline='black', width=2, tags = self.name)
@@ -167,6 +168,10 @@ class polygon:
 
     def ChangeBorderColor(self, color):
         canvas.itemconfig(self.shape, outline=color, width=6)
+
+    def ChosenWijk(self):
+        resetwijken()
+        canvas.itemconfig(self.shape, fill=HexToRGB((240,240,20)))
 
     def Select(self):
         if self.selected:
@@ -551,10 +556,9 @@ class categorie():
         text = Label(root, width=0, text=self.txt, font=("Helvetica", self.fontsize, "bold"))
         text.grid(row=self.txtrow, column=0, sticky=W)
 
-        Radiobutton(root, indicatoron=False, text="3 or lower", variable=self.variable, value=1).grid(column=0,row=self.row1,sticky=W)
-        Radiobutton(root, indicatoron=False, text="Between 3 and 5.5", variable=self.variable, value=2).grid(column=0, row=self.row2, sticky=W)
-        Radiobutton(root, indicatoron=False, text="Between 5.5 and 7", variable=self.variable, value=3).grid(column=0, row=self.row3, sticky=W)
-        Radiobutton(root, indicatoron=False, text="7 or higher", variable=self.variable, value=4).grid(column=0,row=self.row4,sticky=W)
+        Radiobutton(root, indicatoron=False, text="Belangrijk", variable=self.variable, value=1).grid(column=0,row=self.row1,sticky=W)
+        Radiobutton(root, indicatoron=False, text="Onbelangrijk", variable=self.variable, value=2).grid(column=0, row=self.row2, sticky=W)
+
 
 
 ''''Woningsadvies page'''
@@ -577,12 +581,12 @@ def woningsadvies():
             widget.destroy()
             print(str(widget) + " Is deleted")
 
-    woningsadvies_text = "Select your importance on the categories below"
-    woningsadvies_text1 = "Population"
-    woningsadvies_text2 = "Environment"
-    woningsadvies_text3 = "Safety"
-    woningsadvies_text4 = "Traffic"
-    woningsadvies_text5 = "Services"
+    woningsadvies_text = "Kies wat je belangrijk vind"
+    woningsadvies_text1 = "Veiligheid"
+    woningsadvies_text2 = "Milieu"
+    woningsadvies_text3 = "Sociaal"
+    woningsadvies_text4 = "Voorzieningen"
+    woningsadvies_text5 = "Fysiek"
 
     ''''The selection buttons'''''
     woningsadvies__headText = Label(root, width=0, text=woningsadvies_text, font=("Helvetica", 15, "bold")) #Creats the text
@@ -604,7 +608,7 @@ def woningsadvies():
     categorie(woningsadvies_text5,23, 10, 24, 25, 26, 27, voorzieningen_radioButtons)
 
     ''''the button wich makes everything caculate'''
-    button51 = NewButton("I am ready to see my living options ", 28, 0, screenx / 600, 0)
+    button51 = NewButton("Welke wijk is het geschikst?", 28, 0, screenx / 600, 0)
     button51.pageClick(databaseWoningsAdvies)
     canvas.grid(row=2, column=0, sticky=W, rowspan=999, padx=55)
     searchPage = True
@@ -749,7 +753,7 @@ def categoryOther():
     buttonback6.pageClick(percentagesEnCijfers)
     searchPage = True
 
-
+woonadviesqueries = []
 ''''Database query for the page: "Woningsadvies (the user gets data based on selection)'''''
 def databaseWoningsAdvies():
     global bevolking_radioButtons
@@ -759,61 +763,53 @@ def databaseWoningsAdvies():
     global voorzieningen_radioButtons
 
     print(bevolking_radioButtons.get()) #To prove that when a different radiobutton is selected, the value changes
-    if bevolking_radioButtons.get() == 0: #gets value of the radiobutton(which button the user selected)
-        pass
-    if bevolking_radioButtons.get() == 1:
-        pass
+    if bevolking_radioButtons.get() == 1: #gets value of the radiobutton(which button the user selected)
+        if ("Veiligheidsindex", "vi2016") not in woonadviesqueries:
+            woonadviesqueries.append(("Veiligheidsindex","vi2016"))
     if bevolking_radioButtons.get() == 2:
-        pass
-    if bevolking_radioButtons.get() == 3:
-        pass
-    if bevolking_radioButtons.get() == 4:
-        pass
+        if ("Veiligheidsindex","vi2016") in woonadviesqueries:
+            woonadviesqueries.remove(("Veiligheidsindex","vi2016"))
 
-    if milieu_radioButtons.get() == 0:
-        pass
+
     if milieu_radioButtons.get() == 1:
-        pass
+        if ("MilieuObjectief", "fiobj2016") not in woonadviesqueries:
+            woonadviesqueries.append(("MilieuObjectief", "fiobj2016"))
     if milieu_radioButtons.get() == 2:
-        pass
-    if milieu_radioButtons.get() == 3:
-        pass
-    if milieu_radioButtons.get() == 4:
-        pass
+        if ("MilieuObjectief", "fiobj2016") in woonadviesqueries:
+            woonadviesqueries.remove(("MilieuObjectief", "fiobj2016"))
 
-    if veiligheid_radioButtons.get() == 0:
-        pass
     if veiligheid_radioButtons.get() == 1:
-        pass
+        if ("SocialeIndex", "si2016") not in woonadviesqueries:
+            woonadviesqueries.append(("SocialeIndex", "si2016"))
     if veiligheid_radioButtons.get() == 2:
-        pass
-    if veiligheid_radioButtons.get() == 3:
-        pass
-    if veiligheid_radioButtons.get() == 4:
-        pass
+        if ("SocialeIndex", "si2016") in woonadviesqueries:
+            woonadviesqueries.remove(("SocialeIndex", "si2016"))
 
-    if verkeer_radioButtons.get() == 0:
-        pass
     if verkeer_radioButtons.get() == 1:
-        pass
+        if ("VoorzieningenSubjectief", "fisub2016") not in woonadviesqueries:
+            woonadviesqueries.append(("VoorzieningenSubjectief", "fisub2016"))
     if verkeer_radioButtons.get() == 2:
-        pass
-    if verkeer_radioButtons.get() == 3:
-        pass
-    if verkeer_radioButtons.get() == 4:
-        pass
+        if ("VoorzieningenSubjectief", "fisub2016") in woonadviesqueries:
+            woonadviesqueries.remove(("VoorzieningenSubjectief", "fisub2016"))
 
-    if voorzieningen_radioButtons.get() == 0:
-        pass
+
     if voorzieningen_radioButtons.get() == 1:
-        pass
+        if ("FysiekeIndex", "fisub2016") not in woonadviesqueries:
+            woonadviesqueries.append(("FysiekeIndex", "fisub2016"))
     if voorzieningen_radioButtons.get() == 2:
-        pass
-    if voorzieningen_radioButtons.get() == 3:
-        pass
-    if voorzieningen_radioButtons.get() == 4:
-        pass
+        if ("FysiekeIndex", "fisub2016") in woonadviesqueries:
+            woonadviesqueries.remove(("FysiekeIndex", "fisub2016"))
 
+    # print(woonadviesqueries)
+
+
+
+    for wijk in polygonsgebieden:
+        wijk.waarde = 0
+
+
+    for i in woonadviesqueries:
+        PlotWijkAdvies(i[1], i[0], polygonsgebieden)
 
 ''''Database query for the page: "Percentages en cijfers" the plot graphics '''
 
@@ -1006,7 +1002,7 @@ def databasePercentagesEnCijfers():
         if len(geselecteerdegebieden)>0:
             PlotBarChart("% vaak hondenpoep","fisub2016","PercentageVaakHondenpoep".lower(),geselecteerdegebieden)
         else:
-            PlotOnMap("fisub2016", "PercentageVaakHondenpoep".lower(),polygonsgebieden)
+            PlotWijkAdvies("fisub2016", "PercentageVaakHondenpoep".lower(),polygonsgebieden)
 
 for widget in root.winfo_children():
     print(widget)
