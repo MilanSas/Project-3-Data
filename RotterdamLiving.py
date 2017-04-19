@@ -66,6 +66,8 @@ class NewButton:
     def clickReset(self): # resets click
         self.clicked = False
 
+clickButtonsArray = []
+
 ''''The Percentage en cijfers buttons'''''
 class PecButton:
     def __init__(self,text, row, column, ipadx, ipady, name):
@@ -87,15 +89,20 @@ class PecButton:
 
     def databaseSender(self):
         buttonArray.append(self.name) #the clicked button will go in the array
+        clickButtonsArray.append(self)
+        for i in clickButtonsArray:
+            i.resetColor()
+            print(i)
         self.click()
         databasePercentagesEnCijfers() #Opens the databasePercentageEnCijfers method that will create a database query.
-
+    def resetColor(self):
+        self.button.config(bg="DeepSkyBlue2")
+        setattr(self, 'clicked', False)
 
 
 ''''The canvas, important variable. Everything gets drawn on the canvas'''
 canvas = Canvas(root, width=screenx,height=screeny) #root is in which window it will get drawn on.
 canvasWijk = Canvas(root, width=screenx,height=screeny) #This canvas is for the wijken
-
 
 
 ''''Function to set polygon's(area) size'''
