@@ -1010,7 +1010,7 @@ def databasePercentagesEnCijfers():
         if len(geselecteerdegebieden)>0:
             PlotBarChart("% vaak hondenpoep","fisub2016","PercentageVaakHondenpoep".lower(),geselecteerdegebieden)
         else:
-            PlotWijkAdvies("fisub2016", "PercentageVaakHondenpoep".lower(),polygonsgebieden)
+            PlotOnMap("fisub2016", "PercentageVaakHondenpoep".lower(),polygonsgebieden)
 
 for widget in root.winfo_children():
     print(widget)
