@@ -139,7 +139,7 @@ class polygon:
         self.selected = False
         self.shape = canvas.create_polygon(list, fill=(HexToRGB(color)), outline='black', width=2, tags = self.name)
         canvas.move(self.shape, rs(-400), 0)
-        self.selectcolor = HexToRGB((159,200,104))
+        self.selectcolor = HexToRGB((129,170,74))
         self.description = description
 
 
@@ -435,7 +435,7 @@ menu_button.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white"
 menu_button.grid(row=0, column=0, sticky=N + W) #Sets the position of the drop down menu
 
 ''''Menu Text'''
-welcome_text = "Select the home button to see the available options" #Test that appears on the menu
+welcome_text = "Klik op de Homeknop op het menu te openen" #Test that appears on the menu
 description_text = Label(root,text=welcome_text,font=("Helvetica",15,"bold")) #Sets the text on the page
 description_text.grid(row=1,column=0,sticky=W) #Sets the position of the text
 
@@ -470,7 +470,7 @@ def about():
             widget.destroy() #Other widgets are deleted and so are their value
             print(str(widget) + " Is deleted")
 
-    about_text = "This application is made by first year Informatica students of the Hogeschool Rotterdam."
+    about_text = "Gemaakt voor Project 3 Open Data - Hogeschool Rotterdam."
     about1_text = "- Chris Santema"
     about2_text = "- Sebastiaan Van Etten"
     about3_text = "- Stefan Pesic"
@@ -676,7 +676,7 @@ def categorySafety():
     button30 = PecButton("% voldoende aanwezig groen (grasveldjes, bomen)", 4, 0, screenx / 17, screeny / 150,15)
     button31 = PecButton("% veel stankoverlast verkeer", 5, 0, screenx / 22, screeny / 150,16)
     button32 = PecButton("% veel geluidsoverlast verkeer", 6, 0, screenx / 22, screeny / 150,17)
-    buttonback3 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    buttonback3 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
     buttonback3.pageClick(percentagesEnCijfers)
     searchPage = True
 
@@ -699,7 +699,7 @@ def categoryTraffic():
     button36 = PecButton("Leefomgeving-subjectief", 4, 0, screenx / 17, screeny / 150,21)
     button37 = PecButton("Meedoen-subjectief", 5, 0, screenx / 22, screeny / 150,22)
     button38 = PecButton("Binding-subjectief", 6, 0, screenx / 22, screeny / 150,23)
-    buttonback4 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    buttonback4 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
     buttonback4.pageClick(percentagesEnCijfers)
     searchPage = True
 
@@ -722,7 +722,7 @@ def categoryServices():
     button42 = PecButton("% woningen met bushaltes binnen normafstand", 4, 0, screenx / 17, screeny / 150,27)
     button43 = PecButton("% woningen met metrostations binnen normafstand", 5, 0, screenx / 22, screeny / 150,28)
     button44 = PecButton("% woningen met tramhaltes binnen normafstand", 6, 0, screenx / 22, screeny / 150,29)
-    buttonback5 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    buttonback5 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
     buttonback5.pageClick(percentagesEnCijfers)
     searchPage = True
 
@@ -745,46 +745,9 @@ def categoryOther():
     button48 = PecButton("tevredenheid gedurende de jaren 2006-2011", 4, 0, screenx / 17, screeny / 150,33)
     button49 = PecButton("fietsendiefstal gedurende de jaren 2006-2011", 5, 0, screenx / 22, screeny / 150,34)
     button50 = PecButton("% vaak hondenpoep", 6, 0, screenx / 22, screeny / 150,35)
-    buttonback6 = NewButton("Back", 7, 0, screenx / 22, screeny / 150)
+    buttonback6 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
     buttonback6.pageClick(percentagesEnCijfers)
     searchPage = True
-
-''''Based on the data, the colour of the map changes, the data represents the query that will come in the function'''
-def ShowResults(data):
-    global polygonsgebieden #The array of area's
-    data = [] #Dictionary to simulate a query, this is to test the query
-    for result in data: #goes in the dictionary (the query)
-            for gebied in polygonsgebieden: #Goes in the area's array
-                if result == "Charlois": #Checks if result from the query is equal to an area
-                    result = int(data.get(result)) #Converts the dictionary value to an int
-                     #Changes color of the area and also change the colour
-                elif result == "Overschie":
-                    pass
-                elif result == "Hillegersberg":
-                    pass
-                elif result == "Prins Alexander":
-                    pass
-                elif result == "Kralingen":
-                    pass
-                elif result == "Noord":
-                    pass
-                elif result == "Delftshaven":
-                    pass
-                elif result == "Noord":
-                    pass
-                elif result == "Centrum":
-                    pass
-                elif result == "Feijennoord":
-                    pass
-                elif result == "Waalhaven":
-                    pass
-
-    # f = Figure(figsize=(5, 5), dpi=50)
-    # a = f.add_subplot(111)  # means 1 chart 1 by 1
-    # a.plot([1, 2, 3, 4, 5, 6, 7, 8], [5, 6, 2, 4, 4, 3, 5, 3])
-    # Figure1 = FigureCanvasTkAgg(f, root)
-    # Figure1.show()
-    # Figure1.get_tk_widget().grid(row=0, column=0, sticky=N, rowspan=30)
 
 
 ''''Database query for the page: "Woningsadvies (the user gets data based on selection)'''''
@@ -864,98 +827,156 @@ def databasePercentagesEnCijfers():
         if len(geselecteerdegebieden)>0:
             PlotBarChart("schoolgaande en studerende jongeren (18 t/m 22 jr)","si2016","PercentageSchoolgaandeEnStuderendeJongeren18TM22jr".lower(),geselecteerdegebieden)
          #The query get send into the showresults function, then the map colour gets changed based on the results from it
+        else:
+            PlotOnMap("si2016","PercentageSchoolgaandeEnStuderendeJongeren18TM22jr".lower(),polygonsgebieden)
     elif answer == 1:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("werkende jongeren (18 t/m 22 jr)","si2016","PercentageWerkendeJongeren18TM22jr".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("si2016","PercentageWerkendeJongeren18TM22jr".lower(),polygonsgebieden)
     elif answer == 2:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("werkzoekende jongeren (18 t/m 22 jr)","si2016","PercentageWerkzoekendeJongeren18TM22JrZonderBaan".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("si2016","PercentageWerkzoekendeJongeren18TM22JrZonderBaan".lower(),polygonsgebieden)
     elif answer == 3:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("werkzoeknde bewoners(23 t/m 64 jr)","si2016","PercentageBewoners23TM64JrMetWerk".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("si2016","PercentageBewoners23TM64JrMetWerk".lower(),polygonsgebieden)
     elif answer == 4:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("werkzoeknde bewoners(23 t/m 64 jr)","si2016","PercentageWerkzoekendeBewoners23TM64JrZonderBaan".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("si2016","PercentageWerkzoekendeBewoners23TM64JrZonderBaan".lower(),polygonsgebieden)
     elif answer == 5:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("Bewoners 18jr en ouder dat kort in Nederland woont","si2016","PercentageBewoners18JrEnOuderDatNogMaarKortInNederlandWoont".lower(),geselecteerdegebieden)
-
+        else:
+            PlotOnMap("si2016","PercentageBewoners18JrEnOuderDatNogMaarKortInNederlandWoont".lower(),polygonsgebieden)
     elif  answer == 6:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("Veiligheidsindex -objectief","vi2016","veiligheidsindexobjectief".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("vi2016","veiligheidsindexobjectief".lower(),polygonsgebieden)
     elif answer == 7:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("Diefstal-objectief","vi2016","diefstalobjectief".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("vi2016","diefstalobjectief".lower(),polygonsgebieden)
     elif answer == 8:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("Geweld-objectief","vi2016","geweldobjectief".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("vi2016","geweldobjectief".lower(),polygonsgebieden)
     elif answer == 9:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("Inbraak-objectief","vi2016","inbraakobjectief".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("vi2016","inbraakobjectief".lower(),polygonsgebieden)
     elif answer == 10:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("Vandalisme-objectief","vi2016","vandalismeobjectief".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("vi2016","vandalismeobjectief".lower(),polygonsgebieden)
     elif answer == 11:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("Overlast objectief","vi2016","overlastobjectief".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("vi2016","overlastobjectief".lower(),polygonsgebieden)
 
     elif answer == 12:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("Milieu objectief","fiobj2016","milieuobjectief".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("fiobj2016","milieuobjectief".lower(),polygonsgebieden)
     elif answer == 13:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("% woningen in geluidscontour vanaf 55 dB","fiobj2016","percentagewoningeningeluidscontourvanaf55db".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("fiobj2016","percentagewoningeningeluidscontourvanaf55db".lower(),polygonsgebieden)
     elif answer == 14:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("gemiddelde NO2-concentratie","fiobj2016","GemiddeldeNo2Concentratie2009IrtGrenswaarde40mgM3".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("fiobj2016","GemiddeldeNo2Concentratie2009IrtGrenswaarde40mgM3".lower(),polygonsgebieden)
     elif answer == 15:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("% voldoende aanwezig groen (grasveldjes, bomen)","fisub2016","PercentageVoldoendeAanwezigGroenGrasveldjesBomen".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("fisub2016","PercentageVoldoendeAanwezigGroenGrasveldjesBomen".lower(),polygonsgebieden)
+
     elif answer == 16:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("% veel stankoverlast verkeer","fisub2016","PercentageVeelStankoverlastVerkeer".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("fisub2016","PercentageVeelStankoverlastVerkeer".lower(),polygonsgebieden)
     elif answer == 17:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("% veel geluidsoverlast verkeer","fisub2016","PercentageVeelGeluidsoverlastVerkeer".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("fisub2016","PercentageVeelGeluidsoverlastVerkeer".lower(),polygonsgebieden)
 
     elif answer == 18:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("Sociale Index subjectief","si2016","SocialeIndexSubjectief".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("si2016","SocialeIndexSubjectief".lower(),polygonsgebieden)
     elif answer == 19:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("Oordeel kwaliteit van leven","si2016","OordeelKwaliteitVanLeven".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("si2016","OordeelKwaliteitVanLeven".lower(),polygonsgebieden)
     elif answer == 20:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("Capaciteiten-subjectief","si2016","CapaciteitenSubjectief".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("si2016","CapaciteitenSubjectief".lower(),polygonsgebieden)
     elif answer == 21:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("Leefomgeving-subjectief","si2016","LeefomgevingSubjectief".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("si2016","LeefomgevingSubjectief".lower(),polygonsgebieden)
     elif answer == 22:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("Meedoen-subjectief","si2016","MeedoenSubjectief".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("si2016","MeedoenSubjectief".lower(),polygonsgebieden)
     elif answer == 23:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("Binding-subjectief","si2016","BindingSubjectief".lower(),geselecteerdegebieden)
-
+        else:
+            PlotOnMap("si2016","BindingSubjectief".lower(),polygonsgebieden)
     elif answer == 24:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("% woningen met bakker binnen normafstand","fiobj2016","PercentageWoningenMetBakkerBinnenNormafstand".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("fiobj2016","PercentageWoningenMetBakkerBinnenNormafstand".lower(),polygonsgebieden)
     elif answer == 25:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("% woningen met groenteboer binnen normafstand","fiobj2016","PercentageWoningenMetGroenteboerBinnenNormafstand".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("fiobj2016","PercentageWoningenMetGroenteboerBinnenNormafstand".lower(),polygonsgebieden)
     elif answer == 26:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("% woningen met slager binnen normafstand","fiobj2016","PercentageWoningenMetSlagerBinnenNormafstand".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("fiobj2016","PercentageWoningenMetSlagerBinnenNormafstand".lower(),polygonsgebieden)
     elif answer == 27:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("% woningen met bushaltes binnen normafstand","fiobj2016","PercentageWoningenMetBushaltesBinnenNormafstand".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("fiobj2016","PercentageWoningenMetBushaltesBinnenNormafstand".lower(),polygonsgebieden)
     elif answer == 28:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("% woningen met metrostations binnen normafstand","fiobj2016","PercentageWoningenMetMetrostationsBinnenNormafstand".lower(),geselecteerdegebieden)
+        else:
+            PlotOnMap("fiobj2016","PercentageWoningenMetMetrostationsBinnenNormafstand".lower(),polygonsgebieden)
     elif answer == 29:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("% woningen met tramhaltes binnen normafstand","fiobj2016","PercentageWoningenMetTramhaltesBinnenNormafstand".lower(),geselecteerdegebieden)
-
+        else:
+            PlotOnMap("fiobj2016","PercentageWoningenMetTramhaltesBinnenNormafstand".lower(),polygonsgebieden)
     elif answer == 30:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("gemiddelde WOZ per m2 woningoppervlakte","fiobj2016","GemiddeldeWozPerM2Woningoppervlakte".lower(),geselecteerdegebieden)
