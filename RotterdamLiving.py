@@ -367,12 +367,12 @@ def motion(event):
     else:
         text.config(text="Rotterdam")
 
-def rightclick(event):
+def leftclick(event):
     for wijk in polygonsgebieden:
         if canvas.find_withtag(CURRENT) == canvas.find_withtag(wijk.name):
             wijk.Select()
 
-def leftclick(event):
+def rightclick(event):
     for wijk in polygonsgebieden:
         if canvas.find_withtag(CURRENT) == canvas.find_withtag(wijk.name):
             wijk.spawnchild()
@@ -393,7 +393,7 @@ def resetwijken():
 
 ''''when a polygon(area) is clicked, the click method will be activated'''''
 canvas.bind('<Button-1>', leftclick, add="+") #Binds the canvas to the click method
-canvas.bind('<Button-3>', rightclick, add="+")
+#canvas.bind('<Button-3>', rightclick, add="+")
 canvas.bind('<Motion>', hover)
 
 ''''Canvas that gets drawn'''
