@@ -51,9 +51,6 @@ def search(values, searchFor):
                 return k
     return None
 
-# print(search(WijkenGebieden, ab))
-
-
 jaarTabelNamen = ["tevredenheid", "fietsendiefstal", "geweldsdelicten","drugsoverlast"]
 afkomstTabelNamen = ['Nederlanders', 'Marokkanen', 'Turken', 'Kaapverdianen', 'Antilianen', 'Surinamers', 'Zuid-Europeanen', 'Overig']
 
@@ -104,7 +101,7 @@ class PlotLineChart(Plot):
             p = plt.plot(self.jaartallen, self.g['data_{}'.format(wijk.name)], label=wijk.name, linewidth=1)
             for a, b in zip(self.jaartallen, self.g['data_{}'.format(wijk.name)]):
                 plt.text(a, b, str(b))
-            wijk.ChangeBorderColor(p[0].get_color())
+            # wijk.ChangeBorderColor(p[0].get_color()) werkt niet op alle pcs dus uitgecomment, dit moet je incommenten bas
         plt.ylabel("Percentage")
         plt.xlabel('Jaren')
         plt.title(self.kolomstring)
@@ -138,7 +135,7 @@ class PlotPieChart(Plot):
         ax1.pie(sizes, labels=labels, autopct='%1.1f%%',
                 shadow=False, startangle=90)
         ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-        # plt.title(wijknaam, bbox={'facecolor': '0.8', 'pad': 5})
+
 
         plt.show()
 
@@ -208,7 +205,6 @@ class PlotOnMap(Plot):
 
     def show_plot(self):
         for wijk in (self.wijkNamenList):
-            print(self.g['data_{}'.format(wijk.name)])
             b = (self.g['data_{}'.format(wijk.name)])
             wijk.ChangeColor(int(b[0]))
 
@@ -224,34 +220,24 @@ class PlotWijkAdvies(Plot):
 
     def sql_query(self):
         for wijk in (self.wijkNamenList):
-            # print(wijk.waarde)
+
             self.cur.execute("select {} from"
                              " {} where wijknaam LIKE '{}'".format(self.dataset, self.tabelNaam, wijk.name))
             self.wijkData = self.cur.fetchone()
             for i in range(len(self.wijkData)):
                 wijk.waarde += self.wijkData[i]
-            # print(wijk.name + "-" + str(wijk.waarde))
+
 
         resultwijk = None
         wijkwaarde = 0
         for wijk in self.wijkNamenList:
-            # print(wijk.waarde)
+
             if wijk.waarde > wijkwaarde:
                 resultwijk = wijk
                 wijkwaarde = wijk.waarde
 
-        # print(resultwijk.name + str(wijk.waarde))
+
         resultwijk.ChosenWijk()
-
-
-
-
-
-# t = ["Oud/Nieuw Mathenesse/Witte Dorp"]
-# PlotLineChart("geweldsdelicten", t)
-
-#
-# PlotBarChart("fiobj2016", "fysiekeindex", t)
 
 
 
