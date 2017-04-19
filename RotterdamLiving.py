@@ -424,7 +424,7 @@ menu_button.config(font=("Helvetica", 20, "bold"), bg="DeepSkyBlue2", fg="white"
 menu_button.grid(row=0, column=0, sticky=N + W) #Sets the position of the drop down menu
 
 ''''Menu Text'''
-welcome_text = "Select the home button to see the available options" #Test that appears on the menu
+welcome_text = "Klik op de Homeknop op het menu te openen" #Test that appears on the menu
 description_text = Label(root,text=welcome_text,font=("Helvetica",15,"bold")) #Sets the text on the page
 description_text.grid(row=1,column=0,sticky=W) #Sets the position of the text
 
@@ -459,7 +459,7 @@ def about():
             widget.destroy() #Other widgets are deleted and so are their value
             print(str(widget) + " Is deleted")
 
-    about_text = "This application is made by first year Informatica students of the Hogeschool Rotterdam."
+    about_text = "Gemaakt voor Project 3 Open Data - Hogeschool Rotterdam."
     about1_text = "- Chris Santema"
     about2_text = "- Sebastiaan Van Etten"
     about3_text = "- Stefan Pesic"
