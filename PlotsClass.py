@@ -113,6 +113,35 @@ class PlotLineChart(Plot):
 
         plt.show()
 
+class PlotPieChart(Plot):
+    def __init__(self, wijknamenlist):
+        self.wijknamenlist = wijknamenlist
+        super().__init__(self, wijknamenlist)
+
+        self.PieChart()
+    def PieChart(self):
+        self.cur.execute("select * from afkomst where wijknaam = '{}'".format(self.wijknamenlist[0].name))
+        wijkData_1 = self.cur.fetchone()
+
+        wijknaam = wijkData_1[1]
+        data_Ned = wijkData_1[2]
+        data_Mar = wijkData_1[3]
+        data_Tur = wijkData_1[6]
+        data_Ant = wijkData_1[4]
+        data_Sur = wijkData_1[5]
+        data_Ove = wijkData_1[7]
+
+        labels = 'Nederlanders', 'Marokkanen', 'Antilianen', 'Surinamers', 'Turken', 'Overig'
+        sizes = [data_Ned, data_Mar,  data_Ant, data_Sur, data_Tur, data_Ove]
+
+        fig1, ax1 = plt.subplots()
+        ax1.pie(sizes, labels=labels, autopct='%1.1f%%',
+                shadow=False, startangle=90)
+        ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+        # plt.title(wijknaam, bbox={'facecolor': '0.8', 'pad': 5})
+
+        plt.show()
+
 
 class PlotBarChart(Plot):
     def __init__(self,kolomstring,tabelnaam, dataset, wijknamenlist):
@@ -194,7 +223,6 @@ class PlotWijkAdvies(Plot):
 
 
     def sql_query(self):
-
         for wijk in (self.wijkNamenList):
             # print(wijk.waarde)
             self.cur.execute("select {} from"

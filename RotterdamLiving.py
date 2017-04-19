@@ -1,10 +1,11 @@
 from tkinter import * #Needed for GUI
 import matplotlib #Needed for graph
 import Polygons
+from tkinter import messagebox
 matplotlib.use("TKAgg")
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
-from PlotsClass import Plot, PlotBarChart, PlotLineChart, PlotOnMap, PlotWijkAdvies
+from PlotsClass import Plot, PlotBarChart, PlotLineChart, PlotOnMap, PlotWijkAdvies, PlotPieChart
 import time
 #TODO read the comments, the symbol: , is after lines. the symbol: '''''' , is to explain the overall code
 #TODO when user clicks on an area, that area needs to be zoomed in
@@ -632,11 +633,11 @@ def categoryPopulation():
 
 
     text.config(text="") #Resets the text when it reaches the home button
-    button15 = PecButton("schoolgaande en studerende jongeren (18 t/m 22 jr)", 1, 0, screenx / 30, screeny / 150, 0)
-    button16 = PecButton("werkende jongeren (18 t/m 22 jr)", 2, 0, screenx / 45, screeny / 150,1)
-    button17 = PecButton("werkzoekende jongeren (18 t/m 22 jr)", 3, 0, screenx / 17, screeny / 150,2)
-    button18 = PecButton("bewoners met werk(23 t/m 64 jr)", 4, 0, screenx / 17, screeny / 150,3)
-    button19 = PecButton("werkzoeknde bewoners(23 t/m 64 jr)", 5, 0, screenx / 22, screeny / 150,4)
+    button15 = PecButton("Verdeling afkomst", 1, 0, screenx / 30, screeny / 150, 0)
+    button16 = PecButton("Werkende jongeren (18 t/m 22 jr)", 2, 0, screenx / 45, screeny / 150,1)
+    button17 = PecButton("Werkzoekende jongeren (18 t/m 22 jr)", 3, 0, screenx / 17, screeny / 150,2)
+    button18 = PecButton("Bewoners met werk(23 t/m 64 jr)", 4, 0, screenx / 17, screeny / 150,3)
+    button19 = PecButton("Werkzoekende bewoners(23 t/m 64 jr)", 5, 0, screenx / 22, screeny / 150,4)
     button20 = PecButton("Bewoners 18jr en ouder dat kort in Nederland woont", 6, 0, screenx / 22, screeny / 150,5)
     buttonback1 = NewButton("Terug", 7, 0, screenx / 22, screeny / 150)
     buttonback1.pageClick(percentagesEnCijfers) #The back button
@@ -824,11 +825,14 @@ def databasePercentagesEnCijfers():
     answer = (buttonArray[-1]) #last selected button gets stored in answer
     print(answer) #To prove that the last selected button is saved in the array
     if answer == 0:  #the numbers represent the button, each button has his own number. The attribute of the button that stores this is: name
-        if len(geselecteerdegebieden)>0:
-            PlotBarChart("schoolgaande en studerende jongeren (18 t/m 22 jr)","si2016","PercentageSchoolgaandeEnStuderendeJongeren18TM22jr".lower(),geselecteerdegebieden)
-         #The query get send into the showresults function, then the map colour gets changed based on the results from it
+        if len(geselecteerdegebieden)==1:
+            PlotPieChart(geselecteerdegebieden)
         else:
-            PlotOnMap("si2016","PercentageSchoolgaandeEnStuderendeJongeren18TM22jr".lower(),polygonsgebieden)
+            messagebox.showinfo("Minimaal 1 gebied.", "Selecteer mini- en maximaal 1 gebied alstublieft.")
+            # PlotBarChart("schoolgaande en studerende jongeren (18 t/m 22 jr)","si2016","PercentageSchoolgaandeEnStuderendeJongeren18TM22jr".lower(),geselecteerdegebieden)
+         #The query get send into the showresults function, then the map colour gets changed based on the results from it
+        # else:
+        #     PlotOnMap("si2016","PercentageSchoolgaandeEnStuderendeJongeren18TM22jr".lower(),polygonsgebieden)
     elif answer == 1:
         if len(geselecteerdegebieden)>0:
             PlotBarChart("werkende jongeren (18 t/m 22 jr)","si2016","PercentageWerkendeJongeren18TM22jr".lower(),geselecteerdegebieden)

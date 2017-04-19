@@ -1,74 +1,11 @@
-Wijknaam;Type;Onderdeelvan;Nederlanders;Marokkanen;Turken;Kaapverdianen;Antilianen;Surinamers;Zuid-Europeanen;Overig
-Afrikaanderwijk;Wijk;Feijenoord;16;13;34;3;5;13;3;14
-Agniesebuurt;Wijk;Noord;35;11;14;4;3;13;3;16
-Bergpolder;Wijk;Noord;60;5;5;2;2;6;3;17
-Beverwaard;Wijk;IJsselmonde;50;3;3;2;7;19;3;13
-Blijdorp;Wijk;Noord;76;1;1;1;1;3;2;15
-Bloemhof;Wijk;Feijenoord;30;10;26;1;5;11;2;15
-Bospolder;Wijk;Delfshaven;21;17;23;11;2;12;5;10
-CS-kwartier;Wijk;Rotterdam Centrum;46;1;2;1;1;4;1;45
-Carnisse;Wijk;Charlois;50;6;8;2;4;10;3;17
-Cool;Wijk;Rotterdam Centrum;49;6;3;3;2;9;5;22
-De Esch;Wijk;Kralingen-Crooswijk;56;4;3;3;3;10;3;19
-Delfshaven;Wijk;Delfshaven;38;8;7;6;9;12;4;16
-Dijkzigt;Wijk;Rotterdam Centrum;50;0;2;0;17;10;2;19
-Dorp;Wijk;Hoek van Holland;89;0;1;0;0;1;1;8
-Feijenoord;Wijk;Feijenoord;18;14;29;4;5;15;4;10
-Groot-IJsselmonde;Wijk;IJsselmonde;66;3;3;1;5;7;2;12
-Heijplaat;Wijk;Charlois;66;3;5;1;7;4;4;10
-Het Lage Land;Wijk;Prins Alexander;71;2;2;1;2;6;2;13
-Hillegersberg-Noord;Wijk;Hillegersberg-Schiebroek;73;3;1;1;2;3;2;15
-Hillegersberg-Zuid;Wijk;Hillegersberg-Schiebroek;80;1;1;0;1;2;2;13
-Hillesluis;Wijk;Feijenoord;20;13;28;3;5;14;3;13
-Hoogvliet-Noord;Wijk;Hoogvliet;56;2;5;2;8;14;2;13
-Hoogvliet-Zuid;Wijk;Hoogvliet;76;1;1;1;4;5;1;12
-Katendrecht;Wijk;Feijenoord;38;8;4;3;10;12;2;23
-Kleinpolder;Wijk;Overschie;52;9;6;4;2;9;4;13
-Kop van Zuid;Wijk;Feijenoord;49;2;3;1;5;7;4;29
-Kop van Zuid-Entrepot;Wijk;Feijenoord;42;9;8;3;4;11;4;19
-Kralingen-Oost;Wijk;Kralingen-Crooswijk;71;1;1;0;1;2;2;22
-Kralingen-West;Wijk;Kralingen-Crooswijk;47;12;7;2;2;10;4;16
-Kralingse-Bos;Wijk;Kralingen-Crooswijk;93;0;0;0;0;0;0;4
-Kralingseveer;Wijk;Prins Alexander;85;0;1;1;1;3;2;7
-Landzicht;Wijk;Prins Alexander;95;0;0;0;0;1;0;3
-Liskwartier;Wijk;Noord;54;9;9;3;2;8;3;13
-Lombardijen;Wijk;IJsselmonde;57;6;7;2;4;7;3;14
-Middelland;Wijk;Delfshaven;36;8;11;8;2;12;5;18
-Molenlaankwartier;Wijk;Hillegersberg-Schiebroek;79;0;0;0;1;1;1;18
-Nesselande;Wijk;Prins Alexander;78;0;2;1;0;7;1;10
-Nieuw-Crooswijk;Wijk;Kralingen-Crooswijk;39;16;11;5;3;9;6;11
-Nieuwe Werk;Wijk;Rotterdam Centrum;64;1;1;1;2;2;4;25
-Nieuwe Westen;Wijk;Delfshaven;27;15;16;9;3;13;4;14
-Nieuw-Mathenesse;Wijk;Delfshaven;56;0;0;0;0;0;0;0
-Noordereiland;Wijk;Feijenoord;53;5;10;2;2;7;3;17
-NoordKethel/Schieveen/Zestienhoven;Wijk;Overschie;92;0;0;0;0;0;0;7
-Ommoord;Wijk;Prins Alexander;78;1;1;1;1;4;2;12
-Oosterflank;Wijk;Prins Alexander;69;1;2;2;2;9;3;12
-Oud-Charlois;Wijk;Charlois;48;7;9;2;5;10;3;16
-Oud Crooswijk;Wijk;Charlois;41;13;13;4;2;10;6;11
-Oude Noorden;Wijk;Noord;36;16;13;4;2;11;5;12
-Oude Westen;Wijk;Rotterdam Centrum;27;13;14;7;3;15;6;15
-Oud-IJsselmonde;Wijk;Ijsselmonde;73;1;2;1;2;9;1;11
-OudMathenesse/Witte Dorp;Wijk;Delfshaven;46;5;8;6;3;12;5;16
-Overschie;Wijk;Overschie;80;2;1;1;1;4;2;10
-Pendrecht;Wijk;Charlois;39;8;8;2;9;11;5;18
-Pernis;Wijk;Pernis;86;1;0;0;2;2;1;8
-Prinsenland;Wijk;Prins Alexander;71;2;2;1;2;8;2;13
-Provenierswijk;Wijk;Noord;45;8;14;2;4;9;3;16
-Rubroek;Wijk;Kralingen-Crooswijk;56;7;6;3;2;9;4;14
-Schiebroek;Wijk;Hillegersberg-Schiebroek;68;6;3;1;2;5;2;13
-Schiemond;Wijk;Delfshaven;25;13;9;13;5;18;4;12
-'s-Gravenland;Wijk;Prins Alexander;73;1;2;1;2;5;2;15
-Spangen;Wijk;Delfshaven;13;20;21;11;3;16;4;12
-Stadsdriehoek;Wijk;Rotterdam Centrum;65;2;2;1;2;5;3;22
-Strand en Duin;Wijk;Hoek van Holland;88;0;0;0;0;1;1;9
-Struisenburg;Wijk;Kralingen-Crooswijk;60;3;1;0;1;4;2;28
-Tarwewijk;Wijk;Charlois;27;8;14;3;9;14;3;20
-Terbregge;Wijk;Hillegersberg-Schiebroek;75;2;2;1;0;6;2;13
-Tussendijken;Wijk;Delfshaven;22;15;22;8;3;13;6;12
-Vreewijk;Wijk;Feijenoord;70;3;3;1;2;6;3;13
-Wielewaal;Wijk;Charlois;83;1;1;0;1;3;1;9
-Zevenkamp;Wijk;Prins Alexander;65;2;2;2;2;13;2;12
-Zuiderpark;Wijk;Charlois;85;1;1;0;1;3;1;8
-Zuidplein;Wijk;Charlois;69;1;3;1;1;5;2;17
-Zuidwijk;Wijk;Charlois;54;6;5;1;7;9;4;14
+Wijknaam;Nederlanders;Marokkanen;Antilianen;Surinamers;Turken;Overig
+PrinsAlexander;76;2;9;9;2;9
+Delfshaven;43;13;4;10;13;16
+Feijenoord;42;11;5;10;18;13
+Charlois;53;7;7;11;9;13
+IJsselmonde;62;4;6;10;6;11
+KralingenCrooswijk;63;10;2;7;6;12
+Noord;62;10;3;7;8;10
+HillegersbergSchiebroek;83;4;2;3;2;6
+RotterdamCentrum;63;2;3;7;5;16
+Overschie;73;6;2;6;5;7
